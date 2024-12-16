@@ -4,4 +4,25 @@
     background-color: #f8f9fa;
     height: calc(100vh - var(--height-header));
     border-right: 1px solid var(--line-border-color);
+    padding: 0px 4px;
+}
+.menu-item{
+    margin-top: 6px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.menu-item:hover{
+    background-color: #ddd;
+}
+
+.title{
+    color: #333;
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 4px;
+}
+.icon{
+    color: #333;
+    font-size: 20px;
 }

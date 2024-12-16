@@ -6,7 +6,7 @@ function Header() {
   
   return (
     <div className={cx('wrapper')}>
-      Header
+      header
     </div>
   );
 }
