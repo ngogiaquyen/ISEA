@@ -1,0 +1,46 @@
+.wrapper{
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.accept{
+    display: none;
+    opacity: 0;
+    width: 24px;
+    height: 24px;
+}
+
+.container{
+    position: relative;
+}
+
+.label-check{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    height: 22px;
+    width: 22px;
+    border: 1px solid var(--line-border-color);
+}
+
+.icon{
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 1.2rem;
+    padding: 3px;
+    color: var(--white-color);
+    transition: 0.1s;
+    background: rgb(254, 44, 85);
+    border: 1px solid rgb(254, 44, 85);
+}
+
+.label{
+    color: rgba(22, 24, 35, 0.75);
+    font-family: TikTokFont;
+    font-size: 12px;
+    line-height: 16px;
+    display: inline;
+    margin-left: 4px;
+}
