@@ -1,0 +1,35 @@
+.error {
+  margin-bottom: 9px;
+}
+.error {
+  display: flex;
+  flex-direction: column;
+  font-family: TikTokFont;
+  font-size: 12px;
+  line-height: 15px;
+  color: rgb(255, 76, 58);
+  display: flex;
+}
+
+
+// error pas
+.title{
+    color: rgb(22, 24, 35);
+    font-family: TikTokFont;
+    font-weight: 600;
+    margin: 4px 0px;
+    font-size: 1.4rem;
+}
+
+.container{
+    font-family: TikTokFont;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 4px 0px;
+    color: rgb(255, 76, 58);
+    display: flex;
+
+    span{
+        margin-left: 3px;
+    }
+}
