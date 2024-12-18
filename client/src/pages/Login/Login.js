@@ -12,7 +12,6 @@ import { isValidEmail } from '~/hooks/validate';
 const cx = classNames.bind(styles);
 
 function Login({ setTypeBox, emailValue, setEmailValue }) {
-  console.log("set email value: ", setEmailValue)
   const [passValue, setPassValue] = useState('');
   const [errorEmailMessage, setErrorEmailMessage] = useState('');
 

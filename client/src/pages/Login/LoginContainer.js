@@ -12,7 +12,6 @@ import { activeLoginContext } from '~/components/Context/LoginProvider';
 const cx = classNames.bind(styles);
 
 function LoginContainer() {
-  console.log("hello")
   const [TypeBox, setTypeBox] = useState(()=>Login);
   const [emailValue, setEmailValue] = useState('');
   const [isCreateAccountForm, setIsCreateAccountForm] = useState(false);
@@ -23,8 +22,6 @@ function LoginContainer() {
   }
 
   const context = useContext(activeLoginContext)
-
-  console.log("context: ", context)
 
   return (
     <div className={cx('wrapper')}>
