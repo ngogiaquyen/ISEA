@@ -12,7 +12,7 @@ function AdminLayout({ children }) {
     <div className={cx('wrapper')}>
       <Sidebar />
       <div className={cx('container')}>
-        {/* <Header /> */}
+        <Header />
         <div className={cx('inner')}>
           <BoardSection/>
           {children}
