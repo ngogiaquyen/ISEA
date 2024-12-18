@@ -5,6 +5,7 @@ import Home from '~/pages/Home';
 import Recruitment from '~/pages/Recruitment/Recruitment';
 import EmptyLayout from '~/layouts/EmptyLayout/EmptyLayout';
 import Login from '~/pages/Login';
+import EmployeeRecords from '~/pages/EmployeeRecords';
 
 // don't need to login
 const publicRouters = [
@@ -44,7 +45,7 @@ const publicRouters = [
   },
   { 
     path: config.routes.admin.employeeRecords,
-    component: Recruitment,
+    component: EmployeeRecords,
     layout: AdminLayout
   },
   { 
