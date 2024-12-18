@@ -11,6 +11,7 @@ function BoardSection() {
         <MenuItem title="Tuyển dụng"/>
         <MenuItem title="Tuyển dụng"/>
         <MenuItem title="Tuyển dụng"/>
+        <MenuItem title="Tuyển dụng"/>
     </div> );
 }
 
