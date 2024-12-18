@@ -11,7 +11,7 @@ function AdminLayout({ children }) {
     <div className={cx('wrapper')}>
       <Sidebar />
       <div className={cx('container')}>
-        {/* <Header /> */}
+        <Header />
         <div className={cx('inner')}>{children}</div>
       </div>
     </div>
