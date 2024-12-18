@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import styles from './AdminLayout.module.scss';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar/Sidebar';
+import BoardSection from '../components/BoardSection';
 
 const cx = classNames.bind(styles);
 
@@ -11,8 +12,11 @@ function AdminLayout({ children }) {
     <div className={cx('wrapper')}>
       <Sidebar />
       <div className={cx('container')}>
-        <Header />
-        <div className={cx('inner')}>{children}</div>
+        {/* <Header /> */}
+        <div className={cx('inner')}>
+          <BoardSection/>
+          {children}
+          </div>
       </div>
     </div>
   );
