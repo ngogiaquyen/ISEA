@@ -6,15 +6,13 @@ const cx = classNames.bind(styles);
 
 function HomePanel({ title, arrItem }) {
   return (
-    <div className={cx('left')}>
-      <div className={cx('left-item')}>
-        <div className={cx('heading')}>{title}</div>
-        <ul className={cx('list-link')}>
-          {arrItem.map((item) => {
-            return <HomePanelItem src={item.src} content={item.content} />;
-          })}
-        </ul>
-      </div>
+    <div className={cx('left-item')}>
+      <div className={cx('heading')}>{title}</div>
+      <ul className={cx('list-link')}>
+        {arrItem.map((item) => {
+          return <HomePanelItem src={item.src} content={item.content} />;
+        })}
+      </ul>
     </div>
   );
 }

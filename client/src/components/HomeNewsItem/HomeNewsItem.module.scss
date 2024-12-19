@@ -1,11 +1,21 @@
 .list-news-item {
   display: flex;
-  padding: 12px;
+  padding: 16px 12px;
   transition: 0.2s;
   cursor: pointer;
 }
 .list-news-item:hover {
   background-color: var(--blue-color-hover-state-4);
+  background-color: var(--blue-color-state-3);
+
+  .news-item-title {
+    color: #fff;
+  }
+
+  .news-item-publish {
+    color: #fff;
+    opacity: 1;
+  }
 }
 .news-item-head {
   flex: 1;
@@ -14,7 +24,7 @@
   align-items: center;
   background-color: #f5f5f5;
   border-radius: 8px;
-  border: 1px solid #eee;
+  // border: 1px solid #eee;
   margin-right: 12px;
   overflow: hidden;
 }

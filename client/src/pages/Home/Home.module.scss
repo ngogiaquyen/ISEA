@@ -17,3 +17,31 @@
 .wrapper > :last-child {
   margin: 0;
 }
+//left
+.left {
+  flex-direction: column;
+  position: sticky;
+  top: calc(65px + 16px);
+  flex: 1 0 100% !important;
+  max-width: 200px;
+}
+
+//center
+.center {
+  flex: 5;
+  flex-direction: column;
+}
+
+//right
+.right {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 100% !important;
+  max-width: 280px;
+}
+.right > * {
+  margin-bottom: 16px;
+}
+.right > :last-child {
+  margin: 0;
+}

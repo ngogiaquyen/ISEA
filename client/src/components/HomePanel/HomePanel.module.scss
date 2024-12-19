@@ -1,13 +1,4 @@
-.left.show {
-  display: flex;
-}
-.left {
-  flex-direction: column;
-  position: sticky;
-  top: calc(65px + 16px);
-  flex: 1 0 100% !important;
-  max-width: 200px;
-}
+
 //split
 .left-item {
   background-color: #fff;

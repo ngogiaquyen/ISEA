@@ -6,13 +6,11 @@ const cx = classNames.bind(styles);
 
 function HomePost({ postArr }) {
   return (
-    <div className={cx('center')}>
-      <ul className={cx('list-post')}>
-        {postArr.map((postObj) => {
-          return <HomePostItem infoObj={postObj} />;
-        })}
-      </ul>
-    </div>
+    <ul className={cx('list-post')}>
+      {postArr.map((postObj) => {
+        return <HomePostItem infoObj={postObj} />;
+      })}
+    </ul>
   );
 }
 
