@@ -4,7 +4,7 @@ import { faAddressBook, faBars, faBell, faChartLine, faChartSimple, faClipboard,
 
 import classNames from "classnames/bind";
 import styles from "./Sidebar.module.scss";
-import accountMini from "~/asset/images/accoutmini.png";
+import accountMini from "~/assets/images/accoutmini.png";
 import config from "~/config";
 const cx = classNames.bind(styles);
 
