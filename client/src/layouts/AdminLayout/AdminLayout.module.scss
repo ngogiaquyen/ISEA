@@ -11,3 +11,9 @@
 .inner{
     display: flex;
 }
+
+.child{
+    overflow-y: scroll;
+    max-height: calc(100vh - var(--height-header));
+    height: 100%;
+}

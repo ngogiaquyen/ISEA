@@ -13,6 +13,10 @@ function Input({
   password,
   code,
   newPassword,
+  date,
+  requires,
+  setRequires,
+  index,
   value = '',
   isSendCodeValid,
   placeholder = '',
@@ -36,6 +40,9 @@ function Input({
     } else if (code) {
       setType('text');
       setInputFor('code');
+    } else if (date) {
+      setType('date');
+      setInputFor('');
     }
   }, [email, password, newPassword, code]);
 
@@ -48,7 +55,10 @@ function Input({
 
   const handleChange = (e) => {
     setValue(e.target.value);
-    
+    requires[index].title = e.target.value;
+    console.log("input: ", index)
+    console.log(requires)
+    setRequires(prev=>prev)
 
     switch (inputFor) {
       case 'email':

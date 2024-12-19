@@ -15,7 +15,9 @@ function AdminLayout({ children }) {
         <Header />
         <div className={cx('inner')}>
           <BoardSection/>
-          {children}
+          <div className={cx('child')}>
+            {children}
+          </div>
           </div>
       </div>
     </div>
