@@ -1,0 +1,14 @@
+:root {
+  --logo-height: 40px;
+}
+.header-logo {
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+img {
+  max-width: 100%;
+  height: var(--logo-height);
+}

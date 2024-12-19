@@ -1,0 +1,24 @@
+.header-nav-link {
+  padding: 12px 24px;
+  margin-right: 12px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.header-nav-link.active {
+  i {
+    color: var(--primary-color);
+  }
+}
+.header-nav-link:hover {
+  background-color: var(--blue-color-hover-state-1);
+}
+.header-nav-link i {
+  font-size: 24px;
+  color: #666;
+}
+.header-nav-link:last-child {
+  margin: 0;
+}
