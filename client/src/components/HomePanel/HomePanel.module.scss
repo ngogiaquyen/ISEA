@@ -1,0 +1,30 @@
+.left.show {
+  display: flex;
+}
+.left {
+  flex-direction: column;
+  position: sticky;
+  top: calc(65px + 16px);
+  flex: 1 0 100% !important;
+  max-width: 200px;
+}
+//split
+.left-item {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.heading {
+  color: #222;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+.list-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.list-link > :last-child {
+  margin: 0;
+}

@@ -1,0 +1,23 @@
+//split
+.list-tag {
+  display: flex;
+}
+.list-tag > * {
+  margin-right: 4px;
+}
+.list-tag > :last-child {
+  margin: 0;
+}
+.tag {
+  padding: 2px 8px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 50px;
+  font-size: 10px;
+}
+.tag.green {
+  background-color: var(--tag-green);
+}
+.tag.light-purple {
+  background-color: var(--tag-light-purple);
+}

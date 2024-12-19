@@ -1,0 +1,14 @@
+.center {
+  flex: 5;
+  flex-direction: column;
+}
+
+//split
+.list-post {
+  display: flex;
+  flex-direction: column;
+}
+.list-post > * {
+  margin-bottom: 16px;
+}
+
