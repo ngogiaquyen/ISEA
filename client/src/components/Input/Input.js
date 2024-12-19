@@ -55,10 +55,10 @@ function Input({
 
   const handleChange = (e) => {
     setValue(e.target.value);
-    requires[index].title = e.target.value;
-    console.log("input: ", index)
-    console.log(requires)
-    setRequires(prev=>prev)
+    if(requires){
+      requires[index].title = e.target.value;
+      setRequires(prev=>prev)
+    }
 
     switch (inputFor) {
       case 'email':

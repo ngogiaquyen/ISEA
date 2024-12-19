@@ -12,15 +12,15 @@ function EmployeeRecords() {
             <div className={cx("control_bar")}>
                 <Button
                     icon = "➕"
-                    title="thêm"
+                    title="Thêm"
                 />
                 <Button
                     icon = "📝"
-                    title="sửa"
+                    title="Sửa"
                 />
                 <Button
                     icon = "❌"
-                    title="xóa"
+                    title="Xóa"
                 />
                 
             </div>
