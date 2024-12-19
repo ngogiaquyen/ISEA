@@ -7,6 +7,7 @@ import Login from '~/pages/Login';
 import Post from '~/pages/Recruitment/Post';
 import DefaultLayout from '~/layouts';
 import EmployeeRecords from '~/pages/EmployeeRecords';
+import Announcements from '~/pages/Announcements/Announcements';
 
 // don't need to login
 const publicRouters = [
@@ -36,17 +37,17 @@ const publicRouters = [
   },
   { 
     path: config.routes.admin.training,
-    component: Recruitment,
+    component: Announcements,
     layout: AdminLayout
   },
   { 
     path: config.routes.admin.performanceEvaluation,
-    component: Recruitment,
+    component: Announcements,
     layout: AdminLayout
   },
   { 
     path: config.routes.admin.payrollAndBenefits,
-    component: Recruitment,
+    component: Announcements,
     layout: AdminLayout
   },
   { 
@@ -56,12 +57,12 @@ const publicRouters = [
   },
   { 
     path: config.routes.admin.reports,
-    component: Recruitment,
+    component: Announcements,
     layout: AdminLayout
   },
   { 
     path: config.routes.admin.settings,
-    component: Recruitment,
+    component: Announcements,
     layout: AdminLayout
   }
 ];

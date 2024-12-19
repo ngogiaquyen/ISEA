@@ -1,4 +1,6 @@
 .wrapper{
+    display: flex;
+    flex-direction: column;
     max-width: var(--sidebar-width);
     width: 100%;
     background-color: #f5f2f2;

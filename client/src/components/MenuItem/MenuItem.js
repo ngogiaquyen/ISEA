@@ -2,15 +2,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import classNames  from "classnames/bind";
 import styles from "./MenuItem.module.scss";
+import { NavLink } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
-function MenuItem({title, icon}) {
+function MenuItem({title, icon, to}) {
     return ( 
-        <div className={cx("menu-item")}>
+        <NavLink 
+        className={cx("menu-item")}
+        to={to}
+        >
             {icon}
             <span className={cx("title")}>{title}</span>
-        </div>
+        </NavLink>
      );
 }
 
