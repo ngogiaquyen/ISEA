@@ -47,7 +47,6 @@ function Input({
   };
 
   const handleChange = (e) => {
-    console.log(setValue)
     setValue(e.target.value);
     
 

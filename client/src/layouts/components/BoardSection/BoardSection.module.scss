@@ -1,0 +1,8 @@
+.wrapper{
+    max-width: var(--sidebar-width);
+    width: 100%;
+    
+    background-color: #f5f2f2;
+    height: calc(100vh - var(--height-header));
+    border-right: 1px solid var(--line-border-color);
+}

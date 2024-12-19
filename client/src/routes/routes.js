@@ -1,11 +1,11 @@
 import config from '~/config';
 import AdminLayout from '~/layouts/AdminLayout/AdminLayout';
-import UserLayout from '~/layouts/UserLayout/UserLayout';
 import Home from '~/pages/Home';
 import Recruitment from '~/pages/Recruitment/Recruitment';
 import EmptyLayout from '~/layouts/EmptyLayout/EmptyLayout';
 import Login from '~/pages/Login';
-import EmployeeRecords from '~/pages/EmployeeRecords';
+import Post from '~/pages/Recruitment/Post';
+import DefaultLayout from '~/layouts';
 
 // don't need to login
 const publicRouters = [
@@ -14,18 +14,23 @@ const publicRouters = [
     component: Home,
   },
   {
+    path: config.routes.dashboard.recruitment,
+    component: Recruitment,
+    layout: DefaultLayout
+  },
+  {
     path: config.routes.admin.login,
     component: Login,
     layout: EmptyLayout
   },
-  {
-    path: config.routes.dashboard.recruitment,
-    component: Recruitment,
-    layout: UserLayout
-  },
   { 
     path: config.routes.admin.recruitment,
     component: Recruitment,
+    layout: AdminLayout
+  },
+  { 
+    path: config.routes.admin.recruitmentPost,
+    component: Post,
     layout: AdminLayout
   },
   { 
