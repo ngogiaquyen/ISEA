@@ -6,6 +6,7 @@ import EmptyLayout from '~/layouts/EmptyLayout/EmptyLayout';
 import Login from '~/pages/Login';
 import Post from '~/pages/Recruitment/Post';
 import DefaultLayout from '~/layouts';
+import EmployeeRecords from '~/pages/EmployeeRecords';
 
 // don't need to login
 const publicRouters = [
