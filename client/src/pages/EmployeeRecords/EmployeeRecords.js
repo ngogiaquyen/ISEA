@@ -16,7 +16,7 @@ function EmployeeRecords() {
                 />
                 <Button
                     icon = "📝"
-                    title="xửa"
+                    title="sửa"
                 />
                 <Button
                     icon = "❌"
