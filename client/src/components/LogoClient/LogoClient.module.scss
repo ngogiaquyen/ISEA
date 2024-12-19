@@ -1,5 +1,5 @@
 :root {
-  --logo-height: 40px;
+  --logo-height: 28px;
 }
 .header-logo {
   z-index: 1;
@@ -8,7 +8,11 @@
   justify-content: center;
   align-items: center;
 }
-img {
-  max-width: 100%;
+.header-logo img {
   height: var(--logo-height);
+  opacity: .8;
+  margin-left: 12px;
+}
+img{
+  max-width: 100%;
 }

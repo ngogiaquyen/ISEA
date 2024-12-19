@@ -23,15 +23,23 @@
   --primary-color: #0081ff;
   --secondary-color: #f3f5f6;
 
+  --tag-blue: #0081ff;
+  --tag-green: #00CC00;
+  --tag-light-purple: #7A6BFF;
+
   --blue-color-state-1: #1d4ed8;
   --blue-color-state-2: #2563eb;
   --blue-color-state-3: #3b82f6;
 
   --background-color-state-1: #f3f5f6;
 
-  --blue-color-hover-state-1: #1d4ed80d;
-  --blue-color-hover-state-2: #2563eb0d;
-  --blue-color-hover-state-3: #3b82f60d;
+  --blue-color-hover-state-1: #3b82f60d;
+  --blue-color-hover-state-2: #3b82f61a;
+  --blue-color-hover-state-3: rgba(60, 131, 246, 0.150);
+
+  --blue-color-hover-state-4: rgba(59, 130, 246, 0.2);
+  --blue-color-hover-state-5: rgba(59, 130, 246, 0.4);
+  --blue-color-hover-state-6: rgba(59, 130, 246, 0.6);
 }
 
 * {
