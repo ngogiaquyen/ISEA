@@ -21,7 +21,8 @@
   border-bottom: 1px solid #eee;
 }
 .list-news > :last-child {
-  border: 0;
+  // border: 0;
+  margin-bottom: 12px;
 }
 .list-news-item {
   display: flex;

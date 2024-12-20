@@ -6,7 +6,7 @@ const cx = classNames.bind(styles);
 function TagList({ tagArr }) {
   return (
     <div className={cx('list-tag')}>
-      {tagArr.map((tag) => {
+      {tagArr.map((tag, index) => {
         let tagClass = [];
         let tagTitle;
 
@@ -21,7 +21,11 @@ function TagList({ tagArr }) {
           tagTitle = 'Giải trí';
         }
 
-        return <div className={cx(...tagClass)}>{tagTitle}</div>;
+        return (
+          <div key={index} className={cx(...tagClass)}>
+            {tagTitle}
+          </div>
+        );
       })}
     </div>
   );

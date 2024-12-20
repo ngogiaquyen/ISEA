@@ -1,6 +1,7 @@
 * {
   color: #444;
   font-family: Inter;
+  line-height: 1.5;
 }
 .wrapper {
   display: flex;
@@ -10,9 +11,7 @@
   position: relative;
 }
 .wrapper > * {
-  flex: 1;
   display: flex;
-  margin-right: 16px;
 }
 .wrapper > :last-child {
   margin: 0;
@@ -22,13 +21,11 @@
   flex-direction: column;
   position: sticky;
   top: calc(65px + 16px);
-  flex: 1 0 100% !important;
-  max-width: 200px;
 }
 
 //center
 .center {
-  flex: 5;
+  flex: 1 1 100%;
   flex-direction: column;
 }
 
@@ -36,8 +33,7 @@
 .right {
   display: flex;
   flex-direction: column;
-  flex: 1 0 100% !important;
-  max-width: 280px;
+  flex: 1 0 280px;
 }
 .right > * {
   margin-bottom: 16px;
