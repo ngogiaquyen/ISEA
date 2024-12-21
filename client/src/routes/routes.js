@@ -155,7 +155,7 @@ const publicRouters = [
   },
   {
     path: config.routes.admin.personalInformation,
-    component: Announcements,
+    component: EmployeeRecords,
     layout: AdminLayout,
   },
   {
