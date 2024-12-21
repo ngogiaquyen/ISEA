@@ -20,7 +20,6 @@ function FormGroup({ lable, requireId, requires, setRequires, placeholder, input
     requires[requireId].content = e.target.value;
     setRequires(requires)
     setAreaValue(e.target.value);
-    console.log(requires)
   };
 
   return (

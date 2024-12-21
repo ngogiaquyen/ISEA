@@ -16,15 +16,7 @@ function Post() {
     setRequires([...requires, { title:"", content: "" }]);
   };
 
-  useEffect(()=>{
-    
-    console.log(requires)
-    console.log("re render");
-  }, [requires])
-
   const handleTrashRequire = (id) => {
-    console.log(id)
-    
     setRequires((prev)=>{
       const newPrev = prev.filter((_, index) => index !== id)
       return newPrev
