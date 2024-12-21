@@ -2,7 +2,7 @@
   --text-color: #333;
   --white-color: #fff;
   --black-color: #000;
-  --header-color:#0074e9;
+  --header-color: #0074e9;
   --star-color: #fcb31b;
   --blur-text-color: rgba(51, 51, 51, 0.5333333333);
   --line-color: rgba(136, 136, 136, 0.2784313725);
@@ -16,8 +16,35 @@
   // width
   --sidebar-width: 280px;
   // font
-  
+
   --font-family: 'TikTokFont', sans-serif;
+
+  //css of the handsome guy, no edit, thanks!
+  --primary-color: #0081ff;
+  --secondary-color: #f3f5f6;
+
+  --tag-blue: #0081ff;
+  --tag-green: #00CC00;
+  --tag-light-purple: #7A6BFF;
+
+  --blue-color-state-0: #1d4ed8;
+  --blue-color-state-1: #006CD9;
+  --blue-color-state-2: #2693FF;
+  --blue-color-state-3: #409FFF;
+  --blue-color-state-4: #59ACFF;
+  --blue-color-state-5: #73B9FF;
+  --blue-color-state-6: #8CC6FF;
+  --blue-color-state-7: #A6D2FF;
+
+  --background-color-state-1: #f3f5f6;
+
+  --blue-color-hover-state-1: #3b82f60d;
+  --blue-color-hover-state-2: #3b82f61a;
+  --blue-color-hover-state-3: rgba(60, 131, 246, 0.150);
+
+  --blue-color-hover-state-4: rgba(59, 130, 246, 0.2);
+  --blue-color-hover-state-5: rgba(59, 130, 246, 0.4);
+  --blue-color-hover-state-6: rgba(59, 130, 246, 0.6);
 }
 
 * {
@@ -89,7 +116,6 @@ html *::-webkit-scrollbar-track {
   border-radius: 0;
   background-color: rgba(64, 64, 64, 0);
 }
-
 
 ul {
   list-style: none;

@@ -1,0 +1,114 @@
+.post-item {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 16px;
+}
+.post-item > * {
+  margin-bottom: 8px;
+}
+.post-item > :last-child {
+  margin: 0;
+}
+.author {
+  display: flex;
+  align-items: center;
+}
+.author-avatar {
+  display: flex;
+  max-width: 36px;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  margin-right: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.author-avatar:hover {
+  border-color: var(--tag-light-purple);
+}
+.author-avatar img {
+  color: haha;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+}
+.author-name {
+  color: #333;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.author-name:hover {
+  color: var(--tag-light-purple);
+}
+.time-published {
+  font-size: 11px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.time-published span {
+  margin-right: 4px;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.time-published span:hover {
+  text-decoration: underline;
+}
+.post-title {
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.post-title:hover {
+  color: var(--primary-color);
+}
+.post-tags {
+  display: flex;
+}
+.post-thumbnail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+//   border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+}
+.post-thumbnail img {
+  aspect-ratio: 16/9;
+  max-width: 100%;
+  object-fit: contain;
+}
+.post-content {
+  display: -webkit-box;
+  line-clamp: 8;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: justify;
+}
+.btn-area {
+  display: flex;
+}
+.btn-view {
+  font-size: 14px;
+  color: var(--primary-color);
+  background-color: transparent !important;
+  user-select: none !important;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn-view:hover {
+  color: var(--tag-light-purple);
+}

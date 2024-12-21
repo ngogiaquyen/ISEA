@@ -1,0 +1,18 @@
+:root {
+  --logo-height: 28px;
+}
+.header-logo {
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-logo img {
+  height: var(--logo-height);
+  opacity: .8;
+  margin-left: 12px;
+}
+img{
+  max-width: 100%;
+}

@@ -6,7 +6,6 @@ import HeaderUser from '../components/HeaderUser/HeaderUser';
 const cx = classNames.bind(styles);
 
 function DefaultLayout({ children }) {
-
   return (
     <div className={cx('wrapper')}>
       <HeaderUser />

@@ -1,0 +1,19 @@
+.wrapper {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 0 10px #0000002a;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid #EEE;
+}
+.inner {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 8px;
+}

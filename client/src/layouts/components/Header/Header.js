@@ -7,7 +7,7 @@ function Header() {
   
   return (
     <div className={cx('wrapper')}>
-      <h1>QUẢN LÝ QUY TRÌNH NGHIỆP VỤ HÀNH CHÍNH VĂN PHÒNG -2-24(K22.QTVP.D2.K01)</h1>
+      <h1>QUẢN LÝ NHÂN SỰ ISEA</h1>
       <AccountMini/>
     </div>
   );

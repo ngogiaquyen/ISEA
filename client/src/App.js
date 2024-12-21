@@ -7,7 +7,7 @@ import DefaultLayout from './layouts/DefaultLayout';
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="app">
         <Routes>
           {/* public routes */}
           {publicRouters.map((route, index) => {

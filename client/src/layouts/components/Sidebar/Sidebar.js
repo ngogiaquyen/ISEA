@@ -14,10 +14,10 @@ import {
   faUserGroup,
 } from '@fortawesome/free-solid-svg-icons';
 
-import classNames from 'classnames/bind';
-import styles from './Sidebar.module.scss';
-import accountMini from '~/asset/images/accoutmini.png';
-import config from '~/config';
+import classNames from "classnames/bind";
+import styles from "./Sidebar.module.scss";
+import accountMini from "~/assets/images/accoutmini.png";
+import config from "~/config";
 import { useState } from 'react';
 const cx = classNames.bind(styles);
 
