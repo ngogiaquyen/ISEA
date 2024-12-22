@@ -3,12 +3,12 @@ import AdminLayout from '~/layouts/AdminLayout/AdminLayout';
 import Home from '~/pages/Home';
 import Recruitment from '~/pages/Recruitment/Recruitment';
 import EmptyLayout from '~/layouts/EmptyLayout/EmptyLayout';
-import Login from '~/pages/Login';
 import Post from '~/pages/Recruitment/Post';
 import DefaultLayout from '~/layouts';
 import EmployeeRecords from '~/pages/EmployeeRecords';
 import Announcements from '~/pages/Announcements/Announcements';
 import PleaseSelectFeature from '~/pages/PleaseSelectFeature';
+import LoginContainer from '~/pages/LoginContainer';
 
 // don't need to login
 const publicRouters = [
@@ -23,7 +23,7 @@ const publicRouters = [
   },
   {
     path: config.routes.admin.root,
-    component: Login,
+    component: LoginContainer,
     layout: EmptyLayout,
   },
   // Tuyển dụng

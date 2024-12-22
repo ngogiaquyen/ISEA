@@ -5,7 +5,7 @@
   width: 100%;
   background-color: #f5f2f2;
   height: calc(100vh);
-  border-right: 1px solid var(--line-border-color);
+  // border-right: 1px solid var(--line-border-color);
     // transition: width 0.3s ease, opacity 0.3s ease;
   transition: width 0.3s ease, max-width 0.3s ease;
   overflow: hidden;
@@ -31,6 +31,7 @@
 .icon {
   color: #333;
   font-size: 20px;
+  min-width: 40px;
 }
 .head {
   display: flex;

@@ -1,20 +1,22 @@
 import classNames from 'classnames/bind';
 import { useState } from 'react';
 
+import { isValidCode, isValidEmail, isValidPassword } from '~/hooks/validate';
+import Login from './Login';
 import styles from './LoginContaner.module.scss';
 import Input from '~/components/Input';
-import ForgotPass from './ForgotPass';
-import Login from './Login';
-import { isValidCode, isValidEmail } from '~/hooks/validate';
-import OutSideClickHandle from '~/components/OutSideClickHandle';
 import Error from '~/components/Error';
+import OutSideClickHandle from '~/components/OutSideClickHandle';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 
-function LoginCode({ setTypeBox, emailValue, setEmailValue }) {
+function ForgotPass({ setTypeBox, emailValue, setEmailValue }) {
   const [codeValue, setCodeValue] = useState('');
+  const [newPassValue, setNewPassValue] = useState('');
   const [errorEmailMessage, setErrorEmailMessage] = useState('');
   const [errorCodeMessage, setErrorCodeMessage] = useState('');
+  const [errorNewPassMessage, setErrorNewPassMessage] = useState('');
 
   const handleClickOutEmail = () => {
     if (!emailValue) setErrorEmailMessage('Vui lòng nhập địa chỉ email');
@@ -26,21 +28,29 @@ function LoginCode({ setTypeBox, emailValue, setEmailValue }) {
     else if (!isValidCode(codeValue)) setErrorCodeMessage('Mã bao gồm 6 ký tự');
     else setErrorCodeMessage('');
   };
+  const handleClickOutNewPass = () => {
+    if (!codeValue) setErrorNewPassMessage('Vui lòng nhập mật khẩu mới');
+    else if (!isValidPassword(newPassValue))
+      setErrorNewPassMessage('Mật khẩu bao gồm chữ hoa, thường, ít nhất 8 ký tự,ký tự đặc biệt');
+    else setErrorNewPassMessage('');
+  };
 
   const isSendCodeValid = emailValue && isValidEmail(emailValue);
 
   const isFormValid =
-    emailValue && codeValue && isValidEmail(emailValue) && codeValue.trim() !== '' && isValidCode(codeValue);
+    emailValue &&
+    codeValue &&
+    isValidEmail(emailValue) &&
+    codeValue.trim() !== '' &&
+    isValidPassword(newPassValue) &&
+    isValidCode(codeValue);
 
   return (
     <div className={cx('container')}>
       <div className={cx('inner')}>
-        <h1 className={cx('title')}>Đăng nhập </h1>
+        <h1 className={cx('title')}>Đặt lại mật khẩu</h1>
         <form className={cx('form')}>
           <label className={cx('label')}>Email hoặc tên đăng nhập</label>
-          {/* <input className={cx('input', 'email')}  type='text'placeholder="Email hoặc Username" />
-      <input className={cx('input', 'password')} type='text' placeholder="Mật khẩu" />
-      <input className={cx('input', 'submit')} type='submit' value={"Đăng nhập"} /> */}
           <Error errorMessage={errorEmailMessage}>
             <OutSideClickHandle onClickOutside={handleClickOutEmail}>
               <Input
@@ -65,16 +75,25 @@ function LoginCode({ setTypeBox, emailValue, setEmailValue }) {
               />
             </OutSideClickHandle>
           </Error>
+
+          <OutSideClickHandle onClickOutside={handleClickOutNewPass}>
+            <Error errorMessage={errorNewPassMessage}>
+              <Input
+                newPassword
+                placeholder="Mật khẩu mới"
+                value={newPassValue}
+                setValue={setNewPassValue}
+                setErrorMessage={setErrorNewPassMessage}
+              />
+            </Error>
+          </OutSideClickHandle>
+
           <div className={cx('link-container')}>
-            <button className={cx('link')} href="#" onClick={() => setTypeBox(() => ForgotPass)}>
-              Quên mật khẩu?
-            </button>
-            <span className={cx('split-line')}></span>
             <button className={cx('link')} href="#" onClick={() => setTypeBox(() => Login)}>
               Đăng nhập với mật khẩu
             </button>
           </div>
-          <button type="submit" className={cx('submit', { active: isFormValid })}>
+          <button to={config.routes.admin.root} type="submit" className={cx('submit', { active: isFormValid })}>
             Đăng nhập
           </button>
         </form>
@@ -83,4 +102,4 @@ function LoginCode({ setTypeBox, emailValue, setEmailValue }) {
   );
 }
 
-export default LoginCode;
+export default ForgotPass;

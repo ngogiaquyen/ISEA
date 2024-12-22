@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import styles from './LoginContaner.module.scss';
 import Input from '~/components/Input';
 import ForgotPass from './ForgotPass';
-import LoginCode from './LoginCode';
 import Error from '~/components/Error';
 import OutSideClickHandle from '~/components/OutSideClickHandle';
 import { useState } from 'react';

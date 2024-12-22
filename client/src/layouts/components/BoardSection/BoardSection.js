@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngellist } from '@fortawesome/free-brands-svg-icons';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { ActiveBoardContext } from '~/components/Context/ActiveBoardProvider';
+import DashedLine from '~/components/DashedLine';
 
 const cx = classNames.bind(styles);
 
@@ -74,12 +75,14 @@ function BoardSection({ selectedCategoryId }) {
   return (
     <div className={cx('wrapper', { collapse: isCollapsedBoard })}>
       {items.map((item, index) => (
-        <MenuItem
-          title={item.title}
-          to={item.to}
-          isActive={index + 1 === indexActive}
-          onClick={() => handleActive(index + 1)}
-        />
+        <>
+          <MenuItem
+            title={item.title}
+            to={item.to}
+            isActive={index + 1 === indexActive}
+            onClick={() => handleActive(index + 1)}
+          />
+        </>
       ))}
       <div className={cx('overlay')} onClick={handleToggleSidebar}>
         {isCollapsedBoard ? (
