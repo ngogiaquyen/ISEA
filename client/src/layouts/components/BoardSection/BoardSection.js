@@ -1,8 +1,12 @@
 import classNames from 'classnames/bind';
 import styles from './BoardSection.module.scss';
 import MenuItem from '~/components/MenuItem/MenuItem';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import config from '~/config';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngellist } from '@fortawesome/free-brands-svg-icons';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { ActiveBoardContext } from '~/components/Context/ActiveBoardProvider';
 
 const cx = classNames.bind(styles);
 
@@ -43,9 +47,24 @@ const subCategories = {
 };
 
 function BoardSection({ selectedCategoryId }) {
+
+  // const [isCollapsedBroard, setIsCollapsedBoard] = useState(false);
+  const { isCollapsedBoard, setIsCollapsedBoard } = useContext(ActiveBoardContext);
+  
+
+  const handleToggleSidebar = () => {
+    setIsCollapsedBoard((prev) => !prev);
+  };
+
   const [items, setItems] = useState(subCategories[selectedCategoryId] || []);
 
   const [indexActive, setIndexActive] = useState(0);
+
+
+  const handleActive = (index)=>{
+    setIndexActive(index);
+    setIsCollapsedBoard(true);
+  }
 
   useEffect(() => {
     setIndexActive(0);
@@ -53,16 +72,22 @@ function BoardSection({ selectedCategoryId }) {
   }, [selectedCategoryId]);
 
   return (
-    <div className={cx('wrapper')}>
-      {/* <MenuItem title="Tuyển dụng" /> */}
+    <div className={cx('wrapper', { collapse: isCollapsedBoard })}>
       {items.map((item, index) => (
         <MenuItem
           title={item.title}
           to={item.to}
           isActive={index + 1 === indexActive}
-          onClick={() => setIndexActive(index + 1)}
+          onClick={() => handleActive(index + 1)}
         />
       ))}
+      <div className={cx('overlay')} onClick={handleToggleSidebar}>
+        {isCollapsedBoard ? (
+          <FontAwesomeIcon className={cx('angle')} icon={faAngleRight} />
+        ) : (
+          <FontAwesomeIcon className={cx('angle')} icon={faAngleLeft} />
+        )}
+      </div>
     </div>
   );
 }

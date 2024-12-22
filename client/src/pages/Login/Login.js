@@ -45,10 +45,6 @@ function Login({ setTypeBox, emailValue, setEmailValue }) {
             <button className={cx('link')} href="#" onClick={() => setTypeBox(() => ForgotPass)}>
               Quên mật khẩu?
             </button>
-            <span className={cx('split-line')}></span>
-            <button className={cx('link')} href="#" onClick={() => setTypeBox(() => LoginCode)}>
-              Đăng nhập với mã
-            </button>
           </div>
           <button type="submit" className={cx('submit', { active: isFormValid })}>
             Đăng nhập

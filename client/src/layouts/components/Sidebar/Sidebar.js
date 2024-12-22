@@ -14,47 +14,53 @@ import {
   faUserGroup,
 } from '@fortawesome/free-solid-svg-icons';
 
-import classNames from "classnames/bind";
-import styles from "./Sidebar.module.scss";
-import accountMini from "~/assets/images/accoutmini.png";
-import config from "~/config";
-import { useState } from 'react';
+import classNames from 'classnames/bind';
+import styles from './Sidebar.module.scss';
+import accountMini from '~/assets/images/accoutmini.png';
+import config from '~/config';
+import { useContext, useState } from 'react';
+import { ActiveBoardContext, ActiveBoardProvider } from '~/components/Context/ActiveBoardProvider';
 const cx = classNames.bind(styles);
 
 const categories = [
-  { id: 1, name: 'Tuyển dụng', to: config.routes.admin.recruitment },
-  { id: 2, name: 'Đào tạo', to: config.routes.admin.training },
-  { id: 3, name: 'Đánh giá hiệu suất', to: config.routes.admin.performanceEvaluation },
-  { id: 4, name: 'Lương & phúc lợi', to: config.routes.admin.payrollAndBenefits },
-  { id: 5, name: 'Quản lý nhân sự', to: config.routes.admin.reports },
-  { id: 6, name: 'Cài đặt hệ thống', to: config.routes.admin.settings },
+  { id: 1, name: 'Tuyển dụng', to: config.routes.admin.recruitment, icon: <FontAwesomeIcon className={cx('icon')} icon={faUserGroup} /> },
+  { id: 2, name: 'Đào tạo', to: config.routes.admin.training, icon: <FontAwesomeIcon className={cx('icon')} icon={faChartLine} /> },
+  { id: 3, name: 'Đánh giá hiệu suất', to: config.routes.admin.performanceEvaluation, icon: <FontAwesomeIcon className={cx('icon')} icon={faReceipt} /> },
+  { id: 4, name: 'Lương & phúc lợi', to: config.routes.admin.payrollAndBenefits, icon: <FontAwesomeIcon className={cx('icon')} icon={faAddressBook} /> },
+  { id: 5, name: 'Quản lý nhân sự', to: config.routes.admin.reports, icon: <FontAwesomeIcon className={cx('icon')} icon={faChartSimple} /> },
+  { id: 6, name: 'Cài đặt hệ thống', to: config.routes.admin.settings, icon: <FontAwesomeIcon className={cx('icon')} icon={faGear} /> },
 ];
 
 function Sidebar({ onSelectCategory }) {
-
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const [indexActive, setIndexActive] = useState(0);
 
+
+  const handleToggleSidebar = () => {
+    setIsCollapsed((prev) => !prev);
+  };
+
   const handleClick = (index, id) => {
-    console.log("hello")
-    setIndexActive(index+ 1)
-    onSelectCategory(id)
-  }
+    setIndexActive(index + 1);
+    onSelectCategory(id);
+  };
 
   return (
-    <div className={cx('wrapper')}>
+    <div className={cx('wrapper', { collapsed: isCollapsed })}>
       <div className={cx('head')}>
         <img src={accountMini} />
-        <h2>ICTU-ONLINE</h2>
-        <FontAwesomeIcon className={cx('bars')} icon={faBars} />
+        <h2 className={cx("title")}>ISEA</h2>
+        <FontAwesomeIcon className={cx('bars')} icon={faBars} onClick={handleToggleSidebar} />
       </div>
       {categories.map((cate, index) => (
         <MenuItem
           key={index}
           title={cate.name}
           to={cate.to}
-          icon={<FontAwesomeIcon className={cx('icon')} icon={faChartLine} />}
+          icon={cate.icon}
           isActive={index + 1 === indexActive}
-          onClick={()=>handleClick(index, cate.id)}
+          isCollapsed={isCollapsed}
+          onClick={() => handleClick(index, cate.id)}
         />
       ))}
       {/* <MenuItem

@@ -8,6 +8,8 @@ import Input from '~/components/Input';
 import LoginCode from './LoginCode';
 import Error from '~/components/Error';
 import OutSideClickHandle from '~/components/OutSideClickHandle';
+import { NavLink } from 'react-router-dom';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 
@@ -51,9 +53,6 @@ function ForgotPass({ setTypeBox, emailValue, setEmailValue }) {
         <h1 className={cx('title')}>Đặt lại mật khẩu</h1>
         <form className={cx('form')}>
           <label className={cx('label')}>Email hoặc tên đăng nhập</label>
-          {/* <input className={cx('input', 'email')}  type='text'placeholder="Email hoặc Username" />
-      <input className={cx('input', 'password')} type='text' placeholder="Mật khẩu" />
-      <input className={cx('input', 'submit')} type='submit' value={"Đăng nhập"} /> */}
           <Error errorMessage={errorEmailMessage}>
             <OutSideClickHandle onClickOutside={handleClickOutEmail}>
               <Input
@@ -95,14 +94,10 @@ function ForgotPass({ setTypeBox, emailValue, setEmailValue }) {
             <button className={cx('link')} href="#" onClick={() => setTypeBox(() => Login)}>
               Đăng nhập với mật khẩu
             </button>
-            <span className={cx('split-line')}></span>
-            <button className={cx('link')} href="#" onClick={() => setTypeBox(() => LoginCode)}>
-              Đăng nhập với mã
-            </button>
           </div>
-          <button type="submit" className={cx('submit', { active: isFormValid })}>
+          <NavLink to={config.routes.admin.root} type="submit" className={cx('submit', { active: isFormValid })}>
             Đăng nhập
-          </button>
+          </NavLink>
         </form>
       </div>
     </div>

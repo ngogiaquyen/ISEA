@@ -22,7 +22,7 @@ const publicRouters = [
     layout: DefaultLayout,
   },
   {
-    path: config.routes.admin.login,
+    path: config.routes.admin.root,
     component: Login,
     layout: EmptyLayout,
   },
