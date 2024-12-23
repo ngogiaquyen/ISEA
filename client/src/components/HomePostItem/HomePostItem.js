@@ -9,22 +9,26 @@ function HomePostItem({ infoObj }) {
     <li className={cx('post-item')}>
       <div className={cx('author')}>
         <div className={cx('author-avatar')}>
-          <img src={infoObj.avatar} />
+          <img src={infoObj.avatar} alt=''/>
         </div>
         <div className={cx('info')}>
           <div className={cx('author-name')}>{infoObj.name}</div>
           <div className={cx('time-published')}>
             <span>{infoObj.publish}</span>
-            <i class="fa-regular fa-earth-asia"></i>
+            <i className="fa-regular fa-earth-asia"></i>
           </div>
         </div>
       </div>
-      <div className={cx('post-title')}>{infoObj.title}</div>
+      <div className={cx('post-title')}>
+        <p>{infoObj.title}</p>
+      </div>
       <div className={cx('post-tags')}>{<TagList tagArr={infoObj.tags} />}</div>
       <div className={cx('post-thumbnail')}>
-        <img src={infoObj.thumbnail} />
+        <img src={infoObj.thumbnail} alt=''/>
       </div>
-      <div className={cx('post-content')}>{infoObj.content}</div>
+      <div className={cx('post-content')}>
+        <p>{infoObj.content}</p>
+      </div>
       <div className={cx('btn-area')}>
         <button className={cx('btn-view')}>Xem thêm</button>
       </div>

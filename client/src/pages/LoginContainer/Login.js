@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import styles from './LoginContaner.module.scss';
 import Input from '~/components/Input';
 import ForgotPass from './ForgotPass';
-import LoginCode from './LoginCode';
 import Error from '~/components/Error';
 import OutSideClickHandle from '~/components/OutSideClickHandle';
 import { useState } from 'react';
@@ -44,10 +43,6 @@ function Login({ setTypeBox, emailValue, setEmailValue }) {
           <div className={cx('link-container')}>
             <button className={cx('link')} href="#" onClick={() => setTypeBox(() => ForgotPass)}>
               Quên mật khẩu?
-            </button>
-            <span className={cx('split-line')}></span>
-            <button className={cx('link')} href="#" onClick={() => setTypeBox(() => LoginCode)}>
-              Đăng nhập với mã
             </button>
           </div>
           <button type="submit" className={cx('submit', { active: isFormValid })}>

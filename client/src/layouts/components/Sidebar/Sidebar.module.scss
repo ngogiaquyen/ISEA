@@ -1,34 +1,67 @@
-.wrapper{
-    display: flex;
-    flex-direction: column;
-    max-width: var(--sidebar-width);
-    width: 100%;
-    background-color: #f5f2f2;
-    height: calc(100vh);
-    border-right: 1px solid var(--line-border-color);
-    cursor: pointer;
-}
-.icon{
-    color: #333;
-    font-size: 20px;
-}
-.head{
-    display: flex;
-    height: var(--height-header);
-    border-bottom: 1px solid var(--line-border-color);
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 12px;
-    background-color: var(--header-color);
-    color: #fff;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: var(--sidebar-width);
+  width: 100%;
+  background-color: #f5f2f2;
+  height: calc(100vh);
+  // border-right: 1px solid var(--line-border-color);
+    // transition: width 0.3s ease, opacity 0.3s ease;
+  transition: width 0.3s ease, max-width 0.3s ease;
+  overflow: hidden;
+  z-index: 10;
 
+
+  &.collapsed {
+    width: 80px;
+    max-width: 80px;
+    & > div {
+      align-items: center;
+      justify-content: center;
+    }
+    h2,
+    img {
+      display: none;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+.icon {
+  color: #333;
+  font-size: 20px;
+  min-width: 40px;
+}
+.head {
+  display: flex;
+  min-height: var(--height-header);
+  border-bottom: 1px solid var(--line-border-color);
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  background-color: var(--header-color);
+  color: #fff;
+  transition: padding 0.3s ease;
 }
 
 .head img {
-    height: 40px;
-    aspect-ratio: 1/1;
-
+  height: 40px;
+  aspect-ratio: 1/1;
+  transition: opacity 0.3s ease, transform 0.3s ease; // Animation ẩn logo
 }
-.bars{
-    font-size: 22px;
+.bars {
+  color: #fff;
+  font-size: 22px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    display: none;
+  }
+  to {
+    opacity: 1;
+    display: block;
+  }
 }

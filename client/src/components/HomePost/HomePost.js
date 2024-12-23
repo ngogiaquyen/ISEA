@@ -7,8 +7,8 @@ const cx = classNames.bind(styles);
 function HomePost({ postArr }) {
   return (
     <ul className={cx('list-post')}>
-      {postArr.map((postObj) => {
-        return <HomePostItem infoObj={postObj} />;
+      {postArr.map((postObj, index) => {
+        return <HomePostItem key={index} infoObj={postObj} />;
       })}
     </ul>
   );

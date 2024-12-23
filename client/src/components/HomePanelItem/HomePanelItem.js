@@ -3,10 +3,10 @@ import styles from './HomePanelItem.module.scss';
 
 const cx = classNames.bind(styles);
 
-function HomePanelItem({src, content}) {
+function HomePanelItem({ src, content }) {
   return (
     <li className={cx('list-link-item')}>
-      <img src={src} />
+      <img src={src} alt="" />
       {content}
     </li>
   );
