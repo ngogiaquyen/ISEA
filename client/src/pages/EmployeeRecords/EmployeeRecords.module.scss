@@ -24,6 +24,12 @@ Button:hover{
     width: 100%;
     padding: 10px;
 }
+
+.infor:hover{
+    height: 100%;
+    overflow-y: scroll;
+}
+
 table{
     border-collapse: collapse;
     width: 100%;

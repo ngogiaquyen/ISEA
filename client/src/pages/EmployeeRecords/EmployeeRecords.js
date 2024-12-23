@@ -56,6 +56,111 @@ function EmployeeRecords() {
                             level="Đại Học"
                         />
                         <JobRow
+                            id="0122"
+                            name="Hoang Anh Tu"
+                            sex="nam"
+                            birt="16/10/2004"
+                            level="Đại Học"
+                        />
+                        <JobRow
+                            id="0122"
+                            name="Hoang Anh Tu"
+                            sex="nam"
+                            birt="16/10/2004"
+                            level="Đại Học"
+                        />
+                        <JobRow
+                            id="0122"
+                            name="Hoang Anh Tu"
+                            sex="nam"
+                            birt="16/10/2004"
+                            level="Đại Học"
+                        />
+                        <JobRow
+                            id="0122"
+                            name="Hoang Anh Tu"
+                            sex="nam"
+                            birt="16/10/2004"
+                            level="Đại Học"
+                        />
+                        <JobRow
+                            id="0122"
+                            name="Hoang Anh Tu"
+                            sex="nam"
+                            birt="16/10/2004"
+                            level="Đại Học"
+                        />
+                        <JobRow
+                            id="0122"
+                            name="Hoang Anh Tu"
+                            sex="nam"
+                            birt="16/10/2004"
+                            level="Đại Học"
+                        />
+                        <JobRow
+                            id="0122"
+                            name="Hoang Anh Tu"
+                            sex="nam"
+                            birt="16/10/2004"
+                            level="Đại Học"
+                        />
+                        <JobRow
+                            id="0122"
+                            name="Hoang Anh Tu"
+                            sex="nam"
+                            birt="16/10/2004"
+                            level="Đại Học"
+                        />
+                        <JobRow
+                            id="0122"
+                            name="Hoang Anh Tu"
+                            sex="nam"
+                            birt="16/10/2004"
+                            level="Đại Học"
+                        />
+                        <JobRow
+                            id="0122"
+                            name="Hoang Anh Tu"
+                            sex="nam"
+                            birt="16/10/2004"
+                            level="Đại Học"
+                        />
+                        <JobRow
+                            id="0122"
+                            name="Hoang Anh Tu"
+                            sex="nam"
+                            birt="16/10/2004"
+                            level="Đại Học"
+                        />
+                        <JobRow
+                            id="0122"
+                            name="Hoang Anh Tu"
+                            sex="nam"
+                            birt="16/10/2004"
+                            level="Đại Học"
+                        />
+                        <JobRow
+                            id="0122"
+                            name="Hoang Anh Tu"
+                            sex="nam"
+                            birt="16/10/2004"
+                            level="Đại Học"
+                        />
+                        <JobRow
+                            id="0122"
+                            name="Hoang Anh Tu"
+                            sex="nam"
+                            birt="16/10/2004"
+                            level="Đại Học"
+                        />
+                        <JobRow
+                            id="0122"
+                            name="Hoang Anh Tu"
+                            sex="nam"
+                            birt="16/10/2004"
+                            level="Đại Học"
+                        />
+                        <JobRow
                             id="0124"
                             name="Hoang Anh Tu"
                             sex="nam"
