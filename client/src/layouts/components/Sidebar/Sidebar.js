@@ -124,6 +124,10 @@ function Sidebar({ onSelectCategory }) {
         to={config.routes.admin.settings}
         icon={<FontAwesomeIcon className={cx('icon')} icon={faGear} />}
       /> */}
+
+
+
+
     </div>
   );
 }
