@@ -9,9 +9,9 @@ import EmployeeRecords from '~/pages/EmployeeRecords';
 import Announcements from '~/pages/Announcements/Announcements';
 import PleaseSelectFeature from '~/pages/PleaseSelectFeature';
 import LoginContainer from '~/pages/LoginContainer';
+import TrainingProgram from '~/pages/TrainingProgram/TrainingProgram';
 import RecruitmentPost from '~/pages/RecruitmentPost/RecruitmentPost';
 import HeaderUser from '~/layouts/components/HeaderUser/HeaderUser';
-
 // don't need to login
 const publicRouters = [
   {
@@ -68,7 +68,7 @@ const publicRouters = [
   },
   {
     path: config.routes.admin.trainingProgram,
-    component: Announcements,
+    component: TrainingProgram,
     layout: AdminLayout,
   },
   {

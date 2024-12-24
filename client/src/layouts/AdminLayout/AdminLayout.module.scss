@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+*{
+    font-family: inter;
+}
 .wrapper{
     display: flex;
+  font-family: Inter;
 }
 
 .container{
@@ -18,7 +23,14 @@
     max-height: calc(100vh - var(--height-header));
     height: 100%;
     width: 100%;
-    padding: 10px;
     transition: width 3s ease-in-out;
 
+}
+
+.child {
+-ms-overflow-style: none;
+scrollbar-width: none;
+}
+.child::-webkit-scrollbar {
+ display: none;
 }
