@@ -11,7 +11,6 @@ import PleaseSelectFeature from '~/pages/PleaseSelectFeature';
 import LoginContainer from '~/pages/LoginContainer';
 import TrainingProgram from '~/pages/TrainingProgram/TrainingProgram';
 import RecruitmentPost from '~/pages/RecruitmentPost/RecruitmentPost';
-import HeaderUser from '~/layouts/components/HeaderUser/HeaderUser';
 // don't need to login
 const publicRouters = [
   {
