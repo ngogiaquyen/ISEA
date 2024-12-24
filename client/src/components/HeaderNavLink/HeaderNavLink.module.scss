@@ -34,9 +34,9 @@
   position: absolute;
   z-index: 1;
   display: none;
-  user-select: none !important;
 }
 .tooltip-wrapper {
+  user-select: none !important;
   border-radius: 6px;
   background-color: rgb(0, 0, 0, 0.6);
   padding: 2px 8px;

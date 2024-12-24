@@ -1,10 +1,13 @@
 import classNames from 'classnames/bind';
 import styles from './HeaderNavLink.module.scss';
+import config from '~/config';
+import { NavLink } from 'react-router-dom';
+
 const cx = classNames.bind(styles);
 
-function HeaderNavLink({ icon, state, tooltip, tooltipContent, tooltipPlace }) {
+function HeaderNavLink({ icon, state, tooltip, tooltipContent, tooltipPlace, link }) {
   return (
-    <li className={cx('header-nav-link', { active: state })}>
+    <NavLink to={link} className={cx('header-nav-link', { active: state })}>
       {icon}
       {tooltip ? (
         <div className={cx('tooltip', `${tooltipPlace}`)}>
@@ -13,7 +16,7 @@ function HeaderNavLink({ icon, state, tooltip, tooltipContent, tooltipPlace }) {
       ) : (
         ''
       )}
-    </li>
+    </NavLink>
   );
 }
 

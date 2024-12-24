@@ -9,12 +9,20 @@ import EmployeeRecords from '~/pages/EmployeeRecords';
 import Announcements from '~/pages/Announcements/Announcements';
 import PleaseSelectFeature from '~/pages/PleaseSelectFeature';
 import LoginContainer from '~/pages/LoginContainer';
+import RecruitmentPost from '~/pages/RecruitmentPost/RecruitmentPost';
+import HeaderUser from '~/layouts/components/HeaderUser/HeaderUser';
 
 // don't need to login
 const publicRouters = [
   {
     path: config.routes.dashboard.home,
     component: Home,
+  },
+  {
+    path: config.routes.post.recruitmentPost,
+    component: RecruitmentPost,
+    layout: DefaultLayout,
+
   },
   {
     path: config.routes.dashboard.recruitment,

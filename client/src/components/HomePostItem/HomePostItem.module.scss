@@ -91,8 +91,8 @@
 }
 .post-content {
   display: -webkit-box;
-  line-clamp: 8;
-  -webkit-line-clamp: 8;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   overflow: hidden;

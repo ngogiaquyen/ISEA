@@ -4,6 +4,8 @@ import styles from './Home.module.scss';
 import HomePanel from '~/components/HomePanel/HomePanel';
 import HomeNews from '~/components/HomeNews/HomeNews';
 import HomePost from '~/components/HomePost/HomePost';
+import HeaderUser from '~/layouts/components/HeaderUser/HeaderUser';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 
@@ -121,24 +123,51 @@ const homePostItems = [
     tags: [3, 2, 1],
   },
 ];
+const headerNavs = [
+  {
+    icon: <i className="fa-solid fa-house"></i>,
+    state: true,
+    tooltip: true,
+    tooltipContent: 'Trang chủ',
+    tooltipPlace: 'bot',
+  },
+  {
+    icon: <i className="fa-light fa-newspaper"></i>,
+    state: false,
+    tooltip: true,
+    tooltipContent: 'Tổng hợp tin tức',
+    tooltipPlace: 'bot',
+    link: config.routes.post.recruitmentPost,
+  },
+  {
+    icon: <i className="fa-light fa-compass"></i>,
+    state: false,
+    tooltip: true,
+    tooltipContent: 'Khám phá',
+    tooltipPlace: 'bot',
+  },
+];
 
 function Home() {
   return (
-    <div className={cx('wrapper')}>
-      <div className={cx('left')}>
-        <HomePanel title={'Thông tin'} arrItem={homePanelItems} />
+    <>
+      <HeaderUser headerNavs={headerNavs} />
+      <div className={cx('wrapper')}>
+        <div className={cx('left')}>
+          <HomePanel title={'Thông tin'} arrItem={homePanelItems} />
+        </div>
+        <div className={cx('center')}>
+          <HomePost postArr={homePostItems} />
+        </div>
+        <div className={cx('right')}>
+          <HomeNews title={'Thông tin Tuyển dụng'} newsArr={homeNewsItems} />
+          <HomeNews title={'Xem nhiều nhất'} newsArr={[]} />
+          <HomeNews title={'Thông tin'} newsArr={homeNewsItems} />
+          <HomeNews title={'Truy cập nhiều nhất'} newsArr={[]} />
+          <HomeNews title={'Thông tin'} newsArr={homeNewsItems} />
+        </div>
       </div>
-      <div className={cx('center')}>
-        <HomePost postArr={homePostItems} />
-      </div>
-      <div className={cx('right')}>
-        <HomeNews title={'Thông tin Tuyển dụng'} newsArr={homeNewsItems} />
-        <HomeNews title={'Xem nhiều nhất'} newsArr={[]} />
-        <HomeNews title={'Thông tin'} newsArr={homeNewsItems} />
-        <HomeNews title={'Truy cập nhiều nhất'} newsArr={[]} />
-        <HomeNews title={'Thông tin'} newsArr={homeNewsItems} />
-      </div>
-    </div>
+    </>
   );
 }
 
