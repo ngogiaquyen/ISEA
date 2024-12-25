@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 const cx = classNames.bind(styles);
 
-function FormGroup({ lable, requireId, requires, setRequires, placeholder, inputType, textarea, layout }) {
+function FormGroup({ lable, requireId, requires, setRequires, placeholder, inputType, textarea, layout, onChange }) {
   const [inputValue, setInputValue] = useState('');
   const [areaValue, setAreaValue] = useState('');
 
@@ -14,6 +14,7 @@ function FormGroup({ lable, requireId, requires, setRequires, placeholder, input
       setInputValue(requires[requireId].title);
       setAreaValue(requires[requireId].content);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [requires]);
 
   const handleChangeTextarea = (e) => {
@@ -34,7 +35,8 @@ function FormGroup({ lable, requireId, requires, setRequires, placeholder, input
         setValue={setInputValue}
         type={inputType}
         placeholder={placeholder}
-      ></Input>
+        onChange={onChange}
+      />
       {textarea && <textarea value={areaValue} className={cx('textarea')} onChange={handleChangeTextarea} />}
     </div>
   );

@@ -22,6 +22,7 @@ function Input({
   placeholder = '',
   setErrorMessage,
   setValue = () => {},
+  onChange = () => {},
 }) {
   const [isEyeSlash, setIsEyeSlash] = useState(true);
   const [type, setType] = useState('text');
@@ -44,6 +45,7 @@ function Input({
       setType('date');
       setInputFor('');
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [email, password, newPassword, code]);
 
   const className = cx('input', { email, password, code });
@@ -55,6 +57,7 @@ function Input({
 
   const handleChange = (e) => {
     setValue(e.target.value);
+    onChange(e);
     if(requires){
       requires[index].title = e.target.value;
       setRequires(prev=>prev)
