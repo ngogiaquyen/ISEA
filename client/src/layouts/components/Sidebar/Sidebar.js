@@ -21,7 +21,6 @@ import styles from './Sidebar.module.scss';
 import accountMini from '~/assets/images/accoutmini.png';
 import config from '~/config';
 import { useContext, useState } from 'react';
-import { ActiveBoardContext, ActiveBoardProvider } from '~/components/Context/ActiveBoardProvider';
 const cx = classNames.bind(styles);
 
 const categories = [
