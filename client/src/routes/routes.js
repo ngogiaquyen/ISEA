@@ -46,7 +46,7 @@ const publicRouters = [
   },
   {
     path: config.routes.admin.recruitmentProfile,
-    component: Announcements,
+    component: EmployeeRecords,
     layout: AdminLayout,
   },
   {
