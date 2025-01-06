@@ -4,8 +4,9 @@ const routes = {
     login: '/auth/login',
     recruitment: '/dashboard/tuyen-dung',
   },
-  post: {
+  home: {
     recruitmentPost: '/post/bai-dang-tuyen-dung',
+    explore: '/kham-pha/ve-chung-toi',
   },
   admin: {
     root: '/admin',

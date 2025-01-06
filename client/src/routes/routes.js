@@ -11,6 +11,7 @@ import PleaseSelectFeature from '~/pages/PleaseSelectFeature';
 import LoginContainer from '~/pages/LoginContainer';
 import TrainingProgram from '~/pages/TrainingProgram/TrainingProgram';
 import RecruitmentPost from '~/pages/RecruitmentPost/RecruitmentPost';
+import Explore from '~/pages/Explore/Explore';
 // don't need to login
 const publicRouters = [
   {
@@ -18,10 +19,13 @@ const publicRouters = [
     component: Home,
   },
   {
-    path: config.routes.post.recruitmentPost,
+    path: config.routes.home.recruitmentPost,
     component: RecruitmentPost,
     layout: DefaultLayout,
-
+  },
+  {
+    path: config.routes.home.explore,
+    component: Explore,
   },
   {
     path: config.routes.dashboard.recruitment,

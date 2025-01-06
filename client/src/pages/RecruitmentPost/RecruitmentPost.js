@@ -27,6 +27,7 @@ const headerNavs = [
     tooltip: true,
     tooltipContent: 'Khám phá',
     tooltipPlace: 'bot',
+    link: config.routes.home.explore,
   },
 ];
 const arrRight = <i className="fa-regular fa-angle-right"></i>;
@@ -42,7 +43,7 @@ function RecruitmentPost() {
               Trang chủ
             </NavLink>
             {arrRight}
-            <NavLink to={config.routes.post.recruitmentPost} className={cx('current-page')}>
+            <NavLink to={config.routes.home.recruitmentPost} className={cx('current-page')}>
               Bài đăng tuyển dụng
             </NavLink>
             {arrRight}
