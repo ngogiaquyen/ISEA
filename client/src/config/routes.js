@@ -43,8 +43,9 @@ const routes = {
     benefits: '/admin/quan-ly-luong-va-phuc-loi/phuc-loi',
     payroll: '/admin/quan-ly-luong-va-phuc-loi/bang-luong',
 
-    // Hồ sơ
+    // Hồ sơ nhân sự
     employeeRecords: '/admin/ho-so-nhan-vien',
+    updateEmployeeInfo: '/admin/ho-so-nhan-vien/cap-nhat',
     personalInformation: '/admin/ho-so-nhan-vien/thong-tin-ca-nhan',
     workHistory: '/admin/ho-so-nhan-vien/qua-trinh-cong-tac',
     employmentContract: '/admin/ho-so-nhan-vien/hop-dong',

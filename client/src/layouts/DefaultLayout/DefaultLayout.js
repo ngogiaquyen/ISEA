@@ -20,7 +20,7 @@ const headerNavs = [
     tooltip: true,
     tooltipContent: 'Tổng hợp tin tức',
     tooltipPlace: 'bot',
-    link: config.routes.post.recruitmentPost,
+    link: config.routes.home.recruitmentPost,
   },
   {
     icon: <i className="fa-light fa-compass"></i>,

@@ -10,14 +10,13 @@ import Announcements from '~/pages/Announcements/Announcements';
 import PleaseSelectFeature from '~/pages/PleaseSelectFeature';
 import LoginContainer from '~/pages/LoginContainer';
 import TrainingProgram from '~/pages/TrainingProgram/TrainingProgram';
-import RecruitmentPost from '~/pages/RecruitmentPost/RecruitmentPost';
-<<<<<<< HEAD
 import Posts from '~/pages/Posts';
 import Apply from '~/pages/Apply';
-=======
 import Explore from '~/pages/Explore/Explore';
->>>>>>> d3ff42499e54089244e090a4e6a10de75fb7ecc9
+import RecruitmentPost from '~/pages/RecruitmentPost';
+import UpdateEmployeeInfo from '~/pages/UpdateEmployeeInfo';
 // don't need to login
+
 const publicRouters = [
   {
     path: config.routes.dashboard.home,
@@ -27,13 +26,10 @@ const publicRouters = [
     path: config.routes.home.recruitmentPost,
     component: RecruitmentPost,
     layout: DefaultLayout,
-<<<<<<< HEAD
-=======
   },
   {
     path: config.routes.home.explore,
     component: Explore,
->>>>>>> d3ff42499e54089244e090a4e6a10de75fb7ecc9
   },
   {
     path: config.routes.dashboard.recruitment,
@@ -171,10 +167,15 @@ const publicRouters = [
     component: PleaseSelectFeature,
     layout: AdminLayout,
   },
-  // Hồ sơ
+  // Hồ sơ nhân sự
   {
     path: config.routes.admin.employeeRecords,
     component: PleaseSelectFeature,
+    layout: AdminLayout,
+  },
+  {
+    path: config.routes.admin.updateEmployeeInfo,
+    component: UpdateEmployeeInfo,
     layout: AdminLayout,
   },
   {

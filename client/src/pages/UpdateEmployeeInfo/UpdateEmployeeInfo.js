@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import styles from './Apply.module.scss';
+import styles from './UpdateEmployeeInfo.module.scss';
 import FormGroup from '~/components/FormGroup';
 import Button from '~/components/Button';
 import { useState } from 'react';
@@ -9,8 +9,9 @@ const cx = classNames.bind(styles);
 
 const levelOption = ['--Chọn', 'Cao đẳng', 'Đại học', 'Tiến sí'];
 
-function Apply() {
+function UpdateEmployeeInfo() {
   const [information, setInformation] = useState({
+    id: "",
     fullName: '',
     dateOfBirth: '',
     email: '',
@@ -37,8 +38,16 @@ function Apply() {
 
   return (
     <div className={cx('wrapper')}>
-      <h1 className={cx('title')}>Ứng tuyển</h1>
+      <h1 className={cx('title')}>Cập nhật thông tin nhân sự</h1>
       <div className={cx('list-group')}>
+        <FormGroup
+          lable="Mã ứng viên"
+          layout="haft"
+          inputType="text"
+          placeholder="Mã ứng viên"
+          error={errors.id}
+          onChange={(e) => handleInputChange('id', e.target.value)}
+        />
         <FormGroup
           lable="Họ và tên"
           layout="haft"
@@ -48,39 +57,15 @@ function Apply() {
           onChange={(e) => handleInputChange('fullName', e.target.value)}
         />
         <FormGroup
-          lable="Ngày tháng năm sinh"
+          lable="Ngày sinh"
           layout="haft"
           inputType="date"
-          placeholder="Họ và tên"
+          placeholder="Ngày sinh"
           error={errors.dateOfBirth}
           onChange={(e) => handleInputChange('dateOfBirth', e.target.value)}
         />
         <FormGroup
-          lable="Email"
-          layout="haft"
-          inputType="text"
-          placeholder="Email"
-          error={errors.email}
-          onChange={(e) => handleInputChange('email', e.target.value)}
-        />
-        <FormGroup
-          lable="Số điện thoại"
-          layout="haft"
-          inputType="text"
-          placeholder="Số điện thoại"
-          error={errors.phone}
-          onChange={(e) => handleInputChange('phone', e.target.value)}
-        />
-        <FormGroup
-          lable="Địa chỉ"
-          layout="haft"
-          inputType="text"
-          placeholder="Địa chỉ"
-          error={errors.address}
-          onChange={(e) => handleInputChange('address', e.target.value)}
-        />
-        <FormGroup
-          lable="Trình độ học vấn"
+          lable="Trình độ đào tạo"
           layout="haft"
           inputType="text"
           selectData={levelOption}
@@ -88,9 +73,9 @@ function Apply() {
           onChange={(e) => {handleInputChange('educationLevel', e.target.value); console.log("hello")}}
         />
       </div>
-      <Button title="Ứng tuyển" onclick={handleClick} />
+      <Button title="Cập nhật" onclick={handleClick} />
     </div>
   );
 }
 
-export default Apply;
+export default UpdateEmployeeInfo;
