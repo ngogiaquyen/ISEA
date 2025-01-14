@@ -16,6 +16,12 @@ export function isValidPassword(password) {
     lowerCaseRequirement.test(password)
   );
 }
+export function isValidPassword2(password) {
+  const lengthRequirement = /^.{8,10}$/;
+  return (
+    lengthRequirement.test(password)
+  );
+}
 export function isValidConfirmPassword(newPass, confirmPass) {
   return newPass === confirmPass;
 }

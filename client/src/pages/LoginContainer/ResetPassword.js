@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import { useState } from 'react';
 
-import { isValidConfirmPassword, isValidEmail, isValidPassword } from '~/hooks/validate';
+import { isValidConfirmPassword, isValidEmail, isValidPassword, isValidPassword2 } from '~/hooks/validate';
 import Login from './Login';
 import styles from './LoginContaner.module.scss';
 import config from '~/config';
@@ -37,9 +37,9 @@ function ResetPassword({ setTypeBox }) {
             value={newPassValue}
             setValue={setNewPassValue}
             emptyErrorValue="Vui lòng nhập mật khẩu mới"
-            wrongErrorValue="Mật khẩu bao gồm chữ hoa, thường, ít nhất 8 ký tự,ký tự đặc biệt"
+            wrongErrorValue="Mật khẩu bao gồm 8 tới 10 ký tự"
             placeholder="Mật khẩu mới"
-            isValidHandle={isValidPassword}
+            isValidHandle={isValidPassword2}
           />
           <FormGroup
             value={confirmPassValue}
