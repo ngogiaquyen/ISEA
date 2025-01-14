@@ -38,7 +38,6 @@ export const isValidPhoneNumber = (phoneNumber) => {
   return regex.test(phoneNumber);
 };
 
-
 export const isPastDate = (date) => {
   // Chuyển đổi ngày đầu vào thành đối tượng Date
   const inputDate = new Date(date);
