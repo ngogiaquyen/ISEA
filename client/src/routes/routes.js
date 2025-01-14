@@ -54,7 +54,7 @@ const publicRouters = [
   },
   {
     path: config.routes.admin.recruitmentPost,
-    component: Posts,
+    component: Post,
     layout: AdminLayout,
   },
   {

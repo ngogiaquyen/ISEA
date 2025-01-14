@@ -68,6 +68,7 @@ function Post() {
           inputType="text"
           placeholder="Địa điểm"
           onChange={(e) => setLocation(e.target.value)}
+          selectData={["Chọn địa điểm"]}
         />
         <FormGroup
           lable="Số lượng"
@@ -76,7 +77,7 @@ function Post() {
           placeholder="Số lượng"
           onChange={(e) => setQuantity(e.target.value)}
         />
-        <FormGroup
+        {/* <FormGroup
           lable="Ngày hết hạn"
           layout="haft"
           inputType="date"
@@ -89,7 +90,7 @@ function Post() {
           inputType="email"
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
-        />
+        /> */}
 
         {requires.map((require, index) => (
           <div className={cx('group')} key={index}>

@@ -207,7 +207,9 @@ span.contact-info-title {
   align-items: stretch;
 
   input {
+    all: unset !important;
     font-size: 16px;
+    color: #333 !important;
   }
 }
 .btn-copy {

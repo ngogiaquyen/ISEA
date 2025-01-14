@@ -28,6 +28,7 @@ const headerNavs = [
     tooltip: true,
     tooltipContent: 'Khám phá',
     tooltipPlace: 'bot',
+    link: config.routes.home.explore,
   },
 ];
 
@@ -35,9 +36,7 @@ function DefaultLayout({ children }) {
   return (
     <div className={cx('wrapper')}>
       <HeaderUser headerNavs={headerNavs} />
-      <div className={cx("inner")}>
-        {children}
-      </div>
+      <div className={cx('inner')}>{children}</div>
     </div>
   );
 }

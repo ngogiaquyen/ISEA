@@ -152,7 +152,7 @@ function Explore() {
               <div className={cx('col2-sharer-body')}>
                 <span className={cx('content')}>Sao chép đường dẫn</span>
                 <div className={cx('box-link-sharer')}>
-                  <input value={'https://isea.com/'} />
+                  <input value={'https://isea.com/'} readOnly/>
                   <button className={cx('btn-copy')}>
                     <i className="fa-regular fa-copy"></i>
                   </button>
