@@ -1,36 +1,60 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-*{
-    font-family: inter;
+* {
+  font-family: inter;
 }
-.wrapper{
-    display: flex;
+.wrapper {
+  display: flex;
   font-family: Inter;
 }
 
-.container{
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
-.inner{
-    position: relative;
-    display: flex;
+.inner {
+  position: relative;
+  display: flex;
+  animation: fadeIn 0.3s ease-in-out forwards;
+  &.collapse {
+    width: calc(100% + var(--sidebar-width));
+    animation: fadeOut 0.3s ease-in-out forwards;
+  }
 }
 
-.child{
-    overflow-y: scroll;
-    max-height: calc(100vh - var(--height-header));
-    height: 100%;
-    width: 100%;
-    transition: width 3s ease-in-out;
 
+@keyframes fadeIn {
+    from {
+      left: calc(0px - var(--sidebar-width));
+    }
+    to {
+      left: 0;
+    }
+  }
+
+
+@keyframes fadeOut {
+    from {
+      left: 0;
+    }
+    to {
+      left: calc(0px - var(--sidebar-width));
+    }
+  }
+
+.child {
+  overflow-y: scroll;
+  max-height: calc(100vh - var(--height-header));
+  height: 100%;
+  width: 100%;
+  transition: width 3s ease-in-out;
 }
 
 .child {
--ms-overflow-style: none;
-scrollbar-width: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 .child::-webkit-scrollbar {
- display: none;
+  display: none;
 }

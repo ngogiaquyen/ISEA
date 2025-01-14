@@ -12,7 +12,7 @@
   margin-top: 4px;
 }
 .menu-item.active {
-  background-color: var(--blue-color-hover-state-1);
+  background-color: var(--blue-color-hover-state-1) !important;
   
   span{
     color: var(--primary-color);
@@ -34,7 +34,7 @@
   display: inline-block;
   color: #333;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   margin-left: 10px;
   animation: fadeOut 5s ease-in-out forwards;
   white-space: nowrap;

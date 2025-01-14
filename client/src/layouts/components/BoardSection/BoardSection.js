@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngellist } from '@fortawesome/free-brands-svg-icons';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { ActiveBoardContext } from '~/components/Context/ActiveBoardProvider';
-import DashedLine from '~/components/DashedLine';
 
 const cx = classNames.bind(styles);
 
@@ -49,7 +48,6 @@ const subCategories = {
 
 function BoardSection({ selectedCategoryId }) {
 
-  // const [isCollapsedBroard, setIsCollapsedBoard] = useState(false);
   const { isCollapsedBoard, setIsCollapsedBoard } = useContext(ActiveBoardContext);
   
 
@@ -64,7 +62,7 @@ function BoardSection({ selectedCategoryId }) {
 
   const handleActive = (index)=>{
     setIndexActive(index);
-    setIsCollapsedBoard(true);
+    // setIsCollapsedBoard(true);
   }
 
   useEffect(() => {

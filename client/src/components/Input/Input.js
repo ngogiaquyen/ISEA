@@ -21,6 +21,7 @@ function Input({
   isSendCodeValid,
   placeholder = '',
   setErrorMessage,
+  error,
   setValue = () => {},
   onChange = () => {},
 }) {
@@ -48,7 +49,7 @@ function Input({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [email, password, newPassword, code]);
 
-  const className = cx('input', { email, password, code });
+  const className = cx('input', { email, password, code, error });
 
   const handleChangeEye = () => {
     setIsEyeSlash((prev) => !prev);

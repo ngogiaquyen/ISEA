@@ -7,6 +7,7 @@ import Error from '~/components/Error';
 import OutSideClickHandle from '~/components/OutSideClickHandle';
 import { useState } from 'react';
 import { isValidEmail } from '~/hooks/validate';
+import ResetPassword from './ResetPassword';
 
 const cx = classNames.bind(styles);
 
@@ -43,6 +44,9 @@ function Login({ setTypeBox, emailValue, setEmailValue }) {
           <div className={cx('link-container')}>
             <button className={cx('link')} href="#" onClick={() => setTypeBox(() => ForgotPass)}>
               Quên mật khẩu?
+            </button>
+            <button className={cx('link')} href="#" onClick={() => setTypeBox(() => ResetPassword)}>
+              Đặt lại mật khẩu
             </button>
           </div>
           <button type="submit" className={cx('submit', { active: isFormValid })}>

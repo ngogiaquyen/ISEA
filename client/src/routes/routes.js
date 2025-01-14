@@ -11,6 +11,8 @@ import PleaseSelectFeature from '~/pages/PleaseSelectFeature';
 import LoginContainer from '~/pages/LoginContainer';
 import TrainingProgram from '~/pages/TrainingProgram/TrainingProgram';
 import RecruitmentPost from '~/pages/RecruitmentPost/RecruitmentPost';
+import Posts from '~/pages/Posts';
+import Apply from '~/pages/Apply';
 // don't need to login
 const publicRouters = [
   {
@@ -21,11 +23,15 @@ const publicRouters = [
     path: config.routes.post.recruitmentPost,
     component: RecruitmentPost,
     layout: DefaultLayout,
-
   },
   {
     path: config.routes.dashboard.recruitment,
     component: Recruitment,
+    layout: DefaultLayout,
+  },
+  {
+    path: config.routes.dashboard.apply,
+    component: Apply,
     layout: DefaultLayout,
   },
   {
@@ -41,7 +47,7 @@ const publicRouters = [
   },
   {
     path: config.routes.admin.recruitmentPost,
-    component: Post,
+    component: Posts,
     layout: AdminLayout,
   },
   {
@@ -59,7 +65,7 @@ const publicRouters = [
     component: Announcements,
     layout: AdminLayout,
   },
-    // Đào tạo
+  // Đào tạo
   {
     path: config.routes.admin.training,
     component: PleaseSelectFeature,
@@ -85,7 +91,7 @@ const publicRouters = [
     component: Announcements,
     layout: AdminLayout,
   },
-    // Hiệu suất
+  // Hiệu suất
   {
     path: config.routes.admin.performanceEvaluation,
     component: PleaseSelectFeature,
@@ -111,7 +117,7 @@ const publicRouters = [
     component: Announcements,
     layout: AdminLayout,
   },
-    // Lương & Phúc lợi
+  // Lương & Phúc lợi
 
   {
     path: config.routes.admin.payrollAndBenefits,
@@ -148,13 +154,13 @@ const publicRouters = [
     component: Announcements,
     layout: AdminLayout,
   },
-    // Thống kê
+  // Thống kê
   {
     path: config.routes.admin.reports,
     component: PleaseSelectFeature,
     layout: AdminLayout,
   },
-    // Hồ sơ
+  // Hồ sơ
   {
     path: config.routes.admin.employeeRecords,
     component: PleaseSelectFeature,
@@ -187,18 +193,17 @@ const publicRouters = [
   },
 ];
 
-
 // need to login
 const privateRouters = [
   // {
   //   path: config.dashboard,
   //   component: Dashboard,
   // },
-  // { 
+  // {
   //   path: config.admin,
   //   component: Admin
   // },
-  // { 
+  // {
   //   path: config.class,
   //   component: Admin
   // },

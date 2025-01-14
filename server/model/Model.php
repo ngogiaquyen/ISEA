@@ -38,6 +38,32 @@ class Model {
             echo json_encode(['error' => $e->getMessage()]);
         }
     }
+
+    public function insertIntoTable($table, $data)
+    {
+        try {
+            // Lấy danh sách các cột từ mảng $data
+            $columns = implode(", ", array_keys($data)); // Tạo chuỗi cột, ví dụ: "name, email, age"
+
+            // Tạo danh sách placeholder, ví dụ: "?, ?, ?"
+            $placeholders = implode(", ", array_fill(0, count($data), '?'));
+
+            // Tạo câu truy vấn SQL
+            $sql = "INSERT INTO {$table} ({$columns}) VALUES ({$placeholders})";
+
+            // Chuẩn bị câu truy vấn
+            $stmt = $this->db->prepare($sql);
+
+            // Thực thi câu truy vấn với giá trị từ $data
+            $stmt->execute(array_values($data));
+
+            return true; // Trả về true nếu thành công
+        } catch (PDOException $e) {
+            // Nếu xảy ra lỗi, ném ngoại lệ với thông báo lỗi
+            throw new Exception("Error inserting into table '{$table}': " . $e->getMessage());
+        }
+    }
+
 }
 
 ?>

@@ -3,6 +3,7 @@ const routes = {
     home: '/',
     login: '/auth/login',
     recruitment: '/dashboard/tuyen-dung',
+    apply: '/dashboard/ung-tuyen',
   },
   post: {
     recruitmentPost: '/post/bai-dang-tuyen-dung',

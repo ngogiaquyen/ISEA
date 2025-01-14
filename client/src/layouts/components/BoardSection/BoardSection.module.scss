@@ -1,6 +1,6 @@
 .wrapper {
-  // position: relative;
-  position: absolute;
+  position: relative;
+  // position: absolute;
   display: flex;
   flex-direction: column;
   max-width: var(--sidebar-width);
@@ -10,29 +10,12 @@
   border-right: 1px solid var(--line-border-color);
   transition: transform 0.3s;
   z-index: 8;
-  animation: fadeIn 0.3s ease-in-out forwards;
-  &.collapse {
-    animation: fadeOut 0.3s ease-in-out forwards;
-  }
+  // &.collapse {
+  //   animation: fadeOut 0.3s ease-in-out forwards;
+  // }
 }
 
-@keyframes fadeOut {
-  from {
-    left: 0;
-  }
-  to {
-    left: calc(0px - var(--sidebar-width));
-  }
-}
 
-@keyframes fadeIn {
-  from {
-    left: calc(0px - var(--sidebar-width));
-  }
-  to {
-    left: 0;
-  }
-}
 
 .overlay {
   position: absolute;

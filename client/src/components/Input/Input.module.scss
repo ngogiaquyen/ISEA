@@ -12,34 +12,31 @@
   height: 44px;
   position: relative;
   cursor: pointer;
-  margin-bottom: 9px;
   word-break: keep-all;
   white-space: nowrap;
   background: rgb(255, 255, 255);
   animation: auto ease 0s 1 normal none running none;
-  border-width: 1px;
-  border-style: solid;
   color: rgb(22, 24, 35);
-  border-color: rgba(22, 24, 35, 0.12);
   background-color: rgba(22, 24, 35, 0.06);
+  border: 1px solid rgba(22, 24, 35, 0.12);
 }
 
-.input {
+.input, select, option {
   border-radius: 2px;
-  border: none rgba(22, 24, 35, 0.12);
   padding-inline-start: 12px;
   color: rgb(22, 24, 35);
   line-height: 100%;
   outline: none;
   font-size: 16px;
-  height: 44px;
+  height: 100%;
   caret-color: rgb(254, 44, 85);
   width: 100%;
   padding-inline-end: 12px;
+  background-color: #fff;
 }
 
-.input + .input {
-  margin-top: 12px;
+.input.error {
+  border: 1px solid var(--red-color);
 }
 
 .eye {

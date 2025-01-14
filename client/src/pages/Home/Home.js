@@ -150,24 +150,21 @@ const headerNavs = [
 
 function Home() {
   return (
-    <>
-      <HeaderUser headerNavs={headerNavs} />
-      <div className={cx('wrapper')}>
-        <div className={cx('left')}>
-          <HomePanel title={'Thông tin'} arrItem={homePanelItems} />
-        </div>
-        <div className={cx('center')}>
-          <HomePost postArr={homePostItems} />
-        </div>
-        <div className={cx('right')}>
-          <HomeNews title={'Thông tin Tuyển dụng'} newsArr={homeNewsItems} />
-          <HomeNews title={'Xem nhiều nhất'} newsArr={[]} />
-          <HomeNews title={'Thông tin'} newsArr={homeNewsItems} />
-          <HomeNews title={'Truy cập nhiều nhất'} newsArr={[]} />
-          <HomeNews title={'Thông tin'} newsArr={homeNewsItems} />
-        </div>
+    <div className={cx('wrapper')}>
+      <div className={cx('left')}>
+        <HomePanel title={'Thông tin'} arrItem={homePanelItems} />
       </div>
-    </>
+      <div className={cx('center')}>
+        <HomePost postArr={homePostItems} />
+      </div>
+      <div className={cx('right')}>
+        <HomeNews title={'Thông tin Tuyển dụng'} newsArr={homeNewsItems} />
+        <HomeNews title={'Xem nhiều nhất'} newsArr={[]} />
+        <HomeNews title={'Thông tin'} newsArr={homeNewsItems} />
+        <HomeNews title={'Truy cập nhiều nhất'} newsArr={[]} />
+        <HomeNews title={'Thông tin'} newsArr={homeNewsItems} />
+      </div>
+    </div>
   );
 }
 

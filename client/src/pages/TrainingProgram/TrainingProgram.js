@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
 import styles from "./trainingProgram.module.scss";
-import TrainingItem from "~/components/TrainingItem/TrainingItem";
+import TrainingItem from "~/pages/TrainingProgram/TrainingItem/TrainingItem";
 const cx = classNames.bind(styles);
 
 
