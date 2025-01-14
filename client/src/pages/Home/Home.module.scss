@@ -6,8 +6,14 @@
   color: #444;
   display: flex;
   align-items: flex-start;
+<<<<<<< HEAD
+=======
+  margin: auto;
+  margin-top: calc(64px + 16px);
+>>>>>>> d3ff42499e54089244e090a4e6a10de75fb7ecc9
   padding: 0 12px;
   position: relative;
+  max-width: 1440px;
 }
 .wrapper > * {
   display: flex;

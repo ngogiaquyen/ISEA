@@ -11,8 +11,12 @@ import PleaseSelectFeature from '~/pages/PleaseSelectFeature';
 import LoginContainer from '~/pages/LoginContainer';
 import TrainingProgram from '~/pages/TrainingProgram/TrainingProgram';
 import RecruitmentPost from '~/pages/RecruitmentPost/RecruitmentPost';
+<<<<<<< HEAD
 import Posts from '~/pages/Posts';
 import Apply from '~/pages/Apply';
+=======
+import Explore from '~/pages/Explore/Explore';
+>>>>>>> d3ff42499e54089244e090a4e6a10de75fb7ecc9
 // don't need to login
 const publicRouters = [
   {
@@ -20,9 +24,16 @@ const publicRouters = [
     component: Home,
   },
   {
-    path: config.routes.post.recruitmentPost,
+    path: config.routes.home.recruitmentPost,
     component: RecruitmentPost,
     layout: DefaultLayout,
+<<<<<<< HEAD
+=======
+  },
+  {
+    path: config.routes.home.explore,
+    component: Explore,
+>>>>>>> d3ff42499e54089244e090a4e6a10de75fb7ecc9
   },
   {
     path: config.routes.dashboard.recruitment,

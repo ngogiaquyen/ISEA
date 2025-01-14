@@ -5,8 +5,9 @@ const routes = {
     recruitment: '/dashboard/tuyen-dung',
     apply: '/dashboard/ung-tuyen',
   },
-  post: {
+  home: {
     recruitmentPost: '/post/bai-dang-tuyen-dung',
+    explore: '/kham-pha/ve-chung-toi',
   },
   admin: {
     root: '/admin',
