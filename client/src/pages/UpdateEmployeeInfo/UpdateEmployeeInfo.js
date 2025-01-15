@@ -7,7 +7,7 @@ import { validateForm } from './ValidateForm';
 
 const cx = classNames.bind(styles);
 
-const levelOption = ['--Chọn', 'Cao đẳng', 'Đại học', 'Tiến sí'];
+const levelOption = ['Cao đẳng', 'Đại học', 'Tiến sĩ'];
 
 function UpdateEmployeeInfo() {
   const [information, setInformation] = useState({
@@ -41,34 +41,34 @@ function UpdateEmployeeInfo() {
       <h1 className={cx('title')}>Cập nhật thông tin nhân sự</h1>
       <div className={cx('list-group')}>
         <FormGroup
-          lable="Mã ứng viên"
+          lable="Tên khóa đào tạo"
           layout="haft"
           inputType="text"
-          placeholder="Mã ứng viên"
+          // placeholder="Mã ứng viên"
           error={errors.id}
           onChange={(e) => handleInputChange('id', e.target.value)}
         />
         <FormGroup
-          lable="Họ và tên"
+          lable="Tên giảng viên"
           layout="haft"
           inputType="text"
-          placeholder="Họ và tên"
+          // placeholder="Họ và tên"
           error={errors.fullName}
           onChange={(e) => handleInputChange('fullName', e.target.value)}
         />
         <FormGroup
-          lable="Ngày sinh"
+          lable="Thời gian đào tạo"
           layout="haft"
-          inputType="date"
-          placeholder="Ngày sinh"
+          inputType="text"
+          // placeholder="Ngày sinh"
           error={errors.dateOfBirth}
           onChange={(e) => handleInputChange('dateOfBirth', e.target.value)}
         />
         <FormGroup
-          lable="Trình độ đào tạo"
+          lable="Nội dung đào tạo"
           layout="haft"
           inputType="text"
-          selectData={levelOption}
+          // selectData={levelOption}
           error={errors.educationLevel}
           onChange={(e) => {handleInputChange('educationLevel', e.target.value); console.log("hello")}}
         />
