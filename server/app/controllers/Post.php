@@ -11,89 +11,36 @@ class Post extends Controller
     }
     public function create()
     {
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            handleError('Phương thức không hợp lệ');
-        }
-        $error = [];
-        if (empty($_POST['title'])) {
-            $error[] = 'Tiêu đề không được để trống';
-        }
-        if (empty($_POST['location'])) {
-            $error[] = 'Vị trí không được để trống';
-        }
-        if (empty($_POST['quantity'])) {
-            $error[] = 'Số lượng không được để trống';
-        }
-        if (empty($_POST['expiration_date'])) {
-            $error[] = 'Ngày hết hạn không được để trống';
-        }
-        if (empty($_POST['email'])) {
-            $error[] = 'Email không được để trống';
-        }
-        if (empty($_POST['content'])) {
-            $error[] = 'Nội dung không được để trống';
-        }
-        if (!empty($error)) {
-            handleError(implode(', ', $error));
-        }
+        validPostCreate();
         $data = [
             'title' => $_POST['title'],
+            'salary' => $_POST['salary'],
             'location' => $_POST['location'],
-            'quantity' => $_POST['quantity'],
+            'experience' => $_POST['experience'],
             'expiration_date' => $_POST['expiration_date'],
-            'email' => $_POST['email'],
             'content' => $_POST['content'],
         ];
         if ($this->post_model->createPost($data)) {
             handleSuccess('Tạo bài viết thành công');
         } else {
-            handleError('Tạo bài thất bại, vui lòng thử lại sau');
+            handleError('Tạo bài viết thất bại, vui lòng thử lại sau');
         }
     }
     public function read($id = '')
     {
-        if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
-            handleError('Phương thức không hợp lệ');
-        }
+        validMethodGET();
         echo json_encode($this->post_model->readPosts());
     }
     public function update($id = '')
     {
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            handleError('Phương thức không hợp lệ');
-        }
-        if (empty($_POST['id'])) {
-            handleError('Vui lòng chọn một bài viết');
-        }
-        $error = [];
-        if (empty($_POST['title'])) {
-            $error[] = 'Tiêu đề không được để trống';
-        }
-        if (empty($_POST['location'])) {
-            $error[] = 'Vị trí không được để trống';
-        }
-        if (empty($_POST['quantity'])) {
-            $error[] = 'Số lượng không được để trống';
-        }
-        if (empty($_POST['expiration_date'])) {
-            $error[] = 'Ngày hết hạn không được để trống';
-        }
-        if (empty($_POST['email'])) {
-            $error[] = 'Email không được để trống';
-        }
-        if (empty($_POST['content'])) {
-            $error[] = 'Nội dung không được để trống';
-        }
-        if (!empty($error)) {
-            handleError(implode(', ', $error));
-        }
+        validPostUpdate();
         $id = $_POST['id'];
         $data = [
             'title' => $_POST['title'],
+            'salary' => $_POST['salary'],
             'location' => $_POST['location'],
-            'quantity' => $_POST['quantity'],
+            'experience' => $_POST['experience'],
             'expiration_date' => $_POST['expiration_date'],
-            'email' => $_POST['email'],
             'content' => $_POST['content'],
             'edit_at' => null
         ];
@@ -105,12 +52,7 @@ class Post extends Controller
     }
     public function delete($id = '')
     {
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            handleError('Phương thức không hợp lệ');
-        }
-        if (empty($_POST['id'])) {
-            handleError('Vui lòng chọn một bài viết');
-        }
+        validPostDelete();
         $id = $_POST['id'];
         if ($this->post_model->deletePost($id)) {
             handleSuccess('Xoá bài viết thành công');

@@ -38,22 +38,24 @@ class Db
         $sql_create_tables = "CREATE TABLE IF NOT EXISTS users (
             id INT AUTO_INCREMENT PRIMARY KEY,
             full_name VARCHAR(255) NOT NULL,
-            username VARCHAR(50) NOT NULL,
+            username VARCHAR(255) NOT NULL,
             password VARCHAR(255) NOT NULL,
+            role INT(1) NOT NULL DEFAULT 1,
             create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             edit_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
         CREATE TABLE IF NOT EXISTS posts (
             id INT AUTO_INCREMENT PRIMARY KEY,
-            title VARCHAR(100) NOT NULL,
-            location VARCHAR(100) NOT NULL,
-            quantity INT NOT NULL,
+            title VARCHAR(255) NOT NULL,
+            salary VARCHAR(255) NOT NULL,
+            location VARCHAR(255) NOT NULL,
+            experience VARCHAR(255) NOT NULL,
             expiration_date DATE NOT NULL,
-            email VARCHAR(100) NOT NULL,
             content TEXT NOT NULL,
             create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             edit_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        );";
+        );
+        ";
 
         $this->conn->exec($sql_create_tables);
     }
