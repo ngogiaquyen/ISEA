@@ -6,6 +6,7 @@ import HomeNews from '~/components/HomeNews/HomeNews';
 import HomePost from '~/components/HomePost/HomePost';
 import HeaderUser from '~/layouts/components/HeaderUser/HeaderUser';
 import config from '~/config';
+import { useEffect, useState } from 'react';
 
 const cx = classNames.bind(styles);
 
@@ -123,6 +124,7 @@ const homePostItems = [
     tags: [3, 2, 1],
   },
 ];
+
 const headerNavs = [
   {
     icon: <i className="fa-solid fa-house"></i>,
@@ -150,6 +152,39 @@ const headerNavs = [
 ];
 
 function Home() {
+  // const [homePostItems, setHomePostItems] = useState([]);
+  const fetchData1 = () => {
+    return new Promise((resolve, reject) => {
+      fetch('http://localhost/isea/server/post/read')
+        .then((response) => response.json())
+        .then((data) => resolve(data))
+        .catch((e) => reject(e));
+    });
+  };
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://localhost/isea/server/post/read', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const result = await response.json(); // Assuming the response is JSON
+      // setHomePostItems(result);
+      console.log(result);
+    } catch (err) {
+      console.error('Fetch error:', err);
+    }
+  };
+  useEffect(() => {
+    const getData = async () => {
+      const data = await fetchData1();
+      console.log(data);
+      // setHomePostItems(data);
+    };
+    getData();
+  }, []); // Empty dependency array to run only once
+
   return (
     <div className={cx('wrapper')}>
       <div className={cx('left')}>

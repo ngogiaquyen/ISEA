@@ -9,6 +9,7 @@ class Post extends Controller
     public function index()
     {
     }
+
     public function create()
     {
         validPostCreate();
@@ -21,11 +22,13 @@ class Post extends Controller
             'content' => $_POST['content'],
         ];
         if ($this->post_model->createPost($data)) {
-            handleSuccess('Tạo bài viết thành công');
+            handleSuccess(message: 'Tạo bài viết thành công');
         } else {
             handleError('Tạo bài viết thất bại, vui lòng thử lại sau');
         }
     }
+
+    
     public function read($id = '')
     {
         validMethodGET();

@@ -7,10 +7,10 @@ import Select from '../Input/Select';
 const cx = classNames.bind(styles);
 
 function FormGroup({
-  lable,
+  label,
+  name,
   requireId,
   requires,
-  setRequires,
   placeholder,
   inputType,
   textarea,
@@ -20,41 +20,59 @@ function FormGroup({
   onChange,
 }) {
   const [inputValue, setInputValue] = useState('');
-  const [areaValue, setAreaValue] = useState('');
 
   useEffect(() => {
     if (requireId >= 0) {
-      setInputValue(requires[requireId].title);
-      setAreaValue(requires[requireId].content);
+      setInputValue(requires[requireId]?.title || '');
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [requires]);
+  }, [requireId, requires]);
 
-  const handleChangeTextarea = (e) => {
-    requires[requireId].content = e.target.value;
-    setRequires(requires);
-    setAreaValue(e.target.value);
-  };
+  let InputTag = Input; // Mặc định là Input
+  if (textarea) {
+    InputTag = 'textarea';
+  } else if (selectData.length > 0) {
+    InputTag = Select;
+  }
+
   return (
     <div className={cx('wrapper', layout)}>
-      <label className={cx("title")}>{lable}</label>
-      {selectData.length === 0 && <Input
-        value={inputValue}
-        date={inputType === 'date'}
-        index={requireId}
-        requires={requires}
-        setRequires={setRequires}
-        setValue={setInputValue}
-        type={inputType}
-        placeholder={placeholder}
-        error={error}
-        onChange={onChange}
-      />}
-      {textarea && <textarea value={areaValue} className={cx('textarea')} onChange={handleChangeTextarea} />}
-      {selectData.length > 0 && (
-        <Select options={selectData} onChange={onChange}/>
+      <label className={cx('title')}>{label}</label>
+
+      {InputTag === Input && (
+        <Input
+          value={inputValue}
+          name={name}
+          date={inputType === 'date'}
+          index={requireId}
+          setValue={setInputValue}
+          type={inputType}
+          placeholder={placeholder}
+          error={error}
+          onChange={(e) => {
+            setInputValue(e.target.value);
+            onChange?.(e);
+          }}
+        />
       )}
-      <p className={cx("error-message")}>{error}</p>
+
+      {InputTag === 'textarea' && (
+        <textarea
+          className={cx('textarea')}
+          value={inputValue}
+          name={name}
+          placeholder={placeholder}
+          onChange={(e) => {
+            setInputValue(e.target.value);
+            onChange?.(e);
+          }}
+        />
+      )}
+
+      {InputTag === Select && (
+        <Select options={selectData} name={name} onChange={onChange} />
+      )}
+
+      {error && <p className={cx('error-message')}>{error}</p>}
     </div>
   );
 }

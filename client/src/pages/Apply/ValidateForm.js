@@ -27,7 +27,7 @@ export const validateForm = (applyInformation) => {
     if (!applyInformation.phone.trim()) {
       errors.phone = "Số điện thoại không được để trống.";
     } else if (!isValidPhoneNumber(applyInformation.phone)) {
-      errors.phone = "Số điện thoại không hợp lệ.";
+      errors.phone = "Vui lòng nhập đúng định dạng số điện thoại, sdt bao gồm 10 số, không bao gồm chữ";
     }
   
     // Kiểm tra địa chỉ

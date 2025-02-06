@@ -9,13 +9,13 @@ import { isValidCode, isValidEmail, isValidPassword } from '~/hooks/validate';
 const cx = classNames.bind(styles);
 
 function Input({
+  name,
   email,
   password,
   code,
   newPassword,
   date,
   requires,
-  setRequires,
   index,
   value = '',
   isSendCodeValid,
@@ -61,7 +61,6 @@ function Input({
     onChange(e);
     if(requires){
       requires[index].title = e.target.value;
-      setRequires(prev=>prev)
     }
 
     switch (inputFor) {
@@ -84,7 +83,7 @@ function Input({
 
   return (
     <div className={cx('wrapper')}>
-      <input className={className} value={value} type={type} placeholder={placeholder} onChange={handleChange} />
+      <input className={className} name={name} value={value} type={type} placeholder={placeholder} onChange={handleChange} />
       {password && (
         <FontAwesomeIcon className={cx('eye')} icon={isEyeSlash ? faEyeSlash : faEye} onClick={handleChangeEye} />
       )}

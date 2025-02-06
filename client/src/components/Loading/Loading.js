@@ -5,9 +5,9 @@ const cx = classNames.bind(styles);
 
 function Loading() {
   return (
-    <div class={cx("progress-bar-container")}>
-      <div class={cx("progress-bar")}>
-        <div class={cx("progress-bar__primary")}></div>
+    <div className={cx("progress-bar-container")}>
+      <div className={cx("progress-bar")}>
+        <div className={cx("progress-bar__primary")}></div>
       </div>
     </div>
   );

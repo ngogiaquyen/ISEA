@@ -7,7 +7,7 @@ import { validateForm } from './ValidateForm';
 
 const cx = classNames.bind(styles);
 
-const levelOption = ['--Chọn', 'Cao đẳng', 'Đại học', 'Tiến sí'];
+const levelOption = ['Cao đẳng', 'Đại học', 'Tiến sí'];
 
 function Apply() {
   const [information, setInformation] = useState({

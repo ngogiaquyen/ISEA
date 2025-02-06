@@ -73,14 +73,13 @@ function BoardSection({ selectedCategoryId }) {
   return (
     <div className={cx('wrapper', { collapse: isCollapsedBoard })}>
       {items.map((item, index) => (
-        <>
           <MenuItem
+          key={index}
             title={item.title}
             to={item.to}
             isActive={index + 1 === indexActive}
             onClick={() => handleActive(index + 1)}
           />
-        </>
       ))}
       <div className={cx('overlay')} onClick={handleToggleSidebar}>
         {isCollapsedBoard ? (

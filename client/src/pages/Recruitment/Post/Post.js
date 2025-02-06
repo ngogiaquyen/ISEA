@@ -1,48 +1,100 @@
 import classNames from 'classnames/bind';
 import styles from './Post.module.scss';
 import FormGroup from '~/components/FormGroup';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
-import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
-import usePostApi from '~/hooks/usePostApi';
+import { useRef, useState } from 'react';
+import { postData } from '~/hooks/apiService';
 
 const cx = classNames.bind(styles);
 
+const provinces = [
+  'An Giang',
+  'Bà Rịa - Vũng Tàu',
+  'Bạc Liêu',
+  'Bắc Giang',
+  'Bắc Kạn',
+  'Bắc Ninh',
+  'Bến Tre',
+  'Bình Định',
+  'Bình Dương',
+  'Bình Phước',
+  'Bình Thuận',
+  'Cà Mau',
+  'Cần Thơ',
+  'Cao Bằng',
+  'Đà Nẵng',
+  'Đắk Lắk',
+  'Đắk Nông',
+  'Điện Biên',
+  'Đồng Nai',
+  'Đồng Tháp',
+  'Gia Lai',
+  'Hà Giang',
+  'Hà Nam',
+  'Hà Nội',
+  'Hà Tĩnh',
+  'Hải Dương',
+  'Hải Phòng',
+  'Hậu Giang',
+  'Hòa Bình',
+  'Hồ Chí Minh',
+  'Hưng Yên',
+  'Khánh Hòa',
+  'Kiên Giang',
+  'Kon Tum',
+  'Lai Châu',
+  'Lâm Đồng',
+  'Lạng Sơn',
+  'Lào Cai',
+  'Long An',
+  'Nam Định',
+  'Nghệ An',
+  'Ninh Bình',
+  'Ninh Thuận',
+  'Phú Thọ',
+  'Phú Yên',
+  'Quảng Bình',
+  'Quảng Nam',
+  'Quảng Ngãi',
+  'Quảng Ninh',
+  'Quảng Trị',
+  'Sóc Trăng',
+  'Sơn La',
+  'Tây Ninh',
+  'Thái Bình',
+  'Thái Nguyên',
+  'Thanh Hóa',
+  'Thừa Thiên Huế',
+  'Tiền Giang',
+  'Trà Vinh',
+  'Tuyên Quang',
+  'Vĩnh Long',
+  'Vĩnh Phúc',
+  'Yên Bái',
+];
+
 function Post() {
-  // const =
+
+  const formRef = useRef(null)
+
   const [title, setTitle] = useState('');
+  const [salary, setSalary] = useState('');
   const [location, setLocation] = useState('');
-  const [quantity, setQuantity] = useState('');
+  const [experience, setExperience] = useState('');
   const [expirationDate, setExpirationDate] = useState('');
-  const [email, setEmail] = useState('');
+  const [content, setContent] = useState('');
 
-  const [requires, setRequires] = useState([{ title: '', content: '' }]);
-  const { post } = usePostApi("http://localhost:8000/");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(formRef.current);
 
-  const handleAddRequire = () => {
-    setRequires([...requires, { title: '', content: '' }]);
-  };
+    const formData = new FormData(formRef.current);
 
-  const handleTrashRequire = (id) => {
-    setRequires((prev) => {
-      const newPrev = prev.filter((_, index) => index !== id);
-      return newPrev;
-    });
-  };
-
-  const handleSave = async (e) => {
-    const data = {
-      title: title,
-      location: location,
-      quantity: quantity,
-      expiration_date: expirationDate,
-      email: email,
-      requires: requires,
-    };
-    console.log(data)
-    const result = await post(data);
-    console.log("API response:", result);
+    try {
+      const data = await postData('/post/create', formData);
+      console.log(data);
+    } catch (error) {
+      console.error('Error posting data: ', error);
+    }
   };
 
   return (
@@ -52,62 +104,61 @@ function Post() {
           <span className={cx('post-title')}>Đăng bài</span>
           <button>Quay lại</button>
         </div>
-        <button onClick={handleSave}>Lưu lại</button>
+        <button onClick={handleSubmit}>Lưu lại</button>
       </div>
-      <div className={cx('content')}>
+      <form className={cx('post-form')} ref={formRef}>
         <FormGroup
           lable="Tiêu đề"
-          layout="haft"
+          name="title"
           inputType="text"
           placeholder="Tiêu đề"
-          onChange={(e) => {setTitle(e.target.value); console.log("hello")}}
+          onChange={(e) => {
+            setTitle(e.target.value);
+            console.log('hello');
+          }}
+        />
+        <FormGroup
+          lable="Lương"
+          name="salary"
+          layout="haft"
+          inputType="text"
+          placeholder="Lương"
+          onChange={(e) => setSalary(e.target.value)}
         />
         <FormGroup
           lable="Địa điểm"
+          name="location"
           layout="haft"
           inputType="text"
           placeholder="Địa điểm"
           onChange={(e) => setLocation(e.target.value)}
-          selectData={["Chọn địa điểm"]}
+          selectData={['Chọn địa điểm', ...provinces]}
         />
         <FormGroup
-          lable="Số lượng"
+          lable="Kinh nghiệm"
+          name="experience"
           layout="haft"
           inputType="text"
-          placeholder="Số lượng"
-          onChange={(e) => setQuantity(e.target.value)}
+          onChange={(e) => setExperience(e.target.value)}
+          selectData={['Không yêu cầu', 'Dưới 1 năm', '1 - 2 năm', '2 - 3 năm']}
         />
-        {/* <FormGroup
+        <FormGroup
           lable="Ngày hết hạn"
+          name="expiration_date"
           layout="haft"
           inputType="date"
           placeholder="Ngày hết hạn"
           onChange={(e) => setExpirationDate(e.target.value)}
         />
-        <FormGroup
-          lable="Email"
-          layout="haft"
-          inputType="email"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        /> */}
 
-        {requires.map((require, index) => (
-          <div className={cx('group')} key={index}>
-            <FormGroup
-              lable={`Yêu cầu ${index + 1}`}
-              requireId={index}
-              requires={requires}
-              setRequires={setRequires}
-              textarea
-              inputType="text"
-              placeholder="Tên yêu cầu"
-            />
-            <FontAwesomeIcon className={cx('plus-icon')} icon={faTrashCan} onClick={() => handleTrashRequire(index)} />
-          </div>
-        ))}
-      </div>
-      <FontAwesomeIcon className={cx('plus-icon')} icon={faPlus} onClick={handleAddRequire} />
+        <FormGroup
+          lable="Mô tả chi tiết công việc"
+          name="content"
+          inputType="email" 
+          textarea
+          onChange={(e) => setContent(e.target.value)}
+        />
+      </form>
     </div>
   );
 }
