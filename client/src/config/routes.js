@@ -15,7 +15,8 @@ const routes = {
     
     // Tuyển dụng
     recruitment: '/admin/quan-ly-tuyen-dung',
-    recruitmentPost: '/admin/tuyen-dung/bai-dang',
+    recruitmentList: '/admin/tuyen-dung/danh-sach-bai-dang',
+    recruitmentCreate: '/admin/tuyen-dung/dang-bai',
     recruitmentProfile: '/admin/tuyen-dung/loc-ung-vien',
     recruitmentSchedule: '/admin/tuyen-dung/len-lich',
     recruitmentDecision: '/admin/tuyen-dung/quyet-dinh',

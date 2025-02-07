@@ -8,7 +8,7 @@ function Button({ icon, title, to, onclick }) {
     let BTN = "button";
     if(to) BTN = NavLink; 
     return (
-        <BTN className={cx("btn")} onClick={onclick}>
+        <BTN className={cx("btn")} onClick={onclick} to={to}>
             {icon}
             {title}
         </BTN>

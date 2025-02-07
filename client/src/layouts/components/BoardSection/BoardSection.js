@@ -12,7 +12,7 @@ const cx = classNames.bind(styles);
 
 const subCategories = {
   1: [
-    { title: 'Đăng tuyển', to: config.routes.admin.recruitmentPost },
+    { title: 'Bài đăng', to: config.routes.admin.recruitmentList },
     { title: 'Sàng lọc ứng viên', to: config.routes.admin.recruitmentProfile },
     { title: 'Lên lịch phỏng vấn', to: config.routes.admin.recruitmentSchedule },
     { title: 'Quyết định tuyển dụng', to: config.routes.admin.recruitmentDecision },

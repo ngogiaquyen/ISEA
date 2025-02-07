@@ -2,13 +2,14 @@ import classNames from "classnames/bind";
 import styles from "./EmployeeRecords.module.scss";
 import JobRow from "~/components/JobRow";
 import Button from "~/components/Button";
+import PageTitle from "~/components/PageTitle";
 
 const cx = classNames.bind(styles)
 
 function EmployeeRecords() {
     return (
         <div className={cx("wrapper")}>
-            <h2>Tuyển Nhân Viên</h2>
+            <PageTitle title="Tuyển nhân viên"/>
             <div className={cx("control_bar")}>
                 <Button
                     icon = "➕"

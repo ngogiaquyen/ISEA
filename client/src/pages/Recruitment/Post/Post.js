@@ -3,6 +3,9 @@ import styles from './Post.module.scss';
 import FormGroup from '~/components/FormGroup';
 import { useRef, useState } from 'react';
 import { postData } from '~/hooks/apiService';
+import OutsideClickHandler from '~/components/OutSideClickHandle';
+import { isEmpty, isNotEmpty, isNumber } from '~/hooks/validate';
+import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -73,8 +76,8 @@ const provinces = [
 ];
 
 function Post() {
-
-  const formRef = useRef(null)
+  const formRef = useRef(null);
+  const navigate = useNavigate();
 
   const [title, setTitle] = useState('');
   const [salary, setSalary] = useState('');
@@ -85,7 +88,6 @@ function Post() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formRef.current);
 
     const formData = new FormData(formRef.current);
 
@@ -102,7 +104,7 @@ function Post() {
       <div className={cx('head')}>
         <div className={cx('left')}>
           <span className={cx('post-title')}>Đăng bài</span>
-          <button>Quay lại</button>
+          <button onClick={()=> navigate(-1)}>Quay lại</button>
         </div>
         <button onClick={handleSubmit}>Lưu lại</button>
       </div>
@@ -114,8 +116,8 @@ function Post() {
           placeholder="Tiêu đề"
           onChange={(e) => {
             setTitle(e.target.value);
-            console.log('hello');
           }}
+          handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập tiêu đề!' }]}
         />
         <FormGroup
           lable="Lương"
@@ -124,6 +126,10 @@ function Post() {
           inputType="text"
           placeholder="Lương"
           onChange={(e) => setSalary(e.target.value)}
+          handleValidate={[
+            { funct: isNotEmpty, message: 'Vui lòng nhập lương!' },
+            { funct: isNumber, message: 'Lương là một số!' },
+          ]}
         />
         <FormGroup
           lable="Địa điểm"
@@ -133,6 +139,9 @@ function Post() {
           placeholder="Địa điểm"
           onChange={(e) => setLocation(e.target.value)}
           selectData={['Chọn địa điểm', ...provinces]}
+          handleValidate={[
+            { funct: isNotEmpty, message: 'Vui lòng nhập địa điểm!' },
+          ]}
         />
         <FormGroup
           lable="Kinh nghiệm"
@@ -141,6 +150,9 @@ function Post() {
           inputType="text"
           onChange={(e) => setExperience(e.target.value)}
           selectData={['Không yêu cầu', 'Dưới 1 năm', '1 - 2 năm', '2 - 3 năm']}
+          handleValidate={[
+            { funct: isNotEmpty, message: 'Vui lòng chọn kinh nghệm!' },
+          ]}
         />
         <FormGroup
           lable="Ngày hết hạn"
@@ -149,14 +161,20 @@ function Post() {
           inputType="date"
           placeholder="Ngày hết hạn"
           onChange={(e) => setExpirationDate(e.target.value)}
+          handleValidate={[
+            { funct: isNotEmpty, message: 'Vui lòng chọn ngày hết hạn!' },
+          ]}
         />
 
         <FormGroup
           lable="Mô tả chi tiết công việc"
           name="content"
-          inputType="email" 
+          inputType="email"
           textarea
           onChange={(e) => setContent(e.target.value)}
+          handleValidate={[
+            { funct: isNotEmpty, message: 'Vui nhập mô tả!' },
+          ]}
         />
       </form>
     </div>

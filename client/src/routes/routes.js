@@ -15,6 +15,7 @@ import Apply from '~/pages/Apply';
 import Explore from '~/pages/Explore/Explore';
 import RecruitmentPost from '~/pages/RecruitmentPost';
 import UpdateEmployeeInfo from '~/pages/UpdateEmployeeInfo';
+import PostList from '~/pages/PostList/PostList';
 // don't need to login
 
 const publicRouters = [
@@ -53,7 +54,12 @@ const publicRouters = [
     layout: AdminLayout,
   },
   {
-    path: config.routes.admin.recruitmentPost,
+    path: config.routes.admin.recruitmentList,
+    component: PostList,
+    layout: AdminLayout,
+  },
+  {
+    path: config.routes.admin.recruitmentCreate,
     component: Post,
     layout: AdminLayout,
   },
