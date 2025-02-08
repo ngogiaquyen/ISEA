@@ -1,10 +1,9 @@
 import classNames from 'classnames/bind';
-import styles from './Post.module.scss';
+import styles from './CreatePost.module.scss';
 import FormGroup from '~/components/FormGroup';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { postData } from '~/hooks/apiService';
-import OutsideClickHandler from '~/components/OutSideClickHandle';
-import { isEmpty, isNotEmpty, isNumber } from '~/hooks/validate';
+import { isNotEmpty, isNumber } from '~/hooks/validate';
 import { useNavigate } from 'react-router-dom';
 import { ToastContext } from '~/components/Context/ToastProvider';
 import config from '~/config';
@@ -78,7 +77,7 @@ const provinces = [
   'Yên Bái',
 ];
 
-function Post() {
+function CreatePost() {
   const formRef = useRef(null);
   const navigate = useNavigate();
 
@@ -111,7 +110,9 @@ function Post() {
         console.log([...prev, { id: Date.now(), ...response }]);
         return [...prev, { id: Date.now(), ...response }];
       });
-      if (response.status === 'success') navigate(config.routes.admin.recruitmentList);
+      if (response.status === 'success') {
+        navigate(config.routes.admin.recruitmentList);
+      }
     } catch (error) {
       console.error('Error posting data: ', error);
     }
@@ -191,4 +192,4 @@ function Post() {
   );
 }
 
-export default Post;
+export default CreatePost;
