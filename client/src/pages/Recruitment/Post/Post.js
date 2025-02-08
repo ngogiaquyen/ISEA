@@ -1,13 +1,14 @@
 import classNames from 'classnames/bind';
 import styles from './Post.module.scss';
 import FormGroup from '~/components/FormGroup';
-import { useContext, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { postData } from '~/hooks/apiService';
 import OutsideClickHandler from '~/components/OutSideClickHandle';
 import { isEmpty, isNotEmpty, isNumber } from '~/hooks/validate';
 import { useNavigate } from 'react-router-dom';
 import { ToastContext } from '~/components/Context/ToastProvider';
 import config from '~/config';
+import { LoadBarContext } from '~/components/Context/LoadBarPovider';
 
 const cx = classNames.bind(styles);
 
@@ -81,12 +82,20 @@ function Post() {
   const formRef = useRef(null);
   const navigate = useNavigate();
 
+  const { showLoadBar, hideLoadBar } = useContext(LoadBarContext);
+
   const [title, setTitle] = useState('');
   const [salary, setSalary] = useState('');
   const [location, setLocation] = useState('');
   const [experience, setExperience] = useState('');
   const [expirationDate, setExpirationDate] = useState('');
   const [content, setContent] = useState('');
+
+  useEffect(() => {
+    showLoadBar();
+
+    hideLoadBar();
+  }, []);
 
   const { setToastList } = useContext(ToastContext);
 
@@ -99,10 +108,10 @@ function Post() {
       const response = await postData('/post/create', formData);
       console.log(response);
       setToastList((prev) => {
-        console.log([...prev, { id: Date.now(), ...response }])
+        console.log([...prev, { id: Date.now(), ...response }]);
         return [...prev, { id: Date.now(), ...response }];
       });
-      navigate(config.routes.admin.recruitmentList)
+      if (response.status === 'success') navigate(config.routes.admin.recruitmentList);
     } catch (error) {
       console.error('Error posting data: ', error);
     }

@@ -1,4 +1,5 @@
-import {ActiveBoardProvider} from './ActiveBoardProvider';
+import { ActiveBoardProvider } from './ActiveBoardProvider';
+import { LoadBarPovider } from './LoadBarPovider';
 import { LoginProvider } from './LoginProvider';
 import { ToastProvider } from './ToastProvider';
 
@@ -7,7 +8,7 @@ function CombinedProvider({ children }) {
     <LoginProvider>
       <ActiveBoardProvider>
         <ToastProvider>
-        {children}
+          <LoadBarPovider>{children}</LoadBarPovider>
         </ToastProvider>
       </ActiveBoardProvider>
     </LoginProvider>
