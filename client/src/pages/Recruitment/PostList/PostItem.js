@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 
 function PostItem({ title, date, createAt, descriptions }) {
   return (
-    <NavLink className={cx('post-item')} to={config.routes.admin.recruitmentCreate}>
+    <NavLink className={cx('post-item')} to={config.routes.admin.recruitmentDetail}>
       <div className={cx('item-top')}>
         <h4 className={cx('item-title')}>{title}</h4>
         <span className={cx('item-date')}>Ngày tạo: {createAt}</span>
