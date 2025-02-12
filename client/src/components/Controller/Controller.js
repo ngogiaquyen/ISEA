@@ -1,17 +1,20 @@
-import classNames from "classnames/bind";
-import styles from "./Controller.module.scss";
-import Button from "../Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAdd } from "@fortawesome/free-solid-svg-icons";
+import classNames from 'classnames/bind';
+import styles from './Controller.module.scss';
+import Button from '../Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAdd } from '@fortawesome/free-solid-svg-icons';
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
 
-function Controller() {
-    return ( <div className={cx("wrapper")}>
-        <Button icon={<FontAwesomeIcon icon={faAdd}/>} title="Thêm"/>
-        <Button icon={<FontAwesomeIcon icon={faAdd}/>} title="Sửa"/>
-        <Button icon={<FontAwesomeIcon icon={faAdd}/>} title="Xóa"/>
-    </div> );
+function Controller({ addUrl }) {
+    
+  return (
+    <div className={cx('wrapper')}>
+      <Button title="Thêm" icon={<FontAwesomeIcon icon={faAdd}/>}  to={addUrl} />
+      {/* <Button title="Sửa" icon={<FontAwesomeIcon icon={faAdd}/>}/>
+        <Button title="Xóa" icon={<FontAwesomeIcon icon={faAdd}/>}/> */}
+    </div>
+  );
 }
 
 export default Controller;

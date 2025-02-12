@@ -1,8 +1,13 @@
 .progress-bar-container {
+    display: none;
     position: absolute;
     top: 0;
     width: 100%;
     z-index: 999;
+
+    &.active{
+        display: block;
+    }
 }
 
 .progress-bar {

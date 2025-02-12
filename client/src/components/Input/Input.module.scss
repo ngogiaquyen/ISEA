@@ -38,6 +38,12 @@
 .input.error {
   border: 1px solid var(--red-color);
 }
+.textarea.error {
+  border: 1px solid var(--red-color);
+}
+.select.error {
+  border: 1px solid var(--red-color);
+}
 
 .eye {
   line-height: 0;
@@ -72,4 +78,20 @@
     color: rgb(22, 24, 35);
     cursor: pointer;
   }
+}
+
+
+textarea{
+  min-height: 140px;
+  display: block; 
+  width: 100%;
+  max-width: 100%; 
+  padding: 8px 12px; 
+  font-size: 16px; 
+  font-family: var(--font-family);
+  border: 1px solid #ccc; 
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical; 
+  outline: none;
 }

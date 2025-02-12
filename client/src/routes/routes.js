@@ -3,18 +3,19 @@ import AdminLayout from '~/layouts/AdminLayout/AdminLayout';
 import Home from '~/pages/Home';
 import Recruitment from '~/pages/Recruitment/Recruitment';
 import EmptyLayout from '~/layouts/EmptyLayout/EmptyLayout';
-import Post from '~/pages/Recruitment/Post';
 import DefaultLayout from '~/layouts';
 import EmployeeRecords from '~/pages/EmployeeRecords';
 import Announcements from '~/pages/Announcements/Announcements';
 import PleaseSelectFeature from '~/pages/PleaseSelectFeature';
 import LoginContainer from '~/pages/LoginContainer';
 import TrainingProgram from '~/pages/TrainingProgram/TrainingProgram';
-import Posts from '~/pages/Posts';
 import Apply from '~/pages/Apply';
 import Explore from '~/pages/Explore/Explore';
 import RecruitmentPost from '~/pages/RecruitmentPost';
 import UpdateEmployeeInfo from '~/pages/UpdateEmployeeInfo';
+import CreatePost from '~/pages/Recruitment/CreatePost';
+import PostList from '~/pages/Recruitment/PostList';
+import PostDetail from '~/pages/Recruitment/PostDetail';
 // don't need to login
 
 const publicRouters = [
@@ -53,8 +54,18 @@ const publicRouters = [
     layout: AdminLayout,
   },
   {
-    path: config.routes.admin.recruitmentPost,
-    component: Post,
+    path: config.routes.admin.recruitmentCreate,
+    component: CreatePost,
+    layout: AdminLayout,
+  },
+  {
+    path: config.routes.admin.recruitmentList,
+    component: PostList,
+    layout: AdminLayout,
+  },
+  {
+    path: config.routes.admin.recruitmentDetail,
+    component: PostDetail,
     layout: AdminLayout,
   },
   {

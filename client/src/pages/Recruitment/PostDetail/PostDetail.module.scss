@@ -1,0 +1,159 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--blue-color-state-0);
+}
+
+.head span {
+  font-size: 1.4rem;
+  color: #666;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+}
+
+.list-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+  padding: 10px;
+  box-shadow: 0px 4px 6px -4px rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-x: hidden;
+}
+
+.post-detail {
+  background: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.post-detail p {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.content h5 {
+  font-size: 1.6rem;
+  margin-top: 10px;
+  color: #0073e6;
+}
+
+.job-content {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+// .candidate
+.candidate-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 15px;
+  margin-left: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #007bff;
+  transition: transform 0.2s ease-in-out;
+
+  & + .candidate-item {
+    margin-top: 20px;
+  }
+}
+
+.candidate-item:hover {
+  transform: scale(1.02);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+
+.phone,
+.email,
+.date {
+  font-size: 14px;
+  color: #555;
+}
+
+.status-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.status {
+  font-weight: bold;
+  color: #ff9800;
+  background: #fff3cd;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+  .candidate-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .status-container {
+    align-items: flex-start;
+    margin-top: 10px;
+  }
+}
+
+
+// see more button
+.see-more{
+    background: none;
+  border: none;
+  color: #0073e6;
+  font-size: 1.4rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 5px;
+  display: block;
+  text-align: left;
+}

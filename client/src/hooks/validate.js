@@ -33,6 +33,9 @@ export function isValidCode(value) {
 export function isEmpty(value){
   return value === "";
 }
+export function isNotEmpty(value){
+  return value !== "";
+}
 
 // Regex kiểm tra số điện thoại:
 // - Bắt đầu bằng dấu "+" (cho số quốc tế) hoặc số từ 0-9 (cho số trong nước).
@@ -53,3 +56,16 @@ export const isPastDate = (date) => {
   // So sánh ngày
   return inputDate < today;
 };
+
+export function isNumber(value) {
+  // Số hợp lệ
+  if (typeof value === "number" && !isNaN(value)) {
+    return true; 
+  }
+  // Chuỗi số hợp lệ (chỉ chứa chữ số)
+  if (typeof value === "string" && /^\d+$/.test(value)) {
+    return true; 
+  }
+  // Không hợp lệ
+  return false; 
+}

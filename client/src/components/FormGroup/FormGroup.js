@@ -3,76 +3,97 @@ import styles from './FormGroup.module.scss';
 import Input from '../Input';
 import { useEffect, useState } from 'react';
 import Select from '../Input/Select';
+import OutsideClickHandler from '../OutSideClickHandle';
+import Textarea from '../Input/Textarea';
 
 const cx = classNames.bind(styles);
 
 function FormGroup({
   label,
   name,
-  requireId,
-  requires,
   placeholder,
   inputType,
   textarea,
   selectData = [],
   layout,
-  error,
   onChange,
+  handleValidate = () => {},
 }) {
   const [inputValue, setInputValue] = useState('');
+  const [error, setError] = useState('');
 
-  useEffect(() => {
-    if (requireId >= 0) {
-      setInputValue(requires[requireId]?.title || '');
-    }
-  }, [requireId, requires]);
-
-  let InputTag = Input; // Mặc định là Input
+  let InputTag = Input;
   if (textarea) {
     InputTag = 'textarea';
   } else if (selectData.length > 0) {
     InputTag = Select;
   }
 
+  const handleError = (value ="") => {
+    for(let obj of handleValidate) {
+      if (obj.funct(inputValue)) {
+        setError('');
+      } else {
+        setError(obj.message);
+        console.log(obj.message)
+        break;
+      }
+      console.log("ehllo")
+    };
+  };
+
+  const handleInputChange = (e) => {
+    const newValue = e.target.value || "";
+    setInputValue(newValue);
+    onChange?.(e);
+    for(let obj of handleValidate) {
+      if (obj.funct(inputValue)) {
+        setError('');
+      }
+      break;
+    };
+  };
+
   return (
     <div className={cx('wrapper', layout)}>
-      <label className={cx('title')}>{label}</label>
+      <OutsideClickHandler onClickOutside={() => handleError(inputValue)}>
+        <label className={cx('title')}>{label}</label>
 
-      {InputTag === Input && (
-        <Input
-          value={inputValue}
-          name={name}
-          date={inputType === 'date'}
-          index={requireId}
-          setValue={setInputValue}
-          type={inputType}
-          placeholder={placeholder}
-          error={error}
-          onChange={(e) => {
-            setInputValue(e.target.value);
-            onChange?.(e);
-          }}
-        />
-      )}
+        {InputTag === Input && (
+          <Input
+            value={inputValue}
+            name={name}
+            date={inputType === 'date'}
+            setValue={setInputValue}
+            type={inputType}
+            placeholder={placeholder}
+            error={error}
+            onChange={handleInputChange}
+          />
+        )}
 
-      {InputTag === 'textarea' && (
-        <textarea
-          className={cx('textarea')}
-          value={inputValue}
-          name={name}
-          placeholder={placeholder}
-          onChange={(e) => {
-            setInputValue(e.target.value);
-            onChange?.(e);
-          }}
-        />
-      )}
+        {InputTag === 'textarea' && (
+          <Textarea
+            className={cx('textarea')}
+            value={inputValue}
+            name={name}
+            placeholder={placeholder}
+            error={error}
+            onChange={handleInputChange}
+          />
+        )}
 
-      {InputTag === Select && (
-        <Select options={selectData} name={name} onChange={onChange} />
-      )}
+        {InputTag === Select && (
+          <Select
+            options={selectData}
+            name={name}
+            error={error}
+            onChange={handleInputChange}
+          />
+        )}
 
-      {error && <p className={cx('error-message')}>{error}</p>}
+        {error && <p className={cx('error-message')}>{error}</p>}
+      </OutsideClickHandler>
     </div>
   );
 }

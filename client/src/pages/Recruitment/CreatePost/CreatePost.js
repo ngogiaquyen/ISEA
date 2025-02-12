@@ -1,8 +1,13 @@
 import classNames from 'classnames/bind';
-import styles from './Post.module.scss';
+import styles from './CreatePost.module.scss';
 import FormGroup from '~/components/FormGroup';
-import { useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { postData } from '~/hooks/apiService';
+import { isNotEmpty, isNumber } from '~/hooks/validate';
+import { useNavigate } from 'react-router-dom';
+import { ToastContext } from '~/components/Context/ToastProvider';
+import config from '~/config';
+import { LoadBarContext } from '~/components/Context/LoadBarPovider';
 
 const cx = classNames.bind(styles);
 
@@ -72,9 +77,11 @@ const provinces = [
   'Yên Bái',
 ];
 
-function Post() {
+function CreatePost() {
+  const formRef = useRef(null);
+  const navigate = useNavigate();
 
-  const formRef = useRef(null)
+  const { showLoadBar, hideLoadBar } = useContext(LoadBarContext);
 
   const [title, setTitle] = useState('');
   const [salary, setSalary] = useState('');
@@ -83,15 +90,29 @@ function Post() {
   const [expirationDate, setExpirationDate] = useState('');
   const [content, setContent] = useState('');
 
+  useEffect(() => {
+    showLoadBar();
+
+    hideLoadBar();
+  }, []);
+
+  const { setToastList } = useContext(ToastContext);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formRef.current);
 
     const formData = new FormData(formRef.current);
 
     try {
-      const data = await postData('/post/create', formData);
-      console.log(data);
+      const response = await postData('/post/create', formData);
+      console.log(response);
+      setToastList((prev) => {
+        console.log([...prev, { id: Date.now(), ...response }]);
+        return [...prev, { id: Date.now(), ...response }];
+      });
+      if (response.status === 'success') {
+        navigate(config.routes.admin.recruitmentList);
+      }
     } catch (error) {
       console.error('Error posting data: ', error);
     }
@@ -102,7 +123,7 @@ function Post() {
       <div className={cx('head')}>
         <div className={cx('left')}>
           <span className={cx('post-title')}>Đăng bài</span>
-          <button>Quay lại</button>
+          <button onClick={() => navigate(-1)}>Quay lại</button>
         </div>
         <button onClick={handleSubmit}>Lưu lại</button>
       </div>
@@ -114,8 +135,8 @@ function Post() {
           placeholder="Tiêu đề"
           onChange={(e) => {
             setTitle(e.target.value);
-            console.log('hello');
           }}
+          handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập tiêu đề!' }]}
         />
         <FormGroup
           lable="Lương"
@@ -124,6 +145,10 @@ function Post() {
           inputType="text"
           placeholder="Lương"
           onChange={(e) => setSalary(e.target.value)}
+          handleValidate={[
+            { funct: isNotEmpty, message: 'Vui lòng nhập lương!' },
+            { funct: isNumber, message: 'Lương là một số!' },
+          ]}
         />
         <FormGroup
           lable="Địa điểm"
@@ -133,6 +158,7 @@ function Post() {
           placeholder="Địa điểm"
           onChange={(e) => setLocation(e.target.value)}
           selectData={['Chọn địa điểm', ...provinces]}
+          handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập địa điểm!' }]}
         />
         <FormGroup
           lable="Kinh nghiệm"
@@ -141,6 +167,7 @@ function Post() {
           inputType="text"
           onChange={(e) => setExperience(e.target.value)}
           selectData={['Không yêu cầu', 'Dưới 1 năm', '1 - 2 năm', '2 - 3 năm']}
+          handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng chọn kinh nghệm!' }]}
         />
         <FormGroup
           lable="Ngày hết hạn"
@@ -149,18 +176,20 @@ function Post() {
           inputType="date"
           placeholder="Ngày hết hạn"
           onChange={(e) => setExpirationDate(e.target.value)}
+          handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng chọn ngày hết hạn!' }]}
         />
 
         <FormGroup
           lable="Mô tả chi tiết công việc"
           name="content"
-          inputType="email" 
+          inputType="email"
           textarea
           onChange={(e) => setContent(e.target.value)}
+          handleValidate={[{ funct: isNotEmpty, message: 'Vui nhập mô tả!' }]}
         />
       </form>
     </div>
   );
 }
 
-export default Post;
+export default CreatePost;
