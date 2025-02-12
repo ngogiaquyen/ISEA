@@ -3,7 +3,7 @@
   --general-padding: 20px;
 }
 .wrapper {
-  max-width: 1440px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 16px;
 }
@@ -20,7 +20,7 @@
   border-radius: 12px;
   overflow: hidden;
   margin: 0;
-  border: 1px solid #eee;
+  border: 1px solid #d3d5d6;
 }
 .poster img {
   position: relative;
@@ -107,8 +107,8 @@
 .col1 > * {
   margin-right: 16px;
   margin-bottom: 16px;
-  width: unset;
-  border: 1px solid #eee;
+  width: unset !important;
+  border: 1px solid #d3d5d6;
 }
 .col1 > :nth-child(2) > div {
   padding: var(--general-padding);
@@ -128,7 +128,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  border: 1px solid #eee;
+  border: 1px solid #d3d5d6;
 }
 .box-info > * {
   padding: var(--general-padding);

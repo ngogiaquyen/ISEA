@@ -47,7 +47,7 @@ function Explore() {
             <div className={cx('com-info-wrapper')}>
               <img className={cx('com-logo')} src={logo} alt="logo" />
               <div className={cx('com-info-group')}>
-                <div className={cx('com-name')}>CÔNG TY CỔ PHẦN ISEA</div>
+                <div className={cx('com-name')}>CÔNG TY ĐÀO TẠO VÀ PHÁT TRIỂN NHÂN LỰC ISEA</div>
                 <div className={cx('com-info-detail')}>
                   <div className={cx('com-url')}>
                     <i className="fa-solid fa-globe"></i>

@@ -11,17 +11,40 @@ export function cleanString(str) {
 
 function generateShortDesc(desc) {
   const lines = desc.trim().split('\n');
-  return (
-    <ul className={cx('short-desc')}>
-      {lines.map((line, index) => {
-        return (
-          <li key={index}>
+  let elems = [];
+  let liElems = [];
+  let count = 0;
+  let foundAsterisk = false; // Biến để theo dõi khi nào gặp dấu '*'
+
+  for (let index = 0; index < lines.length; index++) {
+    const line = lines[index].trim();
+
+    if (foundAsterisk) {
+      if (count >= 3) break; // Nếu đã lấy đủ 3 dòng, thoát
+
+      if (line !== '' && !line.includes('*')) {
+        liElems.push(
+          <li key={`li-${count}`}>
             <span className={cx('desc')}>{cleanString(line)}</span>
           </li>
         );
-      })}
-    </ul>
-  );
+        count++;
+      }
+    } else if (line.includes('*')) {
+      foundAsterisk = true; // Đánh dấu là đã tìm thấy dấu '*'
+    }
+  }
+
+  // Nếu có ít nhất một dòng được thêm vào liElems, tạo danh sách
+  if (liElems.length > 0) {
+    elems.push(
+      <ul className={cx('short-desc')} key={`ul`}>
+        {liElems}
+      </ul>
+    );
+  }
+
+  return elems;
 }
 
 function HomePostItem({ infoObj, onPostSelect }) {
@@ -54,7 +77,7 @@ function HomePostItem({ infoObj, onPostSelect }) {
         <div className={cx('job-expiration-date')}>
           <div>{/* <span>{infoObj.expiration_date}</span> */}</div>
         </div>
-        {generateShortDesc(infoObj.description)}
+        {generateShortDesc(infoObj.content)}
       </div>
     </li>
   );

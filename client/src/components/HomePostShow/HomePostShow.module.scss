@@ -1,6 +1,6 @@
 .post-show {
   padding: 16px;
-  border: 1px solid #ddd;
+  border: 1px solid #d3d5d6;
   border-radius: 12px;
   position: sticky;
   top: 16px;
@@ -8,6 +8,7 @@
   height: calc(100vh - 32px - 80px);
   display: flex;
   flex-direction: column;
+  // min-height: 500px !important;
 }
 .post-show {
   -ms-overflow-style: none;
@@ -39,7 +40,7 @@
   display: flex;
   align-items: center;
   margin: 8px 0;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 .btn-wrapper button {
   padding: 0;
@@ -55,7 +56,7 @@
 .btn-apply {
   background-color: #0081ff;
   color: #fff;
-  margin-right: 12px;
+  margin-right: 16px;
   flex: 1;
   font-weight: 500;
 }
@@ -96,6 +97,7 @@ scrollbar-width: none;
 .info {
   align-items: center;
   height: 40px;
+  font-size: 14px;
 }
 .info i {
   color: #0081ff;
@@ -108,7 +110,6 @@ scrollbar-width: none;
 .info > span {
   display: flex;
   align-items: center;
-  font-weight: 300;
 }
 .info > span>span{
     background-color: #eee;

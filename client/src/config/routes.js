@@ -6,7 +6,6 @@ const routes = {
     apply: '/dashboard/ung-tuyen',
   },
   home: {
-    recruitmentPost: '/bai-viet/',
     explore: '/ve-chung-toi',
   },
   admin: {

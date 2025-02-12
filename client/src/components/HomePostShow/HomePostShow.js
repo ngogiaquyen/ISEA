@@ -8,53 +8,57 @@ function generateDescription(desc) {
   if (!desc) return;
   const lines = desc.trim().split('\n');
   let elems = [];
-  let list = 0;
+  let liElems = [];
 
-  lines.map((line, index) => {
-    line = line.trim();
+  for (let index = 0; index < lines.length; index++) {
+    let line = lines[index].trim();
 
     if (line !== '') {
       if (line.includes('*')) {
-        elems.push(
-          <p className={cx('line-title')} key={`h3-${index}`}>
-            {cleanString(line)}
-          </p>,
-        );
-        let liElems = [];
-        for (let i = index + 1; i < lines.length; i++) {
-          const nextLine = lines[i].trim();
-
-          if (!nextLine.includes('*') && nextLine !== '') {
-            console.log(`DAY LA LINE: ${nextLine}`);
-            liElems.push(
-              <li className={cx('line-desc')} key={`li-${i}`}>
-                {cleanString(nextLine)}
-              </li>,
-            );
-          } else {
-            break;
-          }
-        }
         if (liElems.length > 0) {
           elems.push(
             <ul className={cx('list')} key={`ul-${index}`}>
               {liElems}
             </ul>,
           );
+          liElems = [];
         }
+        elems.push(
+          <p className={cx('line-title')} key={`p-${index}`}>
+            {cleanString(line)}
+          </p>,
+        );
+      } else {
+        liElems.push(
+          <li className={cx('line-desc')} key={`li-${index}`}>
+            {cleanString(line)}
+          </li>,
+        );
       }
     }
-  });
+  }
+
+  if (liElems.length > 0) {
+    elems.push(
+      <ul className={cx('list')} key={`ul-${lines.length}`}>
+        {liElems}
+      </ul>,
+    );
+  }
+
   return elems;
 }
 
-window.addEventListener('scroll', function () {
-  const scrollY = window.scrollY;
+function processHeight() {
+  let scrollY = window.scrollY;
   const process = this.document.querySelector('.process');
   if (!process) return;
-  if (scrollY > 80) return;
-  process.style.height = `calc(100vh - 32px - 80px + ${scrollY}px)`;
-});
+  if (scrollY > 80) scrollY = 80;
+  process.style.height = `calc(100vh - 80px - 32px + ${scrollY}px)`;
+  console.log();
+}
+
+window.addEventListener('scroll', processHeight);
 
 function HomePostShow({ post }) {
   return (

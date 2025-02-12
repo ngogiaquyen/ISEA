@@ -28,7 +28,8 @@ function Home() {
       const response = await fetch('http://localhost/isea/server/post/read');
       const data = await response.json();
       setHomePostItems(data);
-      setPost(data[1]);
+      setPost(data[0]);
+      console.clear();
       console.log(data);
     } catch (err) {
       console.error('Fetch error:', err);
