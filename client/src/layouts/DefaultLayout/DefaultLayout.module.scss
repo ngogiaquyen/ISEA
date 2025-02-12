@@ -1,13 +1,10 @@
 body {
   height: 100vh;
   background-color: var(--background-color-state-1);
+  background-color: #fff;
 }
 .wrapper {
   display: flex;
   flex-direction: column;
   height: 100vh;
-}
-
-.inner{
-  margin-top: 0;
 }

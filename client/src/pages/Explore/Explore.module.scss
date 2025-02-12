@@ -5,8 +5,7 @@
 .wrapper {
   max-width: 1440px;
   margin: 0 auto;
-  margin-top: calc(64px);
-  padding: 0 12px;
+  padding: 16px;
 }
 .wrapper > * {
   margin-top: 16px;
@@ -17,10 +16,11 @@
 .poster {
   position: relative;
   display: flex;
-  //   justify-content: ;
   align-items: flex-end;
   border-radius: 12px;
   overflow: hidden;
+  margin: 0;
+  border: 1px solid #eee;
 }
 .poster img {
   position: relative;
@@ -108,6 +108,7 @@
   margin-right: 16px;
   margin-bottom: 16px;
   width: unset;
+  border: 1px solid #eee;
 }
 .col1 > :nth-child(2) > div {
   padding: var(--general-padding);
@@ -127,6 +128,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  border: 1px solid #eee;
 }
 .box-info > * {
   padding: var(--general-padding);

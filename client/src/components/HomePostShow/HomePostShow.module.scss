@@ -1,0 +1,129 @@
+.post-show {
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  position: sticky;
+  top: 16px;
+  overflow-y: auto;
+  height: calc(100vh - 32px - 80px);
+  display: flex;
+  flex-direction: column;
+}
+.post-show {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.post-show::-webkit-scrollbar {
+  display: none;
+}
+.post-info-head{
+    box-shadow: 0 0 8px #0000001a;
+    margin: -16px;
+    margin-bottom: 0;
+    padding: 16px;
+    padding-bottom: 0;
+}
+.post-title {
+  display: flex;
+  margin: 12px 0;
+}
+.post-title p {
+  font-size: 20px;
+  font-weight: 600;
+}
+.post-from-company {
+  font-size: 14px;
+  font-weight: 300;
+}
+.btn-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  margin-bottom: 12px;
+}
+.btn-wrapper button {
+  padding: 0;
+  font-size: 15px;
+  padding: 8px 12px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 6px;
+}
+.btn-apply {
+  background-color: #0081ff;
+  color: #fff;
+  margin-right: 12px;
+  flex: 1;
+  font-weight: 500;
+}
+.btn-apply:hover{
+    background-color: #0071ff;
+}
+.btn-save-post {
+  background-color: #eee;
+  aspect-ratio: 1;
+}
+.btn-save-post:hover{
+    background-color: #DEECFF;
+}
+.post-info-body{
+    flex: 1;
+    overflow-y: auto;
+}
+.post-info-body {
+-ms-overflow-style: none;
+scrollbar-width: none;
+}
+.post-info-body::-webkit-scrollbar {
+ display: none;
+}
+.line-title {
+  font-weight: 500;
+  margin: 4px 0;
+}
+.line-title:first-child{
+    margin-top: 8px;
+}
+.job-expiration-date,
+.job-salary,
+.job-need-exp,
+.job-location {
+  display: flex;
+}
+.info {
+  align-items: center;
+  height: 40px;
+}
+.info i {
+  color: #0081ff;
+  width: 32px;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info > span {
+  display: flex;
+  align-items: center;
+  font-weight: 300;
+}
+.info > span>span{
+    background-color: #eee;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: #0081ff;
+    font-weight: normal;
+    margin-left: 8px;
+}
+.list{
+    list-style: circle;
+    padding-inline-start: 20px;
+}
+.line-desc{
+    font-size: 15px;
+    font-weight: 300;
+    margin: 4px 0;
+}

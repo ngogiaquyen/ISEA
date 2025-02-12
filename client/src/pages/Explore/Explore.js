@@ -1,43 +1,20 @@
 import classNames from 'classnames/bind';
 import styles from './Explore.module.scss';
 import config from '~/config';
-import HeaderUser from '~/layouts/components/HeaderUser/HeaderUser';
 import logo from '~/assets/images/logo.jpg';
 import poster from '~/assets/images/poster.png';
 import { NavLink } from 'react-router-dom';
-import Home from '../Home';
 import HomeNews from '~/components/HomeNews/HomeNews';
 import fbIcon from '~/assets/images/facebook.webp';
 import twIcon from '~/assets/images/twitter.webp';
 import lkIcon from '~/assets/images/linked.webp';
+import HeaderUser from '~/layouts/components/HeaderUser/HeaderUser';
 
 const cx = classNames.bind(styles);
-const headerNavs = [
-  {
-    icon: <i className="fa-light fa-house"></i>,
-    state: false,
-    tooltip: true,
-    tooltipContent: 'Trang chủ',
-    tooltipPlace: 'bot',
-    link: config.routes.dashboard.home,
-  },
-  {
-    icon: <i className="fa-light fa-newspaper"></i>,
-    state: false,
-    tooltip: true,
-    tooltipContent: 'Tổng hợp tin tức',
-    tooltipPlace: 'bot',
-    link: config.routes.home.recruitmentPost,
-  },
-  {
-    icon: <i className="fa-regular fa-compass"></i>,
-    state: true,
-    tooltip: true,
-    tooltipContent: 'Khám phá',
-    tooltipPlace: 'bot',
-    link: config.routes.home.explore,
-  },
-];
+const header={
+  home: 0,
+  about: 1,
+}
 const homeNewsItems = [
   {
     src: 'https://firebasestorage.googleapis.com/v0/b/ngontumathuat-d946a.appspot.com/o/images%2F268c39b9-4e17-4dc1-a66f-4bf57a1b68c4?alt=media&token=52ef2379-8c5b-481d-b2d2-00f35b0adfa4',
@@ -62,7 +39,7 @@ const homeNewsItems = [
 function Explore() {
   return (
     <>
-      <HeaderUser headerNavs={headerNavs} />
+      <HeaderUser header={header} />
       <div className={cx('wrapper')}>
         <div className={cx('poster')}>
           <img className={cx('poster-img')} src={poster} alt="poster" />

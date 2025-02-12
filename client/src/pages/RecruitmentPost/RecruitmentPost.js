@@ -1,5 +1,4 @@
 import classNames from 'classnames/bind';
-import HeaderUser from '~/layouts/components/HeaderUser/HeaderUser';
 import styles from './RecruitmentPost.module.scss';
 import config from '~/config';
 import { NavLink } from 'react-router-dom';
@@ -35,7 +34,6 @@ const arrRight = <i className="fa-regular fa-angle-right"></i>;
 function RecruitmentPost() {
   return (
     <>
-      <HeaderUser headerNavs={headerNavs} />
       <div className={cx('wrapper')}>
         <div className={cx('inner')}>
           <div className={cx('path')}>

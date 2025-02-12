@@ -5,37 +5,14 @@ import HeaderUser from '../components/HeaderUser/HeaderUser';
 import config from '~/config';
 
 const cx = classNames.bind(styles);
-
-const headerNavs = [
-  {
-    icon: <i className="fa-solid fa-house"></i>,
-    state: true,
-    tooltip: true,
-    tooltipContent: 'Trang chủ',
-    tooltipPlace: 'bot',
-  },
-  {
-    icon: <i className="fa-light fa-newspaper"></i>,
-    state: false,
-    tooltip: true,
-    tooltipContent: 'Tổng hợp tin tức',
-    tooltipPlace: 'bot',
-    link: config.routes.home.recruitmentPost,
-  },
-  {
-    icon: <i className="fa-light fa-compass"></i>,
-    state: false,
-    tooltip: true,
-    tooltipContent: 'Khám phá',
-    tooltipPlace: 'bot',
-    link: config.routes.home.explore,
-  },
-];
+const header = {
+  home: 1,
+  about: 0,
+};
 
 function DefaultLayout({ children }) {
   return (
     <div className={cx('wrapper')}>
-      <HeaderUser headerNavs={headerNavs} />
       <div className={cx('inner')}>{children}</div>
     </div>
   );
