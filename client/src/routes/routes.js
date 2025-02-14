@@ -19,6 +19,7 @@ import EmployeeInfo from '~/pages/EmployeeInfo';
 import InterviewList from '~/pages/Interview/InterviewList/InterviewList';
 import InterViewDetail from '~/pages/Interview/InterViewDetail';
 import CrreateInterview from '~/pages/Interview/CrreateInterview';
+import Setting from '~/pages/Setting';
 // don't need to login
 
 const publicRouters = [
@@ -230,7 +231,7 @@ const publicRouters = [
   },
   {
     path: config.routes.admin.settings,
-    component: Announcements,
+    component: Setting,
     layout: AdminLayout,
   },
 ];
