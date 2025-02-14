@@ -67,7 +67,7 @@ const publicRouters = [
     layout: AdminLayout,
   },
   {
-    path: config.routes.admin.recruitmentDetail,
+    path: config.routes.admin.recruitmentDetail + "/:id",
     component: PostDetail,
     layout: AdminLayout,
   },

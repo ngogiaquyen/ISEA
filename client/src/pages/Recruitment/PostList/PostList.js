@@ -22,6 +22,7 @@ function PostList() {
         const data = await getData('/post/read');
         setPostDate(data);
         hideLoadBar();
+        console.log(data)
       } catch (error) {
         console.error('Error getting data: ', error);
       }
@@ -37,6 +38,7 @@ function PostList() {
         {postData.map((post, index) => (
           <PostItem
             key={index}
+            id={post.id}
             title={post.title}
             date={post.expiration_date}
             createAt={post.create_at}

@@ -98,20 +98,15 @@ function CreatePost() {
     hideLoadBar();
   }, []);
 
-  const { setToastList } = useContext(ToastContext);
+  const { addToast } = useContext(ToastContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const formData = new FormData(formRef.current);
-
     try {
       const response = await postData('/post/create', formData);
       console.log(response);
-      setToastList((prev) => {
-        console.log([...prev, { id: Date.now(), ...response }]);
-        return [...prev, { id: Date.now(), ...response }];
-      });
+      addToast(response);
       if (response.status === 'success') {
         navigate(config.routes.admin.recruitmentList);
       }
@@ -127,7 +122,7 @@ function CreatePost() {
           <PreviousPageBTN />
           <span className={cx('post-title')}>Đăng bài</span>
         </div>
-        <Button title="Lưu lại" onClick={handleSubmit}/>
+        <Button title="Lưu lại" onClick={handleSubmit} />
       </div>
       <form className={cx('post-form')} ref={formRef}>
         <FormGroup

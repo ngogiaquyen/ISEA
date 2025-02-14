@@ -11,7 +11,6 @@ function ModalOverLay() {
   const {modalComponentContent, setModalComponentContent} = useContext(ModalOverLayContext);
   const handleHide = () => {
     setModalComponentContent(null);
-    console.log("hell")
   };
 
   return (
@@ -20,7 +19,6 @@ function ModalOverLay() {
       <div className={cx('content')}>
         <FontAwesomeIcon className={cx('icon')} icon={faXmark} onClick={handleHide} />
         {modalComponentContent}
-        
       </div>
     </div>
   );
