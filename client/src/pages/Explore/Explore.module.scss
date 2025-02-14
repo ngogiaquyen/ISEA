@@ -3,10 +3,9 @@
   --general-padding: 20px;
 }
 .wrapper {
-  max-width: 1440px;
+  max-width: 1280px;
   margin: 0 auto;
-  margin-top: calc(64px);
-  padding: 0 12px;
+  padding: 16px;
 }
 .wrapper > * {
   margin-top: 16px;
@@ -17,10 +16,11 @@
 .poster {
   position: relative;
   display: flex;
-  //   justify-content: ;
   align-items: flex-end;
   border-radius: 12px;
   overflow: hidden;
+  margin: 0;
+  border: 1px solid #d3d5d6;
 }
 .poster img {
   position: relative;
@@ -107,7 +107,8 @@
 .col1 > * {
   margin-right: 16px;
   margin-bottom: 16px;
-  width: unset;
+  width: unset !important;
+  border: 1px solid #d3d5d6;
 }
 .col1 > :nth-child(2) > div {
   padding: var(--general-padding);
@@ -127,6 +128,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  border: 1px solid #d3d5d6;
 }
 .box-info > * {
   padding: var(--general-padding);

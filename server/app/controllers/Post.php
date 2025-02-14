@@ -32,7 +32,7 @@ class Post extends Controller
     public function read($id = '')
     {
         validMethodGET();
-        echo json_encode($this->post_model->readPosts());
+        echo json_encode($this->post_model->readPosts($id));
     }
     public function update($id = '')
     {

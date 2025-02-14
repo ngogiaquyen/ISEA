@@ -27,7 +27,7 @@ class Model
         if (!isset($this->conn)) {
             return [];
         }
-        $sql = "SELECT * FROM $table" . ($conditions ? " WHERE $conditions" : "");
+        $sql = "SELECT * FROM $table" . ($conditions ? " WHERE $conditions" : "") . " ORDER BY edit_at DESC";
         try {
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();

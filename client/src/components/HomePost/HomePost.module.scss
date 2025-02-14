@@ -1,10 +1,12 @@
-//split
 .list-post {
   display: flex;
   flex-direction: column;
-  margin-right: 16px;
 }
 .list-post > * {
-  margin-bottom: 16px;
+  margin-bottom: 16px !important;
 }
-
+.title {
+  font-size: 14px;
+  margin-bottom: 12px;
+  font-weight: 300;
+}

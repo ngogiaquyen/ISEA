@@ -11,7 +11,6 @@ import LoginContainer from '~/pages/LoginContainer';
 import TrainingProgram from '~/pages/TrainingProgram/TrainingProgram';
 import Apply from '~/pages/Apply';
 import Explore from '~/pages/Explore/Explore';
-import RecruitmentPost from '~/pages/RecruitmentPost';
 import UpdateEmployeeInfo from '~/pages/UpdateEmployeeInfo';
 import CreatePost from '~/pages/Recruitment/CreatePost';
 import PostList from '~/pages/Recruitment/PostList';
@@ -26,11 +25,6 @@ const publicRouters = [
   {
     path: config.routes.dashboard.home,
     component: Home,
-  },
-  {
-    path: config.routes.home.recruitmentPost,
-    component: RecruitmentPost,
-    layout: DefaultLayout,
   },
   {
     path: config.routes.home.explore,
