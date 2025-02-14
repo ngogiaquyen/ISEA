@@ -14,22 +14,6 @@
     margin-bottom: 12px;
 }
 
-
-
-input, select{
-    border-radius: 2px;
-    padding-inline-start: 12px;
-    color: rgb(22, 24, 35);
-    line-height: 100%;
-    outline: none;
-    height: 100%;
-    font-size: 16px;
-    caret-color: rgb(254, 44, 85);
-    width: 100%;
-    padding-inline-end: 12px;
-    background-color: #fff;
-}
-
 .error-message{
     font-size: 1.4rem;
     color: var(--red-color);

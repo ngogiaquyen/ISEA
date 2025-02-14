@@ -4,7 +4,6 @@ import MenuItem from '~/components/MenuItem/MenuItem';
 import { useContext, useEffect, useState } from 'react';
 import config from '~/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngellist } from '@fortawesome/free-brands-svg-icons';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { ActiveBoardContext } from '~/components/Context/ActiveBoardProvider';
 
@@ -13,8 +12,8 @@ const cx = classNames.bind(styles);
 const subCategories = {
   1: [
     { title: 'Bài đăng', to: config.routes.admin.recruitmentList },
+    { title: 'Lịch phỏng vấn', to: config.routes.admin.interviewList },
     { title: 'Sàng lọc ứng viên', to: config.routes.admin.recruitmentProfile },
-    { title: 'Lên lịch phỏng vấn', to: config.routes.admin.recruitmentSchedule },
     { title: 'Quyết định tuyển dụng', to: config.routes.admin.recruitmentDecision },
   ],
   2: [
@@ -49,7 +48,7 @@ const subCategories = {
 function BoardSection({ selectedCategoryId }) {
 
   const { isCollapsedBoard, setIsCollapsedBoard } = useContext(ActiveBoardContext);
-  
+
 
   const handleToggleSidebar = () => {
     setIsCollapsedBoard((prev) => !prev);

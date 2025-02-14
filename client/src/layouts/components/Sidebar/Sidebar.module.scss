@@ -3,7 +3,7 @@
   flex-direction: column;
   max-width: var(--sidebar-width);
   width: 100%;
-  background-color: #F8F9FA;
+  background-color: var(--sidebar-bg-color);
   height: calc(100vh);
   // border-right: 1px solid var(--line-border-color);
     // transition: width 0.3s ease, opacity 0.3s ease;
@@ -29,7 +29,7 @@
 }
 
 .icon {
-  color: #333;
+  color: var(--text-color);
   font-size: 20px;
   min-width: 40px;
 }

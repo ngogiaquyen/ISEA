@@ -17,7 +17,7 @@ function FormGroup({
   selectData = [],
   layout,
   onChange,
-  handleValidate = () => {},
+  handleValidate = [],
 }) {
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
@@ -29,29 +29,30 @@ function FormGroup({
     InputTag = Select;
   }
 
-  const handleError = (value ="") => {
-    for(let obj of handleValidate) {
+  const handleError = (value = '') => {
+    for (let obj of handleValidate) {
       if (obj.funct(inputValue)) {
         setError('');
       } else {
         setError(obj.message);
-        console.log(obj.message)
+        console.log(obj.message);
         break;
       }
-      console.log("ehllo")
-    };
+      console.log('ehllo');
+    }
   };
 
   const handleInputChange = (e) => {
-    const newValue = e.target.value || "";
+    const newValue = e.target.value || '';
     setInputValue(newValue);
     onChange?.(e);
-    for(let obj of handleValidate) {
+
+    for (let obj of handleValidate) {
       if (obj.funct(inputValue)) {
         setError('');
       }
       break;
-    };
+    }
   };
 
   return (
@@ -83,14 +84,7 @@ function FormGroup({
           />
         )}
 
-        {InputTag === Select && (
-          <Select
-            options={selectData}
-            name={name}
-            error={error}
-            onChange={handleInputChange}
-          />
-        )}
+        {InputTag === Select && <Select options={selectData} name={name} error={error} onChange={handleInputChange} />}
 
         {error && <p className={cx('error-message')}>{error}</p>}
       </OutsideClickHandler>

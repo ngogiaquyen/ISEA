@@ -16,6 +16,10 @@ import UpdateEmployeeInfo from '~/pages/UpdateEmployeeInfo';
 import CreatePost from '~/pages/Recruitment/CreatePost';
 import PostList from '~/pages/Recruitment/PostList';
 import PostDetail from '~/pages/Recruitment/PostDetail';
+import EmployeeInfo from '~/pages/EmployeeInfo';
+import InterviewList from '~/pages/Interview/InterviewList/InterviewList';
+import InterViewDetail from '~/pages/Interview/InterViewDetail';
+import CrreateInterview from '~/pages/Interview/CrreateInterview';
 // don't need to login
 
 const publicRouters = [
@@ -46,6 +50,11 @@ const publicRouters = [
     path: config.routes.admin.root,
     component: LoginContainer,
     layout: EmptyLayout,
+  },
+  {
+    path: config.routes.admin.employeeInfo,
+    component: EmployeeInfo,
+    layout: AdminLayout,
   },
   // Tuyển dụng
   {
@@ -81,6 +90,22 @@ const publicRouters = [
   {
     path: config.routes.admin.recruitmentDecision,
     component: Announcements,
+    layout: AdminLayout,
+  },
+  // phỏng vấn
+  {
+    path: config.routes.admin.interviewList,
+    component: InterviewList,
+    layout: AdminLayout,
+  },
+  {
+    path: config.routes.admin.interviewDetail,
+    component: InterViewDetail,
+    layout: AdminLayout,
+  },
+  {
+    path: config.routes.admin.createInterview,
+    component: CrreateInterview,
     layout: AdminLayout,
   },
   // Đào tạo

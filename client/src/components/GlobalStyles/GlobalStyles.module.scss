@@ -1,5 +1,5 @@
 :root {
-  --text-color: #333;
+  --text-color: var(--text-color);
   --white-color: #fff;
   --black-color: #000;
   --header-color: #0074e9;
@@ -12,10 +12,10 @@
   --primary-admin-color: #3b82f6;
 
   // toast
-  --success-color: #47D764;
+  --success-color: #47d764;
   --error-color: #ff355b;
-  --info-color: #2F86EB;
-  --warning-color: #FFC021;
+  --info-color: #2f86eb;
+  --warning-color: #ffc021;
 
   // height
   --height-header: 64px;
@@ -31,27 +31,64 @@
   --secondary-color: #f3f5f6;
 
   --tag-blue: #0081ff;
-  --tag-green: #00CC00;
-  --tag-light-purple: #7A6BFF;
+  --tag-green: #00cc00;
+  --tag-light-purple: #7a6bff;
 
   --blue-color-state-0: #1d4ed8;
-  --blue-color-state-1: #006CD9;
-  --blue-color-state-2: #2693FF;
-  --blue-color-state-3: #409FFF;
-  --blue-color-state-4: #59ACFF;
-  --blue-color-state-5: #73B9FF;
-  --blue-color-state-6: #8CC6FF;
-  --blue-color-state-7: #A6D2FF;
+  --blue-color-state-1: #006cd9;
+  --blue-color-state-2: #2693ff;
+  --blue-color-state-3: #409fff;
+  --blue-color-state-4: #59acff;
+  --blue-color-state-5: #73b9ff;
+  --blue-color-state-6: #8cc6ff;
+  --blue-color-state-7: #a6d2ff;
 
   --background-color-state-1: #f3f5f6;
 
   --blue-color-hover-state-1: #3b82f60d;
   --blue-color-hover-state-2: #3b82f61a;
-  --blue-color-hover-state-3: rgba(60, 131, 246, 0.150);
+  --blue-color-hover-state-3: rgba(60, 131, 246, 0.15);
 
   --blue-color-hover-state-4: rgba(59, 130, 246, 0.2);
   --blue-color-hover-state-5: rgba(59, 130, 246, 0.4);
   --blue-color-hover-state-6: rgba(59, 130, 246, 0.6);
+
+  // light mode
+  --sidebar-bg-color: #f8f9fa;
+  --broad-bg-color: rgb(245, 245, 245);
+  --item-bg-hover: #e3e3e3;
+  --content-bg-color: ;
+  --text-color: var(--text-color);
+  --card-bg-color: #fff;
+  --modal-bg-color: #fff;
+  --hight-light-bg-color: #f8f9fa;
+
+  --selected-text-color: #007bff;
+  --title-page-color: #007bff;
+  --primary-title-text-color: #007bff;
+
+  
+  --waiting-status-text-color: #ff9800;
+  --waiting-status-bg-color: #fff3cd;
+}
+
+[data-theme='dark'] {
+  --sidebar-bg-color: #212529;
+  --broad-bg-color: #2f353a;
+  --item-bg-hover: #0d1117;
+  --content-bg-color: #121212;
+  --text-color: #fff;
+  --card-bg-color: #282828;
+  --modal-bg-color: #575757;
+  --hight-light-bg-color: #919191;
+
+  --selected-text-color: #87ba83;
+  --title-page-color: #bad7b7;
+  --primary-title-text-color: #aabcaf;
+  --waiting-status-text-color: #fff;
+  --waiting-status-bg-color: #909390;
+
+  --input-bg-color: rgba(185, 185, 185, 0.235);
 }
 
 * {
@@ -129,3 +166,5 @@ ul {
   padding: 0;
   margin: 0;
 }
+
+// dark or light mode

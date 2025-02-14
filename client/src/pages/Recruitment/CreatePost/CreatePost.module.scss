@@ -10,15 +10,16 @@
 .head {
   display: flex;
   justify-content: space-between;
-  background-color: #f1f1f1;
+  // background-color: #f1f1f1;
   padding: 12px 20px;
   button {
-    border: 1px solid #333;
+    border: 1px solid var(--text-color);
   }
 }
 
 .left {
   display: flex;
+  align-items: center;
 
   button {
     margin-left: 4px;
@@ -27,6 +28,7 @@
 
 .post-title {
   font-weight: 600;
+  color: var(--text-color);
 }
 
 form{

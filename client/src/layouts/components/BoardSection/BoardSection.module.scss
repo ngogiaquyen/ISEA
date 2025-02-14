@@ -5,14 +5,11 @@
   flex-direction: column;
   max-width: var(--sidebar-width);
   width: 100%;
-  background-color: rgb(245, 245, 245);
+  background-color: var(--broad-bg-color);
   height: calc(100vh - var(--height-header));
   border-right: 1px solid var(--line-border-color);
   transition: transform 0.3s;
   z-index: 8;
-  // &.collapse {
-  //   animation: fadeOut 0.3s ease-in-out forwards;
-  // }
 }
 
 

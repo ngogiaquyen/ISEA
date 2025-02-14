@@ -20,10 +20,8 @@ function PostList() {
     async function fetchData() {
       try {
         const data = await getData('/post/read');
-        console.log(data);
         setPostDate(data);
         hideLoadBar();
-        console.log(hideLoadBar)
       } catch (error) {
         console.error('Error getting data: ', error);
       }

@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContext } from '~/components/Context/ToastProvider';
 import config from '~/config';
 import { LoadBarContext } from '~/components/Context/LoadBarPovider';
+import PreviousPageBTN from '~/components/PreviousPage';
+import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
@@ -122,10 +124,10 @@ function CreatePost() {
     <div className={cx('wrapper')}>
       <div className={cx('head')}>
         <div className={cx('left')}>
+          <PreviousPageBTN />
           <span className={cx('post-title')}>Đăng bài</span>
-          <button onClick={() => navigate(-1)}>Quay lại</button>
         </div>
-        <button onClick={handleSubmit}>Lưu lại</button>
+        <Button title="Lưu lại" onClick={handleSubmit}/>
       </div>
       <form className={cx('post-form')} ref={formRef}>
         <FormGroup

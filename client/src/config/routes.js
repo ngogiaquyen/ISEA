@@ -13,6 +13,7 @@ const routes = {
     root: '/admin',
     login: '/admin/login',
     
+    employeeInfo: '/admin/thong-tin-nhan-vien',
     // Tuyển dụng
     recruitment: '/admin/quan-ly-tuyen-dung',
     recruitmentCreate: '/admin/tuyen-dung/dang-bai',
@@ -21,6 +22,11 @@ const routes = {
     recruitmentProfile: '/admin/tuyen-dung/loc-ung-vien',
     recruitmentSchedule: '/admin/tuyen-dung/len-lich',
     recruitmentDecision: '/admin/tuyen-dung/quyet-dinh',
+
+    // phỏng vấn
+    createInterview: '/admin/tuyen-dung/phong-van/tao-moi',
+    interviewList: '/admin/tuyen-dung/danh-sach-phong-van',
+    interviewDetail: '/admin/tuyen-dung/phong-van/chi-tiet',
 
     // Đào tạo
     training: '/admin/quan-ly-dao-tao',

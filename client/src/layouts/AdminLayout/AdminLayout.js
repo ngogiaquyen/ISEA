@@ -8,6 +8,7 @@ import { useContext, useState } from 'react';
 import { ActiveBoardContext } from '~/components/Context/ActiveBoardProvider';
 import Loading from '~/components/Loading';
 import ToastList from '~/components/ToastList';
+import ModalOverLay from '../components/ModalOverLay';
 
 const cx = classNames.bind(styles);
 
@@ -32,7 +33,7 @@ function AdminLayout({ children }) {
       </div>
 
       <ToastList />
-      
+      <ModalOverLay/>
     </div>
   );
 }

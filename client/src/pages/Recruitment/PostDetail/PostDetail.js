@@ -1,7 +1,11 @@
 import classNames from 'classnames/bind';
 import styles from './PostDetail.module.scss';
-import CandidateItem from './CandidateItem';
+import CandidateItem from '../CandidateItem/CandidateItem';
 import { useEffect, useState } from 'react';
+import PreviousPageBTN from '~/components/PreviousPage';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendar, faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
+import CandidateList from '../CandidateList/CandidateList';
 
 const cx = classNames.bind(styles);
 
@@ -26,7 +30,7 @@ function PostDetail() {
       edit_at: '2025-02-04 16:15:36',
     });
   }, []);
-  
+
   useEffect(() => {
     if (!postDetail.content) return;
     const isLongContent = postDetail.content.length > previewLength;
@@ -34,13 +38,20 @@ function PostDetail() {
       expanded ? postDetail.content : postDetail.content.substring(0, previewLength) + (isLongContent ? '...' : ''),
     );
   }, [postDetail, expanded]);
+
   return (
     <div className={cx('wrapper')}>
       <div className={cx('head')}>
-        <h4 className={cx('title')}>{postDetail.title}</h4>
+        <div className={cx('head-left')}>
+          <PreviousPageBTN />
+          <h4 className={cx('title')}>{postDetail.title}</h4>
+        </div>
         <span className={cx('date')}>Ngày tạo: {postDetail.create_at}</span>
       </div>
-
+      <div className={cx('tools')}>
+        <FontAwesomeIcon className={cx('icon')} icon={faPenToSquare} />
+        <FontAwesomeIcon className={cx('icon')} icon={faTrash} />
+      </div>
       <div className={cx('post-detail')}>
         <p>
           <strong>Mức lương:</strong> {postDetail.salary}
@@ -63,18 +74,7 @@ function PostDetail() {
           </button>
         </div>
       </div>
-      <div className={cx('content')}>
-        <h5 className={cx('list-title')}>Danh sách ứng viên</h5>
-        <div className={cx('list')}>
-          <CandidateItem />
-          <CandidateItem />
-          <CandidateItem />
-          <CandidateItem />
-          <CandidateItem />
-          <CandidateItem />
-          <CandidateItem />
-        </div>
-      </div>
+      <CandidateList type="post" />
     </div>
   );
 }

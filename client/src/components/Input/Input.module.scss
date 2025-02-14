@@ -24,7 +24,7 @@
 .input, select, option {
   border-radius: 2px;
   padding-inline-start: 12px;
-  color: rgb(22, 24, 35);
+  color: var(--text-color);
   line-height: 100%;
   outline: none;
   font-size: 16px;
@@ -32,8 +32,18 @@
   caret-color: rgb(254, 44, 85);
   width: 100%;
   padding-inline-end: 12px;
-  background-color: #fff;
+  background-color: var(--input-bg-color);
 }
+
+[data-theme='dark'] {
+  --input-bg-color1: black;
+  --text-color: white;
+}
+select option {
+  background-color: var(--input-bg-color1);
+  color: var(--text-color1);
+}
+
 
 .input.error {
   border: 1px solid var(--red-color);
@@ -82,6 +92,7 @@
 
 
 textarea{
+  color: var(--text-color);
   min-height: 140px;
   display: block; 
   width: 100%;
@@ -94,4 +105,5 @@ textarea{
   box-sizing: border-box;
   resize: vertical; 
   outline: none;
+  background-color: var(--input-bg-color);
 }

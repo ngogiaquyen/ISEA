@@ -1,13 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 
 import { privateRouters, publicRouters } from './routes';
 import DefaultLayout from './layouts/DefaultLayout';
 
 function App() {
+  // dissable right mouse click
+  const handleContextMenu = (e)=>{
+    e.preventDefault();
+  }
   return (
     <Router>
-      <div className="app">
+      <div className="app" onContextMenu={handleContextMenu}>
         <Routes>
           {/* public routes */}
           {publicRouters.map((route, index) => {
