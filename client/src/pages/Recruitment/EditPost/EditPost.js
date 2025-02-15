@@ -1,26 +1,24 @@
 import classNames from 'classnames/bind';
-import styles from './CreatePost.module.scss';
-import FormGroup from '~/components/FormGroup';
+import styles from './EditPost.module.scss';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { postData } from '~/hooks/apiService';
-import { isNotEmpty, isNumber } from '~/hooks/validate';
+import { getData, postData } from '~/hooks/apiService';
 import { useNavigate } from 'react-router-dom';
 import { ToastContext } from '~/components/Context/ToastProvider';
 import config from '~/config';
 import { LoadBarContext } from '~/components/Context/LoadBarPovider';
-import PreviousPageBTN from '~/components/PreviousPage';
 import Button from '~/components/Button';
 import PostForm from '../PostForm/PostForm';
+import { ModalOverLayContext } from '~/components/Context/ModalOverlayProvider';
 
 const cx = classNames.bind(styles);
 
-
-function CreatePost() {
+function EditPost({ id, onChangeValue = () => {} }) {
   const formRef = useRef(null);
   const navigate = useNavigate();
+  const { setModalComponentContent } = useContext(ModalOverLayContext);
 
   const { showLoadBar, hideLoadBar } = useContext(LoadBarContext);
-
+  const [postValue, setPostValue] = useState({});
   const [title, setTitle] = useState('');
   const [salary, setSalary] = useState('');
   const [location, setLocation] = useState('');
@@ -28,9 +26,18 @@ function CreatePost() {
   const [expirationDate, setExpirationDate] = useState('');
   const [content, setContent] = useState('');
 
+  const handleLoadData = async () => {
+    try {
+      const response = await getData(`/post/read/${id}`);
+      console.log(response[0]);
+      if (response.length) setPostValue(response[0]);
+    } catch (error) {
+      console.error('Error posting data: ', error);
+    }
+  };
   useEffect(() => {
     showLoadBar();
-
+    handleLoadData();
     hideLoadBar();
   }, []);
 
@@ -39,12 +46,13 @@ function CreatePost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(formRef.current);
+    formData.append('id', id);
     try {
-      const response = await postData('/post/create', formData);
-      console.log(response);
+      const response = await postData(`/post/update`, formData);
       addToast(response);
       if (response.status === 'success') {
-        navigate(config.routes.admin.recruitmentList);
+        onChangeValue();
+        setModalComponentContent(null);
       }
     } catch (error) {
       console.error('Error posting data: ', error);
@@ -55,14 +63,13 @@ function CreatePost() {
     <div className={cx('wrapper')}>
       <div className={cx('head')}>
         <div className={cx('left')}>
-          <PreviousPageBTN />
-          <span className={cx('post-title')}>Đăng bài</span>
+          <span className={cx('post-title')}>Chỉnh sửa bài đăng</span>
         </div>
         <Button title="Lưu lại" onClick={handleSubmit} />
       </div>
-      <PostForm/>
+      <PostForm ref={formRef} data={postValue} />
     </div>
   );
 }
 
-export default CreatePost;
+export default EditPost;

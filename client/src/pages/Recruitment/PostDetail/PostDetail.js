@@ -11,6 +11,7 @@ import { ModalOverLayContext } from '~/components/Context/ModalOverlayProvider';
 import ConfirmModal from '~/layouts/components/ConfirmModal';
 import { ToastContext } from '~/components/Context/ToastProvider';
 import config from '~/config';
+import EditPost from '../EditPost';
 
 const cx = classNames.bind(styles);
 
@@ -25,16 +26,16 @@ function PostDetail() {
   const [expanded, setExpanded] = useState(false);
   const previewLength = 200;
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const data = await getData(`/post/read/${id}`);
-        if (data.length) setPostDetail(data[0]);
-        console.log(data);
-      } catch (error) {
-        console.error('Error getting data: ', error);
-      }
+  async function fetchData() {
+    try {
+      const data = await getData(`/post/read/${id}`);
+      if (data.length) setPostDetail(data[0]);
+      console.log(data);
+    } catch (error) {
+      console.error('Error getting data: ', error);
     }
+  }
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -74,6 +75,10 @@ function PostDetail() {
     );
   };
 
+  const handleEditPost = ()=>{
+    setModalComponentContent(<EditPost id={id} onChangeValue={fetchData}/>);
+  }
+
   return (
     <div className={cx('wrapper')}>
       <div className={cx('head')}>
@@ -84,7 +89,7 @@ function PostDetail() {
         <span className={cx('date')}>Ngày tạo: {postDetail.create_at}</span>
       </div>
       <div className={cx('tools')}>
-        <FontAwesomeIcon className={cx('icon')} icon={faPenToSquare} />
+        <FontAwesomeIcon className={cx('icon')} icon={faPenToSquare} onClick={handleEditPost}/>
         <FontAwesomeIcon className={cx('icon')} icon={faTrash} onClick={handleRemovePost} />
       </div>
       <div className={cx('post-detail')}>

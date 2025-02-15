@@ -9,9 +9,10 @@ import Textarea from '../Input/Textarea';
 const cx = classNames.bind(styles);
 
 function FormGroup({
-  label,
-  name,
-  placeholder,
+  value = '',
+  label = '',
+  name = '',
+  placeholder = '',
   inputType,
   textarea,
   selectData = [],
@@ -21,7 +22,11 @@ function FormGroup({
 }) {
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
-
+  
+  useEffect(() => {
+    console.log(value)
+    setInputValue(value);
+  }, [value]);
   let InputTag = Input;
   if (textarea) {
     InputTag = 'textarea';
@@ -44,6 +49,7 @@ function FormGroup({
 
   const handleInputChange = (e) => {
     const newValue = e.target.value || '';
+    console.log(newValue)
     setInputValue(newValue);
     onChange?.(e);
 
@@ -84,7 +90,7 @@ function FormGroup({
           />
         )}
 
-        {InputTag === Select && <Select options={selectData} name={name} error={error} onChange={handleInputChange} />}
+        {InputTag === Select && <Select value={inputValue} options={selectData} name={name} error={error} onChange={handleInputChange} />}
 
         {error && <p className={cx('error-message')}>{error}</p>}
       </OutsideClickHandler>
