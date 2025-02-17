@@ -27,7 +27,7 @@ const OutsideClickHandler = ({ onClickOutside, children }) => {
     };
   }, [onClickOutside, isInputFocused]);
 
-  return <div ref={ref}>{children}</div>;
+  return <div ref={ref} style={{width: "100%"}}>{children}</div>;
 };
 
 export default OutsideClickHandler;

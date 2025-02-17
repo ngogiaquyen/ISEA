@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import styles from './EditPost.module.scss';
+import styles from './EditForm.module.scss';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { getData, postData } from '~/hooks/apiService';
 import { useNavigate } from 'react-router-dom';
@@ -7,24 +7,19 @@ import { ToastContext } from '~/components/Context/ToastProvider';
 import config from '~/config';
 import { LoadBarContext } from '~/components/Context/LoadBarPovider';
 import Button from '~/components/Button';
-import PostForm from '../PostForm/PostForm';
+import PostForm from '../Form/PostForm';
 import { ModalOverLayContext } from '~/components/Context/ModalOverlayProvider';
 
 const cx = classNames.bind(styles);
 
-function EditPost({ id, onChangeValue = () => {} }) {
+function EditForm({ id, title="Chỉnh sửa", formComponent, onChangeValue = () => {} }) {
   const formRef = useRef(null);
-  const navigate = useNavigate();
   const { setModalComponentContent } = useContext(ModalOverLayContext);
 
   const { showLoadBar, hideLoadBar } = useContext(LoadBarContext);
   const [postValue, setPostValue] = useState({});
-  const [title, setTitle] = useState('');
-  const [salary, setSalary] = useState('');
-  const [location, setLocation] = useState('');
-  const [experience, setExperience] = useState('');
-  const [expirationDate, setExpirationDate] = useState('');
-  const [content, setContent] = useState('');
+
+  const FormType = formComponent;
 
   const handleLoadData = async () => {
     try {
@@ -63,13 +58,13 @@ function EditPost({ id, onChangeValue = () => {} }) {
     <div className={cx('wrapper')}>
       <div className={cx('head')}>
         <div className={cx('left')}>
-          <span className={cx('post-title')}>Chỉnh sửa bài đăng</span>
+          <span className={cx('post-title')}>{title}</span>
         </div>
         <Button title="Lưu lại" onClick={handleSubmit} />
       </div>
-      <PostForm ref={formRef} data={postValue} />
+      <FormType ref={formRef} data={postValue} />
     </div>
   );
 }
 
-export default EditPost;
+export default EditForm;

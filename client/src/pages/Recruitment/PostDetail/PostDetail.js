@@ -2,16 +2,17 @@ import classNames from 'classnames/bind';
 import styles from './PostDetail.module.scss';
 import { useContext, useEffect, useState } from 'react';
 import PreviousPageBTN from '~/components/PreviousPage';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
-import CandidateList from '../CandidateList/CandidateList';
+import CandidateList from '../../../layouts/components/Candidate/CandidateList/CandidateList';
 import { getData, postData } from '~/hooks/apiService';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ModalOverLayContext } from '~/components/Context/ModalOverlayProvider';
 import ConfirmModal from '~/layouts/components/ConfirmModal';
 import { ToastContext } from '~/components/Context/ToastProvider';
 import config from '~/config';
-import EditPost from '../EditPost';
+import EditPost from '../../../layouts/components/EditForm';
+import UDActions from '~/components/UDActions';
+import EditForm from '../../../layouts/components/EditForm';
+import PostForm from '~/layouts/components/Form/PostForm';
 
 const cx = classNames.bind(styles);
 
@@ -76,7 +77,7 @@ function PostDetail() {
   };
 
   const handleEditPost = ()=>{
-    setModalComponentContent(<EditPost id={id} onChangeValue={fetchData}/>);
+    setModalComponentContent(<EditForm id={id} title="Chỉnh sửa bài đăng" formComponent={PostForm} onChangeValue={fetchData}/>);
   }
 
   return (
@@ -88,10 +89,7 @@ function PostDetail() {
         </div>
         <span className={cx('date')}>Ngày tạo: {postDetail.create_at}</span>
       </div>
-      <div className={cx('tools')}>
-        <FontAwesomeIcon className={cx('icon')} icon={faPenToSquare} onClick={handleEditPost}/>
-        <FontAwesomeIcon className={cx('icon')} icon={faTrash} onClick={handleRemovePost} />
-      </div>
+      <UDActions handleEdit={handleEditPost} handleRemove={handleRemovePost}/>
       <div className={cx('post-detail')}>
         <p>
           <strong>Mức lương:</strong> {postDetail.salary}

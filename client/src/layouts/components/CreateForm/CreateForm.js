@@ -1,32 +1,22 @@
 import classNames from 'classnames/bind';
-import styles from './CreatePost.module.scss';
-import FormGroup from '~/components/FormGroup';
-import { useContext, useEffect, useRef, useState } from 'react';
+import styles from './CreateForm.module.scss';
+import { useContext, useEffect, useRef } from 'react';
 import { postData } from '~/hooks/apiService';
-import { isNotEmpty, isNumber } from '~/hooks/validate';
 import { useNavigate } from 'react-router-dom';
 import { ToastContext } from '~/components/Context/ToastProvider';
 import config from '~/config';
 import { LoadBarContext } from '~/components/Context/LoadBarPovider';
 import PreviousPageBTN from '~/components/PreviousPage';
 import Button from '~/components/Button';
-import PostForm from '../PostForm/PostForm';
 
 const cx = classNames.bind(styles);
 
 
-function CreatePost() {
+function CreateForm({title="", typeUrl, formComponent}) {
   const formRef = useRef(null);
   const navigate = useNavigate();
-
+  const FormType = formComponent;
   const { showLoadBar, hideLoadBar } = useContext(LoadBarContext);
-
-  const [title, setTitle] = useState('');
-  const [salary, setSalary] = useState('');
-  const [location, setLocation] = useState('');
-  const [experience, setExperience] = useState('');
-  const [expirationDate, setExpirationDate] = useState('');
-  const [content, setContent] = useState('');
 
   useEffect(() => {
     showLoadBar();
@@ -40,7 +30,7 @@ function CreatePost() {
     e.preventDefault();
     const formData = new FormData(formRef.current);
     try {
-      const response = await postData('/post/create', formData);
+      const response = await postData(`/${typeUrl}/create`, formData);
       console.log(response);
       addToast(response);
       if (response.status === 'success') {
@@ -56,13 +46,13 @@ function CreatePost() {
       <div className={cx('head')}>
         <div className={cx('left')}>
           <PreviousPageBTN />
-          <span className={cx('post-title')}>Đăng bài</span>
+          <span className={cx('post-title')}>{title}</span>
         </div>
         <Button title="Lưu lại" onClick={handleSubmit} />
       </div>
-      <PostForm/>
+      <FormType ref={formRef}/>
     </div>
   );
 }
 
-export default CreatePost;
+export default CreateForm;
