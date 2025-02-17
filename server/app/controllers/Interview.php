@@ -28,7 +28,7 @@ class Interview extends Controller
             $this->interview_model->back('Tạo buổi phỏng vấn thất bại');
         }
         $interviewers = json_decode($_POST['interviewers']);
-        if(!is_array($interviewers) || count($interviewers) == 0) {
+        if (!is_array($interviewers) || count($interviewers) == 0) {
             $this->interview_model->back('Người phụ trách không được để trống');
         }
         $is_leader = true;
@@ -49,5 +49,27 @@ class Interview extends Controller
     {
         validMethodGET();
         echo json_encode($this->interview_model->readInterviews($id));
+    }
+    public function detail($id = '')
+    {
+        validMethodGET();
+        $result = $this->interview_model->readInterviewDetail($id);
+        $data = [];
+        foreach ($result as $interview) {
+            $data[] = [
+                'date' => $interview['interview_date'],
+                'hour' => $interview['interview_hour'],
+                'type' => $interview['interview_type'],
+                'location' => $interview['interview_location'],
+                'required_docs' => $interview['required_documents'],
+                'email' => $interview['email'],
+                'phone_number' => $interview['phone_number'],
+                'note' => $interview['note'],
+                'hrs' => explode(',', $interview['hrs']),
+                'create' => $interview['create_at'],
+                'edit' => $interview['edit_at']
+            ];
+        }
+        echo json_encode($data);
     }
 }
