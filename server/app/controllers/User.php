@@ -13,7 +13,7 @@ class User extends Controller
     {
         validUserLogin();
         $data = [
-            'username' => $_POST['username'],
+            'phone_number' => $_POST['phone_number'],
             'password' => $_POST['password'],
         ];
         if ($this->user_model->login($data)) {
@@ -25,10 +25,15 @@ class User extends Controller
     public function register()
     {
         validUserRegister();
+        $path = upload();
         $data = [
             'full_name' => $_POST['full_name'],
-            'username' => $_POST['username'],
-            'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+            'email' => $_POST['email'],
+            'phone_number' => $_POST['phone_number'],
+            'gender' => $_POST['gender'],
+            'birthday' => $_POST['birthday'],
+            'cv' => $path,
+            'password' => password_hash(formatDate($_POST['birthday']), PASSWORD_DEFAULT),
         ];
         if ($this->user_model->register($data)) {
             handleSuccess('Đăng ký thành công');

@@ -7,6 +7,9 @@
   position: relative;
   cursor: pointer;
 }
+.show {
+  border: 1px solid #0081ff;
+}
 .post-item::before {
   content: '';
   position: absolute;
@@ -97,13 +100,13 @@
   border-radius: 6px;
   margin-left: 12px;
   position: relative;
-  z-index: 999999999;
+  z-index: 999999998;
 }
 .btn-save-post i {
   font-size: 16px;
 }
 .btn-save-post:hover {
-  background-color: #DEECFF;
+  background-color: #deecff;
 }
 .post-from-company {
   font-size: 12px;
@@ -117,7 +120,7 @@
   padding: 4px 12px;
   border-radius: 4px;
 }
-.line-title{
+.line-title {
   font-size: 14px;
   font-weight: 400;
 }
@@ -129,12 +132,12 @@
   content: '• ';
   opacity: 0.8;
 }
-.short-desc{
+.short-desc {
   list-style: circle;
   padding-inline-start: 20px;
   margin-top: 12px;
 }
-.desc{
+.desc {
   font-size: 14px;
   font-weight: 300;
   margin-bottom: 4px;

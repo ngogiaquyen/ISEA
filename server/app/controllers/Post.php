@@ -44,8 +44,7 @@ class Post extends Controller
             'location' => $_POST['location'],
             'experience' => $_POST['experience'],
             'expiration_date' => $_POST['expiration_date'],
-            'content' => $_POST['content'],
-            'edit_at' => null
+            'content' => $_POST['content']
         ];
         if ($this->post_model->updatePost($id, $data)) {
             handleSuccess('Sửa bài viết thành công');

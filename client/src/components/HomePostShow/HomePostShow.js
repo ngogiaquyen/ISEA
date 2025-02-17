@@ -51,18 +51,18 @@ function generateDescription(desc) {
 
 function processHeight() {
   let scrollY = window.scrollY;
-  const process = this.document.querySelector('.process');
+  const process = document.getElementById('post-show');
   if (!process) return;
-  if (scrollY > 80) scrollY = 80;
-  process.style.height = `calc(100vh - 80px - 32px + ${scrollY}px)`;
+  if (scrollY > 81) scrollY = 81;
+  process.style.height = `calc(100vh - 81px - 32px + ${scrollY}px)`;
   console.log();
 }
 
 window.addEventListener('scroll', processHeight);
 
-function HomePostShow({ post }) {
+function HomePostShow({ post, onApply }) {
   return (
-    <div className={cx('post-show', 'process')}>
+    <div id="post-show" className={cx('post-show')}>
       <div className={cx('post-info-head')}>
         <div className={cx('post-title')}>
           <p>{post.title}</p>
@@ -73,7 +73,7 @@ function HomePostShow({ post }) {
           Thành phố Thái Nguyên
         </p>
         <div className={cx('btn-wrapper')}>
-          <button className={cx('btn-apply')}>
+          <button className={cx('btn-apply')} onClick={onApply}>
             Nộp hồ sơ ứng tuyển
             <i className="fa-solid fa-arrow-up-right-from-square"></i>
           </button>

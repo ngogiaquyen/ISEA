@@ -14,43 +14,42 @@ function generateShortDesc(desc) {
   let elems = [];
   let liElems = [];
   let count = 0;
-  let foundAsterisk = false; // Biến để theo dõi khi nào gặp dấu '*'
+  let foundAsterisk = false;
 
   for (let index = 0; index < lines.length; index++) {
     const line = lines[index].trim();
 
     if (foundAsterisk) {
-      if (count >= 3) break; // Nếu đã lấy đủ 3 dòng, thoát
+      if (count >= 3) break;
 
       if (line !== '' && !line.includes('*')) {
         liElems.push(
           <li key={`li-${count}`}>
             <span className={cx('desc')}>{cleanString(line)}</span>
-          </li>
+          </li>,
         );
         count++;
       }
     } else if (line.includes('*')) {
-      foundAsterisk = true; // Đánh dấu là đã tìm thấy dấu '*'
+      foundAsterisk = true;
     }
   }
 
-  // Nếu có ít nhất một dòng được thêm vào liElems, tạo danh sách
   if (liElems.length > 0) {
     elems.push(
       <ul className={cx('short-desc')} key={`ul`}>
         {liElems}
-      </ul>
+      </ul>,
     );
   }
 
   return elems;
 }
 
-function HomePostItem({ infoObj, onPostSelect }) {
+function HomePostItem({ infoObj, onPostSelect, isSelected }) {
   return (
     <li
-      className={cx('post-item')}
+      className={cx('post-item', { show: isSelected })}
       onClick={() => {
         onPostSelect(infoObj);
       }}

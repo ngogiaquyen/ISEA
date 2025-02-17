@@ -6,7 +6,20 @@ class Model
     {
         $this->conn = Db::getInstance()->getConnection();
     }
-
+    public function startTransaction()
+    {
+        $this->conn->beginTransaction();
+    }
+    public function done($message)
+    {
+        $this->conn->commit();
+        handleSuccess($message);
+    }
+    public function back($message)
+    {
+        $this->conn->rollback();
+        handleError($message);
+    }
     public function create($table, $data)
     {
         $key = implode(", ", array_keys($data));
@@ -17,15 +30,16 @@ class Model
             foreach ($data as $key => $value) {
                 $stmt->bindValue(":$key", $value);
             }
-            return $stmt->execute();
+            $stmt->execute();
+            return $this->conn->lastInsertId();
         } catch (PDOException $e) {
-            return false;
+            handleError($e->getMessage());
         }
     }
     public function read($table, $conditions = "")
     {
         if (!isset($this->conn)) {
-            return [];
+            handleError('Không thể kết nối với máy chủ');
         }
         $sql = "SELECT * FROM $table" . ($conditions ? " WHERE $conditions" : "") . " ORDER BY edit_at DESC";
         try {
@@ -33,7 +47,7 @@ class Model
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            return [];
+            handleError($e->getMessage());
         }
     }
     public function update($table, $data, $conditions = "")
@@ -52,7 +66,7 @@ class Model
             $stmt->execute();
             return $stmt->rowCount();
         } catch (PDOException $e) {
-            return 0;
+            handleError($e->getMessage());
         }
     }
     public function delete($table, $conditions = "")
@@ -63,7 +77,7 @@ class Model
             $stmt->execute();
             return $stmt->rowCount();
         } catch (PDOException $e) {
-            return 0;
+            handleError($e->getMessage());
         }
     }
 }

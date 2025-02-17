@@ -1,0 +1,136 @@
+@keyframes form-opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes form-tranform {
+  0% {
+    transform: translateY(200px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.form {
+  position: fixed;
+  inset: 0;
+  background-color: #fff;
+  z-index: 999999999;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+}
+.form form {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  // flex-direction: column;
+  // flex-wrap: nowrap;
+  padding: 32px;
+  border: 1px solid #d3d5d6;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  margin: auto 0;
+  position: relative;
+}
+.show {
+  animation: form-opacity 0.4s ease;
+}
+.show form {
+  animation: form-tranform 0.4s ease;
+}
+.wait {
+  display: flex;
+}
+.animation {
+  animation: form-opacity 0.4s ease forwards reverse;
+}
+.animation form {
+  animation: form-tranform 0.4s ease forwards reverse;
+}
+.form * {
+  color: #444;
+  font-size: 15px;
+}
+.btn-hide-form {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  cursor: pointer;
+  width: 28px;
+  aspect-ratio: 1;
+  background-color: transparent !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  padding: 0;
+}
+.btn-hide-form i {
+  color: #a3a5a6;
+}
+.btn-hide-form:hover i {
+  color: #444;
+}
+.form form > p {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+.form form > * {
+  flex: 1 0 100%;
+}
+.form form .label-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+.form .half {
+  max-width: 50%;
+}
+.form form .indent {
+  max-width: calc(50% - 16px);
+  margin-right: 16px;
+}
+.form input {
+  border: 1px solid #d3d5d6;
+  border-radius: 8px;
+  padding: 8px;
+  margin-top: 8px;
+}
+.form input::placeholder {
+  color: #aaa;
+}
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  appearance: none;
+}
+.form [type='file'] {
+  appearance: none;
+  display: none;
+}
+.form .file,
+.form select {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #d3d5d6;
+  margin-top: 8px;
+}
+.btn-send {
+  padding: 8px;
+  height: 44px;
+  background-color: #0081ff;
+  color: #fff;
+  border-radius: 8px;
+  margin-top: 18px;
+}
+.btn-send:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

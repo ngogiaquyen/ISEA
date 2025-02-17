@@ -1,6 +1,5 @@
 import classNames from 'classnames/bind';
 import styles from './Explore.module.scss';
-import config from '~/config';
 import logo from '~/assets/images/logo.jpg';
 import poster from '~/assets/images/poster.png';
 import { NavLink } from 'react-router-dom';
@@ -11,10 +10,10 @@ import lkIcon from '~/assets/images/linked.webp';
 import HeaderUser from '~/layouts/components/HeaderUser/HeaderUser';
 
 const cx = classNames.bind(styles);
-const header={
+const header = {
   home: 0,
   about: 1,
-}
+};
 const homeNewsItems = [
   {
     src: 'https://firebasestorage.googleapis.com/v0/b/ngontumathuat-d946a.appspot.com/o/images%2F268c39b9-4e17-4dc1-a66f-4bf57a1b68c4?alt=media&token=52ef2379-8c5b-481d-b2d2-00f35b0adfa4',
@@ -39,7 +38,7 @@ const homeNewsItems = [
 function Explore() {
   return (
     <>
-      <HeaderUser header={header} />
+      <HeaderUser state={header} />
       <div className={cx('wrapper')}>
         <div className={cx('poster')}>
           <img className={cx('poster-img')} src={poster} alt="poster" />
@@ -115,6 +114,7 @@ function Explore() {
                     <span>Xem bản đồ</span>
                   </span>
                   <iframe
+                    title="map"
                     className={cx('map')}
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14840.211403914107!2d105.79700410366057!3d21.5838600110685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31352738b1bf08a3%3A0x515f4860ede9e108!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2jhu4cgVGjDtG5nIHRpbiAmIFRydXnhu4FuIHRow7RuZyBUaMOhaSBOZ3V5w6pu!5e0!3m2!1svi!2s!4v1736147282621!5m2!1svi!2s"
                     allowFullScreen=""
@@ -129,7 +129,7 @@ function Explore() {
               <div className={cx('col2-sharer-body')}>
                 <span className={cx('content')}>Sao chép đường dẫn</span>
                 <div className={cx('box-link-sharer')}>
-                  <input value={'https://isea.com/'} readOnly/>
+                  <input value={'https://isea.com/'} readOnly />
                   <button className={cx('btn-copy')}>
                     <i className="fa-regular fa-copy"></i>
                   </button>
@@ -137,13 +137,13 @@ function Explore() {
                 <span className={cx('content')}>Chia sẻ qua mạng xã hội</span>
                 <div className={cx('box-option-sharer')}>
                   <NavLink className={cx('option-sharer')}>
-                    <img src={fbIcon} />
+                    <img src={fbIcon} alt="img" />
                   </NavLink>
                   <NavLink className={cx('option-sharer')}>
-                    <img src={twIcon} />
+                    <img src={twIcon} alt="img" />
                   </NavLink>
                   <NavLink className={cx('option-sharer')}>
-                    <img src={lkIcon} />
+                    <img src={lkIcon} alt="img" />
                   </NavLink>
                 </div>
               </div>

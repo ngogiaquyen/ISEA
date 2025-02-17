@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
-function HeaderUser({ header }) {
+function HeaderUser({ state }) {
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
@@ -15,12 +15,12 @@ function HeaderUser({ header }) {
           </div>
           <ul className={cx('nav')}>
             <li className={cx('nav-item')}>
-              <NavLink className={cx('nav-item-link', header.home ? 'active' : '')} to="/">
+              <NavLink className={cx('nav-item-link', { active: state.home })} to="/">
                 <span className={cx('nav-item-link-text')}>Trang chủ</span>
               </NavLink>
             </li>
             <li className={cx('nav-item')}>
-              <NavLink className={cx('nav-item-link', header.about ? 'active' : '')} to="/ve-chung-toi">
+              <NavLink className={cx('nav-item-link', { active: state.about })} to="/ve-chung-toi">
                 <span className={cx('nav-item-link-text')}>Về chúng tôi</span>
               </NavLink>
             </li>
