@@ -36,15 +36,6 @@ function InterviewForm({ ref, data }) {
         placeholder="Thời gian"
         handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng chọn thời gian!' }]}
       />
-      {/* <DatePicker
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          showTimeSelect
-          dateFormat="dd/MM/yyyy HH:mm"
-          placeholderText="Thời gian bắt đầu"
-          minDate={new Date("2025-02-17T22:03:55+07:00")}
-          className={styles.formControl}
-        /> */}
       <FormGroup
         name="interview_location"
         lable="Địa điểm"
