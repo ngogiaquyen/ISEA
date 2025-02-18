@@ -17,7 +17,7 @@ const subCategories = {
     { title: 'Quyết định tuyển dụng', to: config.routes.admin.recruitmentDecision },
   ],
   2: [
-    { title: 'Khóa đào tạo', to: config.routes.admin.trainingProgram },
+    { title: 'Khóa đào tạo', to: config.routes.admin.trainingList },
     { title: 'Tham gia đào tạo', to: config.routes.admin.trainingParticipation },
     { title: 'Hiệu quả đào tạo', to: config.routes.admin.trainingEffectiveness },
     { title: 'Kế hoạch đào tạo', to: config.routes.admin.trainingPlan },

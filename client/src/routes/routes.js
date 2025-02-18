@@ -8,7 +8,6 @@ import EmployeeRecords from '~/pages/EmployeeRecords';
 import Announcements from '~/pages/Announcements/Announcements';
 import PleaseSelectFeature from '~/pages/PleaseSelectFeature';
 import LoginContainer from '~/pages/LoginContainer';
-import TrainingProgram from '~/pages/TrainingProgram/TrainingProgram';
 import Apply from '~/pages/Apply';
 import Explore from '~/pages/Explore/Explore';
 import UpdateEmployeeInfo from '~/pages/UpdateEmployeeInfo';
@@ -21,6 +20,8 @@ import Setting from '~/pages/Setting';
 import CreateForm from '~/layouts/components/CreateForm';
 import PostForm from '~/layouts/components/Form/PostForm';
 import InterviewForm from '~/layouts/components/Form/InterviewForm';
+import TrainingList from '~/pages/Training/TrainingList';
+import TrainingForm from '~/layouts/components/Form/TrainingForm';
 // don't need to login
 
 const publicRouters = [
@@ -121,8 +122,18 @@ const publicRouters = [
     layout: AdminLayout,
   },
   {
-    path: config.routes.admin.trainingProgram,
-    component: TrainingProgram,
+    path: config.routes.admin.trainingCreate,
+    component: CreateForm,
+    layout: AdminLayout,
+    props: {
+      title: "Tạo khóa học",
+      typeUrl: "training",
+      formComponent: TrainingForm
+    }
+  },
+  {
+    path: config.routes.admin.trainingList,
+    component: TrainingList,
     layout: AdminLayout,
   },
   {
