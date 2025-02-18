@@ -6,7 +6,7 @@ import styles from './HomePostItem.module.scss';
 const cx = classNames.bind(styles);
 
 export function cleanString(str) {
-  return str.replace(/[*\+-]/g, '');
+  return str.replace(/[*+-]/g, '');
 }
 
 function generateShortDesc(desc) {
