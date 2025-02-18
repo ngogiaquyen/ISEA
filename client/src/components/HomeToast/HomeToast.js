@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
+import DOMPurify from 'dompurify';
 import styles from './HomeToast.module.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const cx = classNames.bind(styles);
 const iError = (
@@ -13,30 +14,39 @@ const iSuccess = (
     <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" />
   </svg>
 );
-let timeout;
+let timeout = null;
 
 function HomeToast({ obj, onClick }) {
   const [classToast, setClassToast] = useState('show');
 
-  useEffect(() => {
-    if (obj.keep) return;
-    timeout = setTimeout(() => {
-      handleClose();
-    }, 5400);
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, []);
-
   const handleClose = () => {
+    clearTimeout(timeout);
     setClassToast('wait');
+
     timeout = setTimeout(() => {
       setClassToast('hide');
+
       timeout = setTimeout(() => {
         onClick(null);
       }, 620);
     }, 4);
   };
+
+  const handleCloseRef = useRef(handleClose);
+  const keepRef = useRef(obj.keep);
+
+  useEffect(() => {
+    if (keepRef.current) return;
+
+    //automatic close toast
+    timeout = setTimeout(() => {
+      handleCloseRef.current();
+    }, 5400);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, []);
 
   return (
     <div id="toast" className={cx('toast', classToast)}>
@@ -44,7 +54,7 @@ function HomeToast({ obj, onClick }) {
         <div className={cx('toast-head', obj.status)}>{obj.status === 'error' ? iError : iSuccess}</div>
         <div className={cx('toast-body')}>
           <div className={cx('toast-title')}>{obj.title}</div>
-          <div className={cx('toast-content')} dangerouslySetInnerHTML={{ __html: obj.content }} />
+          <div className={cx('toast-content')} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(obj.content) }} />
         </div>
         <div className={cx('toast-foot')}>
           <i className="fa-light fa-xmark" onClick={handleClose}></i>

@@ -4,21 +4,21 @@ import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
-function HomeForm({ title, btnText, setForm, handleSubmit, children }) {
+function HomeForm({ title, btnContent, isDisable, setForm, handleSubmit, children }) {
   const [isShow, setIsShow] = useState(true);
   const [isAnimation, setIsAnimation] = useState(false);
-  let timeout;
 
   const hideForm = () => {
-    clearTimeout(timeout);
     setIsShow(false);
-    timeout = setTimeout(() => {
+
+    setTimeout(() => {
       setIsAnimation(true);
-      timeout = setTimeout(() => {
+
+      setTimeout(() => {
         setForm(null);
       }, 400);
-    }, 1);
-  };  
+    }, 4);
+  };
 
   return (
     <div className={cx('form', { show: isShow, animation: isAnimation })}>
@@ -28,8 +28,8 @@ function HomeForm({ title, btnText, setForm, handleSubmit, children }) {
         </button>
         <p>{title}</p>
         {children}
-        <button className={cx('btn-send')} type="submit" onClick={handleSubmit}>
-          {btnText}
+        <button className={cx('btn-send')} type="submit" onClick={handleSubmit} disabled={isDisable}>
+          {btnContent}
         </button>
       </form>
     </div>

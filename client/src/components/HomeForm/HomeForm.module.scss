@@ -23,6 +23,7 @@
   align-items: flex-start;
   justify-content: center;
   overflow-y: auto;
+  padding: 32px 16px;
 }
 .form {
   -ms-overflow-style: none;
@@ -134,11 +135,22 @@
   background-color: var(--primary-color);
   border-radius: 8px;
   margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: 0.8s !important;
 }
 .btn-send:hover {
-  background-color: var(--blue-color-state-2);
+  background-color: var(--primary-color-hover);
 }
 .btn-send:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
+  background-color: #d3d5d6;
+  cursor: default;
+}
+
+.icon {
+  height: 100%;
+  aspect-ratio: 10/7;
+  object-fit: cover;
 }
