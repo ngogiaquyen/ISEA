@@ -1,10 +1,29 @@
 body {
   height: 100vh;
-  background-color: var(--background-color-state-1);
+  // background-color: var(--background-color-state-1);
   background-color: #fff;
+  color: #444;
 }
 .wrapper {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
+
+.wrapper * {
+  transition: all 0.24s;
+  // transition: outline 0s;
+}
+
+.wrapper button {
+  color: #fff;
+  cursor: pointer;
+}
+// @media (prefers-color-scheme: dark) {
+//   body {
+//     background-color: #353746;
+//   }
+//   .wrapper * {
+//     color: #d3d5d6;
+//   }
+// }

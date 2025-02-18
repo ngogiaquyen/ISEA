@@ -18,18 +18,24 @@
   position: fixed;
   inset: 0;
   background-color: #fff;
-  z-index: 999999999;
+  z-index: 999999990;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   overflow-y: auto;
 }
+.form {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.form::-webkit-scrollbar {
+  display: none;
+}
 .form form {
   display: flex;
   justify-content: center;
   align-items: stretch;
-  // flex-direction: column;
-  // flex-wrap: nowrap;
+  background-color: rgba(255, 255, 255, 1);
   padding: 32px;
   border: 1px solid #d3d5d6;
   border-radius: 12px;
@@ -125,10 +131,12 @@
 .btn-send {
   padding: 8px;
   height: 44px;
-  background-color: #0081ff;
-  color: #fff;
+  background-color: var(--primary-color);
   border-radius: 8px;
   margin-top: 18px;
+}
+.btn-send:hover {
+  background-color: var(--blue-color-state-2);
 }
 .btn-send:disabled {
   opacity: 0.4;

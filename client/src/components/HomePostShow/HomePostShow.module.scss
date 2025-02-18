@@ -38,7 +38,7 @@
 }
 .btn-wrapper {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   margin: 8px 0;
   margin-bottom: 16px;
 }
@@ -46,7 +46,7 @@
   padding: 0;
   font-size: 15px;
   padding: 8px 12px;
-  height: 40px;
+  // height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,21 +54,24 @@
   border-radius: 6px;
 }
 .btn-apply {
-  background-color: #0081ff;
-  color: #fff;
+  background-color: var(--primary-color);
   margin-right: 16px;
   flex: 1;
   font-weight: 500;
 }
 .btn-apply:hover{
-    background-color: #0071ff;
+  background-color: var(--primary-color-hover);
 }
 .btn-save-post {
-  background-color: #eee;
+  min-width: 40px;
   aspect-ratio: 1;
+  background-color: #00000010;
+}
+.btn-save-post i{
+  color: var(--primary-color);
 }
 .btn-save-post:hover{
-    background-color: #DEECFF;
+    background-color: #0081ff1a;
 }
 .post-info-body{
     flex: 1;
@@ -100,7 +103,7 @@ scrollbar-width: none;
   font-size: 14px;
 }
 .info i {
-  color: #0081ff;
+  color: var(--primary-color);
   width: 32px;
   aspect-ratio: 1;
   display: flex;
@@ -112,10 +115,10 @@ scrollbar-width: none;
   align-items: center;
 }
 .info > span>span{
-    background-color: #eee;
+    background-color: #00000010;
     padding: 2px 8px;
     border-radius: 4px;
-    color: #0081ff;
+    color: var(--primary-color);
     font-weight: normal;
     margin-left: 8px;
 }

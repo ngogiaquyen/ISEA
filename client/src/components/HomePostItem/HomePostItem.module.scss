@@ -8,7 +8,7 @@
   cursor: pointer;
 }
 .show {
-  border: 1px solid #0081ff;
+  border: 1px solid var(--primary-color);
 }
 .post-item::before {
   content: '';
@@ -17,7 +17,7 @@
   border-radius: 12px;
 }
 .post-item:active {
-  border-color: #0081ff;
+  border-color: var(--primary-color);
 }
 .post-item:hover .post-title p {
   text-decoration: underline;
@@ -100,12 +100,15 @@
   border-radius: 6px;
   margin-left: 12px;
   position: relative;
-  z-index: 999999998;
+  z-index: 999999;
+  opacity: 0.4;
 }
 .btn-save-post i {
+  color: #444;
   font-size: 16px;
 }
 .btn-save-post:hover {
+  opacity: 1;
   background-color: #deecff;
 }
 .post-from-company {
@@ -115,8 +118,8 @@
 .tag {
   font-size: 14px;
   margin-right: 8px;
-  background-color: #eee;
-  color: #0081ff;
+  background-color: #00000010;
+  color: var(--primary-color) !important;
   padding: 4px 12px;
   border-radius: 4px;
 }
