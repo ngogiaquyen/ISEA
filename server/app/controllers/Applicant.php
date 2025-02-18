@@ -47,7 +47,7 @@ class Applicant extends Controller
         if ($this->applicant_model->createApplicant($data)) {
             $_SESSION['user_id'] = $user_id;
             $_SESSION['phone_number'] = $_POST['phone_number'];
-            $this->user_model->done("Đăng ký ứng tuyển thành công");
+            $this->user_model->doneNotify('Hệ thống đã đăng ký tài khoản', "Tài khoản: số điện thoại, mật khẩu: sinh nhật", true);
         }
         $this->user_model->back();
         handleError('Đăng ký ứng tuyển thất bại');

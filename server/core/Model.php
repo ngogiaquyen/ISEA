@@ -10,15 +10,20 @@ class Model
     {
         $this->conn->beginTransaction();
     }
-    public function done($message)
+    public function doneNotify($title, $message, $keep = false)
     {
         $this->conn->commit();
-        handleSuccess($message);
+        handleNotify(1, $title, $message, $keep);
     }
-    public function back($message)
+    public function done($message, $keep = false)
+    {
+        $this->conn->commit();
+        handleSuccess($message, $keep);
+    }
+    public function back($message, $keep = false)
     {
         $this->conn->rollback();
-        handleError($message);
+        handleError($message, $keep);
     }
     public function create($table, $data)
     {

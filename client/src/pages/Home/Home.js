@@ -7,6 +7,7 @@ import HomePostShow from '~/components/HomePostShow/HomePostShow';
 import HomeForm from '~/components/HomeForm/HomeForm';
 import HomeFormField from '~/components/HomeFormField/HomeFormField';
 import HomeFormFieldBirthday from '~/components/HomeFormFieldBirthday/HomeFormFieldBirthday';
+import HomeToast from '~/components/HomeToast/HomeToast';
 
 const cx = classNames.bind(styles);
 const header = {
@@ -19,6 +20,7 @@ function Home() {
   const [post, setPost] = useState({});
   const [selectPostId, setSelectPostId] = useState(null);
   const [form, setForm] = useState(null);
+  const [toast, setToast] = useState(null);
 
   const fetchData = async () => {
     try {
@@ -85,6 +87,15 @@ function Home() {
     console.log(post);
   };
 
+  const showToast = (obj) => {
+    if (obj && typeof obj === 'object') {
+      setToast(null);
+      setTimeout(() => {
+        setToast(<HomeToast obj={obj} onClick={setToast} />);
+      }, 4);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = document.getElementById('form-data');
@@ -102,6 +113,7 @@ function Home() {
     });
     const data = await response.json();
     console.log(data);
+    showToast(data);
   };
 
   useEffect(() => {
@@ -114,6 +126,7 @@ function Home() {
 
   return (
     <>
+      {toast}
       <HeaderUser state={header} />
       {form}
       <div className={cx('wrapper')}>

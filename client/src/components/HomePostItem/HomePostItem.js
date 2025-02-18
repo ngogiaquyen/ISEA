@@ -18,10 +18,8 @@ function generateShortDesc(desc) {
 
   for (let index = 0; index < lines.length; index++) {
     const line = lines[index].trim();
-
     if (foundAsterisk) {
       if (count >= 3) break;
-
       if (line !== '' && !line.includes('*')) {
         liElems.push(
           <li key={`li-${count}`}>
@@ -34,7 +32,6 @@ function generateShortDesc(desc) {
       foundAsterisk = true;
     }
   }
-
   if (liElems.length > 0) {
     elems.push(
       <ul className={cx('short-desc')} key={`ul`}>
@@ -42,8 +39,11 @@ function generateShortDesc(desc) {
       </ul>,
     );
   }
-
   return elems;
+}
+
+const handleMenu = (e)=>{
+  e.preventDefault()
 }
 
 function HomePostItem({ infoObj, onPostSelect, isSelected }) {
@@ -57,7 +57,7 @@ function HomePostItem({ infoObj, onPostSelect, isSelected }) {
       <div className={cx('post-title')}>
         <p>{infoObj.title}</p>
         <div className={cx('btn-wrapper')}>
-          <button className={cx('btn-save-post')}>
+          <button className={cx('btn-save-post')} onClick={handleMenu}>
             <i className="fa-solid fa-ellipsis-vertical"></i>
           </button>
         </div>
