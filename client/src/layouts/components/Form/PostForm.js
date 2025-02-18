@@ -1,5 +1,5 @@
 import classNames from "classnames/bind";
-import styles from "./PostForm.module.scss";
+import styles from "./Form.module.scss";
 import FormGroup from "~/components/FormGroup";
 import { isNotEmpty, isNumber } from "~/hooks/validate";
 

@@ -19,10 +19,6 @@ function CandidateList({type}) {
             <FontAwesomeIcon className={cx('icon')} icon={faCalendar} />
             Lên lịch phỏng vấn
           </button>}
-          <button>
-            <FontAwesomeIcon className={cx('icon')} icon={faTrash} />
-            Xóa ứng viên
-          </button>
         </div>
       </div>
       <div className={cx('list')}>

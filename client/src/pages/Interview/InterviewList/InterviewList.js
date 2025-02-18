@@ -4,10 +4,12 @@ import Controller from '~/components/Controller';
 import config from '~/config';
 import InterviewItem from './InterviewItem';
 import PageTitle from '~/components/PageTitle';
+import { useEffect, useState } from 'react';
+import { getData } from '~/hooks/apiService';
 
 const cx = classNames.bind(styles);
 
-const interviews = [
+const interviews1 = [
   {
     interviewDateAndTime: '2025-02-20T10:00:00',
     interviewLocation: 'Văn phòng Công ty ABC, 123 Đường ABC, TP. HCM',
@@ -38,12 +40,28 @@ const interviews = [
 
 
 function InterviewList() {
+  const [interviews, setInterviews] = useState([]);
+
+  const loadData = async ()=>{
+    try {
+      const response = await getData("/interview/detail");
+      console.log(response);
+      setInterviews(response);
+    } catch (error) {
+      console.error("Post error: ", error);
+    }
+  }
+
+  useEffect(()=>{
+
+    loadData();
+  }, []);
+
   return (
     <div className={cx('wrapper')}>
       <PageTitle title='Lịch phỏng vấn'/>
       <Controller addUrl={config.routes.admin.createInterview}/>
       <div className={cx('list')}>
-          
         {interviews.map((interview, index) => (
           <InterviewItem key={index} interview={interview}/>
         ))}

@@ -12,14 +12,15 @@ import TrainingProgram from '~/pages/TrainingProgram/TrainingProgram';
 import Apply from '~/pages/Apply';
 import Explore from '~/pages/Explore/Explore';
 import UpdateEmployeeInfo from '~/pages/UpdateEmployeeInfo';
-import CreatePost from '~/pages/Recruitment/CreatePost';
 import PostList from '~/pages/Recruitment/PostList';
 import PostDetail from '~/pages/Recruitment/PostDetail';
 import EmployeeInfo from '~/pages/EmployeeInfo';
 import InterviewList from '~/pages/Interview/InterviewList/InterviewList';
 import InterViewDetail from '~/pages/Interview/InterViewDetail';
-import CrreateInterview from '~/pages/Interview/CrreateInterview';
 import Setting from '~/pages/Setting';
+import CreateForm from '~/layouts/components/CreateForm';
+import PostForm from '~/layouts/components/Form/PostForm';
+import InterviewForm from '~/layouts/components/Form/InterviewForm';
 // don't need to login
 
 const publicRouters = [
@@ -59,8 +60,13 @@ const publicRouters = [
   },
   {
     path: config.routes.admin.recruitmentCreate,
-    component: CreatePost,
+    component: CreateForm,
     layout: AdminLayout,
+    props: {
+      title: "Đăng bài",
+      typeUrl: "post",
+      formComponent: PostForm
+    }
   },
   {
     path: config.routes.admin.recruitmentList,
@@ -100,8 +106,13 @@ const publicRouters = [
   },
   {
     path: config.routes.admin.createInterview,
-    component: CrreateInterview,
+    component: CreateForm,
     layout: AdminLayout,
+    props: {
+      title: "Tạo buổi phỏng vấn",
+      typeUrl: "interview",
+      formComponent: InterviewForm
+    }
   },
   // Đào tạo
   {
