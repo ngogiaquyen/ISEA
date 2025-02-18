@@ -29,7 +29,8 @@ const routes = {
 
     // Đào tạo
     training: '/admin/quan-ly-dao-tao',
-    trainingProgram: '/admin/quan-ly-dao-tao/khoa-dao-tao',
+    trainingCreate: '/admin/quan-ly-dao-tao/tao-moi',
+    trainingList: '/admin/quan-ly-dao-tao/khoa-dao-tao',
     trainingParticipation: '/admin/quan-ly-dao-tao/tham-gia',
     trainingEffectiveness: '/admin/quan-ly-dao-tao/hieu-qua',
     trainingPlan: '/admin/quan-ly-dao-tao/ke-hoach',

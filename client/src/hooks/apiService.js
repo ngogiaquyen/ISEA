@@ -1,5 +1,5 @@
 // apiService.js
-const BASE_URL = 'http://localhost/isea/server';
+const BASE_URL = 'http://localhost/isea/server'; 
 
 export const getData = async (endpoint, params = {}) => {
   // Tạo query string nếu có params
@@ -9,8 +9,9 @@ export const getData = async (endpoint, params = {}) => {
   try {
     const response = await fetch(url, {
       method: 'GET',
+      credentials: "include",
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json', 
       },
     });
 
