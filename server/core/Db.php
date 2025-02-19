@@ -6,7 +6,6 @@ class Db
     private function __construct()
     {
         $this->connect();
-        $this->createTables();
     }
     private function connect()
     {
