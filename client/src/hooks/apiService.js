@@ -9,13 +9,9 @@ export const getData = async (endpoint, params = {}) => {
   try {
     const response = await fetch(url, {
       method: 'GET',
-      credentials: "include",
-      headers: {
-        'Content-Type': 'application/json', 
-      },
+      credentials: 'include',
     });
 
-    // Kiểm tra lỗi HTTP
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -23,8 +19,7 @@ export const getData = async (endpoint, params = {}) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    // Xử lý lỗi
-    throw error;
+    console.error(error);
   }
 };
 export const postData = async (endpoint, payload) => {
@@ -33,10 +28,10 @@ export const postData = async (endpoint, payload) => {
   try {
     const response = await fetch(url, {
       method: 'POST',
+      credentials: 'include',
       body: payload,
     });
 
-    // Kiểm tra lỗi HTTP
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -44,6 +39,6 @@ export const postData = async (endpoint, payload) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    throw error;
+    console.error(error);
   }
 };

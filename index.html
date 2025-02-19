@@ -6,51 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body {
-            width: 500px;
-        }
 
-        .inner {
-            height: 400px;
-            overflow-y: auto;
-        }
     </style>
 </head>
 
 <body>
     <div class="inner">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis libero animi eligendi! A alias numquam, eius
-        voluptates ullam modi nihil provident praesentium ipsa rerum necessitatibus molestias, reprehenderit, ut nam
-        minus.
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis libero animi eligendi! A alias numquam, eius
-        voluptates ullam modi nihil provident praesentium ipsa rerum necessitatibus molestias, reprehenderit, ut nam
-        minus.
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis libero animi eligendi! A alias numquam, eius
-        voluptates ullam modi nihil provident praesentium ipsa rerum necessitatibus molestias, reprehenderit, ut nam
-        minus.
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis libero animi eligendi! A alias numquam, eius
-        voluptates ullam modi nihil provident praesentium ipsa rerum necessitatibus molestias, reprehenderit, ut nam
-        minus.
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis libero animi eligendi! A alias numquam, eius
-        voluptates ullam modi nihil provident praesentium ipsa rerum necessitatibus molestias, reprehenderit, ut nam
-        minus.
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis libero animi eligendi! A alias numquam, eius
-        voluptates ullam modi nihil provident praesentium ipsa rerum necessitatibus molestias, reprehenderit, ut nam
-        minus.
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis libero animi eligendi! A alias numquam, eius
-        voluptates ullam modi nihil provident praesentium ipsa rerum necessitatibus molestias, reprehenderit, ut nam
-        minus.
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis libero animi eligendi! A alias numquam, eius
-        voluptates ullam modi nihil provident praesentium ipsa rerum necessitatibus molestias, reprehenderit, ut nam
-        minus.
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis libero animi eligendi! A alias numquam, eius
-        voluptates ullam modi nihil provident praesentium ipsa rerum necessitatibus molestias, reprehenderit, ut nam
-        minus.
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis libero animi eligendi! A alias numquam, eius
-        voluptates ullam modi nihil provident praesentium ipsa rerum necessitatibus molestias, reprehenderit, ut nam
-        minus.
+        <input type="datetime-local" onchange="handleChange(event)">
     </div>
     <script>
+        const handleChange = (e) => {
+            console.log(e.target.value)
+        }
         const obj = {
             Male: 'name',
             Female: 'nữ',

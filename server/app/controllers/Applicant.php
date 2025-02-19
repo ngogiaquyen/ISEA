@@ -18,23 +18,26 @@ class Applicant extends Controller
     }
     public function register()
     {
-        // $id = $_SESSION['user_id'] ?? null;
-        // $phone = $_SESSION['phone_number'] ?? null;
-        // if (!empty($id) && !empty($phone)) {
-        //     handleSuccess("Đã có dữ liệu trong sesseion id: $id, phone: $phone");
-        // }
+        $id = $_SESSION['user_id'] ?? null;
+        $phone = $_SESSION['phone_number'] ?? null;
+        if (!empty($id) && !empty($phone)) {
+            handleSuccess("Đã có dữ liệu trong sesseion id: $id, phone: $phone");
+        }
         validApplicant();
         validUserRegister();
+        $phone = $_POST['phone_number'];
+        $birthday = formatDate($_POST['birthday']);
+        $message = "<b>Tài khoản</b>: $phone<br><b>Mật khẩu</b>: $birthday<br>Dùng tài khoản để theo dõi ứng tuyển";
         $path = upload();
         $this->user_model->startTransaction();
         $data = [
             'full_name' => $_POST['full_name'],
             'email' => $_POST['email'],
-            'phone_number' => $_POST['phone_number'],
+            'phone_number' => $phone,
             'gender' => $_POST['gender'],
             'birthday' => $_POST['birthday'],
             'cv' => $path,
-            'password' => password_hash(formatDate($_POST['birthday']), PASSWORD_DEFAULT),
+            'password' => password_hash($birthday, PASSWORD_DEFAULT),
         ];
         $user_id = $this->user_model->register($data);
         if (empty($user_id)) {
@@ -47,7 +50,7 @@ class Applicant extends Controller
         if ($this->applicant_model->createApplicant($data)) {
             $_SESSION['user_id'] = $user_id;
             $_SESSION['phone_number'] = $_POST['phone_number'];
-            $this->user_model->doneNotify('Hệ thống đã đăng ký tài khoản', "Tài khoản: số điện thoại, mật khẩu: sinh nhật", true);
+            $this->user_model->doneNotify('Hệ thống cấp tài khoản tự động', $message, true);
         }
         $this->user_model->back();
         handleError('Đăng ký ứng tuyển thất bại');

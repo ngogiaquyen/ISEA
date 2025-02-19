@@ -16,8 +16,7 @@ class Interview extends Controller
         validInterview();
         $this->interview_model->startTransaction();
         $data = [
-            'interview_date' => $_POST['interview_date'],
-            'interview_hour' => $_POST['interview_hour'],
+            'interview_datetime' => $_POST['interview_datetime'],
             'interview_type' => $_POST['interview_type'],
             'interview_location' => $_POST['interview_location'],
             'required_documents' => $_POST['required_documents'],
@@ -57,8 +56,7 @@ class Interview extends Controller
         $data = [];
         foreach ($result as $interview) {
             $data[] = [
-                'date' => $interview['interview_date'],
-                'hour' => $interview['interview_hour'],
+                'date_time' => $interview['interview_datetime'],
                 'type' => $interview['interview_type'],
                 'location' => $interview['interview_location'],
                 'required_docs' => $interview['required_documents'],

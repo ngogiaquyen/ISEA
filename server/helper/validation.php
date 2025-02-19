@@ -139,11 +139,8 @@ function validInterview()
 {
     validMethodPOST();
 
-    if (empty($_POST['interview_date'])) {
-        handleError('Ngày phỏng vấn không hợp lệ');
-    }
-    if (empty($_POST['interview_hour'])) {
-        handleError('Giờ phỏng vấn không hợp lệ');
+    if (empty($_POST['interview_datetime'])) {
+        handleError('Ngày, giờ phỏng vấn không hợp lệ');
     }
     if (empty($_POST['interview_type'])) {
         handleError('Loại phỏng vấn không được để trống');

@@ -6,6 +6,7 @@ class Db
     private function __construct()
     {
         $this->connect();
+        $this->createTables();
     }
     private function connect()
     {
@@ -79,8 +80,7 @@ class Db
         );
         CREATE TABLE IF NOT EXISTS interviews (
             id INT AUTO_INCREMENT PRIMARY KEY,
-            interview_date DATE NOT NULL,
-            interview_hour VARCHAR(100) NOT NULL,
+            interview_datetime VARCHAR(100) NOT NULL,
             interview_type INT NOT NULL DEFAULT 1,
             interview_location VARCHAR(255) NOT NULL,
             required_documents VARCHAR(255) NOT NULL,
