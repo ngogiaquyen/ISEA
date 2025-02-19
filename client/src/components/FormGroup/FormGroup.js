@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import Select from '../Input/Select';
 import OutsideClickHandler from '../OutSideClickHandle';
 import Textarea from '../Input/Textarea';
-import DateTimePicker from '../Input/DateTimePicker';
+import DateTimePickerCo from '../Input/DateTimePicker';
 
 const cx = classNames.bind(styles);
 
@@ -29,7 +29,7 @@ function FormGroup({
   }, [value]);
 
   let InputTag = Input;
-  if (inputType === 'datetime') InputTag = DateTimePicker;
+  if (inputType === 'datetime') InputTag = DateTimePickerCo;
   else if (textarea) {
     InputTag = 'textarea';
   } else if (selectData.length > 0) {
@@ -91,8 +91,8 @@ function FormGroup({
           />
         )}
 
-        {InputTag === DateTimePicker && (
-          <DateTimePicker name={name} onChange={handleDateTimePickerChange}/>
+        {InputTag === DateTimePickerCo && (
+          <DateTimePickerCo name={name} onChange={handleDateTimePickerChange}/>
         )}
 
         {InputTag === 'textarea' && (

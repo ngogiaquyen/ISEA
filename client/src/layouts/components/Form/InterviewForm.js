@@ -4,6 +4,7 @@ import FormGroup from '~/components/FormGroup';
 import { isNotEmpty, isValidEmail, isValidPhoneNumber } from '~/hooks/validate';
 import Dropdown from '~/components/Input/Dropdown';
 import { useEffect, useState } from 'react';
+import { getData } from '~/hooks/apiService';
 
 const cx = classNames.bind(styles);
 const formatInterview = ['Online', 'Trực tiếp'];
@@ -17,8 +18,22 @@ function InterviewForm({ ref, data }) {
       console.error('Error posting data: ', error);
     }
   };
+  const fetchDropItem = async() => {
+    try {
+      const response =  getData("/role/read");
+      console.log(response)
 
-  useEffect(() => {}, []);
+      setDropDownItems(response);
+    } catch (error) {
+      console.error('Error posting data: ', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchInterviewer();
+    fetchDropItem();
+
+  }, []);
 
   return (
     <form className={cx('form')} ref={ref}>
@@ -32,37 +47,6 @@ function InterviewForm({ ref, data }) {
       />
 
       <FormGroup
-        name="interview_location"
-        label="Địa điểm"
-        layout="haft"
-        inputType="text"
-        placeholder="Địa điểm"
-        handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập địa điểm!' }]}
-      />
-
-      <FormGroup
-        name=""
-        label="Số điện thoại"
-        layout="haft"
-        inputType="text"
-        placeholder="Số điện thoại"
-        handleValidate={[
-          { funct: isNotEmpty, message: 'Vui lòng nhập số điện thoại!' },
-          { funct: isValidPhoneNumber, message: 'Số điện thoại không đúng định dạng!' },
-        ]}
-      />
-      <FormGroup
-        name=""
-        label="Email"
-        layout="haft"
-        inputType="text"
-        placeholder="Email"
-        handleValidate={[
-          { funct: isNotEmpty, message: 'Vui lòng nhập email!' },
-          { funct: isValidEmail, message: 'Email không đúng định dạng!' },
-        ]}
-      />
-      <FormGroup
         name="interview_type"
         label="Hình thức"
         layout="haft"
@@ -71,12 +55,11 @@ function InterviewForm({ ref, data }) {
         handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng chọn hình thức phỏng vấn!' }]}
       />
       <FormGroup
-        name=""
-        label="Người phỏng vấn"
-        layout="haft"
+        name="interview_location"
+        label="Địa điểm"
         inputType="text"
-        placeholder="Người phỏng vấn"
-        handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập người phỏng vấn!' }]}
+        placeholder="Địa điểm"
+        handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập địa điểm!' }]}
       />
       <Dropdown dropDownItems={dropDownItems} placeholder="Người phỏng vấn" />
       <FormGroup

@@ -6,15 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import OutsideClickHandler from '../OutSideClickHandle';
 const cx = classNames.bind(styles);
 
-function Dropdown({ dropDownItems: _dropDownItems = [] }) {
+function Dropdown({ dropDownItems }) {
   const [tags, setTags] = useState([
-    // { id: 1, name: 'Ngô Gia Quyến - KTPM K23A' },
-    // { id: 2, name: 'Lưu Sỹ Trường - KTPM K23A' },
   ]);
 
   const [isShowSearchList, setIsShowSearchList] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [dropDownItems, setDropDownItems] = useState([]);
+  const [dropDownItemsInner, setDropDownItemsInner] = useState([]);
   // [
   // 'Ngô Gia Quyến - KTPM K23A',
   // 'Nguyễn Văn Quyến2 - KTPM K23A',
@@ -25,8 +23,10 @@ function Dropdown({ dropDownItems: _dropDownItems = [] }) {
   // ]
 
   useEffect(() => {
-    setDropDownItems(_dropDownItems);
-  }, [_dropDownItems]);
+    console.log(dropDownItemsInner)
+    setDropDownItemsInner(dropDownItems);
+    console.log(dropDownItems)
+  }, [dropDownItems]);
 
   const removeTag = (name) => {
     setTags(tags.filter((tag) => tag.name !== name));
@@ -70,7 +70,7 @@ function Dropdown({ dropDownItems: _dropDownItems = [] }) {
         {/* <div className={cx('spinner')}>Loading...</div> */}
         {/* {isShowSearchList && ( */}
         <ul className={cx('drop-menu', { 'fade-in': isShowSearchList })}>
-          {dropDownItems
+          {dropDownItemsInner
             .filter(
               (item) =>
                 item.toLowerCase().includes(searchTerm.toLowerCase()) && !tags.map((tag) => tag.name).includes(item),

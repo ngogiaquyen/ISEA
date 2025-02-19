@@ -1,7 +1,6 @@
 import config from '~/config';
 import AdminLayout from '~/layouts/AdminLayout/AdminLayout';
 import Home from '~/pages/Home';
-import Recruitment from '~/pages/Recruitment/Recruitment';
 import EmptyLayout from '~/layouts/EmptyLayout/EmptyLayout';
 import DefaultLayout from '~/layouts';
 import EmployeeRecords from '~/pages/EmployeeRecords';
@@ -22,6 +21,7 @@ import PostForm from '~/layouts/components/Form/PostForm';
 import InterviewForm from '~/layouts/components/Form/InterviewForm';
 import TrainingList from '~/pages/Training/TrainingList';
 import TrainingForm from '~/layouts/components/Form/TrainingForm';
+import TrainingDetail from '~/pages/Training/TrainingDetail';
 // don't need to login
 
 const publicRouters = [
@@ -32,11 +32,6 @@ const publicRouters = [
   {
     path: config.routes.home.explore,
     component: Explore,
-  },
-  {
-    path: config.routes.dashboard.recruitment,
-    component: Recruitment,
-    layout: DefaultLayout,
   },
   {
     path: config.routes.dashboard.apply,
@@ -101,7 +96,7 @@ const publicRouters = [
     layout: AdminLayout,
   },
   {
-    path: config.routes.admin.interviewDetail,
+    path: config.routes.admin.interviewDetail + "/:id",
     component: InterViewDetail,
     layout: AdminLayout,
   },
@@ -134,6 +129,11 @@ const publicRouters = [
   {
     path: config.routes.admin.trainingList,
     component: TrainingList,
+    layout: AdminLayout,
+  },
+  {
+    path: config.routes.admin.trainingDetail,
+    component: TrainingDetail,
     layout: AdminLayout,
   },
   {
