@@ -29,7 +29,6 @@ function Dropdown({ dropDownItems: _dropDownItems = [] }) {
   }, [_dropDownItems]);
 
   const removeTag = (name) => {
-    console.log('xóa');
     setTags(tags.filter((tag) => tag.name !== name));
   };
   const addTag = (name) => {

@@ -40,7 +40,7 @@ function Apply() {
       <h1 className={cx('title')}>Ứng tuyển</h1>
       <div className={cx('list-group')}>
         <FormGroup
-          lable="Họ và tên"
+          label="Họ và tên"
           layout="haft"
           inputType="text"
           placeholder="Họ và tên"
@@ -48,7 +48,7 @@ function Apply() {
           onChange={(e) => handleInputChange('fullName', e.target.value)}
         />
         <FormGroup
-          lable="Ngày tháng năm sinh"
+          label="Ngày tháng năm sinh"
           layout="haft"
           inputType="date"
           placeholder="Họ và tên"
@@ -56,7 +56,7 @@ function Apply() {
           onChange={(e) => handleInputChange('dateOfBirth', e.target.value)}
         />
         <FormGroup
-          lable="Email"
+          label="Email"
           layout="haft"
           inputType="text"
           placeholder="Email"
@@ -64,7 +64,7 @@ function Apply() {
           onChange={(e) => handleInputChange('email', e.target.value)}
         />
         <FormGroup
-          lable="Số điện thoại"
+          label="Số điện thoại"
           layout="haft"
           inputType="text"
           placeholder="Số điện thoại"
@@ -72,7 +72,7 @@ function Apply() {
           onChange={(e) => handleInputChange('phone', e.target.value)}
         />
         <FormGroup
-          lable="Địa chỉ"
+          label="Địa chỉ"
           layout="haft"
           inputType="text"
           placeholder="Địa chỉ"
@@ -80,7 +80,7 @@ function Apply() {
           onChange={(e) => handleInputChange('address', e.target.value)}
         />
         <FormGroup
-          lable="Trình độ học vấn"
+          label="Trình độ học vấn"
           layout="haft"
           inputType="text"
           selectData={levelOption}

@@ -74,7 +74,7 @@ function PostForm({ref, data}) {
   return (
     <form className={cx('post-form')} ref={ref}>
       <FormGroup
-        lable="Tiêu đề"
+        label="Tiêu đề"
         name="title"
         value={data?.title || ""}
         inputType="text"
@@ -82,7 +82,7 @@ function PostForm({ref, data}) {
         handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập tiêu đề!' }]}
       />
       <FormGroup
-        lable="Lương"
+        label="Lương"
         name="salary"
         value={data?.salary || ""}
         layout="haft"
@@ -93,7 +93,7 @@ function PostForm({ref, data}) {
         ]}
       />
       <FormGroup
-        lable="Địa điểm"
+        label="Địa điểm"
         name="location"
         value={data?.location || ""}
         layout="haft"
@@ -103,7 +103,7 @@ function PostForm({ref, data}) {
         handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập địa điểm!' }]}
       />
       <FormGroup
-        lable="Kinh nghiệm"
+        label="Kinh nghiệm"
         name="experience"
         value={data?.experience || ""}
         layout="haft"
@@ -113,7 +113,7 @@ function PostForm({ref, data}) {
         handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng chọn kinh nghệm!' }]}
       />
       <FormGroup
-        lable="Ngày hết hạn"
+        label="Ngày hết hạn"
         name="expiration_date"
         value={data?.expiration_date || ""}
         layout="haft"
@@ -124,7 +124,7 @@ function PostForm({ref, data}) {
       />
 
       <FormGroup
-        lable="Mô tả chi tiết công việc"
+        label="Mô tả chi tiết công việc"
         name="content"
         value={data?.content || ""}
         textarea

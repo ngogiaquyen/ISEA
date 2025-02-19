@@ -22,8 +22,10 @@ function Input({
   placeholder = '',
   setErrorMessage,
   error,
+  ref,
   setValue = () => {},
   onChange = () => {},
+  onClick = () => {},
 }) {
   const [isEyeSlash, setIsEyeSlash] = useState(true);
   const [type, setType] = useState('text');
@@ -83,7 +85,7 @@ function Input({
 
   return (
     <div className={cx('wrapper')}>
-      <input className={className} name={name} value={value} type={type} placeholder={placeholder} onChange={handleChange} />
+      <input className={className} name={name} value={value} ref={ref} type={type} placeholder={placeholder} onChange={handleChange} onClick={onClick}/>
       {password && (
         <FontAwesomeIcon className={cx('eye')} icon={isEyeSlash ? faEyeSlash : faEye} onClick={handleChangeEye} />
       )}

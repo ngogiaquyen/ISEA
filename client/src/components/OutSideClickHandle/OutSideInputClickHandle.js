@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 
-const OutsideClickHandler = ({ onClickOutside, children }) => {
+const OutsideClickHandler = ({ onClickOutside,className, children }) => {
   const ref = useRef(null);
   const [isInputFocused, setIsInputFocused] = useState(false);
 
@@ -27,7 +27,7 @@ const OutsideClickHandler = ({ onClickOutside, children }) => {
     };
   }, [onClickOutside, isInputFocused]);
 
-  return <div ref={ref} style={{width: "100%"}}>{children}</div>;
+  return <div className={className} ref={ref} style={{width: "100%"}}>{children}</div>;
 };
 
 export default OutsideClickHandler;

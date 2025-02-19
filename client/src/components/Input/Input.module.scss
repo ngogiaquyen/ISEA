@@ -179,6 +179,18 @@ textarea {
   }
 }
 
+
+// .custom-datepicker 
+.custom-datepicker {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+
 @keyframes fadeIn {
   from {
     opacity: 0;

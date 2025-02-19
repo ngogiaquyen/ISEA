@@ -41,7 +41,7 @@ function UpdateEmployeeInfo() {
       <h1 className={cx('title')}>Cập nhật thông tin nhân sự</h1>
       <div className={cx('list-group')}>
         <FormGroup
-          lable="Tên khóa đào tạo"
+          label="Tên khóa đào tạo"
           layout="haft"
           inputType="text"
           // placeholder="Mã ứng viên"
@@ -49,7 +49,7 @@ function UpdateEmployeeInfo() {
           onChange={(e) => handleInputChange('id', e.target.value)}
         />
         <FormGroup
-          lable="Tên giảng viên"
+          label="Tên giảng viên"
           layout="haft"
           inputType="text"
           // placeholder="Họ và tên"
@@ -57,7 +57,7 @@ function UpdateEmployeeInfo() {
           onChange={(e) => handleInputChange('fullName', e.target.value)}
         />
         <FormGroup
-          lable="Thời gian đào tạo"
+          label="Thời gian đào tạo"
           layout="haft"
           inputType="text"
           // placeholder="Ngày sinh"
@@ -65,7 +65,7 @@ function UpdateEmployeeInfo() {
           onChange={(e) => handleInputChange('dateOfBirth', e.target.value)}
         />
         <FormGroup
-          lable="Nội dung đào tạo"
+          label="Nội dung đào tạo"
           layout="haft"
           inputType="text"
           // selectData={levelOption}

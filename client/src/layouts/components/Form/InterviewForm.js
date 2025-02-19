@@ -4,41 +4,36 @@ import FormGroup from '~/components/FormGroup';
 import { isNotEmpty, isValidEmail, isValidPhoneNumber } from '~/hooks/validate';
 import Dropdown from '~/components/Input/Dropdown';
 import { useEffect, useState } from 'react';
-// import DatePicker from "react-datepicker";
-
 
 const cx = classNames.bind(styles);
 const formatInterview = ['Online', 'Trực tiếp'];
-
 function InterviewForm({ ref, data }) {
-
   const [dropDownItems, setDropDownItems] = useState([]);
-  
-  const fetchInterviewer = ()=>{
+
+  const fetchInterviewer = () => {
     try {
       // const response = await getData("")
     } catch (error) {
-      console.error("Error posting data: ", error);
+      console.error('Error posting data: ', error);
     }
-  }
+  };
 
-  useEffect(()=>{
-
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <form className={cx('form')} ref={ref}>
       <FormGroup
-        name=""
-        lable="Thời gian"
+        name="interview_date"
+        label="Thời gian"
         layout="haft"
-        inputType="date-time"
+        inputType="datetime"
         placeholder="Thời gian"
         handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng chọn thời gian!' }]}
       />
+
       <FormGroup
         name="interview_location"
-        lable="Địa điểm"
+        label="Địa điểm"
         layout="haft"
         inputType="text"
         placeholder="Địa điểm"
@@ -47,7 +42,7 @@ function InterviewForm({ ref, data }) {
 
       <FormGroup
         name=""
-        lable="Số điện thoại"
+        label="Số điện thoại"
         layout="haft"
         inputType="text"
         placeholder="Số điện thoại"
@@ -58,7 +53,7 @@ function InterviewForm({ ref, data }) {
       />
       <FormGroup
         name=""
-        lable="Email"
+        label="Email"
         layout="haft"
         inputType="text"
         placeholder="Email"
@@ -69,7 +64,7 @@ function InterviewForm({ ref, data }) {
       />
       <FormGroup
         name="interview_type"
-        lable="Hình thức"
+        label="Hình thức"
         layout="haft"
         inputType="text"
         selectData={formatInterview}
@@ -77,24 +72,22 @@ function InterviewForm({ ref, data }) {
       />
       <FormGroup
         name=""
-        lable="Người phỏng vấn"
+        label="Người phỏng vấn"
         layout="haft"
         inputType="text"
         placeholder="Người phỏng vấn"
         handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập người phỏng vấn!' }]}
       />
-      <Dropdown 
-      dropDownItems={dropDownItems}
-      placeholder="Người phỏng vấn" />
+      <Dropdown dropDownItems={dropDownItems} placeholder="Người phỏng vấn" />
       <FormGroup
         name="required_documents"
-        lable="Hồ sơ cần mang"
+        label="Hồ sơ cần mang"
         layout="haft"
         textarea
         placeholder="Hồ sơ cần mang"
         handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập hồ sơ cần mang!' }]}
       />
-      <FormGroup name="note" lable="Lưu ý" layout="haft" textarea placeholder="Lưu ý(nếu có)" />
+      <FormGroup name="note" label="Lưu ý" layout="haft" textarea placeholder="Lưu ý(nếu có)" />
     </form>
   );
 }

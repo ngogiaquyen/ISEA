@@ -10,13 +10,13 @@ function TrainingForm({ ref, data }) {
     <form className={cx('form')} ref={ref}>
       <FormGroup
         name=""
-        lable="Tên khóa học"
+        label="Tên khóa học"
         placeholder="Tên khóa học"
         handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập tên khóa học!' }]}
       />
       <FormGroup
         name="instructor"
-        lable="Giảng viên"
+        label="Giảng viên"
         layout="haft"
         inputType="text"
         placeholder="Giảng viên"
@@ -25,7 +25,7 @@ function TrainingForm({ ref, data }) {
 
       <FormGroup
         name=""
-        lable="Thông tin liên hệ"
+        label="Thông tin liên hệ"
         layout="haft"
         inputType="text"
         placeholder="Thông tin liên hệ"
@@ -35,9 +35,9 @@ function TrainingForm({ ref, data }) {
       />
       <FormGroup
         name=""
-        lable="Ngày bắt đầu"
+        label="Ngày bắt đầu"
         layout="haft"
-        inputType="text"
+        inputType="date"
         placeholder="Ngày bắt đầu"
         handleValidate={[
           { funct: isNotEmpty, message: 'Vui lòng nhập ngày bắt đầu!' },
@@ -45,24 +45,24 @@ function TrainingForm({ ref, data }) {
       />
       <FormGroup
         name=""
-        lable="Ngày kết thúc"
+        label="Ngày kết thúc"
         layout="haft"
-        inputType="text"
-        placeholder="Ngày bắt đầu"
+        inputType="date"
+        placeholder="Ngày kết thúc"
         handleValidate={[
           { funct: isNotEmpty, message: 'Vui lòng nhập ngày kết thúc!' },
         ]}
       />
       <FormGroup
         name="interview_type"
-        lable="Hình thức"
+        label="Hình thức"
         layout="haft"
         placeholder="Thời lượng"
         handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập thời lượng!' }]}
       />
       <FormGroup
         name=""
-        lable="Địa điểm"
+        label="Địa điểm"
         layout="haft"
         inputType="text"
         placeholder="Địa điểm"
@@ -71,13 +71,13 @@ function TrainingForm({ ref, data }) {
       {/* <Dropdown dropDownItems={dropDownItems} placeholder="Người phỏng vấn" /> */}
       <FormGroup
         name="required_documents"
-        lable="Mục tiêu"
+        label="Mục tiêu"
         layout="haft"
         textarea
         placeholder="Mục tiêu"
         handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập mục tiêu!' }]}
       />
-      <FormGroup name="note" lable="Mô tả khóa học" layout="haft" textarea placeholder="Mô tả khóa học" />
+      <FormGroup name="note" label="Mô tả khóa học" layout="haft" textarea placeholder="Mô tả khóa học" />
     </form>
   );
 }
