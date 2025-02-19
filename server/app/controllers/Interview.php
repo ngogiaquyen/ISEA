@@ -47,7 +47,12 @@ class Interview extends Controller
     public function read($id = '')
     {
         validMethodGET();
-        echo json_encode($this->interview_model->readInterviews($id));
+        $result = $this->interview_model->readInterviews($id);
+        foreach ($result as &$interview) {
+            $interview['hrs'] = explode(',', $interview['hrs']);
+        }
+        echo json_encode($result);
+        exit;
     }
     public function detail($id = 0)
     {
@@ -57,5 +62,6 @@ class Interview extends Controller
             $interview['hrs'] = explode(',', $interview['hrs']);
         }
         echo json_encode($result);
+        exit;
     }
 }

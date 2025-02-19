@@ -7,11 +7,29 @@ class InterviewModel extends Model
     }
     public function readInterviews($id = '')
     {
-        if (!empty($id)) {
-            $conditions = "id=$id";
-            return $this->read('interviews', $conditions);
+        $conditions = !empty($id) ? "WHERE i.id=:id" : '';
+        $sql = "SELECT 
+                i.*,
+                GROUP_CONCAT(iv.hr_id ORDER BY iv.hr_id) AS hrs
+            FROM 
+                interviews i
+            JOIN
+                interviewers iv ON i.id = iv.interview_id
+            $conditions
+            GROUP BY 
+                i.id
+            ORDER BY 
+                i.edit_at DESC";
+        try {
+            $stmt = $this->conn->prepare($sql);
+            if (!empty($id)) {
+                $stmt->bindValue(':id', $id);
+            }
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            handleError("Lỗi khi lấy thông tin " . $e->getMessage());
         }
-        return $this->read('interviews');
     }
     public function readInterviewDetail($id = 0)
     {
@@ -42,7 +60,7 @@ class InterviewModel extends Model
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            handleError("Lỗi khi lấy thông tin buổi phỏng vấn: " . $e->getMessage());
+            handleError("Lỗi khi lấy chi tiết: " . $e->getMessage());
         }
     }
 }
