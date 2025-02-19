@@ -49,25 +49,13 @@ class Interview extends Controller
         validMethodGET();
         echo json_encode($this->interview_model->readInterviews($id));
     }
-    public function detail($id = '')
+    public function detail($id = 0)
     {
         validMethodGET();
         $result = $this->interview_model->readInterviewDetail($id);
-        $data = [];
-        foreach ($result as $interview) {
-            $data[] = [
-                'date_time' => $interview['interview_datetime'],
-                'type' => $interview['interview_type'],
-                'location' => $interview['interview_location'],
-                'required_docs' => $interview['required_documents'],
-                'email' => $interview['email'],
-                'phone_number' => $interview['phone_number'],
-                'note' => $interview['note'],
-                'hrs' => explode(',', $interview['hrs']),
-                'create' => $interview['create_at'],
-                'edit' => $interview['edit_at']
-            ];
+        foreach ($result as &$interview) {
+            $interview['hrs'] = explode(',', $interview['hrs']);
         }
-        echo json_encode($data);
+        echo json_encode($result);
     }
 }

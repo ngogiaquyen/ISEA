@@ -13,8 +13,9 @@ class InterviewModel extends Model
         }
         return $this->read('interviews');
     }
-    public function readInterviewDetail($id = '')
+    public function readInterviewDetail($id = 0)
     {
+        $conditions = !empty($id) ? "WHERE i.id=:id" : '';
         $sql = "SELECT 
                 i.*,
                 u.email,
@@ -28,13 +29,16 @@ class InterviewModel extends Model
                 users u ON ii.hr_id = u.id
             LEFT JOIN 
                 roles r ON u.role = r.id
+            $conditions
             GROUP BY 
                 i.id
             ORDER BY 
                 i.edit_at DESC";
-
         try {
             $stmt = $this->conn->prepare($sql);
+            if (!empty($id)) {
+                $stmt->bindValue(':id', $id);
+            }
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
