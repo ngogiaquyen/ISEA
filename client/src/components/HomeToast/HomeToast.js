@@ -29,7 +29,7 @@ function HomeToast({ obj, onClick }) {
       timeout = setTimeout(() => {
         onClick(null);
       }, 620);
-    }, 4);
+    }, 100);
   };
 
   const handleCloseRef = useRef(handleClose);

@@ -1,6 +1,14 @@
 <?php
 class UserModel extends Model
 {
+    public function readUsers($id = 0)
+    {
+        if ($id) {
+            $conditions = "id=$id";
+            return $this->read('users', $conditions);
+        }
+        return $this->read('users');
+    }
     public function register($data)
     {
         $key = implode(', ', array_keys($data));

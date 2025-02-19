@@ -22,9 +22,9 @@ function Home() {
   const [selectPostId, setSelectPostId] = useState(null);
   const [form, setForm] = useState(null);
   const [toast, setToast] = useState(null);
-  const [content, setContent] = useState('Xác nhận');
-  const [disable, setDisable] = useState(null);
-  const isFirst = useRef(0);
+  const [btnContent, setBtnContent] = useState('Xác nhận');
+  const [btnDisable, setBtnDisable] = useState(null);
+  const isFirst = useRef(true);
 
   const fetchData = async () => {
     try {
@@ -33,14 +33,21 @@ function Home() {
         credentials: 'include',
       });
 
+      if (!response.ok) throw new Error('Mất kết noois');
+
       const data = await response.json();
       console.log(data);
       setHomePostItems(data);
       if (data[0]) setPost(data[0]);
     } catch (error) {
       console.error(error);
+      showToast({
+        status: 'error',
+        title: 'Máy chủ không phản hồi',
+      });
     }
   };
+  const fetchDataRef = useRef(fetchData);
 
   const checkOj = (obj) => {
     return Object.entries(obj).length > 0;
@@ -62,8 +69,8 @@ function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setToast(null);
-    setContent(<img className={cx('icon')} src={icon} alt="loading" />);
-    setDisable(true);
+    setBtnContent(<img className={cx('icon')} src={icon} alt="loading" />);
+    setBtnDisable(true);
 
     const form = document.getElementById('form-data');
     const formData = new FormData(form);
@@ -77,12 +84,17 @@ function Home() {
       });
 
       const data = await response.json();
-      setContent('Xác Nhận');
-      setDisable(false);
-      showToast(data);
       console.log(data);
+      showToast(data);
     } catch (e) {
       console.error(e);
+      showToast({
+        status: 'error',
+        title: 'Máy chủ không phản hồi',
+      });
+    } finally {
+      setBtnContent('Xác Nhận');
+      setBtnDisable(false);
     }
   };
 
@@ -90,8 +102,8 @@ function Home() {
     setForm(
       <HomeForm
         title={'Thông tin ứng tuyển'}
-        btnContent={content}
-        isDisable={disable}
+        btnContent={btnContent}
+        isDisable={btnDisable}
         setForm={setForm}
         handleSubmit={handleSubmit}
       >
@@ -136,36 +148,39 @@ function Home() {
     );
     // console.log(post);
   };
+  const showFormRef = useRef(showForm);
 
   useEffect(() => {
-    if (isFirst.current < 1) {
-      isFirst.current += 1;
-      fetchData();
+    if (isFirst.current) {
+      isFirst.current = false;
+      fetchDataRef.current();
     }
-  }, [homePostItems]);
+  }, []);
 
   useEffect(() => {
-    if (disable !== null) {
-      showForm();
+    if (btnDisable !== null) {
+      showFormRef.current();
     }
-  }, [disable]);
+  }, [btnDisable]);
 
   return (
     <>
       {toast}
       <HeaderUser state={header} />
       {form}
-      <div className={cx('wrapper')}>
-        <div className={cx('left')}>
-          <HomePost
-            postArr={homePostItems}
-            onPostSelect={setPost}
-            selectPostId={selectPostId}
-            setSelectPostId={setSelectPostId}
-          />
+      {!homePostItems.length > 0 ? null : (
+        <div className={cx('wrapper')}>
+          <div className={cx('left')}>
+            <HomePost
+              postArr={homePostItems}
+              onPostSelect={setPost}
+              selectPostId={selectPostId}
+              setSelectPostId={setSelectPostId}
+            />
+          </div>
+          <div className={cx('right')}>{checkOj(post) ? <HomePostShow onApply={showForm} post={post} /> : null}</div>
         </div>
-        <div className={cx('right')}>{checkOj(post) ? <HomePostShow onApply={showForm} post={post} /> : null}</div>
-      </div>
+      )}
     </>
   );
 }

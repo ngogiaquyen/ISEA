@@ -9,6 +9,23 @@ class User extends Controller
     public function index()
     {
     }
+    public function read($id = 0)
+    {
+        validMethodGET();
+        $result = $this->user_model->readUsers($id);
+        $data = [];
+        foreach ($result as $user) {
+            $data[] = [
+                'full_name' => $user['full_name'],
+                'phone_number' => $user['phone_number'],
+                'email' => $user['email'],
+                'gender' => $user['gender'],
+                'birthday' => $user['birthday'],
+                'role' => $user['role'],
+            ];
+        }
+        echo json_encode($data);
+    }
     public function login()
     {
         validUserLogin();
