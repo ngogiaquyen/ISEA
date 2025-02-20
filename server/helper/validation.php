@@ -169,3 +169,14 @@ function validInterviewDelete()
         handleError('Vui lòng chọn một cuộc phỏng vấn');
     }
 }
+//candidates
+function validCandidate()
+{
+    validMethodPOST();
+    if (empty($_POST['interview_id'])) {
+        handleError('Vui lòng chọn một buổi phóng vấn');
+    }
+    if (empty($_POST['applicant_id'])) {
+        handleError('Vui lòng chọn ứng viên');
+    }
+}

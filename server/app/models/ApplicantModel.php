@@ -7,7 +7,7 @@ class ApplicantModel extends Model
     }
     public function readApplicant($id = '')
     {
-        $sql = "SELECT a.post_id,  u.full_name, u.email, u.phone_number, u.gender, u.birthday, u.cv, a.status, a.create_at 
+        $sql = "SELECT a.post_id, u.id AS applicant_id,  u.full_name, u.email, u.phone_number, u.gender, u.birthday, u.cv, a.status, a.create_at 
                 FROM users u
                 JOIN applicants a ON a.user_id = u.id
                 JOIN posts p ON p.id = a.post_id";
