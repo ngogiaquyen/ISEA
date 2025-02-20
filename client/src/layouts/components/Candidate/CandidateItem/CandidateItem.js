@@ -30,12 +30,10 @@ function CandidateItem({ id, activeMenu, setActiveMenu }) {
 
   
   const handleItemClick = (e, data) => {
-    console.log('hello');
   };
   
   const handleContextMenu = (e) => {
     e.preventDefault();
-    console.log(menu)
     const left = Math.min(e.nativeEvent.offsetX, e.currentTarget.offsetWidth - 200);
     const top = e.nativeEvent.offsetY
     setMenu({

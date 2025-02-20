@@ -14,6 +14,8 @@ import InterviewForm from '~/layouts/components/Form/InterviewForm';
 
 const cx = classNames.bind(styles);
 
+const formatInterview = [{id: 1, value: "Online"}, {id: 2, value: "Trực tiếp"}]
+
 function InterViewDetail() {
   const { id } = useParams();
   const nagivate = useNavigate();
@@ -27,24 +29,20 @@ function InterViewDetail() {
     try {
       const data = await getData(`/interview/detail/${id}`);
       if (data.length) setInterviewInfo(data[0]);
-        console.log(data[0].hrs.map((person, i) => person));
       } catch (error) {
         console.error('Error getting data: ', error);
       }
     }
     useEffect(() => {
       fetchData();
-      console.log(interviewInfo)
     }, []);
     
     const handleConfirmRemove = async () => {
       const formData = new FormData();
       formData.append('id', id);
       try {
-        const response = await postData(`/post/delete`, formData);
-        console.log(response);
+        const response = await postData(`/interview/delete`, formData);
         addToast(response);
-        console.log('xóa thành công');
         setModalComponentContent(null);
         nagivate(config.routes.admin.interviewList);
       } catch (error) {
@@ -52,9 +50,8 @@ function InterViewDetail() {
       }
     };
     
-    const handleRemovePost = () => {
+    const handleRemove = () => {
       // Perform the delete action
-      console.log('Post deleted');
       setModalComponentContent(
         <ConfirmModal
         title="Xác nhận xóa lịch phỏng vấn"
@@ -65,13 +62,13 @@ function InterViewDetail() {
       );
     };
     
-    const handleEditPost = () => {
-      setModalComponentContent(<EditForm id={id} title="Chỉnh sửa buổi phỏng vấn" formComponent={InterviewForm} />); //onChangeValue={fetchData}
+    const handleEdit = () => {
+      setModalComponentContent(<EditForm id={id} typeUrl='interview' title="Chỉnh sửa buổi phỏng vấn" formComponent={InterviewForm} onChangeValue={fetchData}/>);
     };
     return (
       <div className={cx('wrapper')}>
       <div className={cx('info')}>
-        <UDActions handleEdit={handleEditPost} handleRemove={handleRemovePost} />
+        <UDActions handleEdit={handleEdit} handleRemove={handleRemove} />
         <div className={cx('section')}>
           <h3 className={cx('interviewDate')}>📅 {interviewInfo.interview_datetime}</h3>
           <p className={cx('location')}>
@@ -84,7 +81,7 @@ function InterViewDetail() {
             <strong>📧 Email:</strong> {interviewInfo?.email}
           </p>
           <p className={cx('method')}>
-            <strong>📝 Hình thức:</strong> {interviewInfo?.interview_type}
+            <strong>📝 Hình thức:</strong> {formatInterview.find((value)=>value.id === interviewInfo?.interview_type)?.value}
           </p>
         </div>
 

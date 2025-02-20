@@ -7,23 +7,22 @@ import OutsideClickHandler from '../OutSideClickHandle';
 
 const cx = classNames.bind(styles);
 
-function Dropdown({ name, dropDownItems: _dropDownItems = [], placeholder }) {
+function Dropdown({ name, tags: _tags = [], dropDownItems: _dropDownItems = [], placeholder }) {
   const [tags, setTags] = useState([]);
   const [isShowSearchList, setIsShowSearchList] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    console.log(_dropDownItems);
-    // Bạn có thể làm gì đó với _dropDownItems nếu cần thiết
-  }, [_dropDownItems]);
+    setTags(_tags)
+  }, [_dropDownItems, _tags]);
 
-  const removeTag = (name) => {
-    setTags(tags.filter((tag) => tag.name !== name));
+  const removeTag = (id) => {
+    setTags(tags.filter((tag) => tag.id !== id));
   };
 
-  const addTag = (id, name, role) => {
-    if (!tags.some((tag) => tag.name === name)) {
-      setTags([...tags, { id, name, role }]);
+  const addTag = (id, full_name, role_name) => {
+    if (!tags.some((tag) => tag.id === id )) {
+      setTags([...tags, { id, full_name, role_name }]);
       setSearchTerm('');
     }
   };
@@ -43,8 +42,8 @@ function Dropdown({ name, dropDownItems: _dropDownItems = [], placeholder }) {
           {tags.map((tag) => (
             <span className={cx('selected-tag')} key={tag.id}>
               <input type='hidden' name={name+"[]"} value={tag.id} readOnly />
-              {tag.name +" - "+ tag.role}
-              <button type="button" className={cx('close-btn')} onClick={() => removeTag(tag.name)}>
+              {tag.full_name +" - "+ tag.role_name}
+              <button type="button" className={cx('close-btn')} onClick={() => removeTag(tag.id)}>
                 <FontAwesomeIcon className={cx('x-icon')} icon={faXmark} />
               </button>
             </span>

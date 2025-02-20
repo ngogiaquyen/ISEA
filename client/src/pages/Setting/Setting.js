@@ -8,7 +8,6 @@ const cx = classNames.bind(styles);
 
 function Setting() {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  console.log(theme)
   return (
     <div className={cx('wrapper', { theme })}>
       <PageTitle title="Cài dặt" />

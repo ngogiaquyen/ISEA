@@ -24,7 +24,6 @@ function UpdateEmployeeInfo() {
 
 
   const handleInputChange = (field, value) => {
-    console.log(value)
     setInformation((prev) => ({
       ...prev,
       [field]: value,
@@ -32,7 +31,6 @@ function UpdateEmployeeInfo() {
   };
 
   const handleClick = () => {
-    console.log(information);
     setErrors(validateForm(information));
   };
 
@@ -70,7 +68,7 @@ function UpdateEmployeeInfo() {
           inputType="text"
           // selectData={levelOption}
           error={errors.educationLevel}
-          onChange={(e) => {handleInputChange('educationLevel', e.target.value); console.log("hello")}}
+          onChange={(e) => {handleInputChange('educationLevel', e.target.value);}}
         />
       </div>
       <Button title="Cập nhật" onclick={handleClick} />

@@ -30,7 +30,6 @@ function FormGroup({
 
   let InputTag = Input;
   if (inputType === 'datetime') {
-    console.log(selectData);
     InputTag = DateTimePickerCo;
   } else if (textarea) {
     InputTag = 'textarea';
@@ -106,7 +105,7 @@ function FormGroup({
         )}
 
         {InputTag === Select && (
-          <Select value={inputValue} options={selectData} name={name} error={error} onChange={handleInputChange} />
+          <Select value={inputValue} options={selectData}  name={name} error={error} onChange={handleInputChange} />
         )}
 
         {error && <p className={cx('error-message')}>{error}</p>}

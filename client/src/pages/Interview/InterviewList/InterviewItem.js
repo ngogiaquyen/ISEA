@@ -2,11 +2,11 @@ import classNames from 'classnames/bind';
 import styles from './InterviewList.module.scss';
 import config from '~/config';
 import { NavLink } from 'react-router-dom';
-import { formatDate } from '~/hooks/tools';
 
 const cx = classNames.bind(styles);
 
 
+const formatInterview = [{id: 1, value: "Online"}, {id: 2, value: "Trực tiếp"}]
 
 function InterviewItem({ interview }) {
   return (
@@ -21,7 +21,7 @@ function InterviewItem({ interview }) {
             <strong>📅 Ngày tạo:</strong> {interview?.create_at}
           </p>
           <p className={cx('method')}>
-            <strong>📝 Hình thức:</strong> {interview.interview_type}
+            <strong>📝 Hình thức:</strong> {formatInterview.find((value)=>value.id === interview?.interview_type)?.value}
           </p>
         </div>
 

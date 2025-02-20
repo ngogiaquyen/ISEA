@@ -17,7 +17,6 @@ function FormGroup({
     if (!value) setErrorMessage(emptyErrorValue);
     else if (!isValidHandle(value)) {
       setErrorMessage(wrongErrorValue);
-      console.log(value);
     }
     else setErrorMessage('');
   };

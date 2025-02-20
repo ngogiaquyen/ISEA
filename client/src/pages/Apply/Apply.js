@@ -23,7 +23,6 @@ function Apply() {
 
 
   const handleInputChange = (field, value) => {
-    console.log(value)
     setInformation((prev) => ({
       ...prev,
       [field]: value,
@@ -31,7 +30,6 @@ function Apply() {
   };
 
   const handleClick = () => {
-    console.log(information);
     setErrors(validateForm(information));
   };
 
@@ -85,7 +83,7 @@ function Apply() {
           inputType="text"
           selectData={levelOption}
           error={errors.educationLevel}
-          onChange={(e) => {handleInputChange('educationLevel', e.target.value); console.log("hello")}}
+          onChange={(e) => {handleInputChange('educationLevel', e.target.value);}}
         />
       </div>
       <Button title="Ứng tuyển" onclick={handleClick} />

@@ -31,7 +31,6 @@ function PostDetail() {
     try {
       const data = await getData(`/post/read/${id}`);
       if (data.length) setPostDetail(data[0]);
-      console.log(data);
     } catch (error) {
       console.error('Error getting data: ', error);
     }
@@ -53,9 +52,7 @@ function PostDetail() {
     formData.append("id",id);
     try {
       const response = await postData(`/post/delete`, formData);
-      console.log(response)
       addToast(response)
-      console.log('xóa thành công');
       setModalComponentContent(null);
       nagivate(config.routes.admin.recruitmentList)
     } catch (error) {
@@ -65,7 +62,6 @@ function PostDetail() {
 
   const handleRemovePost = () => {
     // Perform the delete action
-    console.log('Post deleted');
     setModalComponentContent(
       <ConfirmModal
         title="Xác nhận xóa bài viết"
@@ -77,7 +73,7 @@ function PostDetail() {
   };
 
   const handleEditPost = ()=>{
-    setModalComponentContent(<EditForm id={id} title="Chỉnh sửa bài đăng" formComponent={PostForm} onChangeValue={fetchData}/>);
+    setModalComponentContent(<EditForm id={id} typeUrl='post' title="Chỉnh sửa bài đăng" formComponent={PostForm} onChangeValue={fetchData}/>);
   }
 
   return (
