@@ -23,6 +23,7 @@ import TrainingList from '~/pages/Training/TrainingList';
 import TrainingForm from '~/layouts/components/Form/TrainingForm';
 import TrainingDetail from '~/pages/Training/TrainingDetail';
 import PayrollManagement from '~/pages/Salary/PayrollManagement ';
+import PerformanceReview from '~/pages/Performance/PerformanceReview';
 // don't need to login
 
 const publicRouters = [
@@ -159,8 +160,8 @@ const publicRouters = [
     layout: AdminLayout,
   },
   {
-    path: config.routes.admin.workPerformance,
-    component: Announcements,
+    path: config.routes.admin.performanceReview,
+    component: PerformanceReview,
     layout: AdminLayout,
   },
   {

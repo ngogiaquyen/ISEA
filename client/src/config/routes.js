@@ -38,7 +38,7 @@ const routes = {
 
     // Hiệu suất
     performanceEvaluation: '/admin/danh-gia-hieu-suat',
-    workPerformance: '/admin/danh-gia-hieu-suat/hieu-suat-lam-viec',
+    performanceReview : '/admin/danh-gia-hieu-suat/hieu-suat-lam-viec',
     evaluationCriteria: '/admin/danh-gia-hieu-suat/tieu-chi',
     personalGoals: '/admin/danh-gia-hieu-suat/muc-tieu',
     feedback: '/admin/danh-gia-hieu-suat/phan-hoi',
