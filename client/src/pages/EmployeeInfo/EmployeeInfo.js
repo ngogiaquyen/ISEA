@@ -20,7 +20,6 @@ function EmployeeInfo({ id, employee }) {
     formData.append('id', id);
     try {
       const response = await postData('applicant/read/5', formData);
-      console.log(response);
     } catch (error) {
       console.error('Error posting data: ', error);
     }

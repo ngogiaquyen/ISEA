@@ -31,7 +31,6 @@ function Item({ interview }) {
         />,
       );
     }
-    console.log('ehllo');
   }, [interviewId]);
 
   const handleConfirmSelect = async () => {
@@ -40,10 +39,8 @@ function Item({ interview }) {
     formData.append('applicant_id', JSON.stringify(applicantID));
     try {
       const response = await postData('/candidate/create', formData);
-      console.log(response);
       addToast(response);
       if (!response.keep) {
-        console.log();
         setInterviewId(null);
         setModalComponentContent(<InterviewListChoice />);
       }
@@ -52,7 +49,6 @@ function Item({ interview }) {
     }
   };
   const handleSubmit = () => {
-    console.log(interview.id);
     setInterviewId(interview.id);
     // Perform the delete action
   };

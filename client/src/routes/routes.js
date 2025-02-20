@@ -22,6 +22,7 @@ import InterviewForm from '~/layouts/components/Form/InterviewForm';
 import TrainingList from '~/pages/Training/TrainingList';
 import TrainingForm from '~/layouts/components/Form/TrainingForm';
 import TrainingDetail from '~/pages/Training/TrainingDetail';
+import PayrollManagement from '~/pages/Salary/PayrollManagement ';
 // don't need to login
 
 const publicRouters = [
@@ -186,7 +187,7 @@ const publicRouters = [
   },
   {
     path: config.routes.admin.salary,
-    component: Announcements,
+    component: PayrollManagement,
     layout: AdminLayout,
   },
   {

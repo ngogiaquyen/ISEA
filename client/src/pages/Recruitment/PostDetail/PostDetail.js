@@ -32,7 +32,6 @@ function PostDetail() {
     try {
       const data = await getData(`/post/read/${id}`);
       const candidate = await getData(`/applicant/read/${id}`);
-      console.log(candidate)
       setCandidates(candidate)
       if (data.length) setPostDetail(data[0]);
     } catch (error) {

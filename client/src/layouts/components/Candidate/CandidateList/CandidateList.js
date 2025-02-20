@@ -10,6 +10,7 @@ import { ModalOverLayContext } from '~/components/Context/ModalOverlayProvider';
 const cx = classNames.bind(styles);
 
 function CandidateList({type, data=[]}) {
+  console.log(data)
   const [activeMenu, setActiveMenu] = useState(null);
   
   const { setModalComponentContent } = useContext(ModalOverLayContext);

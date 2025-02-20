@@ -1,0 +1,175 @@
+/* Container chính */
+.wrapper {
+  max-width: 100%;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Tiêu đề */
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Vùng chứa nút */
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+/* Nút tải xuống Excel */
+.download-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.download-button:hover {
+  background-color: #0056b3;
+}
+
+/* Bảng */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+}
+
+/* Dòng tiêu đề */
+.table-header {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+/* Ô dữ liệu */
+.table-cell {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+/* Dòng chẵn */
+.table-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Hover */
+.table-row:hover {
+  background-color: #f1f1f1;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .table-cell {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+.wrapper {
+    // max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .filter-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .filter-label {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .filter-select {
+    padding: 5px;
+    font-size: 16px;
+  }
+  
+  .button-container {
+    text-align: right;
+    margin-bottom: 10px;
+  }
+  
+  .download-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .download-button:hover {
+    background-color: #45a049;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table-header {
+    background: #007bff;
+    color: white;
+  }
+  
+  .table-cell {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .no-data {
+    text-align: center;
+    padding: 10px;
+    font-style: italic;
+  }
+  
+
+.search-input {
+  padding: 5px;
+  font-size: 16px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.filter-label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.no-data {
+  text-align: center;
+  padding: 10px;
+  font-style: italic;
+}
