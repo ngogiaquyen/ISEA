@@ -20,6 +20,7 @@ function PostDetail() {
   const { id } = useParams();
   const nagivate = useNavigate();
   const [postDetail, setPostDetail] = useState({});
+  const [candidates, setCandidates] = useState([]);
   const [displayContent, setDisplayContent] = useState('');
   const { setModalComponentContent } = useContext(ModalOverLayContext);
 
@@ -30,6 +31,9 @@ function PostDetail() {
   async function fetchData() {
     try {
       const data = await getData(`/post/read/${id}`);
+      const candidate = await getData(`/applicant/read/${id}`);
+      console.log(candidate)
+      setCandidates(candidate)
       if (data.length) setPostDetail(data[0]);
     } catch (error) {
       console.error('Error getting data: ', error);
@@ -108,7 +112,7 @@ function PostDetail() {
           </button>
         </div>
       </div>
-      <CandidateList type="post" />
+      <CandidateList type="post" data={candidates} />
     </div>
   );
 }

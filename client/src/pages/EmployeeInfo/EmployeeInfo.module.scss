@@ -1,6 +1,8 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  overflow: auto;
+  height: 100%;
 }
 
 .informations {
@@ -78,11 +80,6 @@
   background-color: #218838;
 }
 
-.cv {
-  // height: 400px;
-  background: #ddd;
-}
-
 
 .tools {
   display: flex;
@@ -110,4 +107,20 @@
       font-size: 16px;
     }
   }
+}
+
+.cv{
+  display: flex;
+  flex-direction: column;
+}
+
+.cv-title{
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--title-page-color);
+  padding: 12px 0;
+}
+
+.cv-img{
+  width: 100%;
 }

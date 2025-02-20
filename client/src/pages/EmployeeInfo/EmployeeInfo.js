@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './EmployeeInfo.module.scss';
 
@@ -6,36 +6,53 @@ import accoutmini from '~/assets/images/accoutmini.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faCalendar, faPenToSquare } from '@fortawesome/free-regular-svg-icons';
+import PageTitle from '~/components/PageTitle';
+import { ModalOverLayContext } from '~/components/Context/ModalOverlayProvider';
+import ConfirmModal from '~/layouts/components/ConfirmModal';
+import { postData } from '~/hooks/apiService';
 const cx = classNames.bind(styles);
 
-const employee = {
-  name: 'Nguyễn Văn An',
-  dob: '15/06/1990',
-  gender: 'Nam',
-  phone: '0909123456',
-  email: 'nguyenvanan@example.com',
-  cvLink: 'https://example.com/cv-nguyenvanan.pdf',
-  applyDate: '10/01/2024',
-  status: 'Đang xét duyệt',
-  avatar: 'https://via.placeholder.com/150', // Link ảnh avatar
-};
+function EmployeeInfo({ id, employee }) {
+  const { setModalComponentContent } = useContext(ModalOverLayContext);
 
-const EmployeeInfo = () => {
+  const handleConfirmRemove = async () => {
+    const formData = new FormData();
+    formData.append('id', id);
+    try {
+      const response = await postData('applicant/read/5', formData);
+      console.log(response);
+    } catch (error) {
+      console.error('Error posting data: ', error);
+    }
+  };
+
+  const handleRemove = () => {
+    setModalComponentContent(
+      <ConfirmModal
+        title={"Xác nhận ứng viên: " + employee.full_name}
+        message="Không thể khôi phục lại ứng viên sau khi xóa"
+        onConfirm={handleConfirmRemove}
+        onCancel={() => setModalComponentContent(<EmployeeInfo employee={employee} />)}
+      />,
+    );
+  };
+
   return (
     <div className={cx('wrapper')}>
+      <PageTitle title="Thông tin ứng viên" />
       <div className={cx('informations')}>
         <img src={accoutmini} alt="Avatar" className={cx('employee-avatar')} />
         <div className={cx('employee-info')}>
-          <h2 className={cx('employee-name')}>{employee.name}</h2>
+          <h2 className={cx('employee-name')}>{employee.full_name}</h2>
           <div className={cx('employee-details')}>
             <p>
-              <strong>Ngày sinh:</strong> {employee.dob}
+              <strong>Ngày sinh:</strong> {employee.birthday}
             </p>
             <p>
               <strong>Giới tính:</strong> {employee.gender}
             </p>
             <p>
-              <strong>Số điện thoại:</strong> {employee.phone}
+              <strong>Số điện thoại:</strong> {employee.phone_number}
             </p>
             <p>
               <strong>Email:</strong>{' '}
@@ -44,10 +61,7 @@ const EmployeeInfo = () => {
               </a>
             </p>
             <p>
-              <strong>Ngày ứng tuyển:</strong> {employee.applyDate}
-            </p>
-            <p>
-              <strong>Trạng thái:</strong> <span className={cx('employee-status')}>{employee.status}</span>
+              <strong>Ngày ứng tuyển:</strong> {employee.create_at}
             </p>
           </div>
         </div>
@@ -60,15 +74,18 @@ const EmployeeInfo = () => {
             <FontAwesomeIcon className={cx('icon')} icon={faCalendar} />
             Lên lịch phỏng vấn
           </button>
-          <button>
+          <button onClick={handleRemove}>
             <FontAwesomeIcon className={cx('icon')} icon={faTrash} />
             Xóa ứng viên
           </button>
         </div>
       </div>
-      <div className={cx('cv')}>Hiển thị nội dung cv ở đây </div>
+      <div className={cx('cv')}>
+        <span className={cx('cv-title')}>CV</span>
+        <img className={cx('cv-img')} src={`http://localhost/isea/server/public/uploads/${employee.cv}`} />
+      </div>
     </div>
   );
-};
+}
 
 export default EmployeeInfo;

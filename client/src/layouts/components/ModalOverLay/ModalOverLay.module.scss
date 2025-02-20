@@ -23,6 +23,8 @@
 
 .content{
     position: relative;
+    display: flex;
+    flex-direction: column;
     max-height: 600px;
     max-width: 80%;
     background-color: var(--modal-bg-color);

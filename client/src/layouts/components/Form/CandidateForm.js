@@ -5,72 +5,7 @@ import { isNotEmpty } from "~/hooks/validate";
 
 const cx = classNames.bind(styles);
 
-const provinces = [
-  'An Giang',
-  'Bà Rịa - Vũng Tàu',
-  'Bạc Liêu',
-  'Bắc Giang',
-  'Bắc Kạn',
-  'Bắc Ninh',
-  'Bến Tre',
-  'Bình Định',
-  'Bình Dương',
-  'Bình Phước',
-  'Bình Thuận',
-  'Cà Mau',
-  'Cần Thơ',
-  'Cao Bằng',
-  'Đà Nẵng',
-  'Đắk Lắk',
-  'Đắk Nông',
-  'Điện Biên',
-  'Đồng Nai',
-  'Đồng Tháp',
-  'Gia Lai',
-  'Hà Giang',
-  'Hà Nam',
-  'Hà Nội',
-  'Hà Tĩnh',
-  'Hải Dương',
-  'Hải Phòng',
-  'Hậu Giang',
-  'Hòa Bình',
-  'Hồ Chí Minh',
-  'Hưng Yên',
-  'Khánh Hòa',
-  'Kiên Giang',
-  'Kon Tum',
-  'Lai Châu',
-  'Lâm Đồng',
-  'Lạng Sơn',
-  'Lào Cai',
-  'Long An',
-  'Nam Định',
-  'Nghệ An',
-  'Ninh Bình',
-  'Ninh Thuận',
-  'Phú Thọ',
-  'Phú Yên',
-  'Quảng Bình',
-  'Quảng Nam',
-  'Quảng Ngãi',
-  'Quảng Ninh',
-  'Quảng Trị',
-  'Sóc Trăng',
-  'Sơn La',
-  'Tây Ninh',
-  'Thái Bình',
-  'Thái Nguyên',
-  'Thanh Hóa',
-  'Thừa Thiên Huế',
-  'Tiền Giang',
-  'Trà Vinh',
-  'Tuyên Quang',
-  'Vĩnh Long',
-  'Vĩnh Phúc',
-  'Yên Bái',
-];
-function PostForm({ref, data}) {
+function CandidateForm({ref, data}) {
   return (
     <form className={cx('post-form')} ref={ref}>
       <FormGroup
@@ -99,7 +34,6 @@ function PostForm({ref, data}) {
         layout="haft"
         inputType="text"
         placeholder="Địa điểm"
-        selectData={['Chọn địa điểm', ...provinces]}
         handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập địa điểm!' }]}
       />
       <FormGroup
@@ -135,4 +69,4 @@ function PostForm({ref, data}) {
   );
 }
 
-export default PostForm;
+export default CandidateForm;

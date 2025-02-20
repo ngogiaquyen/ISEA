@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 const cx = classNames.bind(styles);
 
 function EducationsList({course}) {
-    return ( <NavLink  className={cx('item')} to={config.routes.admin.trainingCreate}>
+    return ( <NavLink  className={cx('item')} to={config.routes.admin.trainingDetail}>
     <div className={cx('item-top')}>
       <h2 className={cx('item-title')}>{course.course_name}</h2>
       <p className={cx('item-date')}>
