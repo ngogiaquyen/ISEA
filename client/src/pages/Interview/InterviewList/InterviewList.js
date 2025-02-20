@@ -45,7 +45,6 @@ function InterviewList() {
   const loadData = async ()=>{
     try {
       const response = await getData("/interview/read");
-      console.log(response);
       setInterviews(response);
     } catch (error) {
       console.error("Post error: ", error);

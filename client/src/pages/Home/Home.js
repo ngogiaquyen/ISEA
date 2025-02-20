@@ -36,7 +36,6 @@ function Home() {
       if (!response.ok) throw new Error('Mất kết noois');
 
       const data = await response.json();
-      console.log(data);
       setHomePostItems(data);
       if (data[0]) setPost(data[0]);
     } catch (error) {
@@ -84,7 +83,6 @@ function Home() {
       });
 
       const data = await response.json();
-      console.log(data);
       showToast(data);
     } catch (e) {
       console.error(e);
@@ -146,7 +144,6 @@ function Home() {
         />
       </HomeForm>,
     );
-    // console.log(post);
   };
   const showFormRef = useRef(showForm);
 

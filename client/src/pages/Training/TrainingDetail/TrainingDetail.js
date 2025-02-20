@@ -30,7 +30,6 @@ function TrainingDetail() {
     try {
       const data = await getData(`/post/read/${id}`);
       if (data.length) setTraining(data[0]);
-      console.log(data[0]);
     } catch (error) {
       console.error('Error getting data: ', error);
     }
@@ -52,9 +51,7 @@ function TrainingDetail() {
     formData.append("id",id);
     try {
       const response = await postData(`/post/delete`, formData);
-      console.log(response)
       addToast(response)
-      console.log('xóa thành công');
       setModalComponentContent(null);
       nagivate(config.routes.admin.recruitmentList)
     } catch (error) {
@@ -64,7 +61,6 @@ function TrainingDetail() {
 
   const handleRemovePost = () => {
     // Perform the delete action
-    console.log('Post deleted');
     setModalComponentContent(
       <ConfirmModal
         title="Xác nhận xóa bài viết"

@@ -55,7 +55,6 @@ function processHeight() {
   if (!process) return;
   if (scrollY > 81) scrollY = 81;
   process.style.height = `calc(100vh - 81px - 32px + ${scrollY}px)`;
-  console.log();
 }
 
 window.addEventListener('scroll', processHeight);

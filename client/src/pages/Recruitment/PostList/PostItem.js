@@ -6,7 +6,6 @@ import config from '~/config';
 const cx = classNames.bind(styles);
 
 function PostItem({ id, title, date, createAt, descriptions }) {
-  console.log(config.routes.admin.recruitmentDetail+`/${id}`)
   return (
     <NavLink className={cx('post-item')} to={config.routes.admin.recruitmentDetail+`/${id}`}>
       <div className={cx('item-top')}>

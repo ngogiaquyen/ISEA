@@ -11,8 +11,7 @@ import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
-
-function CreateForm({title="", typeUrl, formComponent}) {
+function CreateForm({ title = '', typeUrl, formComponent }) {
   const formRef = useRef(null);
   const navigate = useNavigate();
   const FormType = formComponent;
@@ -29,18 +28,21 @@ function CreateForm({title="", typeUrl, formComponent}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(formRef.current);
-    formData.forEach((value, key) => {
-      console.log(`${key}: ${value}`);
-    });
 
-    
+    if (formData.has('interviewers[]')) {
+      const interviews = formData.getAll('interviewers[]');
+
+      if (Array.isArray(interviews) || typeof interviews === 'object') {
+        formData.set('interviewers', JSON.stringify(interviews));
+      }
+    }
+
+
     try {
-      console.log(`/${typeUrl}/create`)
       const response = await postData(`/${typeUrl}/create`, formData);
-      console.log(response);
       addToast(response);
       if (response && response.status === 'success') {
-        navigate(config.routes.admin.recruitmentList);
+        navigate(config.routes.admin.interviewList);
       }
     } catch (error) {
       console.error('Error posting data: ', error);
@@ -56,7 +58,7 @@ function CreateForm({title="", typeUrl, formComponent}) {
         </div>
         <Button title="Lưu lại" onClick={handleSubmit} />
       </div>
-      <FormType ref={formRef}/>
+      <FormType ref={formRef} />
     </div>
   );
 }

@@ -11,7 +11,6 @@ import Input from './Input';
 const cx = classNames.bind(styles);
 
 // const CustomInput = forwardRef(({ value, onClick, name }, ref) => {
-//   console.log(name); // Kiểm tra xem name có giá trị hay không
 //   return (
 //     <Input
 //       type="text"

@@ -12,7 +12,7 @@ import { ModalOverLayContext } from '~/components/Context/ModalOverlayProvider';
 
 const cx = classNames.bind(styles);
 
-function EditForm({ id, title="Chỉnh sửa", formComponent, onChangeValue = () => {} }) {
+function EditForm({ id, typeUrl="", title="Chỉnh sửa", formComponent, onChangeValue = () => {} }) {
   const formRef = useRef(null);
   const { setModalComponentContent } = useContext(ModalOverLayContext);
 
@@ -23,8 +23,7 @@ function EditForm({ id, title="Chỉnh sửa", formComponent, onChangeValue = ()
 
   const handleLoadData = async () => {
     try {
-      const response = await getData(`/post/read/${id}`);
-      console.log(response[0]);
+      const response = await getData(`/${typeUrl}/read/${id}`);
       if (response.length) setPostValue(response[0]);
     } catch (error) {
       console.error('Error posting data: ', error);
@@ -42,8 +41,15 @@ function EditForm({ id, title="Chỉnh sửa", formComponent, onChangeValue = ()
     e.preventDefault();
     const formData = new FormData(formRef.current);
     formData.append('id', id);
+    if (formData.has('interviewers[]')) {
+      const interviews = formData.getAll('interviewers[]');
+
+      if (Array.isArray(interviews) || typeof interviews === 'object') {
+        formData.set('interviewers', JSON.stringify(interviews));
+      }
+    }
     try {
-      const response = await postData(`/post/update`, formData);
+      const response = await postData(`/${typeUrl}/update`, formData);
       addToast(response);
       if (response.status === 'success') {
         onChangeValue();
