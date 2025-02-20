@@ -83,6 +83,9 @@ function Home() {
       });
 
       const data = await response.json();
+      console.log(response);
+      console.log(data);
+      
       showToast(data);
     } catch (e) {
       console.error(e);

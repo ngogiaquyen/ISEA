@@ -98,11 +98,11 @@ class Db
             FOREIGN KEY (hr_id) REFERENCES users(id) ON DELETE CASCADE
         );
         CREATE TABLE IF NOT EXISTS candidates (
-            id INT AUTO_INCREMENT PRIMARY KEY,
             interview_id INT NOT NULL,
             applicant_id INT NOT NULL,
             create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             edit_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            PRIMARY KEY (interview_id, applicant_id),
             FOREIGN KEY (interview_id) REFERENCES interviews(id) ON DELETE CASCADE,
             FOREIGN KEY (applicant_id) REFERENCES applicants(id) ON DELETE CASCADE
         );

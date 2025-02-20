@@ -25,12 +25,12 @@ class UserModel extends Model
             unload();
             if ($e->getCode() == '23000') {
                 if (str_contains($e->getMessage(), 'email')) {
-                    handleError('Email đã tồn tại');
+                    $this->rollback('Email đã tồn tại');
                 } else {
-                    handleError('Số điện thoại đã tồn tại');
+                    $this->rollback('Số điện thoại đã tồn tại');
                 }
             }
-            handleError($e->getMessage());
+            $this->rollback($e->getMessage());
         }
     }
     public function login($data)

@@ -13,7 +13,7 @@ class Candidate extends Controller
     {
         validCandidate();
         $applicants = json_decode($_POST['applicant_id']);
-        
+
         if (!is_array($applicants) || count($applicants) === 0) {
             handleError('Vui lòng chọn ứng viên');
         }

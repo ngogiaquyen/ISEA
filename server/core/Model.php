@@ -38,13 +38,13 @@ class Model
             $stmt->execute();
             return $this->conn->lastInsertId();
         } catch (PDOException $e) {
-            handleError($e->getMessage());
+            return false;
         }
     }
     public function read($table, $conditions = "")
     {
         if (!isset($this->conn)) {
-            handleError('Không thể kết nối với máy chủ');
+            return [];
         }
         $sql = "SELECT * FROM $table" . ($conditions ? " WHERE $conditions" : "") . " ORDER BY edit_at DESC";
         try {
@@ -52,7 +52,7 @@ class Model
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            handleError($e->getMessage());
+            return [];
         }
     }
     public function update($table, $data, $conditions = "")
@@ -71,7 +71,7 @@ class Model
             $stmt->execute();
             return $stmt->rowCount();
         } catch (PDOException $e) {
-            handleError($e->getMessage());
+            return 0;
         }
     }
     public function delete($table, $conditions = "")
@@ -82,7 +82,7 @@ class Model
             $stmt->execute();
             return $stmt->rowCount();
         } catch (PDOException $e) {
-            handleError($e->getMessage());
+            return 0;
         }
     }
 }
