@@ -43,16 +43,15 @@ class Applicant extends Controller
         if (empty($user_id)) {
             $this->user_model->rollback('Đăng ký thất bại, vui lòng thử lại sau');
         }
-        $data = [
+        $newApplicant = [
             'user_id' => $user_id,
             'post_id' => $_POST['post_id'],
         ];
-        if ($this->applicant_model->createApplicant($data)) {
+        if ($this->applicant_model->createApplicant($newApplicant)) {
             $_SESSION['user_id'] = $user_id;
             $_SESSION['phone_number'] = $_POST['phone_number'];
             $this->user_model->commitNotify('Hệ thống cấp tài khoản tự động', $message, true);
         }
-        $this->user_model->rollback();
-        handleError('Đăng ký ứng tuyển thất bại');
+        $this->user_model->rollback('Đăng ký ứng tuyển thất bại');
     }
 }

@@ -19,12 +19,13 @@ class Candidate extends Controller
         }
 
         $this->candidate_model->beginTransaction();
+
         foreach ($applicants as $applicant_id) {
-            $data = [
+            $newCandidate = [
                 'interview_id' => $_POST['interview_id'],
                 'applicant_id' => $applicant_id,
             ];
-            if (!$this->candidate_model->createCandidate($data)) {
+            if (!$this->candidate_model->createCandidate($newCandidate)) {
                 $this->candidate_model->rollback("Thêm ứng viên vào buổi phỏng vấn thất bại");
             }
         }

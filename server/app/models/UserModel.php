@@ -30,7 +30,7 @@ class UserModel extends Model
                     $this->rollback('Số điện thoại đã tồn tại');
                 }
             }
-            $this->rollback($e->getMessage());
+            $this->rollback('Lỗi đăng ký: ' . $e->getMessage());
         }
     }
     public function login($data)

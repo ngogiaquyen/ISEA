@@ -18,7 +18,41 @@ class CandidateModel extends Model
     }
     public function readCandidate($id)
     {
-        return $this->read('candidates', empty($id) ? '' : "id=$id");
+        try {
+            $conditions = empty($id) ? '' : 'WHERE c.interview_id = :id';
+            $sql = "SELECT 
+                    u.id AS user_id,
+                    a.id AS applicant_id,
+                    c.interview_id,
+                    u.full_name,
+                    u.email,
+                    u.phone_number,
+                    u.gender,
+                    u.birthday,
+                    u.cv,
+                    a.status,
+                    a.create_at
+                FROM 
+                    candidates c
+                LEFT JOIN
+                    applicants a ON a.id = c.applicant_id
+                LEFT JOIN
+                    users u ON u.id = a.user_id
+                $conditions
+                ORDER BY
+                    c.edit_at
+                ";
+            $stmt = $this->conn->prepare($sql);
+
+            if (!empty($id)) {
+                $stmt->bindValue(':id', $id);
+            }
+
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            handleError('Lỗi khi lấy dữ liệu: ' . $e->getMessage());
+        }
     }
     public function deleteCandidate($id)
     {
