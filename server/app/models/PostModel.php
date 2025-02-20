@@ -5,13 +5,9 @@ class PostModel extends Model
     {
         return $this->create("posts", $data);
     }
-    public function readPosts($id = '')
+    public function readPosts($id = 0)
     {
-        if (!empty($id)) {
-            $conditions = "id=$id";
-            return $this->read('posts', $conditions);
-        }
-        return $this->read('posts');
+        return $this->read('posts', empty($id) ? '' : "id=$id");
     }
     public function updatePost($id, $data)
     {

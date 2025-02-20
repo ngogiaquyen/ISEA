@@ -13,4 +13,12 @@ class InterviewerModel extends Model
         }
         return $this->read('interviewers');
     }
+    public function updateInterviewer($id, $data)
+    {
+        return $this->update('interviewers', $data, "interview_id=$id");
+    }
+    public function deleteInterviewer($id)
+    {
+        return $this->delete("interviewers", "interview_id=$id");
+    }
 }

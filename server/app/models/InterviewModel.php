@@ -63,4 +63,12 @@ class InterviewModel extends Model
             handleError("Lỗi khi lấy chi tiết: " . $e->getMessage());
         }
     }
+    public function updateInterview($id, $data)
+    {
+        return $this->update('interviews', $data, "id=$id");
+    }
+    public function deleteInterview($id)
+    {
+        return $this->delete('interviews', "id=$id");
+    }
 }

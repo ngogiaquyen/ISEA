@@ -38,7 +38,7 @@ function validPostCreate()
 function validPostUpdate()
 {
     validMethodPOST();
-    if (empty($_POST['id'])) {
+    if (empty($_POST['id']) || !is_numeric($_POST['id'])) {
         handleError('Vui lòng chọn một bài viết');
     }
     if (empty($_POST['title'])) {
@@ -63,7 +63,7 @@ function validPostUpdate()
 function validPostDelete()
 {
     validMethodPOST();
-    if (empty($_POST['id'])) {
+    if (empty($_POST['id']) || !is_numeric($_POST['id'])) {
         handleError('Vui lòng chọn một bài viết');
     }
 }
@@ -153,5 +153,19 @@ function validInterview()
     }
     if (empty($_POST['interviewers'])) {
         handleError('Người phỏng vấn không được để trống');
+    }
+}
+function validInterviewUpdate()
+{
+    if (empty($_POST['id'])) {
+        handleError('Vui lòng chọn một cuộc phỏng vấn');
+    }
+    validInterview();
+}
+function validInterviewDelete()
+{
+    validMethodPOST();
+    if (empty($_POST['id'])) {
+        handleError('Vui lòng chọn một cuộc phỏng vấn');
     }
 }

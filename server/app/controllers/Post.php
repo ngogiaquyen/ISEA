@@ -28,13 +28,13 @@ class Post extends Controller
         }
     }
 
-    
-    public function read($id = '')
+
+    public function read($id = 0)
     {
         validMethodGET();
         echo json_encode($this->post_model->readPosts($id));
     }
-    public function update($id = '')
+    public function update($id = 0)
     {
         validPostUpdate();
         $id = $_POST['id'];
