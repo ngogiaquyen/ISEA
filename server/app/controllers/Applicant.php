@@ -29,7 +29,7 @@ class Applicant extends Controller
         $birthday = formatDate($_POST['birthday']);
         $message = "<b>Tài khoản</b>: $phone<br><b>Mật khẩu</b>: $birthday<br>Dùng tài khoản để theo dõi ứng tuyển";
         $path = upload();
-        $this->user_model->startTransaction();
+        $this->user_model->beginTransaction();
         $data = [
             'full_name' => $_POST['full_name'],
             'email' => $_POST['email'],
@@ -41,7 +41,7 @@ class Applicant extends Controller
         ];
         $user_id = $this->user_model->register($data);
         if (empty($user_id)) {
-            $this->user_model->back('Đăng ký thất bại, vui lòng thử lại sau');
+            $this->user_model->rollback('Đăng ký thất bại, vui lòng thử lại sau');
         }
         $data = [
             'user_id' => $user_id,
@@ -50,9 +50,9 @@ class Applicant extends Controller
         if ($this->applicant_model->createApplicant($data)) {
             $_SESSION['user_id'] = $user_id;
             $_SESSION['phone_number'] = $_POST['phone_number'];
-            $this->user_model->doneNotify('Hệ thống cấp tài khoản tự động', $message, true);
+            $this->user_model->commitNotify('Hệ thống cấp tài khoản tự động', $message, true);
         }
-        $this->user_model->back();
+        $this->user_model->rollback();
         handleError('Đăng ký ứng tuyển thất bại');
     }
 }

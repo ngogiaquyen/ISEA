@@ -6,21 +6,21 @@ class Model
     {
         $this->conn = Db::getInstance()->getConnection();
     }
-    public function startTransaction()
+    public function beginTransaction()
     {
         $this->conn->beginTransaction();
     }
-    public function doneNotify($title, $message, $keep = false)
+    public function commitNotify($title, $message, $keep = false)
     {
         $this->conn->commit();
         handleNotify(1, $title, $message, $keep);
     }
-    public function done($message, $keep = false)
+    public function commit($message, $keep = false)
     {
         $this->conn->commit();
         handleSuccess($message, $keep);
     }
-    public function back($message, $keep = false)
+    public function rollback($message, $keep = false)
     {
         $this->conn->rollback();
         handleError($message, $keep);
