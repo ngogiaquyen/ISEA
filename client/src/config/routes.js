@@ -54,6 +54,7 @@ const routes = {
 
     // Hồ sơ nhân sự
     employeeRecords: '/admin/ho-so-nhan-vien',
+    employeeManagement: '/admin/ho-so-nhan-vien/thong-tin',
     updateEmployeeInfo: '/admin/ho-so-nhan-vien/cap-nhat',
     personalInformation: '/admin/ho-so-nhan-vien/thong-tin-ca-nhan',
     workHistory: '/admin/ho-so-nhan-vien/qua-trinh-cong-tac',

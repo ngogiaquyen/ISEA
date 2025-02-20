@@ -24,6 +24,7 @@ import TrainingForm from '~/layouts/components/Form/TrainingForm';
 import TrainingDetail from '~/pages/Training/TrainingDetail';
 import PayrollManagement from '~/pages/Salary/PayrollManagement ';
 import PerformanceReview from '~/pages/Performance/PerformanceReview';
+import EmployeeManagement from '~/pages/EmployeeManagement/EmployeeManagement';
 // don't need to login
 
 const publicRouters = [
@@ -226,6 +227,11 @@ const publicRouters = [
   {
     path: config.routes.admin.employeeRecords,
     component: PleaseSelectFeature,
+    layout: AdminLayout,
+  },
+  {
+    path: config.routes.admin.employeeManagement,
+    component: EmployeeManagement,
     layout: AdminLayout,
   },
   {
