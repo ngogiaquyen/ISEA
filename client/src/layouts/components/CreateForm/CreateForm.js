@@ -29,11 +29,17 @@ function CreateForm({title="", typeUrl, formComponent}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(formRef.current);
+    formData.forEach((value, key) => {
+      console.log(`${key}: ${value}`);
+    });
+
+    
     try {
+      console.log(`/${typeUrl}/create`)
       const response = await postData(`/${typeUrl}/create`, formData);
       console.log(response);
       addToast(response);
-      if (response.status === 'success') {
+      if (response && response.status === 'success') {
         navigate(config.routes.admin.recruitmentList);
       }
     } catch (error) {

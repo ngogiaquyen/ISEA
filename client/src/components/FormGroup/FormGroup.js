@@ -29,8 +29,10 @@ function FormGroup({
   }, [value]);
 
   let InputTag = Input;
-  if (inputType === 'datetime') InputTag = DateTimePickerCo;
-  else if (textarea) {
+  if (inputType === 'datetime') {
+    console.log(selectData);
+    InputTag = DateTimePickerCo;
+  } else if (textarea) {
     InputTag = 'textarea';
   } else if (selectData.length > 0) {
     InputTag = Select;
@@ -59,7 +61,7 @@ function FormGroup({
       break;
     }
   };
-  
+
   const handleDateTimePickerChange = (date) => {
     const newValue = date || '';
     setInputValue(newValue);
@@ -72,10 +74,9 @@ function FormGroup({
       break;
     }
   };
-
   return (
     <div className={cx('wrapper', layout)}>
-      <OutsideClickHandler className={cx("group")} onClickOutside={() => handleError(inputValue)}>
+      <OutsideClickHandler className={cx('group')} onClickOutside={() => handleError(inputValue)}>
         <label className={cx('title')}>{label}</label>
 
         {InputTag === Input && (
@@ -91,9 +92,7 @@ function FormGroup({
           />
         )}
 
-        {InputTag === DateTimePickerCo && (
-          <DateTimePickerCo name={name} onChange={handleDateTimePickerChange}/>
-        )}
+        {InputTag === DateTimePickerCo && <DateTimePickerCo name={name} onChange={handleDateTimePickerChange} />}
 
         {InputTag === 'textarea' && (
           <Textarea

@@ -7,7 +7,10 @@ import { useEffect, useState } from 'react';
 import { getData } from '~/hooks/apiService';
 
 const cx = classNames.bind(styles);
-const formatInterview = ['Online', 'Trực tiếp'];
+const formatInterview = [
+  { id: 1, value: 'Online' },
+  { id: 2, value: 'Trực tiếp' },
+];
 function InterviewForm({ ref, data }) {
   const [dropDownItems, setDropDownItems] = useState([]);
 
@@ -18,10 +21,10 @@ function InterviewForm({ ref, data }) {
       console.error('Error posting data: ', error);
     }
   };
-  const fetchDropItem = async() => {
+  const fetchDropItem = async () => {
     try {
-      const response =  getData("/role/read");
-      console.log(response)
+      const response = await getData('/role/read');
+      console.log(response);
 
       setDropDownItems(response);
     } catch (error) {
@@ -32,13 +35,13 @@ function InterviewForm({ ref, data }) {
   useEffect(() => {
     fetchInterviewer();
     fetchDropItem();
-
+    console.log(ref);
   }, []);
 
   return (
     <form className={cx('form')} ref={ref}>
       <FormGroup
-        name="interview_date"
+        name="interview_datetime"
         label="Thời gian"
         layout="haft"
         inputType="datetime"
@@ -61,7 +64,7 @@ function InterviewForm({ ref, data }) {
         placeholder="Địa điểm"
         handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập địa điểm!' }]}
       />
-      <Dropdown dropDownItems={dropDownItems} placeholder="Người phỏng vấn" />
+      <Dropdown name="interviewers" dropDownItems={dropDownItems} placeholder="Người phỏng vấn" />
       <FormGroup
         name="required_documents"
         label="Hồ sơ cần mang"
