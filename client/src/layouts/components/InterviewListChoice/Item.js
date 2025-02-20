@@ -4,37 +4,69 @@ import ConfirmModal from '../ConfirmModal';
 import { ModalOverLayContext } from '~/components/Context/ModalOverlayProvider';
 import { useContext } from 'react';
 import InterviewListChoice from './InterviewListChoice';
+import { postData } from '~/hooks/apiService';
+import { CreateCandidateInforContext } from '~/components/Context/CreateCandidateInforProvider';
+import { ToastContext } from '~/components/Context/ToastProvider';
+import { useEffect } from 'react';
 
 const cx = classNames.bind(styles);
 
-function Item() {
+function Item({ interview }) {
+  const { setModalComponentContent } = useContext(ModalOverLayContext);
+  // len lich phong van
+  const { interviewId, setInterviewId, applicantID } = useContext(CreateCandidateInforContext);
+  const { addToast } = useContext(ToastContext);
 
-    const { setModalComponentContent } = useContext(ModalOverLayContext);
-    const handleConfirmSelect= ()=>{
-
+  useEffect(() => {
+    if (interviewId) {
+      setModalComponentContent(
+        <ConfirmModal
+          title="Xác nhận thêm ứng viên vào buổi phỏng vấn"
+          message="Ngày 22/22/2004 14:22"
+          onConfirm={handleConfirmSelect}
+          onCancel={() => {
+            setModalComponentContent(<InterviewListChoice />);
+            setInterviewId(null);
+          }}
+        />,
+      );
     }
-    const handleSubmit = () => {
-        // Perform the delete action
-        setModalComponentContent(
-          <ConfirmModal
-            title="Xác nhận thêm ứng viên vào buổi phỏng vấn"
-            message="Ngày 22/22/2004 14:22"
-            onConfirm={handleConfirmSelect}
-            onCancel={() => setModalComponentContent(<InterviewListChoice/>)}
-          />,
-        );
-      };
+    console.log('ehllo');
+  }, [interviewId]);
+
+  const handleConfirmSelect = async () => {
+    const formData = new FormData();
+    formData.append('interview_id', interviewId);
+    formData.append('applicant_id', JSON.stringify(applicantID));
+    try {
+      const response = await postData('/candidate/create', formData);
+      console.log(response);
+      addToast(response);
+      if (!response.keep) {
+        console.log();
+        setInterviewId(null);
+        setModalComponentContent(<InterviewListChoice />);
+      }
+    } catch (error) {
+      console.error('Error posting data: ', error);
+    }
+  };
+  const handleSubmit = () => {
+    console.log(interview.id);
+    setInterviewId(interview.id);
+    // Perform the delete action
+  };
 
   return (
     <div className={cx('item')} onClick={handleSubmit}>
       <p className={cx('interview-datetime')}>
-        <strong className={cx("strong")}>Thời gian:</strong> 30/01/2025 13:00
+        <strong className={cx('strong')}>Thời gian:</strong> {interview.interview_datetime}
       </p>
       <p className={cx('interview-location')}>
-        <strong className={cx("strong")}>Địa điểm:</strong> P103, Toà C5, Trường ĐH Công nghệ Thông tin và Truyền thông Thái Nguyên
+        <strong className={cx('strong')}>Địa điểm:</strong> {interview.interview_location}
       </p>
       <p className={cx('created-at')}>
-        <strong className={cx("strong")}>Thời gian tạo:</strong> 2025-02-20 12:49:21
+        <strong className={cx('strong')}>Thời gian tạo:</strong> {interview.create_at}
       </p>
     </div>
   );

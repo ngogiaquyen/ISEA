@@ -4,19 +4,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendar } from '@fortawesome/free-regular-svg-icons';
 import CandidateItem from '../CandidateItem';
 import { useContext, useState } from 'react';
-import ModalOverLay from '../../ModalOverLay';
 import InterviewListChoice from '../../InterviewListChoice';
 import { ModalOverLayContext } from '~/components/Context/ModalOverlayProvider';
 
 const cx = classNames.bind(styles);
 
-function CandidateList({type, data}) {
+function CandidateList({type, data=[]}) {
   const [activeMenu, setActiveMenu] = useState(null);
   
   const { setModalComponentContent } = useContext(ModalOverLayContext);
 
+
   const hanldeInsertInterview = ()=>{
-    
     setModalComponentContent(<InterviewListChoice />);
   }
 
@@ -33,7 +32,7 @@ function CandidateList({type, data}) {
       </div>
       <div className={cx('list')}>
         {data.map((value, index)=>(
-          <CandidateItem id={value.applicant_id} data={value} activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
+          <CandidateItem id={value.applicant_id} key={index} data={value} activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
         ))}
       </div>
     </div>

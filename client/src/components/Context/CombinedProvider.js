@@ -1,4 +1,5 @@
 import { ActiveBoardProvider } from './ActiveBoardProvider';
+import { CreateCandidateInforProvider } from './CreateCandidateInforProvider';
 import { LoadBarPovider } from './LoadBarPovider';
 import { LoginProvider } from './LoginProvider';
 import { ModalOverLayProvider } from './ModalOverlayProvider';
@@ -12,7 +13,9 @@ function CombinedProvider({ children }) {
         <ActiveBoardProvider>
           <ToastProvider>
             <LoadBarPovider>
-              <ModalOverLayProvider>{children}</ModalOverLayProvider>
+              <ModalOverLayProvider>
+                <CreateCandidateInforProvider>{children}</CreateCandidateInforProvider>
+              </ModalOverLayProvider>
             </LoadBarPovider>
           </ToastProvider>
         </ActiveBoardProvider>

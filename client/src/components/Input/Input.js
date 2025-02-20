@@ -10,53 +10,26 @@ const cx = classNames.bind(styles);
 
 function Input({
   name,
-  email,
-  password,
-  code,
-  newPassword,
-  date,
   requires,
   index,
+  type,
   value = '',
-  isSendCodeValid,
   placeholder = '',
-  setErrorMessage,
-  error,
   ref,
   setValue = () => {},
   onChange = () => {},
   onClick = () => {},
 }) {
   const [isEyeSlash, setIsEyeSlash] = useState(true);
-  const [type, setType] = useState('text');
-  //   const [placeholder, setPlaceholder] = useState('');
-  const [inputFor, setInputFor] = useState(email);
-  useEffect(() => {
-    if (email) {
-      setType('text');
-      setInputFor('email');
-    } else if (password) {
-      setType('password');
-      setInputFor('password');
-    } else if (newPassword) {
-      setType('newPassword');
-      setInputFor('newPassword');
-    } else if (code) {
-      setType('text');
-      setInputFor('code');
-    } else if (date) {
-      setType('date');
-      setInputFor('');
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [email, password, newPassword, code]);
+  // const [type, setType] = useState('text');
 
-  const className = cx('input', { email, password, code, error });
 
-  const handleChangeEye = () => {
-    setIsEyeSlash((prev) => !prev);
-    setType((prevType) => (prevType === 'password' ? 'text' : 'password'));
-  };
+  const className = cx('input');
+
+  // const handleChangeEye = () => {
+  //   setIsEyeSlash((prev) => !prev);
+  //   setType((prevType) => (prevType === 'password' ? 'text' : 'password'));
+  // };
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -65,31 +38,15 @@ function Input({
       requires[index].title = e.target.value;
     }
 
-    switch (inputFor) {
-      case 'email':
-        if (isValidEmail(e.target.value)) setErrorMessage('');
-        break;
-      case 'newPassword':
-        if (isValidPassword(e.target.value)) setErrorMessage('');
-        break;
-      case 'password':
-        if (isValidPassword(e.target.value)) setErrorMessage('');
-        break;
-      case 'code':
-        if (isValidCode(e.target.value)) setErrorMessage('');
-        break;
-      default:
-        break;
-    }
   };
 
   return (
     <div className={cx('wrapper')}>
       <input className={className} name={name} value={value} ref={ref} type={type} placeholder={placeholder} onChange={handleChange} onClick={onClick}/>
-      {password && (
+      {/* {password && (
         <FontAwesomeIcon className={cx('eye')} icon={isEyeSlash ? faEyeSlash : faEye} onClick={handleChangeEye} />
       )}
-      {code && <button className={cx('send-code', { active: isSendCodeValid })}>Gửi mã</button>}
+      {code && <button className={cx('send-code', { active: isSendCodeValid })}>Gửi mã</button>} */}
     </div>
   );
 }
