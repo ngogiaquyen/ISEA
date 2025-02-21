@@ -33,6 +33,12 @@
 
   --primary-color-hover: #0081ff;
 
+  --content-color: #444;
+  --background-color: #fff;
+  --border-color: #d3d5d6;
+  --init-color: rgba(0, 129, 255, 0.12);
+  --shadow-mode-1: 0 0 8px rgba(0, 0, 0, 0.1);
+
   --tag-blue: #0081ff;
   --tag-green: #00cc00;
   --tag-light-purple: #7a6bff;
@@ -176,3 +182,4 @@ b{
   font-weight: 400;
 }
 // dark or light mode
+

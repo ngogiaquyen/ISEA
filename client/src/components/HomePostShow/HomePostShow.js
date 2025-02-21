@@ -61,7 +61,7 @@ window.addEventListener('scroll', processHeight);
 
 function HomePostShow({ post, onApply }) {
   return (
-    <div id="post-show" className={cx('post-show')}>
+    <div id="post-show" className={cx('post-show', { init: post.isInit })}>
       <div className={cx('post-info-head')}>
         <div className={cx('post-title')}>
           <p>{post.title}</p>

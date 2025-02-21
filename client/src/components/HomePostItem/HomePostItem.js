@@ -10,6 +10,7 @@ export function cleanString(str) {
 }
 
 function generateShortDesc(desc) {
+  if (!desc) return;
   const lines = desc.trim().split('\n');
   let elems = [];
   let liElems = [];
@@ -42,14 +43,14 @@ function generateShortDesc(desc) {
   return elems;
 }
 
-const handleMenu = (e)=>{
-  e.preventDefault()
-}
+const handleMenu = (e) => {
+  e.preventDefault();
+};
 
-function HomePostItem({ infoObj, onPostSelect, isSelected }) {
+function HomePostItem({ infoObj, onPostSelect, isInit, isSelected }) {
   return (
     <li
-      className={cx('post-item', { show: isSelected })}
+      className={cx('post-item', { init: isInit }, { selected: isSelected })}
       onClick={() => {
         onPostSelect(infoObj);
       }}

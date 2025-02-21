@@ -22,8 +22,18 @@
   padding-left: 16px;
 }
 
-.icon{
+.icon {
   height: 100%;
   aspect-ratio: 10/8;
   object-fit: cover;
+}
+
+.waiting {
+  font-weight: 300;
+  padding: 16px;
+  font-size: 14px;
+}
+
+::-webkit-scrollbar{
+  width: 4px !important;
 }

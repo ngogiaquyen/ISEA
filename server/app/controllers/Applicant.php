@@ -18,11 +18,6 @@ class Applicant extends Controller
     }
     public function register()
     {
-        $id = $_SESSION['user_id'] ?? null;
-        $phone = $_SESSION['phone_number'] ?? null;
-        if (!empty($id) && !empty($phone)) {
-            handleSuccess("Đã có dữ liệu trong sesseion id: $id, phone: $phone");
-        }
         validApplicant();
         validUserRegister();
         $phone = $_POST['phone_number'];

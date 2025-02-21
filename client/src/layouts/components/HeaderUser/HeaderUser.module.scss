@@ -1,10 +1,10 @@
 .wrapper {
-  // background-color: #fff;
   display: flex;
   justify-content: center;
   position: relative;
-  z-index: 1000;
-  border-bottom: 1px solid #d3d5d6;
+  z-index: 999999990;
+  border-bottom: 1px solid var(--border-color);
+  // box-shadow: var(--shadow-mode-1);
 }
 .inner {
   height: 80px;
@@ -33,6 +33,7 @@
 .logo img {
   height: 24px;
   margin-right: 24px;
+  filter: drop-shadow(-1px 1px 2px var(--primary-color));
 }
 .nav{
   display: flex;

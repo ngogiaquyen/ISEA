@@ -1,8 +1,7 @@
 import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
 import HomePost from '~/components/HomePost/HomePost';
-import { useEffect, useRef, useState } from 'react';
-import HeaderUser from '~/layouts/components/HeaderUser/HeaderUser';
+import React, { useEffect, useRef, useState } from 'react';
 import HomePostShow from '~/components/HomePostShow/HomePostShow';
 import HomeForm from '~/components/HomeForm/HomeForm';
 import HomeFormField from '~/components/HomeFormField/HomeFormField';
@@ -11,14 +10,30 @@ import HomeToast from '~/components/HomeToast/HomeToast';
 import icon from '../../assets/images/load.webp';
 
 const cx = classNames.bind(styles);
-const header = {
-  home: 1,
-  about: 0,
+
+export const auth = async (formData) => {
+  try {
+    const response = await fetch('http://localhost/isea/server/user/login', {
+      method: 'POST',
+      credentials: 'include',
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error('Mất kết nối');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (e) {
+    console.error(e);
+    return {};
+  }
 };
 
 function Home() {
-  const [homePostItems, setHomePostItems] = useState([]);
-  const [post, setPost] = useState({});
+  const [homePostItems, setHomePostItems] = useState([{ isInit: true }, { isInit: true }, { isInit: true }]);
+  const [post, setPost] = useState({ isInit: true });
   const [selectPostId, setSelectPostId] = useState(null);
   const [form, setForm] = useState(null);
   const [toast, setToast] = useState(null);
@@ -36,8 +51,11 @@ function Home() {
       if (!response.ok) throw new Error('Mất kết noois');
 
       const data = await response.json();
-      setHomePostItems(data);
-      if (data[0]) setPost(data[0]);
+
+      if (data.length > 0) {
+        setHomePostItems(data);
+        setPost(data[0]);
+      }
     } catch (error) {
       console.error(error);
       showToast({
@@ -104,6 +122,7 @@ function Home() {
         title={'Thông tin ứng tuyển'}
         btnContent={btnContent}
         isDisable={btnDisable}
+        showBtn={true}
         setForm={setForm}
         handleSubmit={handleSubmit}
       >
@@ -163,24 +182,27 @@ function Home() {
   }, [btnDisable]);
 
   return (
-    <>
+    <React.Fragment>
       {toast}
-      <HeaderUser state={header} />
       {form}
-      {!homePostItems.length > 0 ? null : (
-        <div className={cx('wrapper')}>
-          <div className={cx('left')}>
-            <HomePost
-              postArr={homePostItems}
-              onPostSelect={setPost}
-              selectPostId={selectPostId}
-              setSelectPostId={setSelectPostId}
-            />
-          </div>
-          <div className={cx('right')}>{checkOj(post) ? <HomePostShow onApply={showForm} post={post} /> : null}</div>
+      {/* {!homePostItems.length > 0 ? (
+        <p className={cx('waiting')}>Đang tải dữ liệu</p>
+      ) : (
+      )} */}
+      <div className={cx('wrapper')}>
+        <div className={cx('left')}>
+          <HomePost
+            postArr={homePostItems}
+            onPostSelect={setPost}
+            selectPostId={selectPostId}
+            setSelectPostId={setSelectPostId}
+          />
         </div>
-      )}
-    </>
+        <div className={cx('right')}>
+          <HomePostShow onApply={showForm} post={post} />
+        </div>
+      </div>
+    </React.Fragment>
   );
 }
 

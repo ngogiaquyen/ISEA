@@ -7,11 +7,12 @@ const routes = {
   },
   home: {
     explore: '/ve-chung-toi',
+    auth: '/dang-nhap',
   },
   admin: {
     root: '/admin',
     login: '/admin/login',
-    
+
     employeeInfo: '/admin/thong-tin-nhan-vien',
     // Tuyển dụng
     recruitment: '/admin/quan-ly-tuyen-dung',

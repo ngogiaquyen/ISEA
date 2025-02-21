@@ -22,6 +22,7 @@ import InterviewForm from '~/layouts/components/Form/InterviewForm';
 import TrainingList from '~/pages/Training/TrainingList';
 import TrainingForm from '~/layouts/components/Form/TrainingForm';
 import TrainingDetail from '~/pages/Training/TrainingDetail';
+import HomeAuth from '~/pages/Home/HomeAuth/HomeAuth';
 // don't need to login
 
 const publicRouters = [
@@ -32,6 +33,10 @@ const publicRouters = [
   {
     path: config.routes.home.explore,
     component: Explore,
+  },
+  {
+    path: config.routes.home.auth,
+    component: HomeAuth,
   },
   {
     path: config.routes.dashboard.apply,
@@ -59,10 +64,10 @@ const publicRouters = [
     component: CreateForm,
     layout: AdminLayout,
     props: {
-      title: "Đăng bài",
-      typeUrl: "post",
-      formComponent: PostForm
-    }
+      title: 'Đăng bài',
+      typeUrl: 'post',
+      formComponent: PostForm,
+    },
   },
   {
     path: config.routes.admin.recruitmentList,
@@ -70,7 +75,7 @@ const publicRouters = [
     layout: AdminLayout,
   },
   {
-    path: config.routes.admin.recruitmentDetail + "/:id",
+    path: config.routes.admin.recruitmentDetail + '/:id',
     component: PostDetail,
     layout: AdminLayout,
   },
@@ -96,7 +101,7 @@ const publicRouters = [
     layout: AdminLayout,
   },
   {
-    path: config.routes.admin.interviewDetail + "/:id",
+    path: config.routes.admin.interviewDetail + '/:id',
     component: InterViewDetail,
     layout: AdminLayout,
   },
@@ -105,10 +110,10 @@ const publicRouters = [
     component: CreateForm,
     layout: AdminLayout,
     props: {
-      title: "Tạo buổi phỏng vấn",
-      typeUrl: "interview",
-      formComponent: InterviewForm
-    }
+      title: 'Tạo buổi phỏng vấn',
+      typeUrl: 'interview',
+      formComponent: InterviewForm,
+    },
   },
   // Đào tạo
   {
@@ -121,10 +126,10 @@ const publicRouters = [
     component: CreateForm,
     layout: AdminLayout,
     props: {
-      title: "Tạo khóa học",
-      typeUrl: "training",
-      formComponent: TrainingForm
-    }
+      title: 'Tạo khóa học',
+      typeUrl: 'training',
+      formComponent: TrainingForm,
+    },
   },
   {
     path: config.routes.admin.trainingList,

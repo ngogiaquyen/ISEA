@@ -1,13 +1,13 @@
 <?php
 class UserModel extends Model
 {
-    public function readUsers($id = 0)
+    public function readUsers($id = 0, $phone = 0)
     {
-        if ($id) {
-            $conditions = "id=$id";
-            return $this->read('users', $conditions);
+        $conditions = empty($id) ? '' : "id=$id";
+        if (!empty($phone)) {
+            $conditions .= " AND phone_number=$phone";
         }
-        return $this->read('users');
+        return $this->read('users', $conditions);
     }
     public function register($data)
     {
@@ -33,9 +33,22 @@ class UserModel extends Model
             $this->rollback('Lỗi đăng ký: ' . $e->getMessage());
         }
     }
+    public function loginSession($id, $phone_number)
+    {
+        $user = $this->readUsers($id, $phone_number);
+        return [
+            'direct' => true,
+            'full_name' => $user[0]['full_name'],
+            'email' => $user[0]['email'],
+            'phone_number' => $user[0]['phone_number'],
+            'gender' => $user[0]['gender'],
+            'birthday' => $user[0]['birthday'],
+            'role' => $user[0]['role'],
+        ];
+    }
     public function login($data)
     {
-        $sql = 'SELECT password FROM users WHERE phone_number=:phone_number';
+        $sql = 'SELECT * FROM users WHERE phone_number=:phone_number';
         try {
             $stmt = $this->conn->prepare($sql);
             $stmt->bindValue(':phone_number', $data['phone_number']);
@@ -47,10 +60,9 @@ class UserModel extends Model
             if (!password_verify($data['password'], $user['password'])) {
                 handleError('Mật khẩu không đúng, vui lòng thử lại');
             }
-            return true;
+            return $user;
         } catch (PDOException $e) {
             handleError($e->getMessage());
-            return false;
         }
     }
 }

@@ -16,9 +16,10 @@ function HomePost({ postArr, onPostSelect, selectPostId, setSelectPostId }) {
               infoObj={postObj}
               onPostSelect={() => {
                 onPostSelect(postObj);
-                setSelectPostId(postObj.id);
+                setSelectPostId(postObj?.id);
               }}
-              isSelected={selectPostId === postObj.id}
+              isInit={postObj?.isInit}
+              isSelected={selectPostId === postObj?.id}
             />
           );
         })}

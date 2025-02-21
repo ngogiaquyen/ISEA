@@ -17,7 +17,7 @@
 .form {
   position: fixed;
   inset: 0;
-  background-color: #fff;
+  background-color: var(--background-color);
   z-index: 999999990;
   display: flex;
   align-items: flex-start;
@@ -36,9 +36,9 @@
   display: flex;
   justify-content: center;
   align-items: stretch;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: var(--background-color);
   padding: 32px;
-  border: 1px solid #d3d5d6;
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   width: 100%;
   max-width: 400px;
@@ -61,7 +61,7 @@
   animation: form-tranform 0.4s ease forwards reverse;
 }
 .form * {
-  color: #444;
+  color: var(--content-color);
   font-size: 15px;
 }
 .btn-hide-form {
@@ -105,7 +105,7 @@
   margin-right: 16px;
 }
 .form input {
-  border: 1px solid #d3d5d6;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 8px;
   margin-top: 8px;
@@ -126,7 +126,7 @@
   cursor: pointer;
   padding: 8px;
   border-radius: 8px;
-  border: 1px solid #d3d5d6;
+  border: 1px solid var(--border-color);
   margin-top: 8px;
 }
 .btn-send {

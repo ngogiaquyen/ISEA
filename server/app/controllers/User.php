@@ -28,12 +28,21 @@ class User extends Controller
     }
     public function login()
     {
+        $id = $_SESSION['user_id'] ?? null;
+        $phone = $_SESSION['phone_number'] ?? null;
+        if (!empty($id) && !empty($phone)) {
+            echo json_encode($this->user_model->loginSession($id, $phone));
+            exit;
+        }
         validUserLogin();
         $data = [
             'phone_number' => $_POST['phone_number'],
             'password' => $_POST['password'],
         ];
-        if ($this->user_model->login($data)) {
+        $result = $this->user_model->login($data);
+        if (is_array($result) && count($result) > 0) {
+            $_SESSION['user_id'] = $result['id'];
+            $_SESSION['phone_number'] = $result['phone_number'];
             handleSuccess('Đăng nhập thành công');
         } else {
             handleError('Đăng nhập thất bại, vui lòng thử lại sau');
