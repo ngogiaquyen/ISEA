@@ -6,6 +6,8 @@ import config from '~/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { ActiveBoardContext } from '~/components/Context/ActiveBoardProvider';
+import { MenuSelectIdContext } from '~/components/Context/MenuSelectIdProvider';
+import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -42,33 +44,41 @@ const subCategories = {
     { title: 'Quá trình công tác', to: config.routes.admin.workHistory },
     { title: 'Hợp đồng lao động', to: config.routes.admin.employmentContract },
     { title: 'Bằng cấp', to: config.routes.admin.certificates },
+  ],  6: [
+    { title: 'Cài đặt độ sáng', to: config.routes.admin.settings },
   ],
 };
-
+console.log(subCategories)
 function BoardSection({ selectedCategoryId }) {
-
-  const { isCollapsedBoard, setIsCollapsedBoard } = useContext(ActiveBoardContext);
+  const navigate = useNavigate();
+  const { isCollapsedBoard, toggleBroard } = useContext(ActiveBoardContext);
 
 
   const handleToggleSidebar = () => {
-    setIsCollapsedBoard((prev) => !prev);
+    toggleBroard();
   };
 
-  const [items, setItems] = useState(subCategories[selectedCategoryId] || []);
+  const { menuSelectId, handleChangeMenuSelectId } = useContext(MenuSelectIdContext)
+  const [items, setItems] = useState(subCategories[menuSelectId.sidebar] || []);
 
   const [indexActive, setIndexActive] = useState(0);
 
-
+  useEffect(() => {
+    console.log(menuSelectId.board || 1);
+    setIndexActive(menuSelectId.board || 1);
+    setItems(subCategories[menuSelectId.sidebar] || []);
+  
+    if (menuSelectId.sidebar && menuSelectId.board) {
+      console.log(menuSelectId.sidebar, menuSelectId.board)
+      console.log(subCategories[menuSelectId.sidebar]);
+      navigate(subCategories[menuSelectId.sidebar][menuSelectId.board - 1].to);
+    }
+  }, [menuSelectId]);
+  
   const handleActive = (index)=>{
     setIndexActive(index);
-    // setIsCollapsedBoard(true);
+    handleChangeMenuSelectId({board: index})
   }
-
-  useEffect(() => {
-    setIndexActive(0);
-    setItems(subCategories[selectedCategoryId] || []);
-  }, [selectedCategoryId]);
-
   return (
     <div className={cx('wrapper', { collapse: isCollapsedBoard })}>
       {items.map((item, index) => (

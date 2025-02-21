@@ -15,6 +15,9 @@ import styles from './Sidebar.module.scss';
 import accountMini from '~/assets/images/accoutmini.png';
 import config from '~/config';
 import { useState } from 'react';
+import { useContext, useEffect } from 'react';
+import { MenuSelectIdContext } from '~/components/Context/MenuSelectIdProvider';
+import { ActiveBoardContext } from '~/components/Context/ActiveBoardProvider';
 const cx = classNames.bind(styles);
 
 const categories = [
@@ -59,8 +62,16 @@ const categories = [
 function Sidebar({ onSelectCategory }) {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [indexActive, setIndexActive] = useState(0);
+  const { menuSelectId, handleChangeMenuSelectId } = useContext(MenuSelectIdContext)
+
+  const {isShowSidebar, setIsShowSidebar, toggleSidebar} = useContext(ActiveBoardContext)
+
+  useEffect(()=>{
+    setIndexActive(menuSelectId.sidebar)
+  }, [menuSelectId])
+
   const handleToggleSidebar = () => {
-    setIsCollapsed((prev) => !prev);
+    toggleSidebar();
   };
 
   const handleClick = (index, id) => {
@@ -69,7 +80,7 @@ function Sidebar({ onSelectCategory }) {
   };
 
   return (
-    <div className={cx('wrapper', { collapsed: isCollapsed })}>
+    <div className={cx('wrapper', { collapsed: isShowSidebar })}>
       <div className={cx('head')}>
         <img src={accountMini} />
         <h2 className={cx('title')}>ISEA</h2>
@@ -82,7 +93,7 @@ function Sidebar({ onSelectCategory }) {
           to={cate.to}
           icon={cate.icon}
           isActive={index + 1 === indexActive}
-          isCollapsed={isCollapsed}
+          isCollapsed={isShowSidebar}
           onClick={() => handleClick(index, cate.id)}
         />
       ))}

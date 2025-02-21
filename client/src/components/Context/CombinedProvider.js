@@ -2,6 +2,7 @@ import { ActiveBoardProvider } from './ActiveBoardProvider';
 import { CreateCandidateInforProvider } from './CreateCandidateInforProvider';
 import { LoadBarPovider } from './LoadBarPovider';
 import { LoginProvider } from './LoginProvider';
+import { MenuSelectIdProvider } from './MenuSelectIdProvider';
 import { ModalOverLayProvider } from './ModalOverlayProvider';
 import { ThemeProvider } from './ThemeContext';
 import { ToastProvider } from './ToastProvider';
@@ -14,7 +15,9 @@ function CombinedProvider({ children }) {
           <ToastProvider>
             <LoadBarPovider>
               <ModalOverLayProvider>
-                <CreateCandidateInforProvider>{children}</CreateCandidateInforProvider>
+                <CreateCandidateInforProvider>
+                  <MenuSelectIdProvider>{children}</MenuSelectIdProvider>
+                </CreateCandidateInforProvider>
               </ModalOverLayProvider>
             </LoadBarPovider>
           </ToastProvider>

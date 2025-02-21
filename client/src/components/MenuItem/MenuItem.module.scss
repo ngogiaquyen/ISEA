@@ -18,6 +18,10 @@
   span {
     color: var(--selected-text-color);
   }
+  
+  svg{
+    color: var(--selected-text-color);
+  }
 }
 
 .menu-item.collapsed {
@@ -40,3 +44,4 @@
   animation: fadeOut 5s ease-in-out forwards;
   white-space: nowrap;
 }
+

@@ -9,16 +9,18 @@ import { ActiveBoardContext } from '~/components/Context/ActiveBoardProvider';
 import Loading from '~/components/Loading';
 import ToastList from '~/components/ToastList';
 import ModalOverLay from '../components/ModalOverLay';
+import { MenuSelectIdContext } from '~/components/Context/MenuSelectIdProvider';
 
 const cx = classNames.bind(styles);
 
 function AdminLayout({ children }) {
-  const [selectedCategoryId, setSelectedCategoryId] = useState(1);
-  const { isCollapsedBoard, setIsCollapsedBoard } = useContext(ActiveBoardContext);
+  // const [selectedCategoryId, setSelectedCategoryId] = useState(1);
+  const { menuSelectId, handleChangeMenuSelectId } = useContext(MenuSelectIdContext)
+  const { isCollapsedBoard, toggleBroard } = useContext(ActiveBoardContext);
 
   const handleSelectCategory = (id) => {
-    setSelectedCategoryId(id);
-    setIsCollapsedBoard(false);
+    handleChangeMenuSelectId({sidebar: id, board: 1});
+    toggleBroard(false);
   };
   return (
     <div className={cx('wrapper')}>
@@ -27,7 +29,7 @@ function AdminLayout({ children }) {
       <div className={cx('container')}>
         <Header />
         <div className={cx('inner', { collapse: isCollapsedBoard })}>
-          <BoardSection selectedCategoryId={selectedCategoryId} />
+          <BoardSection/>
           <div className={cx('child')}>{children}</div>
         </div>
       </div>
