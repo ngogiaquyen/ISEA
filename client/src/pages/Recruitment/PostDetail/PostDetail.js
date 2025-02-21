@@ -111,7 +111,7 @@ function PostDetail() {
           </button>
         </div>
       </div>
-      <CandidateList type="post" data={candidates} />
+      <CandidateList title='Danh sách ứng viên' type="post" data={candidates} />
     </div>
   );
 }

@@ -113,7 +113,7 @@ function InterViewDetail() {
         <strong>🔔 Lưu ý:</strong> {interviewInfo?.note}
       </div>
 
-      <CandidateList type="interview" data={candidate} />
+      <CandidateList title='Danh sách ứng viên' type="interview" data={candidate} />
     </div>
   );
 }
