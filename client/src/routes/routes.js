@@ -1,6 +1,8 @@
 import config from '~/config';
-import AdminLayout from '~/layouts/AdminLayout/AdminLayout';
 import Home from '~/pages/Home';
+import HomeAuth from '~/pages/Home/HomeAuth/HomeAuth';
+import Explore from '~/pages/Explore/Explore';
+import AdminLayout from '~/layouts/AdminLayout/AdminLayout';
 import EmptyLayout from '~/layouts/EmptyLayout/EmptyLayout';
 import DefaultLayout from '~/layouts';
 import EmployeeRecords from '~/pages/EmployeeRecords';
@@ -8,7 +10,6 @@ import Announcements from '~/pages/Announcements/Announcements';
 import PleaseSelectFeature from '~/pages/PleaseSelectFeature';
 import LoginContainer from '~/pages/LoginContainer';
 import Apply from '~/pages/Apply';
-import Explore from '~/pages/Explore/Explore';
 import UpdateEmployeeInfo from '~/pages/UpdateEmployeeInfo';
 import PostList from '~/pages/Recruitment/PostList';
 import PostDetail from '~/pages/Recruitment/PostDetail';
@@ -22,7 +23,9 @@ import InterviewForm from '~/layouts/components/Form/InterviewForm';
 import TrainingList from '~/pages/Training/TrainingList';
 import TrainingForm from '~/layouts/components/Form/TrainingForm';
 import TrainingDetail from '~/pages/Training/TrainingDetail';
-import HomeAuth from '~/pages/Home/HomeAuth/HomeAuth';
+import PayrollManagement from '~/pages/Salary/PayrollManagement ';
+import PerformanceReview from '~/pages/Performance/PerformanceReview';
+import EmployeeManagement from '~/pages/EmployeeManagement/EmployeeManagement';
 // don't need to login
 
 const publicRouters = [
@@ -163,8 +166,8 @@ const publicRouters = [
     layout: AdminLayout,
   },
   {
-    path: config.routes.admin.workPerformance,
-    component: Announcements,
+    path: config.routes.admin.performanceReview,
+    component: PerformanceReview,
     layout: AdminLayout,
   },
   {
@@ -191,7 +194,7 @@ const publicRouters = [
   },
   {
     path: config.routes.admin.salary,
-    component: Announcements,
+    component: PayrollManagement,
     layout: AdminLayout,
   },
   {
@@ -229,6 +232,11 @@ const publicRouters = [
   {
     path: config.routes.admin.employeeRecords,
     component: PleaseSelectFeature,
+    layout: AdminLayout,
+  },
+  {
+    path: config.routes.admin.employeeManagement,
+    component: EmployeeManagement,
     layout: AdminLayout,
   },
   {

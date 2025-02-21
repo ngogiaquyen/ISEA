@@ -21,14 +21,15 @@ function InterViewDetail() {
   const nagivate = useNavigate();
   const { setModalComponentContent } = useContext(ModalOverLayContext);
   const { addToast } = useContext(ToastContext);
-  // eslint-disable-next-line
   const [interviewInfo, setInterviewInfo] = useState({hsr:[], required_documents: ""});
-  
+  const [candidate, setCandidate] = useState([]); 
   
   async function fetchData() {
     try {
-      const data = await getData(`/interview/detail/${id}`);
-      if (data.length) setInterviewInfo(data[0]);
+      const interviewData = await getData(`/interview/detail/${id}`);
+      const candidateData = await getData(`/candidate/read/${id}`);
+      if (interviewData.length) setInterviewInfo(interviewData[0]);
+      setCandidate(candidateData);
       } catch (error) {
         console.error('Error getting data: ', error);
       }
@@ -112,7 +113,7 @@ function InterViewDetail() {
         <strong>🔔 Lưu ý:</strong> {interviewInfo?.note}
       </div>
 
-      <CandidateList type="interview" />
+      <CandidateList type="interview" data={candidate} />
     </div>
   );
 }

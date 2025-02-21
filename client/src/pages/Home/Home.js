@@ -101,7 +101,6 @@ function Home() {
       });
 
       const data = await response.json();
-      console.log(data);
 
       showToast(data);
     } catch (e) {

@@ -39,7 +39,7 @@ const routes = {
 
     // Hiệu suất
     performanceEvaluation: '/admin/danh-gia-hieu-suat',
-    workPerformance: '/admin/danh-gia-hieu-suat/hieu-suat-lam-viec',
+    performanceReview : '/admin/danh-gia-hieu-suat/hieu-suat-lam-viec',
     evaluationCriteria: '/admin/danh-gia-hieu-suat/tieu-chi',
     personalGoals: '/admin/danh-gia-hieu-suat/muc-tieu',
     feedback: '/admin/danh-gia-hieu-suat/phan-hoi',
@@ -55,6 +55,7 @@ const routes = {
 
     // Hồ sơ nhân sự
     employeeRecords: '/admin/ho-so-nhan-vien',
+    employeeManagement: '/admin/ho-so-nhan-vien/thong-tin',
     updateEmployeeInfo: '/admin/ho-so-nhan-vien/cap-nhat',
     personalInformation: '/admin/ho-so-nhan-vien/thong-tin-ca-nhan',
     workHistory: '/admin/ho-so-nhan-vien/qua-trinh-cong-tac',

@@ -6,13 +6,14 @@ import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faCalendar, faEye } from '@fortawesome/free-regular-svg-icons';
 import { ModalOverLayContext } from '~/components/Context/ModalOverlayProvider';
 import EmployeeInfo from '~/pages/EmployeeInfo';
+import { CreateCandidateInforContext } from '~/components/Context/CreateCandidateInforProvider';
 
 const cx = classNames.bind(styles);
 
 function CandidateItem({ id, data, activeMenu, setActiveMenu }) {
-  console.log(data);
   const wrapperRef = useRef(null);
   const menuRef = useRef(null);
+  const { interviewId, setInterviewId, applicantID, setApplicantID } = useContext(CreateCandidateInforContext);
 
   const [menu, setMenu] = useState({
     left: 0,
@@ -54,6 +55,15 @@ function CandidateItem({ id, data, activeMenu, setActiveMenu }) {
       document.removeEventListener('click', handleClickOutside);
     };
   }, []);
+  
+  const handleCheck = (e) => {
+    const isChecked = e.target.checked;
+    
+    setApplicantID((prev) => 
+        isChecked ? [...prev, id] : prev.filter((item) => item !== id)
+    );
+};
+
 
   return (
     <div
@@ -63,7 +73,7 @@ function CandidateItem({ id, data, activeMenu, setActiveMenu }) {
       onDoubleClick={handleSeeInfor}
     >
       <div className={cx('candidate-content')}>
-        <input type="checkbox" className={cx('checkbox')} />
+        <input type="checkbox" className={cx('checkbox')} onChange={handleCheck} />
         <div className={cx('info')}>
           <span className={cx('name')}>Họ và tên: {data.full_name}</span>
           <span className={cx('phone')}>SDT: {data.phone_number}</span>

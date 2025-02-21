@@ -48,17 +48,17 @@ function InterviewForm({ ref, data }) {
     <form className={cx('form')} ref={ref}>
       <FormGroup
         name="interview_datetime"
-        value={data.interview_datetime || ''}
+        value={data?.interview_datetime || ''}
         label="Thời gian"
         layout="haft"
-        inputType="datetime"
+        inputType="datetime-local"
         placeholder="Thời gian"
         handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng chọn thời gian!' }]}
       />
 
       <FormGroup
         name="interview_type"
-        value={data.interview_type || ''}
+        value={data?.interview_type || ''}
         label="Hình thức"
         layout="haft"
         inputType="text"
@@ -67,7 +67,7 @@ function InterviewForm({ ref, data }) {
       />
       <FormGroup
         name="interview_location"
-        value={data.interview_location || ''}
+        value={data?.interview_location || ''}
         label="Địa điểm"
         inputType="text"
         placeholder="Địa điểm"
@@ -76,14 +76,14 @@ function InterviewForm({ ref, data }) {
       <Dropdown tags={tags} name="interviewers" dropDownItems={dropDownItems} placeholder="Người phỏng vấn" />
       <FormGroup
         name="required_documents"
-        value={data.required_documents || ''}
+        value={data?.required_documents || ''}
         label="Hồ sơ cần mang"
         layout="haft"
         textarea
         placeholder="Hồ sơ cần mang"
         handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập hồ sơ cần mang!' }]}
       />
-      <FormGroup name="note" value={data.note || ''} label="Lưu ý" layout="haft" textarea placeholder="Lưu ý(nếu có)" />
+      <FormGroup name="note" value={data?.note || ''} label="Lưu ý" layout="haft" textarea placeholder="Lưu ý(nếu có)" />
     </form>
   );
 }

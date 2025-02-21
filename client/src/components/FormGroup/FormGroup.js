@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import Select from '../Input/Select';
 import OutsideClickHandler from '../OutSideClickHandle';
 import Textarea from '../Input/Textarea';
-import DateTimePickerCo from '../Input/DateTimePicker';
+// import DateTimePickerCo from '../Input/DateTimePicker';
 
 const cx = classNames.bind(styles);
 
@@ -29,9 +29,7 @@ function FormGroup({
   }, [value]);
 
   let InputTag = Input;
-  if (inputType === 'datetime') {
-    InputTag = DateTimePickerCo;
-  } else if (textarea) {
+  if (textarea) {
     InputTag = 'textarea';
   } else if (selectData.length > 0) {
     InputTag = Select;
@@ -61,18 +59,6 @@ function FormGroup({
     }
   };
 
-  const handleDateTimePickerChange = (date) => {
-    const newValue = date || '';
-    setInputValue(newValue);
-    // onChange?.(e);
-
-    for (let obj of handleValidate) {
-      if (obj.funct(inputValue)) {
-        setError('');
-      }
-      break;
-    }
-  };
   return (
     <div className={cx('wrapper', layout)}>
       <OutsideClickHandler className={cx('group')} onClickOutside={() => handleError(inputValue)}>
@@ -82,7 +68,6 @@ function FormGroup({
           <Input
             value={inputValue}
             name={name}
-            date={inputType === 'date'}
             setValue={setInputValue}
             type={inputType}
             placeholder={placeholder}
@@ -90,9 +75,6 @@ function FormGroup({
             onChange={handleInputChange}
           />
         )}
-
-        {InputTag === DateTimePickerCo && <DateTimePickerCo name={name} onChange={handleDateTimePickerChange} />}
-
         {InputTag === 'textarea' && (
           <Textarea
             className={cx('textarea')}

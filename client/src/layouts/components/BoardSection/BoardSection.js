@@ -38,7 +38,7 @@ const subCategories = {
     { title: 'Báo cáo', to: config.routes.admin.reports },
   ],
   5: [
-    { title: 'Thông tin cá nhân', to: config.routes.admin.personalInformation },
+    { title: 'Thông tin cá nhân', to: config.routes.admin.employeeManagement },
     { title: 'Quá trình công tác', to: config.routes.admin.workHistory },
     { title: 'Hợp đồng lao động', to: config.routes.admin.employmentContract },
     { title: 'Bằng cấp', to: config.routes.admin.certificates },
