@@ -22,26 +22,35 @@ class Interview extends Controller
             'required_documents' => $_POST['required_documents'],
             'note' => $_POST['note'],
         ];
+
         $interview_id = $this->interview_model->createInterview($data);
+
         if (!$interview_id) {
             $this->interview_model->rollback('Tạo buổi phỏng vấn thất bại');
         }
+        
         $interviewers = json_decode($_POST['interviewers']);
+
         if (!is_array($interviewers) || count($interviewers) == 0) {
             $this->interview_model->rollback('Người phụ trách không được để trống');
         }
+
         $is_leader = true;
+
         foreach ($interviewers as $interviewer_id) {
             $interviewerData = [
                 'interview_id' => $interview_id,
                 'hr_id' => $interviewer_id,
                 'is_leader' => $is_leader ? 1 : 0
             ];
+
             $is_leader = false;
+
             if (!$this->interviewer_model->createInterviewer($interviewerData)) {
                 $this->interview_model->rollback('Thêm người phụ trách thất bại');
             }
         }
+        
         $this->interview_model->commit('Tạo buổi phỏng vấn thành công');
     }
     public function update()

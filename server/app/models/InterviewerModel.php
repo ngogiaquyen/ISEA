@@ -7,7 +7,7 @@ class InterviewerModel extends Model
     }
     public function readInterviewers($id)
     {
-        return $this->read('interviewers', empty($id) ? '' : "id=$id");
+        return $this->read('interviewers', empty($id) ? '' : "id=$id"); 
     }
     public function updateInterviewer($id, $data)
     {

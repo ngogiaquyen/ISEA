@@ -6,9 +6,6 @@ class Role extends Controller
     {
         $this->role_model = $this->createModel("RoleModel");
     }
-    public function index()
-    {
-    }
     public function read()
     {
         echo json_encode($this->role_model->readRoles());

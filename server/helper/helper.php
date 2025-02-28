@@ -55,7 +55,7 @@ function removeFields($result, $fields)
     if (!is_array($result) || empty($fields)) {
         return $result;
     }
-
+ 
     $role_name = ['Trống', 'Ứng viên', 'Nhân viên', 'Phó phòng nhân sự', 'Trưởng phòng Nhân sự', 'Phó giám đốc', 'Giám đốc'];
 
     if ($result[0] && is_array($result[0])) {

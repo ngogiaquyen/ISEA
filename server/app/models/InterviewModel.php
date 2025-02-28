@@ -54,6 +54,7 @@ class InterviewModel extends Model
                 i.edit_at DESC";
         try {
             $stmt = $this->conn->prepare($sql);
+            
             if (!empty($id)) {
                 $stmt->bindValue(':id', $id);
             }

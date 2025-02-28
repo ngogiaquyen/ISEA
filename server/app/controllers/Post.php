@@ -46,6 +46,7 @@ class Post extends Controller
             'expiration_date' => $_POST['expiration_date'],
             'content' => $_POST['content']
         ];
+        
         if ($this->post_model->updatePost($id, $data)) {
             handleSuccess('Sửa bài viết thành công');
         } else {

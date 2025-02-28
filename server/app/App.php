@@ -59,7 +59,7 @@ class App
                 if (!empty($_GET)) {
                     $this->params = array_merge($this->params, $_GET);
                 }
-
+ 
                 // var_dump($this->params);
                 call_user_func_array([$this->controller, $this->action], [$this->params]);
             }

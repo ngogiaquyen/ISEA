@@ -6,9 +6,6 @@ class User extends Controller
     {
         $this->user_model = $this->createModel("UserModel");
     }
-    public function index()
-    {
-    }
     public function read($id)
     {
         validMethodGET();
