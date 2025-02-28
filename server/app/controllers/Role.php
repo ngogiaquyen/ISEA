@@ -9,8 +9,8 @@ class Role extends Controller
     public function index()
     {
     }
-    public function read($id = '')
+    public function read()
     {
-        echo json_encode($this->role_model->readRoles($id));
+        echo json_encode($this->role_model->readRoles());
     }
 }

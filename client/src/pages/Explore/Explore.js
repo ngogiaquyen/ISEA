@@ -7,7 +7,6 @@ import HomeNews from '~/components/HomeNews/HomeNews';
 import fbIcon from '~/assets/images/facebook.webp';
 import twIcon from '~/assets/images/twitter.webp';
 import lkIcon from '~/assets/images/linked.webp';
-import HeaderUser from '~/layouts/components/HeaderUser/HeaderUser';
 
 const cx = classNames.bind(styles);
 const homeNewsItems = [

@@ -8,6 +8,7 @@ const routes = {
   home: {
     explore: '/ve-chung-toi',
     auth: '/dang-nhap',
+    dashboard: '/bang-dieu-khien',
   },
   admin: {
     root: '/admin',

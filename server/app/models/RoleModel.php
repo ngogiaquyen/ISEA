@@ -1,7 +1,7 @@
 <?php
 class RoleModel extends Model
 {
-    public function readRoles($id = '')
+    public function readRoles()
     {
         $sql = "SELECT u.id, u.full_name, r.role_name
                 FROM 

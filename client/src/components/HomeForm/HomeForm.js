@@ -15,7 +15,7 @@ function HomeForm({ title, btnContent, isDisable, showBtn, setForm, handleSubmit
       setIsAnimation(true);
 
       setTimeout(() => {
-        setForm(null);
+        setForm(false)
       }, 400);
     }, 4);
   };
@@ -40,7 +40,7 @@ function HomeForm({ title, btnContent, isDisable, showBtn, setForm, handleSubmit
     <div className={cx('form', { show: isShow, animation: isAnimation })}>
       <form id="form-data" action="#" method="POST" encType="multipart/form-data">
         {!showBtn ? null : (
-          <button type="button" className={cx('btn-hide-form')} onClick={hideForm}>
+          <button id="btn-hide-form" type="button" className={cx('btn-hide-form')} onClick={hideForm}>
             <i className="fa-regular fa-xmark"></i>
           </button>
         )}

@@ -4,10 +4,10 @@ class UserModel extends Model
     public function readUsers($id = 0, $phone = 0)
     {
         $conditions = empty($id) ? '' : "id=$id";
-        if (!empty($phone)) {
-            $conditions .= " AND phone_number=$phone";
-        }
-        return $this->read('users', $conditions);
+        $conditions .= empty($phone) ? '' : " AND phone_number=$phone";
+
+        $result = $this->read('users', $conditions);
+        return removeFields($result, ['password']);
     }
     public function register($data)
     {
@@ -36,33 +36,25 @@ class UserModel extends Model
     public function loginSession($id, $phone_number)
     {
         $user = $this->readUsers($id, $phone_number);
-        return [
-            'direct' => true,
-            'full_name' => $user[0]['full_name'],
-            'email' => $user[0]['email'],
-            'phone_number' => $user[0]['phone_number'],
-            'gender' => $user[0]['gender'],
-            'birthday' => $user[0]['birthday'],
-            'role' => $user[0]['role'],
-        ];
+        return $user[0];
     }
     public function login($data)
     {
         $sql = 'SELECT * FROM users WHERE phone_number=:phone_number';
-        try {
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindValue(':phone_number', $data['phone_number']);
-            $stmt->execute();
-            if ($stmt->rowCount() < 1) {
-                handleError('Người dùng không tồn tại');
-            }
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (!password_verify($data['password'], $user['password'])) {
-                handleError('Mật khẩu không đúng, vui lòng thử lại');
-            }
-            return $user;
-        } catch (PDOException $e) {
-            handleError($e->getMessage());
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(':phone_number', $data['phone_number']);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$user) {
+            handleError('Người dùng không tồn tại');
         }
+
+        if (!password_verify($data['password'], $user['password'])) {
+            handleError('Mật khẩu không đúng, vui lòng thử lại');
+        }
+
+        return removeFields($user, ['password']);
     }
 }

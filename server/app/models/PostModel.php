@@ -7,7 +7,7 @@ class PostModel extends Model
     }
     public function readPosts($id = 0)
     {
-        return $this->read('posts', empty($id) ? '' : "id=$id");
+        return $this->read('posts', empty($id[0]) ? '' : "id=$id[0]");
     }
     public function updatePost($id, $data)
     {

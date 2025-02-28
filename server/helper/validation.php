@@ -148,11 +148,11 @@ function validInterview()
     if (empty($_POST['interview_location'])) {
         handleError('Địa điểm phỏng vấn không được để trống');
     }
+    if (empty($_POST['interviewers'])) {
+        handleError('Vui lòng chọn người phỏng vấn');
+    }
     if (empty($_POST['required_documents'])) {
         handleError('Văn bản yêu cầu không được để trống');
-    }
-    if (empty($_POST['interviewers'])) {
-        handleError('Người phỏng vấn không được để trống');
     }
 }
 function validInterviewUpdate()
