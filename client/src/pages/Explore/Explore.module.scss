@@ -7,6 +7,7 @@
   margin: 0 auto;
   padding: 16px;
   font-weight: 300;
+  color: var(--content-color);
 }
 .wrapper > * {
   margin-top: 16px;
@@ -129,7 +130,6 @@
   li {
     padding: var(--general-padding);
     border: 0;
-    border-top: 1px solid var(--border-color);
   }
 }
 .box-info {
@@ -144,9 +144,6 @@
 .box-info > * {
   padding: var(--general-padding);
 }
-.box-info * {
-  color: var(--text-color);
-}
 .info-title {
   background: var(--gradient-bgr);
   color: #fff;
@@ -154,7 +151,6 @@
   font-weight: normal;
 }
 .main-info-content {
-  color: var(--text-color);
   font-size: 14px;
 }
 .col2 {
@@ -165,13 +161,9 @@
 .col2 > * {
   margin-bottom: 16px;
 }
-
 .com-contact-info {
   display: flex;
   flex-direction: column;
-}
-.com-contact-info * {
-  color: var(--text-color);
 }
 .com-contact-address {
   margin-bottom: 16px;
@@ -212,9 +204,7 @@ span.contact-info-title {
   font-weight: normal;
 }
 .box-link-sharer {
-  // border: 1px solid var(--border-color);
-  background-color: var(--elem-color);
-  box-shadow: var(--shadow-mode-1);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 16px;
   display: flex;
@@ -223,8 +213,6 @@ span.contact-info-title {
 
   input {
     all: unset !important;
-    font-size: 16px;
-    color: var(--text-color) !important;
   }
 }
 .btn-copy {
@@ -242,9 +230,7 @@ span.contact-info-title {
   align-items: center;
 }
 .option-sharer {
-  // border: 1px solid var(--border-color);
-  background-color: var(--elem-color);
-  box-shadow: var(--shadow-mode-1);
+  border: 1px solid var(--border-color);
   border-radius: 50%;
   flex-shrink: 0;
   display: flex;

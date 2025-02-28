@@ -63,8 +63,9 @@ class App
                 if (empty($this->params)) {
                     $this->params = [0];
                 }
-                
+
                 // var_dump($this->params);
+                // exit;
                 call_user_func_array([$this->controller, $this->action], [$this->params]);
             }
         }

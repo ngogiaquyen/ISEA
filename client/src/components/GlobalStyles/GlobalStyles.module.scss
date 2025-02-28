@@ -33,7 +33,7 @@
   --primary-color-hover: #0081ff;
 
   --content-color: #444;
-  --background-color: #f8f8f9;
+  --background-color: #fbfdff;
   --elem-color: #fff;
   --elem-color-hover: #eee;
   --border-color: #d3d5d6;
@@ -200,10 +200,12 @@ b {
 .init {
   position: relative !important;
   background-color: transparent !important;
-  border: 1px solid transparent !important;
+  border: 0 !important;
   background: linear-gradient(45deg, transparent, var(--init-color), transparent);
   background-size: 400% 400%;
   animation: gradient-animation 1.2s ease infinite;
+  box-shadow: unset !important;
+  min-height: 306px;
 }
 .init > * {
   opacity: 0 !important;
@@ -224,12 +226,15 @@ b {
     --primary-color-hover: #0081ff;
 
     --content-color: #c2c3ca;
-    --background-color: #292F39;
-    --background-color: #24262b;
+    --background-color: #20242c;
+    // --background-color: #24262b;
+    // --background-color: #292F39;
+    --elem-color: #292f39;
+    --elem-color-hover: #24262b;
     --border-color: #535556;
     --init-color: rgba(0, 129, 255, 0.2);
     --sidebar-color: #1d2636;
-    --sidebar-color: #20242C;
+    --sidebar-color: #20242c;
     --sidebar-item-color: #4a5365;
   }
 }

@@ -3,8 +3,8 @@
   justify-content: center;
   position: relative;
   z-index: 999999998;
-  border-bottom: 1px solid var(--border-color);
-  position: fixed;
+  // border-bottom: 1px solid var(--border-color);
+  position: relative;
   inset: 0;
   bottom: unset;
   // backdrop-filter: blur(12px);
@@ -60,11 +60,15 @@
 }
 .nav-item-link,
 .user-login-link {
+  color: var(--content-color);
   font-size: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+}
+.user-login-link {
+  color: var(--primary-color);
 }
 .nav-item-link-text {
   margin-bottom: -12px;
