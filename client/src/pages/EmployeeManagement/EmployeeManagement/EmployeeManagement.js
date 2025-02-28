@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./EmployeeManagement.module.scss";
+import { ModalOverLayContext } from "~/components/Context/ModalOverlayProvider";
+import Contract from "./Contract";
 
 const cx = classNames.bind(styles);
 
@@ -23,6 +25,11 @@ const EmployeeManagement = () => {
       degree: "Đại học Mỹ Thuật Công Nghiệp",
     },
   ]);
+  const { setModalComponentContent } = useContext(ModalOverLayContext);
+
+  const handleShowContract = () =>{
+    setModalComponentContent(Contract);
+  }
 
   return (
     <div className={cx("wrapper")}>  
@@ -45,7 +52,7 @@ const EmployeeManagement = () => {
               <td>{employee.name}</td>
               <td>{employee.position}</td>
               <td>{employee.workHistory}</td>
-              <td>{employee.contract}</td>
+              <td><p className={cx("contact")} onClick={handleShowContract}>{employee.contract}</p></td>
               <td>{employee.degree}</td>
             </tr>
           ))}

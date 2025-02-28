@@ -3,6 +3,7 @@ import { useReactTable, getCoreRowModel, flexRender } from "@tanstack/react-tabl
 import classNames from "classnames/bind";
 import styles from "./PayrollManagement.module.scss";
 import { utils, writeFile } from "xlsx";
+import PageTitle from "~/components/PageTitle";
 
 const cx = classNames.bind(styles);
 
@@ -62,7 +63,7 @@ const PayrollManagement = () => {
 
   return (
     <div className={cx("wrapper")}>
-      <h1 className={cx("title")}>Quản Lý Bảng Lương</h1>
+      <PageTitle title="Quản lý bảng lương"/>
       <div className={cx("filter-container")}>
         <div>
           <label className={cx("filter-label")}>Chọn Tháng:</label>

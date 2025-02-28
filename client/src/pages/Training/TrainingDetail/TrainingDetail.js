@@ -60,21 +60,21 @@ function TrainingDetail() {
       </div>
 
       <div className={cx('course-detail')}>
-        <p><strong>Giảng viên:</strong> {courseDetail.instructor || 'Chưa có thông tin'}</p>
-        <p><strong>Ngày kết thúc:</strong> {courseDetail.endDate || 'mm/dd/yyyy'}</p>
-        <p><strong>Hình thức:</strong> {courseDetail.format || 'Không xác định'}</p>
-        <p><strong>Thời lượng:</strong> {courseDetail.duration || 'Không có thông tin'}</p>
-        <p><strong>Địa điểm:</strong> {courseDetail.location || 'Không xác định'}</p>
+        <p className={cx("detail-text")}><strong>Giảng viên:</strong> {courseDetail.instructor || 'Chưa có thông tin'}</p>
+        <p className={cx("detail-text")}><strong>Ngày kết thúc:</strong> {courseDetail.endDate || 'mm/dd/yyyy'}</p>
+        <p className={cx("detail-text")}><strong>Hình thức:</strong> {courseDetail.format || 'Không xác định'}</p>
+        <p className={cx("detail-text")}><strong>Thời lượng:</strong> {courseDetail.duration || 'Không có thông tin'}</p>
+        <p className={cx("detail-text")}><strong>Địa điểm:</strong> {courseDetail.location || 'Không xác định'}</p>
 
         <div className={cx('content')}>
           <h5>Mục tiêu</h5>
-          <p>{courseDetail.objectives || 'Không có mục tiêu cụ thể'}</p>
+          <p className={cx("detail-text")}>{courseDetail.objectives || 'Không có mục tiêu cụ thể'}</p>
 
           <h5>Mô tả khóa học</h5>
-          <p>{courseDetail.description || 'Không có mô tả'}</p>
+          <p className={cx("detail-text")}>{courseDetail.description || 'Không có mô tả'}</p>
 
           <h5>Thông tin liên hệ</h5>
-          <p>{courseDetail.contact || 'Không có thông tin liên hệ'}</p>
+          <p className={cx("detail-text")}>{courseDetail.contact || 'Không có thông tin liên hệ'}</p>
         </div>
       </div>
       <CandidateList title='Danh sách nhân viên tham gia khóa học' type="course" data={[]} />

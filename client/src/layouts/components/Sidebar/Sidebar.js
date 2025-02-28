@@ -35,24 +35,18 @@ const categories = [
   },
   {
     id: 3,
-    name: 'Đánh giá hiệu suất',
-    to: config.routes.admin.performanceEvaluation,
-    icon: <FontAwesomeIcon className={cx('icon')} icon={faChartLine} />,
-  },
-  {
-    id: 4,
     name: 'Lương & phúc lợi',
     to: config.routes.admin.payrollAndBenefits,
     icon: <FontAwesomeIcon className={cx('icon')} icon={faMoneyCheckDollar} />,
   },
   {
-    id: 5,
+    id: 4,
     name: 'Quản lý nhân sự',
     to: config.routes.admin.reports,
     icon: <FontAwesomeIcon className={cx('icon')} icon={faAddressBook} />,
   },
   {
-    id: 6,
+    id: 5,
     name: 'Cài đặt hệ thống',
     to: config.routes.admin.settings,
     icon: <FontAwesomeIcon className={cx('icon')} icon={faGear} />,
