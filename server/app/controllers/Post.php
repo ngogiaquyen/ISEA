@@ -29,12 +29,12 @@ class Post extends Controller
     }
 
 
-    public function read($id = 0)
+    public function read($id)
     {
         validMethodGET();
-        echo json_encode($this->post_model->readPosts($id));
+        echo json_encode($this->post_model->readPosts($id[0]));
     }
-    public function update($id = 0)
+    public function update()
     {
         validPostUpdate();
         $id = $_POST['id'];
@@ -52,7 +52,7 @@ class Post extends Controller
             handleError('Sửa bài viết thất bại, vui lòng thử lại sau');
         }
     }
-    public function delete($id = '')
+    public function delete()
     {
         validPostDelete();
         $id = $_POST['id'];

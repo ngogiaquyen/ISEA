@@ -78,27 +78,27 @@ class Interview extends Controller
         }
         $this->interview_model->commit('Sửa buổi phỏng vấn thành công');
     }
-    public function read($id = '')
+    public function read($id)
     {
         validMethodGET();
-        $result = $this->interview_model->readInterviews($id);
+        $result = $this->interview_model->readInterviews($id[0]);
         foreach ($result as &$interview) {
             $interview['hrs'] = explode(',', $interview['hrs']);
         }
         echo json_encode($result);
         exit;
     }
-    public function detail($id = 0)
+    public function detail($id)
     {
         validMethodGET();
-        $result = $this->interview_model->readInterviewDetail($id);
+        $result = $this->interview_model->readInterviewDetail($id[0]);
         foreach ($result as &$interview) {
             $interview['hrs'] = explode(',', $interview['hrs']);
         }
         echo json_encode($result);
         exit;
     }
-    public function delete($id = 0)
+    public function delete()
     {
         validInterviewDelete();
         $id = $_POST['id'];

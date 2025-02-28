@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './HomePostItem.module.scss';
+import defaultStyles from '../GlobalStyles/GlobalStyles.module.scss';
 
-const cx = classNames.bind(styles);
+const cx = classNames.bind({ ...styles, ...defaultStyles });
 
 export function cleanString(str) {
   return str.replace(/[*+-]/g, '');

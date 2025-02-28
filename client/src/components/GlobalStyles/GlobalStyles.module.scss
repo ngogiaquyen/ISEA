@@ -33,10 +33,14 @@
   --primary-color-hover: #0081ff;
 
   --content-color: #444;
-  --background-color: #fff;
+  --background-color: #f8f8f9;
+  --elem-color: #fff;
+  --elem-color-hover: #eee;
   --border-color: #d3d5d6;
-  --init-color: rgba(0, 129, 255, 0.12);
-  --shadow-mode-1: 0 0 8px rgba(0, 0, 0, 0.1);
+  --init-color: rgba(0, 0, 0, 0.12);
+  --shadow-mode-1: -2px 2px 12px rgba(0, 0, 0, 0.1);
+  --sidebar-color: #efefef;
+  --sidebar-item-color: #fff;
 
   --tag-blue: #0081ff;
   --tag-green: #00cc00;
@@ -75,7 +79,6 @@
   --title-page-color: #007bff;
   --primary-title-text-color: #007bff;
 
-  
   --waiting-status-text-color: #ff9800;
   --waiting-status-bg-color: #fff3cd;
 }
@@ -177,8 +180,56 @@ ul {
   margin: 0;
 }
 
-b{
+b {
   font-weight: 400;
 }
 // dark or light mode
 
+//css by truong dep trai no modify
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.init {
+  position: relative !important;
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+  background: linear-gradient(45deg, transparent, var(--init-color), transparent);
+  background-size: 400% 400%;
+  animation: gradient-animation 1.2s ease infinite;
+}
+.init > * {
+  opacity: 0 !important;
+}
+.init::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    //css of the handsome guy, no edit, thanks!
+    --primary-color: #0081ff;
+    --primary-color: #2693ff;
+    --secondary-color: #f3f5f6;
+
+    --primary-color-hover: #0081ff;
+
+    --content-color: #c2c3ca;
+    --background-color: #292F39;
+    --background-color: #24262b;
+    --border-color: #535556;
+    --init-color: rgba(0, 129, 255, 0.2);
+    --sidebar-color: #1d2636;
+    --sidebar-color: #20242C;
+    --sidebar-item-color: #4a5365;
+  }
+}

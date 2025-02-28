@@ -15,15 +15,56 @@
         <input type="datetime-local" onchange="handleChange(event)">
     </div>
     <script>
-        const handleChange = (e) => {
-            console.log(e.target.value)
+        function is_substring(str, substr) {
+            const len_str = String(str).length;
+            const len_substr = String(substr).length;
+            console.log(len_str, len_substr);
+            for (let i = 0; i <= len_str - len_substr; i++) {
+                console.log('loop');
+                let j
+                for (j = 0; j < len_substr; j++) {
+                    if (str[i + j] != substr[j]) {
+                        console.log('break');
+                        break
+                    } else {
+                        console.log('duplicate');
+
+                    }
+                }
+                if (j == len_substr) return true;
+            }
+            return false;
         }
-        const obj = {
-            Male: 'name',
-            Female: 'nữ',
-            Orther: 'bede'
+        console.log(
+            // is_substring('hehe', 'hehehe')
+        );
+
+        function findPerfectNumbers(arr) {
+            for (let i = 0; i < arr.length; i++) {
+                let sum = 0;
+                for (let j = 1; j < arr[i]; j++) {
+                    if (arr[i] % j === 0) sum += j;
+                }
+                if (sum === arr[i]) console.log(`${arr[i]} is a perfect number`);
+            }
         }
-        Object.entries(obj).map((obj) => console.log(obj[0]))
+
+        // Ví dụ input
+        let arr = [...(Array(30).keys())]; // Mảng chứa số 6
+        // findPerfectNumbers(arr);
+
+        function factorial(n) {
+            if (n < 0) return -1; // Lỗi
+            if (n === 0) return 1;
+            let result = 1;
+            for (let i = 1; i <= n; i++) {
+                result *= i;
+            }
+            return result;
+        }
+
+        console.log(factorial(5));
+        
     </script>
 </body>
 

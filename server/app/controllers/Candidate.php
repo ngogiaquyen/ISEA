@@ -2,9 +2,11 @@
 class Candidate extends Controller
 {
     private $candidate_model;
+    private $applicant_model;
     public function __construct()
     {
         $this->candidate_model = $this->createModel('CandidateModel');
+        $this->applicant_model = $this->createModel('ApplicantModel');
     }
     public function index()
     {
@@ -28,12 +30,16 @@ class Candidate extends Controller
             if (!$this->candidate_model->createCandidate($newCandidate)) {
                 $this->candidate_model->rollback("Thêm ứng viên vào buổi phỏng vấn thất bại");
             }
+            $newStatus = ['status' => 2];
+            if (!$this->applicant_model->updateApplicant($newStatus, $applicant_id)) {
+                $this->candidate_model->rollback("Sửa trạng thái hồ sơ thất bại");
+            }
         }
         $this->candidate_model->commit('Thêm ứng viên vào buổi phỏng vấn thành công');
     }
-    public function read($id = 0)
+    public function read($id)
     {
         validMethodGET();
-        echo json_encode($this->candidate_model->readCandidate($id));
+        echo json_encode($this->candidate_model->readCandidate($id[0]));
     }
 }

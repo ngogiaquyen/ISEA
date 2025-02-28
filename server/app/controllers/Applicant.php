@@ -8,13 +8,14 @@ class Applicant extends Controller
         $this->applicant_model = $this->createModel("ApplicantModel");
         $this->user_model = $this->createModel("UserModel");
     }
-    public function index()
-    {
-    }
-    public function read($id = '')
+    public function read($arg)
     {
         validMethodGET();
-        echo json_encode($this->applicant_model->readApplicant($id));
+        echo json_encode($this->applicant_model->readApplicant($arg));
+    }
+    public function he()
+    {
+        json_encode(['hehe' => 'huhu']);
     }
     public function register()
     {

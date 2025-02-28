@@ -28,3 +28,8 @@ function handleNotify($satus, $title, $message, $keep = false)
     ]);
     exit;
 }
+function handleMessage($arr)
+{
+    echo json_encode($arr);
+    exit;
+}
