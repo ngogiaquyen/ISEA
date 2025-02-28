@@ -8,9 +8,6 @@ class Interview extends Controller
         $this->interview_model = $this->createModel('InterviewModel');
         $this->interviewer_model = $this->createModel('InterviewerModel');
     }
-    public function index()
-    {
-    }
     public function create()
     {
         validInterview();

@@ -6,10 +6,6 @@ class Post extends Controller
     {
         $this->post_model = $this->createModel("PostModel");
     }
-    public function index()
-    {
-    }
-
     public function create()
     {
         validPostCreate();
@@ -27,9 +23,7 @@ class Post extends Controller
             handleError('Tạo bài viết thất bại, vui lòng thử lại sau');
         }
     }
-
-
-    public function read($id = [0])
+    public function read($id)
     {
         validMethodGET();
         echo json_encode($this->post_model->readPosts($id[0]));

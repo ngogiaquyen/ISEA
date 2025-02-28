@@ -14,10 +14,12 @@ class ApplicantModel extends Model
 
         $bind = [];
 
-        if (isset($arg[0])) {
+        if (!empty($arg[0])) {
             $sql .= " WHERE p.id=:id";
             $bind = [':id' => $arg[0]];
-        } else if (isset($arg['user'])) {
+        }
+
+        if (!empty($arg['user'])) {
             $sql .= " WHERE u.id=:user";
             $bind = [':user' => $arg['user']];
         }

@@ -8,9 +8,6 @@ class Candidate extends Controller
         $this->candidate_model = $this->createModel('CandidateModel');
         $this->applicant_model = $this->createModel('ApplicantModel');
     }
-    public function index()
-    {
-    }
     public function create()
     {
         validCandidate();
