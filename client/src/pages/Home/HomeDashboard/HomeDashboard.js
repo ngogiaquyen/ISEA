@@ -50,13 +50,6 @@ function HomeDashboard() {
     type === 'text' ? setType('password') : setType('text');
   };
 
-  const handleFetch = async (id) => {
-    const data = await fetchGet(`applicant/read?user=${id}`);
-    console.log(data);
-    return data
-  };
-  const handleFetchRef = useRef(handleFetch);
-
   const loginForm = (
     <HomeForm
       title={'Đăng nhập'}
@@ -94,7 +87,6 @@ function HomeDashboard() {
     if (typeof publicUser === 'object') {
       if (publicUser?.full_name) {
         setIsLoading(false);
-        handleFetchRef.current(publicUser?.id);
       } else {
         setShowForm(true);
       }
@@ -126,13 +118,13 @@ function HomeDashboard() {
                   </NavLink>
                 </li>
                 <li className={cx('nav-item')}>
-                  <NavLink className={cx('nav-item-link', 'active', { init: isLoading })}>
+                  <NavLink className={cx('nav-item-link', { init: isLoading })}>
                     <i className="fa-solid fa-bell"></i>
                     <span>Thông báo phỏng vấn</span>
                   </NavLink>
                 </li>
                 <li className={cx('nav-item')}>
-                  <NavLink className={cx('nav-item-link', { init: isLoading })}>
+                  <NavLink className={cx('nav-item-link', 'active', { init: isLoading })}>
                     <i className="fa-solid fa-envelope"></i>
                     <span>Trạng thái ứng tuyển</span>
                   </NavLink>
@@ -194,7 +186,7 @@ function HomeDashboard() {
           </div>
           <div className={cx('col-2')}>
             <div className={cx('col2-head', { init: isLoading })}>
-              <p>Thông báo phỏng vấn</p>
+              <p>Trạng thái ứng tuyển</p>
             </div>
             <div className={cx('col2-body', { init: isLoading })}>
               <p>Chức năng đang tạm khoá</p>

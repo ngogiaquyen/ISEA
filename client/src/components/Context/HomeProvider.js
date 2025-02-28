@@ -4,6 +4,8 @@ import HomeToast from '../HomeToast/HomeToast';
 const HomeContext = createContext();
 function HomeProvider({ children }) {
   const [publicUser, setPublicUser] = useState({});
+  const [applicant, setApplicant] = useState({});
+  const [candidate, setCandidate] = useState({});
   const [toast, setToast] = useState(null);
 
   const showToast = (obj) => {
@@ -51,9 +53,12 @@ function HomeProvider({ children }) {
   };
 
   const checkLogin = async () => {
-    const data = await fetchPost('user/auth');
-    setPublicUser(data);
-    console.log(data);
+    const user = await fetchPost('user/auth');
+    const applicant = user?.id ? await fetchGet(`applicant/read?user=${user?.id}`) : null;
+    setPublicUser(user);
+    setApplicant(applicant);
+    console.log(user);
+    console.log(applicant);
   };
   const checkLoginRef = useRef(checkLogin);
 
