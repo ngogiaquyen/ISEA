@@ -32,6 +32,10 @@
   color: var(--text-color);
   font-size: 20px;
   min-width: 40px;
+
+  &.active{
+    color: var(--selected-text-color);
+  }
 }
 .head {
   display: flex;

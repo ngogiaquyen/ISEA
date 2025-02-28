@@ -9,8 +9,8 @@ import { ModalOverLayContext } from '~/components/Context/ModalOverlayProvider';
 
 const cx = classNames.bind(styles);
 
-function CandidateList({type, data=[]}) {
-  console.log(data)
+function CandidateList({title="", type, data=[]}) {
+  console.log(type)
   const [activeMenu, setActiveMenu] = useState(null);
   
   const { setModalComponentContent } = useContext(ModalOverLayContext);
@@ -23,9 +23,9 @@ function CandidateList({type, data=[]}) {
   return (
     <div className={cx('candidate')}>
       <div className={cx('candidate-head')}>
-        <h5 className={cx('list-title')}>Danh sách ứng viên</h5>
+        <h5 className={cx('list-title')}>{title}</h5>
         <div className={cx('tools')}>
-          {type==="post" && <button onClick={hanldeInsertInterview}>
+          {(type==="post") && <button onClick={hanldeInsertInterview}>
             <FontAwesomeIcon className={cx('icon')} icon={faCalendar} />
             Lên lịch phỏng vấn
           </button>}

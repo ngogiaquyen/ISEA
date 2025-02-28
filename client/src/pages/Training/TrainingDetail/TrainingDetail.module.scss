@@ -17,13 +17,10 @@
   margin-bottom: 15px;
 }
 
-.head .date{
+.head .start-date,
+.head .end-date {
   color: var(--text-color);
-}
-
-.head-left {
-  display: flex;
-  align-items: center;
+  font-size: 1.4rem;
 }
 
 .title {
@@ -32,14 +29,7 @@
   color: var(--title-page-color);
 }
 
-.head span {
-  font-size: 1.4rem;
-  color: #666;
-}
-
-
-
-.post-detail {
+.detail {
   background: var(--card-bg-color);
   padding: 16px;
   border-radius: 8px;
@@ -47,7 +37,7 @@
   margin-bottom: 20px;
 }
 
-.post-detail p {
+.detail p {
   font-size: 1.4rem;
   margin-bottom: 8px;
   color: var(--text-color);
@@ -59,16 +49,19 @@
   color: var(--title-page-color);
 }
 
-.job-content {
+.description {
   color: var(--text-color);
   font-size: 1.4rem;
   line-height: 1.6;
   white-space: pre-line;
 }
 
+.contact-info {
+  font-size: 1.4rem;
+  color: var(--title-page-color);
+  font-weight: bold;
+}
 
-
-// see more button
 .see-more {
   background: none;
   border: none;
@@ -80,5 +73,3 @@
   display: block;
   text-align: left;
 }
-
-
