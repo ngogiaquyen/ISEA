@@ -27,6 +27,8 @@ import PayrollManagement from '~/pages/Salary/PayrollManagement ';
 import PerformanceReview from '~/pages/Performance/PerformanceReview';
 import EmployeeManagement from '~/pages/EmployeeManagement/EmployeeManagement';
 import HomeDashboard from '~/pages/Home/HomeDashboard/HomeDashboard';
+import Notification from '~/pages/Home/Notification';
+import Status from '~/pages/Home/Status';
 // don't need to login
 
 const publicRouters = [
@@ -45,6 +47,18 @@ const publicRouters = [
   {
     path: config.routes.home.dashboard,
     component: HomeDashboard,
+  },
+  {
+    path: config.routes.home.notification,
+    component: Notification,
+    frame: HomeDashboard,
+    layout: DefaultLayout,
+  },
+  {
+    path: config.routes.home.status,
+    component: Status,
+    frame: HomeDashboard,
+    layout: DefaultLayout,
   },
   {
     path: config.routes.dashboard.apply,

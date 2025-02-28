@@ -3,14 +3,15 @@ import styles from './HomeDashboard.module.scss';
 import globalStyles from '../../../components/GlobalStyles/GlobalStyles.module.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
 import avatar from './../../../assets/images/meomeo.jpg';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { Children, useContext, useEffect, useRef, useState } from 'react';
 import { HomeContext } from '~/components/Context/HomeProvider';
 import HomeForm from '~/components/HomeForm/HomeForm';
 import HomeFormField from '~/components/HomeFormField/HomeFormField';
+import config from '~/config';
 
 const cx = classNames.bind({ ...styles, ...globalStyles });
 
-function HomeDashboard() {
+function HomeDashboard({children}) {
   const { publicUser, setPublicUser, fetchGet, fetchPost, showToast } = useContext(HomeContext);
   const [isLoading, setIsLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -118,13 +119,13 @@ function HomeDashboard() {
                   </NavLink>
                 </li>
                 <li className={cx('nav-item')}>
-                  <NavLink className={cx('nav-item-link', { init: isLoading })}>
+                  <NavLink className={cx('nav-item-link', { init: isLoading })} to={config.routes.home.notification}>
                     <i className="fa-solid fa-bell"></i>
                     <span>Thông báo phỏng vấn</span>
                   </NavLink>
                 </li>
                 <li className={cx('nav-item')}>
-                  <NavLink className={cx('nav-item-link', 'active', { init: isLoading })}>
+                  <NavLink className={cx('nav-item-link', 'active', { init: isLoading })} to={config.routes.home.status}>
                     <i className="fa-solid fa-envelope"></i>
                     <span>Trạng thái ứng tuyển</span>
                   </NavLink>
@@ -189,7 +190,8 @@ function HomeDashboard() {
               <p>Trạng thái ứng tuyển</p>
             </div>
             <div className={cx('col2-body', { init: isLoading })}>
-              <p>Chức năng đang tạm khoá</p>
+              {/* <p>Chức năng đang tạm khoá</p> */}
+              {children}
             </div>
           </div>
         </div>
