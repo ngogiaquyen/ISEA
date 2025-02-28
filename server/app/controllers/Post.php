@@ -29,7 +29,7 @@ class Post extends Controller
     }
 
 
-    public function read($id)
+    public function read($id = [0])
     {
         validMethodGET();
         echo json_encode($this->post_model->readPosts($id[0]));
@@ -46,7 +46,7 @@ class Post extends Controller
             'expiration_date' => $_POST['expiration_date'],
             'content' => $_POST['content']
         ];
-        
+
         if ($this->post_model->updatePost($id, $data)) {
             handleSuccess('Sửa bài viết thành công');
         } else {
