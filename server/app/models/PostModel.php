@@ -11,12 +11,10 @@ class PostModel extends Model
     }
     public function updatePost($id, $data)
     {
-        $conditions = "id=$id";
-        return $this->update("posts", $data, $conditions);
+        return $this->update("posts", $data, "id=$id");
     }
     public function deletePost($id)
     {
-        $conditions = "id=$id";
-        return $this->delete("posts", $conditions);
+        return $this->delete("posts", "id=$id");
     }
 }

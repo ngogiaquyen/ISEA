@@ -42,6 +42,7 @@ class CandidateModel extends Model
                 ORDER BY
                     c.edit_at
                 ";
+                
             $stmt = $this->conn->prepare($sql);
 
             if (!empty($id)) {

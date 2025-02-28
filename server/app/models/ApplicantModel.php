@@ -5,9 +5,6 @@ class ApplicantModel extends Model
     {
         return $this->create('applicants', $data);
     }
-
-
-
     public function readApplicant($arg)
     {
         $sql = "SELECT a.id AS applicant_id, a.post_id, u.id AS user_id,  u.full_name, u.email, u.phone_number, u.gender, u.birthday, u.cv, a.status, a.create_at 

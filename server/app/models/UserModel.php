@@ -14,15 +14,20 @@ class UserModel extends Model
         $key = implode(', ', array_keys($data));
         $placeholder = ':' . implode(', :', array_keys($data));
         $sql = "INSERT INTO users ($key) VALUES ($placeholder)";
+        
         try {
             $stmt = $this->conn->prepare($sql);
+
             foreach ($data as $key => $value) {
                 $stmt->bindValue(":$key", $value);
             }
+
             $stmt->execute();
+
             return $this->conn->lastInsertId();
         } catch (PDOException $e) {
             unload();
+
             if ($e->getCode() == '23000') {
                 if (str_contains($e->getMessage(), 'email')) {
                     $this->rollback('Email đã tồn tại');
@@ -30,6 +35,7 @@ class UserModel extends Model
                     $this->rollback('Số điện thoại đã tồn tại');
                 }
             }
+
             $this->rollback('Lỗi đăng ký: ' . $e->getMessage());
         }
     }

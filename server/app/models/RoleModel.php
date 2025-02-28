@@ -8,8 +8,12 @@ class RoleModel extends Model
                     users u
                 JOIN 
                     roles r ON u.role = r.id
-                WHERE u.role > 1
-                ORDER BY r.id DESC";
+                WHERE 
+                    u.role > 1
+                ORDER BY 
+                    r.id 
+                DESC
+                ";
         try {
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
