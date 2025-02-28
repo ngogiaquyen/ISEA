@@ -24,27 +24,27 @@
   }
 }
 
-
 @keyframes fadeIn {
-    from {
-      left: calc(0px - var(--sidebar-width));
-    }
-    to {
-      left: 0;
-    }
+  from {
+    left: calc(0px - var(--sidebar-width));
   }
-
+  to {
+    left: 0;
+  }
+}
 
 @keyframes fadeOut {
-    from {
-      left: 0;
-    }
-    to {
-      left: calc(0px - var(--sidebar-width));
-    }
+  from {
+    left: 0;
   }
+  to {
+    left: calc(0px - var(--sidebar-width));
+  }
+}
 
 .child {
+  display: flex;
+  flex-direction: column;
   overflow-y: scroll;
   max-height: calc(100vh - var(--height-header));
   height: 100%;
