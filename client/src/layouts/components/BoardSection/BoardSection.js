@@ -41,7 +41,7 @@ const subCategories = {
   ],
   5: [{ title: 'Cài đặt độ sáng', to: config.routes.admin.settings }],
 };
-console.log(subCategories);
+// console.log(subCategories);
 function BoardSection({ selectedCategoryId }) {
   const navigate = useNavigate();
   const { isCollapsedBoard, toggleBroard } = useContext(ActiveBoardContext);

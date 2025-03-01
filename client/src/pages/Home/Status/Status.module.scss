@@ -1,0 +1,79 @@
+.notify-list {
+  width: 400px;
+  list-style: none;
+  flex: 1;
+  padding: 8px;
+  border-radius: 12px;
+}
+.notify-list > * {
+  margin-bottom: 16px;
+  &:last-child {
+    margin: 0;
+  }
+}
+.notify-item {
+  position: relative;
+  background-color: var(--elem-color);
+  box-shadow: var(--shadow-mode-2);
+  padding: 16px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  // border: 1px solid var(--border-color);
+}
+.notify-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}
+.post-apply {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-title {
+  font-weight: normal;
+  margin-bottom: 12px;
+}
+
+.post-info {
+  display: flex;
+}
+
+.post-info > * {
+  background-color: #0081ff1a;
+  color: var(--primary-color);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 300;
+}
+
+.post-salary {
+  margin-right: 8px;
+}
+
+.applicant-status {
+  white-space: nowrap;
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+}
+.applicant-status span {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: normal;
+}
+.wait {
+  color: #ffaa00;
+  background-color: #ffaa001a;
+}
+.done {
+  color: #00aa00;
+  background-color: #00aa001a;
+}
+.deny {
+  color: #aa0000;
+  background-color: #aa00001a;
+}

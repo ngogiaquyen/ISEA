@@ -19,7 +19,8 @@ let timeout = null;
 function HomeToast({ obj, setToast }) {
   const [classToast, setClassToast] = useState('show');
 
-  const handleClose = () => {
+  const handleClose = (e) => {
+    if (e && e.target) e.target.style.opacity = '0';
     clearTimeout(timeout);
     setClassToast('wait');
 
@@ -51,13 +52,11 @@ function HomeToast({ obj, setToast }) {
   return (
     <div id="toast" className={cx('toast', classToast)}>
       <div className={cx('toast-wrapper')}>
+        <i className="fa-light fa-xmark" onClick={handleClose}></i>
         <div className={cx('toast-head', obj?.status)}>{obj?.status === 'error' ? iError : iSuccess}</div>
         <div className={cx('toast-body')}>
           <div className={cx('toast-title')}>{obj?.title}</div>
           <div className={cx('toast-content')} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(obj?.content) }} />
-        </div>
-        <div className={cx('toast-foot')}>
-          <i className="fa-light fa-xmark" onClick={handleClose}></i>
         </div>
       </div>
     </div>

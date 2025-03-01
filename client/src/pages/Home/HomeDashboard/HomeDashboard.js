@@ -1,24 +1,31 @@
 import classNames from 'classnames/bind';
 import styles from './HomeDashboard.module.scss';
-import globalStyles from '../../../components/GlobalStyles/GlobalStyles.module.scss';
-import { NavLink, useNavigate } from 'react-router-dom';
 import avatar from './../../../assets/images/meomeo.jpg';
-import { Children, useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { HomeContext } from '~/components/Context/HomeProvider';
 import HomeForm from '~/components/HomeForm/HomeForm';
 import HomeFormField from '~/components/HomeFormField/HomeFormField';
 import config from '~/config';
+import { useNavigate } from 'react-router-dom';
+import DashboardNavItem from '~/layouts/components/Dashboard/DashboardNavItem';
+import globalStyles from '~/components/GlobalStyles';
 
 const cx = classNames.bind({ ...styles, ...globalStyles });
 
-function HomeDashboard({children}) {
-  const { publicUser, setPublicUser, fetchGet, fetchPost, showToast } = useContext(HomeContext);
+function HomeDashboard({ children }) {
+  const { publicUser, setPublicUser, fetchPost, showToast } = useContext(HomeContext);
   const [isLoading, setIsLoading] = useState(true);
-  const [showForm, setShowForm] = useState(false);
+  const [formLogin, setFormLogin] = useState(false);
+  const [formLogout, setFormLogout] = useState(false);
   const [type, setType] = useState('password');
-  const direct = useNavigate();
+  const forward = useNavigate();
+
+  const handleLogoutConfirm = (e) => {
+    setFormLogout(true);
+  };
 
   const handleLogout = async (e) => {
+    document.getElementById('btn-close').click();
     e.preventDefault();
 
     const data = await fetchPost('user/logout');
@@ -57,7 +64,7 @@ function HomeDashboard({children}) {
       btnContent={'Đăng nhập'}
       isDisable={false}
       showBtn={true}
-      setForm={setShowForm}
+      setForm={setFormLogin}
       handleSubmit={handleSubmit}
     >
       <HomeFormField
@@ -82,24 +89,47 @@ function HomeDashboard({children}) {
     </HomeForm>
   );
 
-  useEffect(() => {
-    if (publicUser && Object.keys(publicUser).length <= 0) return;
+  const logoutForm = (
+    <HomeForm
+      formId={'confirm'}
+      title={'Đăng xuất'}
+      btnContent={'Xác nhận'}
+      isDisable={false}
+      showBtn={true}
+      btnCloseId={'btn-close'}
+      setForm={setFormLogout}
+      mini={true}
+      handleSubmit={handleLogout}
+    >
+      <span>Bạn có muốn đăng xuất?</span>
+    </HomeForm>
+  );
 
-    if (typeof publicUser === 'object') {
-      if (publicUser?.full_name) {
-        setIsLoading(false);
-      } else {
-        setShowForm(true);
-      }
+  useEffect(() => {
+    if (!publicUser || Object?.keys(publicUser).length == 0) {
+      return;
+    }
+
+    console.log(publicUser);
+
+    if (publicUser?.role === 2) {
+      forward(config.routes.staff.information);
+    }
+
+    if (publicUser?.full_name) {
+      setIsLoading(false);
+    } else {
+      setFormLogin(true);
     }
   }, [publicUser]);
 
   return (
     <div className={cx('wrapper')}>
       <div className={cx('inner')}>
-        {showForm ? loginForm : null}
+        {formLogout ? logoutForm : null}
+        {formLogin ? loginForm : null}
         {isLoading ? (
-          <p className={cx('login')} onClick={setShowForm}>
+          <p className={cx('login')} onClick={setFormLogin}>
             Nhấn để đăng nhập ...
           </p>
         ) : (
@@ -109,89 +139,38 @@ function HomeDashboard({children}) {
           <div className={cx('col-1')}>
             <div className={cx('scroll')}>
               <ul className={cx('nav-bar')}>
-                <li className={cx('nav-item', 'info')}>
-                  <NavLink className={cx('nav-item-link', { init: isLoading })}>
-                    <img src={avatar} alt="avatar" />
-                    <div className={cx('account')}>
-                      <div className={cx('account-name')}>{publicUser?.full_name}</div>
-                      <div className={cx('account-role')}>{publicUser?.role}</div>
-                    </div>
-                  </NavLink>
-                </li>
-                <li className={cx('nav-item')}>
-                  <NavLink className={cx('nav-item-link', { init: isLoading })} to={config.routes.home.notification}>
-                    <i className="fa-solid fa-bell"></i>
-                    <span>Thông báo phỏng vấn</span>
-                  </NavLink>
-                </li>
-                <li className={cx('nav-item')}>
-                  <NavLink className={cx('nav-item-link', 'active', { init: isLoading })} to={config.routes.home.status}>
-                    <i className="fa-solid fa-envelope"></i>
-                    <span>Trạng thái ứng tuyển</span>
-                  </NavLink>
-                </li>
-                {/* <li className={cx('nav-item')}>
-                  <NavLink className={cx('nav-item-link', { init: isLoading })}>
-                    <i className="fa-solid fa-clock"></i>
-                    <span>Thời gian</span>
-                  </NavLink>
-                </li>
-                <li className={cx('nav-item')}>
-                  <NavLink className={cx('nav-item-link', { init: isLoading })}>
-                    <i className="fa-solid fa-user"></i>
-                    <span>Tài khoản</span>
-                  </NavLink>
-                </li>
-                <li className={cx('nav-item')}>
-                  <NavLink className={cx('nav-item-link', { init: isLoading })}>
-                    <i className="fa-solid fa-home"></i>
-                    <span>Trang chủ</span>
-                  </NavLink>
-                </li>
-                <li className={cx('nav-item')}>
-                  <NavLink className={cx('nav-item-link', { init: isLoading })}>
-                    <i className="fa-solid fa-cloud"></i>
-                    <span>Đám mây</span>
-                  </NavLink>
-                </li>
-                <li className={cx('nav-item')}>
-                  <NavLink className={cx('nav-item-link', { init: isLoading })}>
-                    <i className="fa-solid fa-headphones"></i>
-                    <span>Tai nghe</span>
-                  </NavLink>
-                </li>
-                <li className={cx('nav-item')}>
-                  <NavLink className={cx('nav-item-link', { init: isLoading })}>
-                    <i className="fa-solid fa-file"></i>
-                    <span>Tệp tin</span>
-                  </NavLink>
-                </li>
-                <li className={cx('nav-item')}>
-                  <NavLink className={cx('nav-item-link', { init: isLoading })}>
-                    <i className="fa-solid fa-camera"></i>
-                    <span>Máy ảnh</span>
-                  </NavLink>
-                </li> */}
-                <li className={cx('nav-item')}>
-                  <NavLink
-                    to={'/dang-xuat'}
-                    className={cx('nav-item-link', { init: isLoading })}
-                    onClick={handleLogout}
-                  >
-                    <i className="fa-solid fa-right-from-bracket"></i>
-                    <span>Đăng xuất</span>
-                  </NavLink>
-                </li>
+                <DashboardNavItem
+                  user={{ ...publicUser, avatar: avatar }}
+                  isLoading={isLoading}
+                  to={config.routes.home.dashboard}
+                  onClick={null}
+                />
+                <DashboardNavItem
+                  icon={'fa-bell'}
+                  title={'Lịch phỏng vấn'}
+                  isLoading={isLoading}
+                  to={config.routes.home.notification}
+                  onClick={null}
+                />
+                <DashboardNavItem
+                  icon={'fa-envelope'}
+                  title={'Trạng thái hồ sơ'}
+                  isLoading={isLoading}
+                  to={config.routes.home.status}
+                  onClick={null}
+                />
+                <DashboardNavItem
+                  icon={'fa-right-from-bracket'}
+                  title={'Đăng xuất'}
+                  isLoading={isLoading}
+                  onClick={handleLogoutConfirm}
+                />
               </ul>
             </div>
           </div>
           <div className={cx('col-2')}>
-            <div className={cx('col2-head', { init: isLoading })}>
-              <p>Trạng thái ứng tuyển</p>
-            </div>
             <div className={cx('col2-body', { init: isLoading })}>
-              {/* <p>Chức năng đang tạm khoá</p> */}
-              {children}
+              {children ? children : <p>Chức năng đang tạm khoá</p>}
             </div>
           </div>
         </div>

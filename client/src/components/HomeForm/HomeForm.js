@@ -1,10 +1,21 @@
 import classNames from 'classnames/bind';
 import styles from './HomeForm.module.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
-function HomeForm({ title, btnContent, isDisable, showBtn, setForm, handleSubmit, children }) {
+function HomeForm({
+  formId,
+  title,
+  btnContent,
+  isDisable,
+  showBtn,
+  btnCloseId,
+  setForm,
+  mini,
+  handleSubmit,
+  children,
+}) {
   const [isShow, setIsShow] = useState(true);
   const [isAnimation, setIsAnimation] = useState(false);
 
@@ -15,35 +26,21 @@ function HomeForm({ title, btnContent, isDisable, showBtn, setForm, handleSubmit
       setIsAnimation(true);
 
       setTimeout(() => {
-        setForm(false)
+        setForm(false);
       }, 400);
     }, 4);
   };
 
-  // const handlePause = (e) => {
-  //   e.preventDefault();
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handlePause);
-  //   window.addEventListener('touchmove', handlePause, { passive: false });
-  //   window.addEventListener('wheel', handlePause, { passive: false });
-
-  //   return () => {
-  //     window.removeEventListener('scroll', handlePause);
-  //     window.removeEventListener('touchmove', handlePause);
-  //     window.removeEventListener('wheel', handlePause);
-  //   };
-  // }, []);
+  const btnClose = (
+    <button id={btnCloseId ?? 'btn-hide-form'} type="button" className={cx('btn-hide-form')} onClick={hideForm}>
+      <i className="fa-regular fa-xmark"></i>
+    </button>
+  );
 
   return (
-    <div className={cx('form', { show: isShow, animation: isAnimation })}>
-      <form id="form-data" action="#" method="POST" encType="multipart/form-data">
-        {!showBtn ? null : (
-          <button id="btn-hide-form" type="button" className={cx('btn-hide-form')} onClick={hideForm}>
-            <i className="fa-regular fa-xmark"></i>
-          </button>
-        )}
+    <div className={cx('form', { mini: mini, show: isShow, animation: isAnimation })}>
+      <form id={formId ?? 'form-data'} action="#" method="POST" encType="multipart/form-data">
+        {showBtn ? btnClose : null}
         <p>{title}</p>
         {children}
         <button className={cx('btn-send')} type="submit" onClick={handleSubmit} disabled={isDisable}>

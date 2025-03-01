@@ -34,6 +34,35 @@ class ApplicantModel extends Model
             handleError($e);
         }
     }
+    public function readDetail($arg)
+    {
+        $sql = "SELECT a.status, p.*
+                FROM
+                    applicants a
+                JOIN
+                    posts p
+                ON  
+                    a.post_id = p.id
+                WHERE
+                    a.user_id = :id
+                ORDER BY
+                    a.edit_at
+                DESC
+        ";
+        if (empty($arg['user'])) {
+            handleError('Không có ứng viên hợp lệ');
+        }
+
+        try {
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindValue(':id', $arg['user']);
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            handleError($e->getMessage());
+        }
+    }
     public function updateApplicant($data, $id = 0)
     {
         if (empty($id)) {

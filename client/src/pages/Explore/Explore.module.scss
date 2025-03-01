@@ -47,6 +47,10 @@
   width: 100%;
   background: var(--gradient-bgr);
   padding: 12px;
+  i,
+  a {
+    color: #fff !important;
+  }
 }
 .com-info-wrapper {
   display: flex;
@@ -85,18 +89,16 @@
   align-items: center;
   gap: 8px;
   font-size: 16px;
-  color: #fff;
   margin-right: 24px;
-  a {
-    color: #fff;
-  }
 }
 .com-recruitment-slots {
-  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
+  span {
+    color: #fff;
+  }
 }
 .main-info {
   display: flex;
@@ -116,7 +118,7 @@
   background-color: var(--elem-color);
   box-shadow: var(--shadow-mode-1);
 }
-.col1 > :nth-child(2) > div {
+.col1 > :nth-child(2) > div > div {
   padding: var(--general-padding);
   background: var(--gradient-bgr);
   background-color: transparent !important;
@@ -125,6 +127,10 @@
   border: 0;
 }
 .col1 > :nth-child(2) {
+  background-color: transparent !important;
+  border-radius: 12px;
+}
+.col1 > :nth-child(2) > div {
   overflow: hidden;
   background-color: var(--elem-color);
   li {

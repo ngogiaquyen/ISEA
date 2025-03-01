@@ -1,19 +1,23 @@
-const apiUrl = process.env.REACT_APP_API_URL || "";
+const apiUrl = process.env.REACT_APP_API_URL || '';
 
-console.log(apiUrl)
+console.log(apiUrl);
 const routes = {
   dashboard: {
-    home: apiUrl + "/",
+    home: apiUrl + '/',
     login: apiUrl + '/auth/login',
     recruitment: apiUrl + '/dashboard/tuyen-dung',
     apply: apiUrl + '/dashboard/ung-tuyen',
   },
+  staff: {
+    information: apiUrl + '/nhan-vien/thong-tin-ca-nhan',
+    payroll: apiUrl + '/nhan-vien/bang-luong',
+  },
   home: {
-    explore: apiUrl +  '/ve-chung-toi',
-    auth: apiUrl +  '/dang-nhap',
-    dashboard: apiUrl +  '/bang-dieu-khien',
-    notification: apiUrl +  '/bang-dieu-khien/thong-bao',
-    status: apiUrl +  '/bang-dieu-khien/trang-thai',
+    explore: apiUrl + '/ve-chung-toi',
+    auth: apiUrl + '/dang-nhap',
+    dashboard: apiUrl + '/bang-dieu-khien',
+    notification: apiUrl + '/bang-dieu-khien/lich-phong-van',
+    status: apiUrl + '/bang-dieu-khien/trang-thai-ho-so',
   },
   admin: {
     root: apiUrl + '/admin',

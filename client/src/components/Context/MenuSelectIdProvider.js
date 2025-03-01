@@ -11,7 +11,7 @@ function MenuSelectIdProvider({ children }) {
 
   useEffect(() => {
     const objId = JSON.parse(localStorage.getItem('menuSelectId'));
-    console.log('first: ', objId);
+    // console.log('first: ', objId);
     if (objId) setMenuSelectId(objId);
   }, []);
 

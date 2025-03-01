@@ -1,6 +1,5 @@
 import config from '~/config';
 import Home from '~/pages/Home';
-import HomeAuth from '~/pages/Home/HomeAuth/HomeAuth';
 import Explore from '~/pages/Explore/Explore';
 import AdminLayout from '~/layouts/AdminLayout/AdminLayout';
 import EmptyLayout from '~/layouts/EmptyLayout/EmptyLayout';
@@ -29,6 +28,9 @@ import EmployeeManagement from '~/pages/EmployeeManagement/EmployeeManagement';
 import HomeDashboard from '~/pages/Home/HomeDashboard/HomeDashboard';
 import Notification from '~/pages/Home/Notification';
 import Status from '~/pages/Home/Status';
+import HomeStaff from '~/pages/HomeStaff/HomeStaff';
+import Payroll from '~/pages/HomeStaff/Payroll';
+import Information from '~/pages/Home/Information';
 // don't need to login
 
 const publicRouters = [
@@ -37,28 +39,33 @@ const publicRouters = [
     component: Home,
   },
   {
+    path: config.routes.staff.information,
+    component: Information,
+    frame: HomeStaff,
+  },
+  {
+    path: config.routes.staff.payroll,
+    component: Payroll,
+    frame: HomeStaff,
+  },
+  {
     path: config.routes.home.explore,
     component: Explore,
   },
   {
-    path: config.routes.home.auth,
-    component: HomeAuth,
-  },
-  {
     path: config.routes.home.dashboard,
-    component: HomeDashboard,
+    component: Information,
+    frame: HomeDashboard,
   },
   {
     path: config.routes.home.notification,
     component: Notification,
     frame: HomeDashboard,
-    layout: DefaultLayout,
   },
   {
     path: config.routes.home.status,
     component: Status,
     frame: HomeDashboard,
-    layout: DefaultLayout,
   },
   {
     path: config.routes.dashboard.apply,

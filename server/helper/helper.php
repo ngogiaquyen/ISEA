@@ -65,7 +65,7 @@ function removeFields($result, $fields)
             }
 
             if (isset($item['role'])) {
-                $item['role'] = $role_name[$item['role']];
+                $item['role_name'] = $role_name[$item['role']];
             }
 
             return $item;
@@ -77,7 +77,7 @@ function removeFields($result, $fields)
     }
 
     if (isset($result['role'])) {
-        $result['role'] = $role_name[$result['role']];
+        $result['role_name'] = $role_name[$result['role']];
     }
 
     return $result;
