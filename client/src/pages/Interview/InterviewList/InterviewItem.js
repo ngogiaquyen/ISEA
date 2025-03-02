@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './InterviewList.module.scss';
 import config from '~/config';
 import { NavLink } from 'react-router-dom';
+import { formatDatee } from '../InterViewDetail/InterViewDetail';
 
 const cx = classNames.bind(styles);
 
@@ -13,7 +14,7 @@ function InterviewItem({ interview }) {
     <NavLink className={cx('list-item')} to={config.routes.admin.interviewDetail + `/${interview.id}`}>
       <div className={cx('info')}>
         <div className={cx('section')}>
-          <h3 className={cx('interview-date')}>📅 {'Lúc: ' + interview.interview_datetime}</h3>
+          <h3 className={cx('interview-date')}>📅 {formatDatee(interview.interview_datetime)}</h3>
           <p className={cx('location')}>
             <strong>📍 Địa điểm:</strong> {interview.interview_location}
           </p>

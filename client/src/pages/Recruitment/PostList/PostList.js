@@ -34,7 +34,7 @@ function PostList() {
       <PageTitle title="Danh sách bài đăng" />
       <Controller addUrl={config.routes.admin.recruitmentCreate} />
       <div className={cx('post-list')}>
-        {/* {postData.map((post, index) => (
+        {postData.map((post, index) => (
           <PostItem
             key={index}
             id={post.id}
@@ -43,7 +43,7 @@ function PostList() {
             createAt={post.create_at}
             descriptions={post.content}
           />
-        ))} */}
+        ))}
       </div>
     </div>
   );

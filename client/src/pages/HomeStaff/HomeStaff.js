@@ -75,7 +75,6 @@ function HomeStaff({ children }) {
   );
 
   useEffect(() => {
-    console.log('mounth');
     
 
     if (!publicUser || Object?.keys(publicUser).length == 0) {

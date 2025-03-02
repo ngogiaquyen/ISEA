@@ -102,7 +102,6 @@ function Notification() {
   };
 
   const handleShow = (candidate) => {
-    console.log(candidate);
     setView(render(candidate));
   };
 

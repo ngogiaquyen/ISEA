@@ -13,6 +13,7 @@ import EditPost from '../../../layouts/components/EditForm';
 import UDActions from '~/components/UDActions';
 import EditForm from '../../../layouts/components/EditForm';
 import PostForm from '~/layouts/components/Form/PostForm';
+import { CreateCandidateInforContext } from '~/components/Context/CreateCandidateInforProvider';
 
 const cx = classNames.bind(styles);
 
@@ -23,6 +24,9 @@ function PostDetail() {
   const [candidates, setCandidates] = useState([]);
   const [displayContent, setDisplayContent] = useState('');
   const { setModalComponentContent } = useContext(ModalOverLayContext);
+
+  
+  const { keyLoad } = useContext(CreateCandidateInforContext);
 
   const { addToast } = useContext(ToastContext);
   const [expanded, setExpanded] = useState(false);
@@ -40,7 +44,7 @@ function PostDetail() {
   }
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [keyLoad]);
 
   useEffect(() => {
     if (!postDetail.content) return;

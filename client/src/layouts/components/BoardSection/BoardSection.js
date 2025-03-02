@@ -30,7 +30,6 @@ const subCategories = {
   ],
   5: [{ title: 'Cài đặt độ sáng', to: config.routes.admin.settings }],
 };
-// console.log(subCategories);
 function BoardSection({ selectedCategoryId }) {
   const navigate = useNavigate();
   const { isCollapsedBoard, toggleBroard } = useContext(ActiveBoardContext);
@@ -45,13 +44,10 @@ function BoardSection({ selectedCategoryId }) {
   const [indexActive, setIndexActive] = useState(0);
 
   useEffect(() => {
-    console.log(menuSelectId.board || 1);
     setIndexActive(menuSelectId.board || 1);
     setItems(subCategories[menuSelectId.sidebar] || []);
 
     if (menuSelectId.sidebar && menuSelectId.board) {
-      console.log(menuSelectId.sidebar, menuSelectId.board);
-      console.log(subCategories[menuSelectId.sidebar]);
       navigate(subCategories[menuSelectId.sidebar][menuSelectId.board - 1].to);
     }
   }, [menuSelectId]);

@@ -8,14 +8,20 @@ import { postData } from '~/hooks/apiService';
 import { CreateCandidateInforContext } from '~/components/Context/CreateCandidateInforProvider';
 import { ToastContext } from '~/components/Context/ToastProvider';
 import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
 function Item({ interview }) {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { setModalComponentContent } = useContext(ModalOverLayContext);
   // len lich phong van
-  const { interviewId, setInterviewId, applicantID } = useContext(CreateCandidateInforContext);
+  const { interviewId, setInterviewId, applicantID, setApplicantID } = useContext(CreateCandidateInforContext);
   const { addToast } = useContext(ToastContext);
+
+  const { setKeyLoad } = useContext(CreateCandidateInforContext);
+
 
   useEffect(() => {
     if (interviewId) {
@@ -37,14 +43,19 @@ function Item({ interview }) {
     const formData = new FormData();
     formData.append('interview_id', interviewId);
     formData.append('applicant_id', JSON.stringify(applicantID));
+    console.log(interviewId, applicantID);
     try {
       const response = await postData('/candidate/create', formData);
       addToast(response);
-      if (!response.keep) {
+      if (response.status === "success") {
+        setKeyLoad(prev=>!prev);
+        setModalComponentContent(null);
+        setApplicantID([]);
+      }else{
         setInterviewId(null);
         setModalComponentContent(<InterviewListChoice />);
       }
-    } catch (error) {
+        } catch (error) {
       console.error('Error posting data: ', error);
     }
   };

@@ -10,10 +10,15 @@ import PageTitle from '~/components/PageTitle';
 import { ModalOverLayContext } from '~/components/Context/ModalOverlayProvider';
 import ConfirmModal from '~/layouts/components/ConfirmModal';
 import { postData } from '~/hooks/apiService';
+import { ToastContext } from '~/components/Context/ToastProvider';
+import { useNavigate } from 'react-router-dom';
+import { CreateCandidateInforContext } from '~/components/Context/CreateCandidateInforProvider';
 const cx = classNames.bind(styles);
 
-function EmployeeInfo({ id, employee }) {
+function EmployeeInfo({ id, employee, type }) {
   const { setModalComponentContent } = useContext(ModalOverLayContext);
+  const { addToast } = useContext(ToastContext);
+  const { setKeyLoad } = useContext(CreateCandidateInforContext);
 
   const handleConfirmRemove = async () => {
     const formData = new FormData();
@@ -28,10 +33,38 @@ function EmployeeInfo({ id, employee }) {
   const handleRemove = () => {
     setModalComponentContent(
       <ConfirmModal
-        title={"Xác nhận ứng viên: " + employee.full_name}
+        title={'Xác nhận ứng viên: ' + employee.full_name}
         message="Không thể khôi phục lại ứng viên sau khi xóa"
         onConfirm={handleConfirmRemove}
-        onCancel={() => setModalComponentContent(<EmployeeInfo employee={employee} />)}
+        onCancel={() => setModalComponentContent(<EmployeeInfo id={id} employee={employee} type={type} />)}
+      />,
+    );
+  };
+
+  const handleConfirm = async() => {
+    const formData = new FormData();
+    formData.append("id", employee.user_id);
+    formData.append("role", 2);
+    const res = await postData("/user/recruitment", formData);
+    if(res.status === "success"){
+      setModalComponentContent(null);
+      addToast(res);
+      setKeyLoad(prev=>!prev);
+    }else{
+      addToast(res)
+    }
+    
+  };
+  const handleCancel = () => {
+    setModalComponentContent(<EmployeeInfo id={id} employee={employee} type={type} />);
+  };
+  const handlApply = () => {
+    setModalComponentContent(
+      <ConfirmModal
+        title={'Xác nhận tuyển dụng'}
+        message={'Nhân viên: ' + employee.full_name}
+        onConfirm={handleConfirm}
+        onCancel={handleCancel}
       />,
     );
   };
@@ -69,10 +102,12 @@ function EmployeeInfo({ id, employee }) {
             <FontAwesomeIcon className={cx('icon')} icon={faPenToSquare} />
             Chỉnh sửa
           </button>
-          <button>
-            <FontAwesomeIcon className={cx('icon')} icon={faCalendar} />
-            Lên lịch phỏng vấn
-          </button>
+          {type === 'interview' && (
+            <button onClick={handlApply}>
+              <FontAwesomeIcon className={cx('icon')} icon={faCalendar} />
+              Tuyển dụng
+            </button>
+          )}
           <button onClick={handleRemove}>
             <FontAwesomeIcon className={cx('icon')} icon={faTrash} />
             Xóa ứng viên

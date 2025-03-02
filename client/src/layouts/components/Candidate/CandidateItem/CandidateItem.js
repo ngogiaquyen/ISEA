@@ -10,10 +10,11 @@ import { CreateCandidateInforContext } from '~/components/Context/CreateCandidat
 
 const cx = classNames.bind(styles);
 
-function CandidateItem({ id, data, activeMenu, setActiveMenu }) {
+function CandidateItem({ id, data, activeMenu, setActiveMenu, type }) {
+  console.log(type)
   const wrapperRef = useRef(null);
   const menuRef = useRef(null);
-  const { interviewId, setInterviewId, applicantID, setApplicantID } = useContext(CreateCandidateInforContext);
+  const { setApplicantID } = useContext(CreateCandidateInforContext);
 
   const [menu, setMenu] = useState({
     left: 0,
@@ -37,7 +38,7 @@ function CandidateItem({ id, data, activeMenu, setActiveMenu }) {
   };
 
   const handleSeeInfor = () => {
-    setModalComponentContent(<EmployeeInfo employee={data} />);
+    setModalComponentContent(<EmployeeInfo employee={data} type={type} />);
   };
 
   useEffect(() => {
@@ -55,32 +56,29 @@ function CandidateItem({ id, data, activeMenu, setActiveMenu }) {
       document.removeEventListener('click', handleClickOutside);
     };
   }, []);
-  
+
+
   const handleCheck = (e) => {
     const isChecked = e.target.checked;
-    
-    setApplicantID((prev) => 
-        isChecked ? [...prev, id] : prev.filter((item) => item !== id)
-    );
-};
-
+    setApplicantID((prev) => (isChecked ? [...prev, id] : prev.filter((item) => item !== id)));
+  };
 
   return (
     <div
       className={cx('candidate-item')}
       ref={wrapperRef}
-      onContextMenu={handleContextMenu}
+      // onContextMenu={handleContextMenu}
       onDoubleClick={handleSeeInfor}
     >
-      <div className={cx('candidate-content')}>
-        <input type="checkbox" className={cx('checkbox')} onChange={handleCheck} />
+      <label className={cx('candidate-content')}>
+        {type === 'post' && <input type="checkbox" className={cx('checkbox')} onChange={handleCheck} />}
         <div className={cx('info')}>
           <span className={cx('name')}>Họ và tên: {data.full_name}</span>
           <span className={cx('phone')}>SDT: {data.phone_number}</span>
           <span className={cx('email')}>Email: {data.email}</span>
           <span className={cx('date')}>Ngày ứng tuyển: {data.create_at}</span>
         </div>
-      </div>
+      </label>
       {activeMenu === id && (
         <div className={cx('menu-list')} ref={menuRef} style={{ left: menu.left, top: menu.top }}>
           <div className={cx('menu-item', 'item-title')} onClick={handleItemClick}>
