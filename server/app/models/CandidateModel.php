@@ -36,6 +36,7 @@ class CandidateModel extends Model
                     u.gender,
                     u.birthday,
                     u.cv,
+                    u.role,
                     a.status,
                     a.create_at
                 FROM 
