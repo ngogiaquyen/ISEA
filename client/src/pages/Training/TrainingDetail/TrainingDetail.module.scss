@@ -74,7 +74,18 @@
   text-align: left;
 }
 
-
-.detail-text{
+.detail-text {
   color: var(--text-color);
+}
+
+.control .btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
 }

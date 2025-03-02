@@ -31,6 +31,7 @@ import Status from '~/pages/Home/Status';
 import HomeStaff from '~/pages/HomeStaff/HomeStaff';
 import Payroll from '~/pages/HomeStaff/Payroll';
 import Information from '~/pages/Home/Information';
+import TrainingSchedule from '~/pages/Training/TrainingSchedule';
 // don't need to login
 
 const publicRouters = [
@@ -184,7 +185,7 @@ const publicRouters = [
   },
   {
     path: config.routes.admin.trainingPlan,
-    component: Announcements,
+    component: TrainingSchedule,
     layout: AdminLayout,
   },
   // Hiệu suất

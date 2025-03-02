@@ -20,24 +20,13 @@ const subCategories = {
   ],
   2: [
     { title: 'Khóa đào tạo', to: config.routes.admin.trainingList },
-    { title: 'Tham gia đào tạo', to: config.routes.admin.trainingParticipation },
-    { title: 'Hiệu quả đào tạo', to: config.routes.admin.trainingEffectiveness },
     { title: 'Kế hoạch đào tạo', to: config.routes.admin.trainingPlan },
   ],
   3: [
     { title: 'Lương', to: config.routes.admin.salary },
-    { title: 'Thưởng', to: config.routes.admin.bonus },
-    { title: 'Phụ cấp', to: config.routes.admin.allowance },
-    { title: 'Bảo hiểm', to: config.routes.admin.insurance },
-    { title: 'Phúc lợi', to: config.routes.admin.benefits },
-    { title: 'Bảng lương', to: config.routes.admin.payroll },
-    { title: 'Báo cáo', to: config.routes.admin.reports },
   ],
   4: [
     { title: 'Thông tin cá nhân', to: config.routes.admin.employeeManagement },
-    { title: 'Quá trình công tác', to: config.routes.admin.workHistory },
-    { title: 'Hợp đồng lao động', to: config.routes.admin.employmentContract },
-    { title: 'Bằng cấp', to: config.routes.admin.certificates },
   ],
   5: [{ title: 'Cài đặt độ sáng', to: config.routes.admin.settings }],
 };
