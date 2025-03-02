@@ -13,6 +13,7 @@ function HomeForm({
   btnCloseId,
   setForm,
   mini,
+  showSubmit = true,
   handleSubmit,
   children,
 }) {
@@ -37,15 +38,19 @@ function HomeForm({
     </button>
   );
 
+  const btnSubmit = (
+    <button className={cx('btn-send')} type="submit" onClick={handleSubmit} disabled={isDisable}>
+      {btnContent}
+    </button>
+  );
+
   return (
     <div className={cx('form', { mini: mini, show: isShow, animation: isAnimation })}>
       <form id={formId ?? 'form-data'} action="#" method="POST" encType="multipart/form-data">
         {showBtn ? btnClose : null}
         <p>{title}</p>
         {children}
-        <button className={cx('btn-send')} type="submit" onClick={handleSubmit} disabled={isDisable}>
-          {btnContent}
-        </button>
+        {showSubmit ? btnSubmit : null}
       </form>
     </div>
   );

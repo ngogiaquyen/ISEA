@@ -5,19 +5,20 @@ import { useContext } from 'react';
 import { HomeContext } from '~/components/Context/HomeProvider';
 import HeaderUserItem from './HeaderUserItem/HeaderUserItem';
 import config from '~/config';
+import { NavLink } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
 function HeaderUser() {
   const { publicUser } = useContext(HomeContext);
-  
+
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
         <div className={cx('inner-left')}>
-          <div className={cx('logo')}>
+          <NavLink className={cx('logo')} to={config.routes.dashboard.home}>
             <img src={logo} alt="logo" />
-          </div>
+          </NavLink>
           <ul className={cx('nav')}>
             <HeaderUserItem title={'Trang chủ'} to={config.routes.dashboard.home} />
             <HeaderUserItem title={'Về chúng tôi'} to={config.routes.home.explore} />

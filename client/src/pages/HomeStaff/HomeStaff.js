@@ -9,8 +9,13 @@ import DashboardNavItem from '~/layouts/components/Dashboard/DashboardNavItem';
 function HomeStaff({ children }) {
   const [loading, setLoading] = useState(true);
   const [logout, setLogout] = useState(false);
+  const [key, setKey] = useState(0);
   const { publicUser, setPublicUser, showToast, fetchPost } = useContext(HomeContext);
   const forward = useNavigate();
+
+  const handleReload = () => {
+    setKey((key) => key + 1);
+  };
 
   const handleLogout = async (e) => {
     document.getElementById('btn-close').click();
@@ -19,7 +24,6 @@ function HomeStaff({ children }) {
     const data = await fetchPost('user/logout');
 
     showToast(data);
-    console.log(data);
 
     if (data.status === 'success') {
       setLoading(true);
@@ -47,20 +51,18 @@ function HomeStaff({ children }) {
   const navElem = (
     <React.Fragment>
       <DashboardNavItem
-        user={{
-          ...publicUser,
-          avatar: 'https://us-tuna-sounds-images.voicemod.net/3cce65dc-b33e-4b23-ac04-b66afd901a8f-1679958733521.png',
-        }}
+        user={publicUser}
+        title={'user'}
         isLoading={loading}
         to={config.routes.staff.information}
-        onClick={null}
+        onClick={handleReload}
       />
       <DashboardNavItem
         icon={'fa-money-check-dollar'}
         title={'Bảng lương'}
         isLoading={loading}
         to={config.routes.staff.payroll}
-        onClick={null}
+        onClick={handleReload}
       />
       <DashboardNavItem
         icon={'fa-right-from-bracket'}
@@ -73,18 +75,20 @@ function HomeStaff({ children }) {
   );
 
   useEffect(() => {
+    console.log('mounth');
+    
+
     if (!publicUser || Object?.keys(publicUser).length == 0) {
       return;
     }
 
-    console.log(publicUser);
-
-    if (publicUser?.role === 2) {
-      forward(config.routes.dashboard.staff);
+    if (publicUser?.role !== 2) {
+      forward(config.routes.home.dashboard);
+      return;
     }
 
     if (publicUser?.full_name) {
-      setLoading(false);
+        setLoading(false);
     } else {
       forward(config.routes.home.dashboard);
     }
@@ -93,7 +97,7 @@ function HomeStaff({ children }) {
   return (
     <Dashboard isLoading={loading} navElem={navElem}>
       {logout ? logoutForm : null}
-      {children}
+      {React.cloneElement(children, { key: key })}
     </Dashboard>
   );
 }

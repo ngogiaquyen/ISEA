@@ -180,3 +180,14 @@ function validCandidate()
         handleError('Vui lòng chọn ứng viên');
     }
 }
+//recruitment
+function validRecruitment()
+{
+    validMethodPOST();
+    if (empty($_POST['id'])) {
+        handleError('Chưa chọn ứng viên');
+    }
+    if (empty($_POST['role'])) {
+        handleError('Chức vụ không được để trống');
+    }
+}

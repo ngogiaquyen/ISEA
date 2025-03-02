@@ -42,6 +42,7 @@
   --shadow-mode-2: -2px 2px 8px rgba(0, 0, 0, 0.05);
   --sidebar-color: #f8f8f8;
   --sidebar-item-color: #fff;
+  --box-color: #f0f0f4;
 
   --tag-blue: #0081ff;
   --tag-green: #00cc00;
@@ -145,6 +146,7 @@ body {
   line-height: 1.5;
   font-family: var(--font-family);
   height: 100vh;
+  background-color: var(--background-color);
 }
 
 button,
@@ -192,9 +194,11 @@ b {
   }
 }
 .active {
-  // transition: background 0s !important;
   background-color: #106cd2 !important;
   color: #f5f5f5 !important;
+  & img {
+    border-color: #f5f5f5 !important;
+  }
 }
 .init {
   position: relative !important;
@@ -215,6 +219,17 @@ b {
   inset: 0;
   z-index: 1;
 }
+.dashboard-box-title {
+  margin-top: 20px;
+  margin-bottom: 8px;
+  padding: 4px 8px;
+  width: fit-content;
+  color: var(--primary-color);
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 6px;
+}
+//
 @media (prefers-color-scheme: dark) {
   :root {
     //css of the handsome guy, no edit, thanks!
@@ -233,7 +248,10 @@ b {
     --border-color: #535556;
     --init-color: rgba(0, 129, 255, 0.2);
     --sidebar-color: #1d2636;
-    --sidebar-color: #20242c;
+    --sidebar-color: #24262b;
     --sidebar-item-color: #4a5365;
+    --box-color: #181d1f;
+    --shadow-mode-1: -2px 2px 12px rgba(0, 0, 0, 0.2);
+    --shadow-mode-2: -2px 2px 8px rgba(0, 0, 0, 0.05);
   }
 }

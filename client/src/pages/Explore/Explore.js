@@ -39,7 +39,7 @@ function Explore() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 400);
   }, []);
 
   return (

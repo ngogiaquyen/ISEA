@@ -42,11 +42,13 @@ const publicRouters = [
     path: config.routes.staff.information,
     component: Information,
     frame: HomeStaff,
+    layout: EmptyLayout,
   },
   {
     path: config.routes.staff.payroll,
     component: Payroll,
     frame: HomeStaff,
+    layout: EmptyLayout
   },
   {
     path: config.routes.home.explore,

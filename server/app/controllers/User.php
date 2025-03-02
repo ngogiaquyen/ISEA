@@ -11,6 +11,11 @@ class User extends Controller
         validMethodGET();
         echo json_encode($this->user_model->readUsers($id[0]));
     }
+    public function role()
+    {
+        validMethodGET();
+        echo json_encode($this->user_model->readRoles());
+    }
     public function auth()
     {
         validMethodPOST();
@@ -67,5 +72,16 @@ class User extends Controller
         } else {
             handleError('Đăng ký thất bại, vui lòng thử lại sau');
         }
+    }
+    public function recruitment()
+    {
+        validRecruitment();
+        $data = [
+            'role' => $_POST['role'],
+        ];
+        if ($this->user_model->updateRole($_POST['id'], $data)) {
+            handleSuccess('Tuyển dụng nhân sự thành công');
+        }
+        handleError('Tuyển dụng nhân sự thất bại');
     }
 }

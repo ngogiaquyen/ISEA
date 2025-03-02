@@ -1,0 +1,67 @@
+.payroll-wrapper {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.payroll-main {
+  border-radius: 12px;
+  background-color: var(--background-color);
+  padding: 32px;
+  margin: 8px;
+}
+.payroll-head {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: center;
+  margin: 32px 0;
+}
+.com-name{
+    font-weight: 500;
+    font-size: 15px;
+}
+.payroll-title{
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 500;
+}
+.full-name{
+    margin-top: 12px;
+}
+.full-name,
+.role-name{
+    font-weight: normal;
+}
+.payroll {
+  border-collapse: collapse;
+  width: 100%;
+}
+.payroll th,
+.payroll td {
+  border: 1px solid var(--border-color);
+  padding: 12px;
+}
+.payroll {
+  th {
+    font-weight: 500;
+  }
+  td:first-child {
+    text-align: center;
+  }
+  td:last-child {
+    text-align: end;
+  }
+  & tr:last-child {
+    & p {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+    }
+    & span {
+      color: var(--primary-color);
+      width: fit-content;
+    }
+  }
+}

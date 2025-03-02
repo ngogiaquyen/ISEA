@@ -1,5 +1,6 @@
 import { createContext, useEffect, useRef, useState } from 'react';
 import HomeToast from '../HomeToast/HomeToast';
+import avatar from '../../assets/images/meomeo.jpg';
 
 const HomeContext = createContext();
 function HomeProvider({ children }) {
@@ -54,7 +55,7 @@ function HomeProvider({ children }) {
 
   const checkLogin = async () => {
     const user = await fetchPost('user/auth');
-    setPublicUser(user);
+    setPublicUser({ ...user, avatar: avatar });
   };
   const checkLoginRef = useRef(checkLogin);
 

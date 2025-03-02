@@ -1,63 +1,38 @@
-.notify-list {
-  width: 400px;
-  list-style: none;
-  flex: 1;
-  padding: 8px;
-  border-radius: 12px;
-}
-
-.notify-list > * {
-  margin-bottom: 16px;
-  &:last-child {
-    margin: 0;
-  }
-}
-
-.notify-item {
-  background-color: var(--elem-color);
-  box-shadow: var(--shadow-mode-2);
-  padding: 16px;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.notify-item::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  cursor: pointer;
-}
-
-.interview-info {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-
-.interview-location {
+.title-info {
   margin-bottom: 12px;
+  font-size: 14px;
 }
-
-.interview-detail {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: space-between;
-}
-
-.interview-datetime,
-.interview-type {
+.field {
   display: flex;
   align-items: center;
+  margin-bottom: 12px;
+  & > :last-child {
+    margin-bottom: 0;
+  }
 }
-
-.interview-detail span {
-  font-weight: 300;
-  background-color: #0081ff1a;
+.field i {
   color: var(--primary-color);
-  padding: 4px 8px;
-  border-radius: 4px;
-  white-space: nowrap;
+  width: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1;
+  font-size: 14px;
+  margin-right: 4px;
+}
+.field-info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.field span {
+  font-weight: normal;
+//   padding: 4px 8px;
+//   border-radius: 4px;
+//   background-color: #0081ff1a;
+//   color: var(--primary-color);
+  margin-left: 8px;
+}
+.field-note {
+  font-size: 14px;
 }

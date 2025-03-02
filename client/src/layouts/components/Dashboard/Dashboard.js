@@ -4,11 +4,12 @@ import globalStyles from '~/components/GlobalStyles/GlobalStyles.module.scss';
 
 const cx = classNames.bind({ ...styles, ...globalStyles });
 
-function Dashboard({ isLoading, navElem, children }) {
+function Dashboard({ isLoading, navElem, form, children }) {
   return (
     <div className={cx('wrapper')}>
+      {form}
       <div className={cx('inner')}>
-        <p>Bảng điều khiển</p>
+        {/* <p>Bảng điều khiển</p> */}
         <div className={cx('col-wrapper')}>
           <div className={cx('col-1')}>
             <div className={cx('scroll')}>
@@ -17,7 +18,7 @@ function Dashboard({ isLoading, navElem, children }) {
           </div>
           <div className={cx('col-2')}>
             <div className={cx('col2-body', { init: isLoading })}>
-              {children ? children : <p>Chức năng đang tạm khoá</p>}
+              <div className={cx('col2-wrapper')}>{children ? children : <p>Chức năng đang tạm khoá</p>}</div>
             </div>
           </div>
         </div>

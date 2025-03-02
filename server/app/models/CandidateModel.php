@@ -13,6 +13,12 @@ class CandidateModel extends Model
             if (str_contains($e->getMessage(), '1062')) {
                 $this->rollback('Ứng viễn đã có trong buổi phỏng vấn');
             }
+            if (str_contains($e->getMessage(), '1452')) {
+                if (str_contains($e->getMessage(), 'interviews')) {
+                    $this->rollback('Buổi phỏng vấn không tồn tại');
+                }
+                $this->rollback('Hồ sơ xin việc không tồn tại');
+            }
             $this->rollback("Thêm ứng viên thất bại: " . $e->getMessage());
         }
     }

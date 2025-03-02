@@ -9,12 +9,33 @@ class UserModel extends Model
         $result = $this->read('users', $conditions);
         return removeFields($result, ['password']);
     }
+    public function readRoles()
+    {
+        $sql = "SELECT u.id, u.full_name, r.role_name
+                FROM 
+                    users u
+                JOIN 
+                    roles r ON u.role = r.id
+                WHERE 
+                    u.role > 1
+                ORDER BY 
+                    r.id 
+                DESC
+                ";
+        try {
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            handleError($e);
+        }
+    }
     public function register($data)
     {
         $key = implode(', ', array_keys($data));
         $placeholder = ':' . implode(', :', array_keys($data));
         $sql = "INSERT INTO users ($key) VALUES ($placeholder)";
-        
+
         try {
             $stmt = $this->conn->prepare($sql);
 
@@ -62,5 +83,9 @@ class UserModel extends Model
         }
 
         return removeFields($user, ['password']);
+    }
+    public function updateRole($id, $data)
+    {
+        return $this->update('users', $data, "id=$id");
     }
 }

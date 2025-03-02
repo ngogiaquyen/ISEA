@@ -1,10 +1,10 @@
 import classNames from 'classnames/bind';
-import { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { HomeContext } from '~/components/Context/HomeProvider';
-import style from './Status.module.scss';
-import globalStyle from '../../../components/GlobalStyles/GlobalStyles.module.scss';
+import globalStyles from '~/components/GlobalStyles/GlobalStyles.module.scss';
+import styles from '~/layouts/components/Dashboard/Dashboard.module.scss';
 
-const cx = classNames.bind({ ...style, ...globalStyle });
+const cx = classNames.bind({ ...styles, ...globalStyles });
 
 function Status() {
   const [has, setHas] = useState(false);
@@ -39,23 +39,28 @@ function Status() {
   }, [publicUser, fetchGet]);
 
   return (
-    <ul className={cx('notify-list', { init: loading })}>
-      {!has ? <p>Bạn chưa ứng tuyển bài nào</p> : null}
-      {applicants?.map((applicant, index) => (
-        <li key={index} className={cx('notify-item')}>
-          <div className={cx('post-apply')}>
-            <div className={cx('post-title')}>{applicant?.title}</div>
-            <div className={cx('post-info')}>
-              <div className={cx('post-salary')}>{applicant?.salary}</div>
-              <div className={cx('post-location')}>{applicant?.location}</div>
+    <React.Fragment>
+      <div className={cx('dashboard-box-title', { init: loading })}>
+        <span>Trạng thái ứng tuyển</span>
+      </div>
+      <ul className={cx('notify-list', { init: loading })}>
+        {!has ? <p>Bạn chưa ứng tuyển bài nào</p> : null}
+        {applicants?.map((applicant, index) => (
+          <li key={index} className={cx('notify-item')}>
+            <div className={cx('post-apply')}>
+              <div className={cx('post-title')}>{applicant?.title}</div>
+              <div className={cx('post-info')}>
+                <div className={cx('post-salary')}>{applicant?.salary}</div>
+                <div className={cx('post-location')}>{applicant?.location}</div>
+              </div>
             </div>
-          </div>
-          <div className={cx('applicant-status')}>
-            <span className={cx(state[applicant?.status].class)}>{state[applicant?.status].text}</span>
-          </div>
-        </li>
-      ))}
-    </ul>
+            <div className={cx('applicant-status')}>
+              <span className={cx(state[applicant?.status].class)}>{state[applicant?.status].text}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </React.Fragment>
   );
 }
 

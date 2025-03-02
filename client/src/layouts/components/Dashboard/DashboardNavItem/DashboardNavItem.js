@@ -11,7 +11,7 @@ function DashboardNavItem({ user, icon, title, isLoading, to, onClick }) {
 
   const handleClick = (e) => {
     if (isLoading) e.preventDefault();
-    else if (typeof onClick === 'function') onClick(e);
+    if (typeof onClick === 'function') onClick(e);
   };
 
   const userElem = (
