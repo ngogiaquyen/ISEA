@@ -69,8 +69,11 @@ export function isNumber(value) {
   // Không hợp lệ
   return false; 
 }
+<<<<<<< HEAD
 
 export function isValidLength(str) {
   const length = str.length;
   return (length >= 6 && length <= 10 && (length === 6 || length === 10));
 }
+=======
+>>>>>>> 491052f5e134c5d31969c9a3ba1da07c64fe36f6

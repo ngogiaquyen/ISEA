@@ -10,13 +10,20 @@ import { useNavigate } from 'react-router-dom';
 import DashboardNavItem from '~/layouts/components/Dashboard/DashboardNavItem';
 import globalStyles from '~/components/GlobalStyles';
 import Dashboard from '~/layouts/components/Dashboard';
+<<<<<<< HEAD
 import { isValidLength } from '~/hooks/validate';
+=======
+>>>>>>> 491052f5e134c5d31969c9a3ba1da07c64fe36f6
 
 const cx = classNames.bind({ ...styles, ...globalStyles });
 
 function HomeDashboard({ children }) {
+<<<<<<< HEAD
   const { publicUser, setPublicUser, fetchPost, showToast, showForgotPassForm, setShowForgotPassForm } =
     useContext(HomeContext);
+=======
+  const { publicUser, setPublicUser, fetchPost, showToast } = useContext(HomeContext);
+>>>>>>> 491052f5e134c5d31969c9a3ba1da07c64fe36f6
   const [isLoading, setIsLoading] = useState(true);
   const [loged, setLoged] = useState(true);
   const [formLogout, setFormLogout] = useState(false);
@@ -59,6 +66,7 @@ function HomeDashboard({ children }) {
       setLoged(true);
     }
   };
+<<<<<<< HEAD
   const handleSubmitResetPass = async (e) => {
     e.preventDefault();
     handleBlurPass();
@@ -84,6 +92,8 @@ function HomeDashboard({ children }) {
       console.log("hello")
     }
   };
+=======
+>>>>>>> 491052f5e134c5d31969c9a3ba1da07c64fe36f6
 
   const handleShowPassword = () => {
     type === 'text' ? setType('password') : setType('text');
@@ -136,6 +146,7 @@ function HomeDashboard({ children }) {
     </HomeForm>
   );
 
+<<<<<<< HEAD
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -229,6 +240,8 @@ function HomeDashboard({ children }) {
     </HomeForm>
   );
 
+=======
+>>>>>>> 491052f5e134c5d31969c9a3ba1da07c64fe36f6
   const navElem = (
     <React.Fragment>
       <DashboardNavItem
@@ -283,6 +296,7 @@ function HomeDashboard({ children }) {
   return (
     <React.Fragment>
       {loged ? (
+<<<<<<< HEAD
         showForgotPassForm ? (
           ResetpassForm
         ) : (
@@ -290,6 +304,11 @@ function HomeDashboard({ children }) {
             {React.cloneElement(children, { key: reloadKey })}
           </Dashboard>
         )
+=======
+        <Dashboard isLoading={isLoading} navElem={navElem} form={formLogout ? logoutForm : null}>
+          {React.cloneElement(children, { key: reloadKey })}
+        </Dashboard>
+>>>>>>> 491052f5e134c5d31969c9a3ba1da07c64fe36f6
       ) : (
         loginForm
       )}

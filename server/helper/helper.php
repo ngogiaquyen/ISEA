@@ -57,7 +57,12 @@ function removeFields($result, $fields)
     }
  
     $role_name = ['Trống', 'Ứng viên', 'Nhân viên', 'Phó phòng nhân sự', 'Trưởng phòng Nhân sự', 'Phó giám đốc', 'Giám đốc'];
+<<<<<<< HEAD
     if (isset($result[0]) && is_array($result[0])) {
+=======
+
+    if ($result[0] && is_array($result[0])) {
+>>>>>>> 491052f5e134c5d31969c9a3ba1da07c64fe36f6
         return array_map(function ($item) use ($fields, $role_name) {
             foreach ($fields as $field) {
                 unset($item[$field]);
