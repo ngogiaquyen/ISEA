@@ -84,7 +84,6 @@ class User extends Controller
         }
         handleError('Tuyển dụng nhân sự thất bại');
     }
-<<<<<<< HEAD
 
     public function reset()
     {
@@ -99,6 +98,4 @@ class User extends Controller
         //     handleError('Đặt lại mật khẩu thất bại, vui lòng thử lại sau');
         // }
     }
-=======
->>>>>>> 491052f5e134c5d31969c9a3ba1da07c64fe36f6
 }

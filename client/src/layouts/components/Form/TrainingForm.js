@@ -23,7 +23,6 @@ function TrainingForm({ ref, data }) {
         handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập tên giảng iảng viên!' }]}
       />
 
-<<<<<<< HEAD
 <FormGroup
         name=""
         label="Địa điểm"
@@ -31,17 +30,6 @@ function TrainingForm({ ref, data }) {
         inputType="text"
         placeholder="Địa điểm"
         handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập địa điểm!' }]}
-=======
-      <FormGroup
-        name=""
-        label="Thông tin liên hệ"
-        layout="haft"
-        inputType="text"
-        placeholder="Thông tin liên hệ"
-        handleValidate={[
-          { funct: isNotEmpty, message: 'Vui lòng nhập thông tin liên hệ!' },
-        ]}
->>>>>>> 491052f5e134c5d31969c9a3ba1da07c64fe36f6
       />
       <FormGroup
         name=""
@@ -63,35 +51,7 @@ function TrainingForm({ ref, data }) {
           { funct: isNotEmpty, message: 'Vui lòng nhập ngày kết thúc!' },
         ]}
       />
-<<<<<<< HEAD
       <FormGroup name="note" label="Mô tả khóa học" textarea placeholder="Mô tả khóa học" />
-=======
-      <FormGroup
-        name="interview_type"
-        label="Hình thức"
-        layout="haft"
-        placeholder="Thời lượng"
-        handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập thời lượng!' }]}
-      />
-      <FormGroup
-        name=""
-        label="Địa điểm"
-        layout="haft"
-        inputType="text"
-        placeholder="Địa điểm"
-        handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập địa điểm!' }]}
-      />
-      {/* <Dropdown dropDownItems={dropDownItems} placeholder="Người phỏng vấn" /> */}
-      <FormGroup
-        name="required_documents"
-        label="Mục tiêu"
-        layout="haft"
-        textarea
-        placeholder="Mục tiêu"
-        handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập mục tiêu!' }]}
-      />
-      <FormGroup name="note" label="Mô tả khóa học" layout="haft" textarea placeholder="Mô tả khóa học" />
->>>>>>> 491052f5e134c5d31969c9a3ba1da07c64fe36f6
     </form>
   );
 }
