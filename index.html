@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css" />
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        * {
+            font-family: Inter;
+        }
+
+        body {
+            background-color: #f3f5f6;
+            font-family: inter;
+            font-size: 14px;
+            box-sizing: border-box;
+            line-height: 1.5;
+        }
+
+        .notify-list {
+            width: 400px;
+            list-style: none;
+        }
+
+        .notify-item {
+            background-color: #fff;
+            padding: 16px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .post-apply {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-title {
+            font-weight: normal;
+            margin-bottom: 12px;
+        }
+
+        .post-info {
+            display: flex;
+        }
+
+        .post-info>* {
+            background-color: #0081ff1a;
+            color: #0081ff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 300;
+        }
+
+        .post-salary {
+            margin-right: 8px;
+        }
+
+        .applicant-status {
+            white-space: nowrap;
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            display: flex;
+        }
+
+        .applicant-status span {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 300;
+            color: #FFAA00;
+            background-color: #FFAA001a;
+        }
+
+        .interview-info {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .interview-location {
+            margin-bottom: 12px;
+        }
+
+        .interview-detail {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: space-between;
+        }
+
+        .interview-datetime,
+        .interview-type {
+            display: flex;
+            align-items: center;
+        }
+
+        .interview-detail span {
+            font-weight: 300;
+            background-color: #0081ff1a;
+            color: #0081ff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+    </style>
+    <style>
+        .user {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: center;
+            width: 400px;
+        }
+
+        .user-avatar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .user-avatar img {
+            width: 160px;
+            border-radius: 50%;
+            aspect-ratio: 1;
+            padding: 4px;
+            border: 4px solid #0081ff;
+        }
+
+        .user-name {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 32px;
+        }
+
+        .user-info {
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+        }
+
+        .user-info-field {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+
+            &:last-child {
+                margin: none;
+                border: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="user">
+        <div class="user-avatar">
+            <img src="https://i.pinimg.com/236x/4e/f3/2b/4ef32b0950f39d073efc823c569a0815.jpg" alt="">
+        </div>
+        <div class="user-name">Nguyen Meo Meo</div>
+        <div class="user-info">
+            <label class="user-info-field">
+                <span>Chức vụ</span>
+                <span>Nhân viên</span>
+            </label>
+            <label class="user-info-field">
+                <span>Sinh nhật</span>
+                <span>27/06/2004</span>
+            </label>
+            <label class="user-info-field">
+                <span>Số điện thoại</span>
+                <span>0988 678 555</span>
+            </label>
+            <label class="user-info-field">
+                <span>Email</span>
+                <span>meo@gmail.com</span>
+            </label>
+            <label class="user-info-field">
+                <span>Giới tính</span>
+                <span>Nam</span>
+            </label>
+            <label class="user-info-field">
+                <span>Hồ sơ CV</span>
+                <span>Nhấn để xem</span>
+            </label>
+
+        </div>
+    </div>
+    <ul class="notify-list">
+        <li class="notify-item">
+            <div class="post-apply">
+                <div class="post-title">Giám Đốc Sales & Marketing (Có Kinh Nghiệm Lĩnh Vực Nhà Hàng Khách Sạn/F&B)
+                </div>
+                <div class="post-info">
+                    <div class="post-salary">3.5 jack</div>
+                    <div class="post-location">Thái Nguyên</div>
+                </div>
+            </div>
+            <div class="applicant-status">
+                <span>
+                    Chờ duyệt
+                </span>
+            </div>
+        </li>
+        <li class="notify-item">
+            <div class="interview-location">
+                P103, Toà C5, Trường ĐH Công nghệ Thông tin và Truyền thông Thái Nguyên
+            </div>
+            <div class="interview-detail">
+                <div class="interview-datetime">
+                    <span>
+                        Thời gian:
+                        22:00 ngày 18/02/2025
+                    </span>
+                </div>
+                <div class="interview-type">
+                    <span>
+                        Hình thức:
+                        Trực tiếp
+                    </span>
+                </div>
+            </div>
+        </li>
+    </ul>
+</body>
+
+</html>

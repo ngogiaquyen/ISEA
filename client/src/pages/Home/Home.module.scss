@@ -1,0 +1,40 @@
+* {
+  font-family: Inter;
+  line-height: 1.5;
+}
+
+.wrapper {
+  display: flex;
+  margin: auto;
+  padding: 16px;
+  position: relative;
+  // max-width: 1280px;
+  width: 100%;
+}
+
+.left {
+  flex: 1 0 40%;
+  max-width: 40%;
+}
+
+.right {
+  flex: 1 0 60%;
+  max-width: 60%;
+  padding-left: 16px;
+}
+
+.icon {
+  height: 100%;
+  aspect-ratio: 10/8;
+  object-fit: cover;
+}
+
+.waiting {
+  font-weight: 300;
+  padding: 16px;
+  font-size: 14px;
+}
+
+::-webkit-scrollbar{
+  width: 4px !important;
+}

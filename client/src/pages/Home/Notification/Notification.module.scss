@@ -1,0 +1,38 @@
+.title-info {
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+.field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+.field i {
+  color: var(--primary-color);
+  width: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1;
+  font-size: 14px;
+  margin-right: 4px;
+}
+.field-info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.field span {
+  font-weight: normal;
+//   padding: 4px 8px;
+//   border-radius: 4px;
+//   background-color: #0081ff1a;
+//   color: var(--primary-color);
+  margin-left: 8px;
+}
+.field-note {
+  font-size: 14px;
+}

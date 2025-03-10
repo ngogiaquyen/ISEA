@@ -1,0 +1,134 @@
+.post-show {
+  padding: 16px;
+  // border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-mode-1);
+  background-color: var(--elem-color);
+  border-radius: 12px;
+  overflow-y: auto;
+  height: calc(100vh - 32px - 80px);
+  display: flex;
+  flex-direction: column;
+  position: sticky !important;
+  top: 16px;
+}
+.post-show {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.post-show::-webkit-scrollbar {
+  display: none;
+}
+.post-info-head {
+  box-shadow: 0 0 8px #0000001a;
+  margin: -16px;
+  margin-bottom: 0;
+  padding: 16px;
+  padding-bottom: 0;
+}
+.post-title {
+  display: flex;
+  margin: 12px 0;
+}
+.post-title p {
+  font-size: 20px;
+  font-weight: 600;
+}
+.post-from-company {
+  font-size: 14px;
+  font-weight: 300;
+}
+.btn-wrapper {
+  display: flex;
+  align-items: stretch;
+  margin: 8px 0;
+  margin-bottom: 16px;
+}
+.btn-wrapper button {
+  padding: 0;
+  font-size: 15px;
+  padding: 8px 12px;
+  // height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 6px;
+}
+.btn-apply {
+  background-color: var(--primary-color);
+  margin-right: 16px;
+  flex: 1;
+  font-weight: 500;
+}
+.btn-apply:hover {
+  background-color: var(--primary-color-hover);
+}
+.btn-save-post {
+  min-width: 40px;
+  aspect-ratio: 1;
+  background-color: #0081ff1a;
+}
+.btn-save-post i {
+  color: var(--primary-color);
+}
+.btn-save-post:hover {
+  background-color: #0081ff1a;
+}
+.post-info-body {
+  flex: 1;
+  overflow-y: auto;
+}
+.post-info-body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.post-info-body::-webkit-scrollbar {
+  display: none;
+}
+.line-title {
+  font-weight: 500;
+  margin: 4px 0;
+}
+.line-title:first-child {
+  margin-top: 8px;
+}
+.job-expiration-date,
+.job-salary,
+.job-need-exp,
+.job-location {
+  display: flex;
+}
+.info {
+  align-items: center;
+  height: 40px;
+  font-size: 14px;
+}
+.info i {
+  color: var(--primary-color);
+  width: 32px;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info > span {
+  display: flex;
+  align-items: center;
+}
+.info > span > span {
+  background-color: #0081ff1a;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: var(--primary-color);
+  font-weight: normal;
+  margin-left: 8px;
+}
+.list {
+  list-style: circle;
+  padding-inline-start: 20px;
+}
+.line-desc {
+  font-size: 15px;
+  font-weight: 300;
+  margin: 4px 0;
+}

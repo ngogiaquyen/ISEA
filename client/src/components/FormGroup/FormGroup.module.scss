@@ -1,0 +1,28 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.wrapper.haft {
+  width: calc(50% - 8px);
+}
+
+.title {
+  margin-bottom: 12px;
+}
+
+.error-message {
+  font-size: 1.4rem;
+  color: var(--red-color);
+  margin-top: 4px;
+}
+
+.group{
+  display: flex;
+  flex-direction: column;
+}
+

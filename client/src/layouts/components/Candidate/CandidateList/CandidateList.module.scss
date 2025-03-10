@@ -1,0 +1,50 @@
+.candidate {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+}
+
+.candidate-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  box-shadow: 0px 4px 6px -4px rgba(0, 0, 0, 0.2);
+  background: var(--content-bg-color);
+  margin-bottom: 10px;
+}
+
+.tools button {
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+  color: var(--text-color);
+}
+
+.list-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-x: hidden;
+}
+.tools {
+  display: flex;
+  align-self: flex-end;
+  color: var(--text-color);
+
+  .icon {
+    font-size: 2rem;
+    margin-right: 8px;
+
+    &:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+  }
+}

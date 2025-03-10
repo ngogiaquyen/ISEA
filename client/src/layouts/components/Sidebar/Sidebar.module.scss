@@ -1,0 +1,71 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: var(--sidebar-width);
+  background-color: var(--sidebar-bg-color);
+  height: calc(100vh);
+  // border-right: 1px solid var(--line-border-color);
+    // transition: width 0.3s ease, opacity 0.3s ease;
+  transition: width 0.3s ease, max-width 0.3s ease;
+  overflow: hidden;
+  z-index: 10;
+
+
+  &.collapsed {
+    width: 80px;
+    max-width: 80px;
+    & > div {
+      align-items: center;
+      justify-content: center;
+    }
+    h2,
+    img {
+      display: none;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+.icon {
+  color: var(--text-color);
+  font-size: 20px;
+  min-width: 40px;
+
+  &.active{
+    color: var(--selected-text-color);
+  }
+}
+.head {
+  display: flex;
+  min-height: var(--height-header);
+  border-bottom: 1px solid var(--line-border-color);
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  background-color: var(--primary-admin-color);
+  color: #fff;
+  transition: padding 0.3s ease;
+}
+
+.head img {
+  height: 40px;
+  aspect-ratio: 1/1;
+  transition: opacity 0.3s ease, transform 0.3s ease; // Animation ẩn logo
+}
+.bars {
+  color: #fff;
+  font-size: 22px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    display: none;
+  }
+  to {
+    opacity: 1;
+    display: block;
+  }
+}

@@ -1,0 +1,43 @@
+.wrapper {
+  position: relative;
+  // position: absolute;
+  display: flex;
+  flex-direction: column;
+  max-width: var(--sidebar-width);
+  width: 100%;
+  background-color: var(--broad-bg-color);
+  height: calc(100vh - var(--height-header));
+  border-right: 1px solid var(--line-border-color);
+  transition: transform 0.3s;
+  z-index: 8;
+}
+
+
+
+.overlay {
+  position: absolute;
+  right: -13px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: -28px 0 0;
+  height: 56px;
+  border-color: transparent !important;
+  border-left: 13px solid #aaaaaa !important;
+  border-top: 10px solid transparent !important;
+  border-bottom: 10px solid transparent !important;
+  cursor: pointer;
+  z-index: 999;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.angle {
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #fff;
+}

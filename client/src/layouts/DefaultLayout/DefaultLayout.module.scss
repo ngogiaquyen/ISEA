@@ -1,0 +1,27 @@
+.wrapper {
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  color: var(--content-color);
+  font-size: 14px;
+}
+
+.wrapper a {
+  color: unset;
+}
+
+.wrapper * {
+  transition: all 0.24s, color 0.06s, opacity 0.8s, border 0.8s, height 0s;
+}
+
+.wrapper button {
+  color: #fff;
+  cursor: pointer;
+}
+.inner {
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+  overflow-y: scroll;
+}
