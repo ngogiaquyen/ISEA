@@ -84,7 +84,6 @@ class UserModel extends Model
 
         return removeFields($user, ['password']);
     }
-<<<<<<< HEAD
     public function reset($id, $old_pass, $new_pass)
     {
         $sql_check_pass = "SELECT password FROM users WHERE id = :id";
@@ -118,10 +117,4 @@ class UserModel extends Model
     }
 
 
-=======
-    public function updateRole($id, $data)
-    {
-        return $this->update('users', $data, "id=$id");
-    }
->>>>>>> 491052f5e134c5d31969c9a3ba1da07c64fe36f6
 }
