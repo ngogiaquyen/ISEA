@@ -65,7 +65,12 @@ function HomeDashboard({ children }) {
     handleBlurPass();
     handleBlurConfirmPass();
     handleBlurNewPass();
-    if (errorObj.pass === '' && errorObj.newPass === '' && errorObj.confirmPass === '') {
+    if (
+      errorObj.pass === '' &&
+      errorObj.newPass === '' &&
+      errorObj.confirmPass === '' &&
+      newPassword === confirmPassword
+    ) {
       // const form = document.getElementById('form-data');
       const formData = new FormData();
       formData.append('old_pass', password);
@@ -83,8 +88,8 @@ function HomeDashboard({ children }) {
       }else{
 
       }
-    }else{
-      console.log("hello")
+    } else {
+      console.log('hello');
     }
   };
 
@@ -143,6 +148,7 @@ function HomeDashboard({ children }) {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errorObj, setErrorObj] = useState({});
+  const [dissableBTN, setDissableBTN] = useState(true);
   const handleChangePass = (e) => {
     const newValue = e.target.value;
     setPassword(newValue);
@@ -150,17 +156,29 @@ function HomeDashboard({ children }) {
   };
   const handleChangeNewPass = (e) => {
     const newValue = e.target.value;
-    setNewPassword(newValue);
-    setErrorObj((prev) => ({ ...prev, newPass: '' }));
+    if (password) {
+      setNewPassword(newValue);
+      setErrorObj((prev) => ({ ...prev, newPass: '' }));
+    } else {
+      setErrorObj((prev) => ({ ...prev, pass: 'Vui lòng nhập mật khẩu!' }));
+    }
   };
   const handleChangeConfirmPass = (e) => {
     const newValue = e.target.value;
-    setConfirmPassword(newValue);
-    setErrorObj((prev) => ({ ...prev, confirmPass: '' }));
+    if (newPassword) {
+      setConfirmPassword(newValue);
+      setErrorObj((prev) => ({ ...prev, confirmPass: '' }));
+    } else {
+      if (password === '') {
+        setErrorObj((prev) => ({ ...prev, pass: 'Vui lòng nhập mật khẩu!' }));
+      } else {
+        setErrorObj((prev) => ({ ...prev, newPass: 'Vui lòng nhập mật khẩu mới!' }));
+      }
+    }
   };
 
   const handleBlurPass = () => {
-    console.log(password)
+    console.log(password);
     if (password === '') {
       setErrorObj((prev) => ({ ...prev, pass: 'Vui lòng nhập mật khẩu!' }));
     } else {
@@ -168,6 +186,7 @@ function HomeDashboard({ children }) {
     }
   };
   const handleBlurNewPass = () => {
+    if (password === '') return;
     if (newPassword === '') {
       setErrorObj((prev) => ({ ...prev, newPass: 'Vui lòng nhập mật khẩu mới!' }));
     }
@@ -188,12 +207,18 @@ function HomeDashboard({ children }) {
     }
   };
 
+  useEffect(() => {
+    if (errorObj.pass === '' && errorObj.newPass === '' && errorObj.confirmPass === '') setDissableBTN(false);
+    else setDissableBTN(true);
+  }, [errorObj]);
+
   const ResetpassForm = (
     <HomeForm
       title={'Đặt lại mật khẩu'}
       btnContent={'Đặt lại mật khẩu'}
       isDisable={false}
       showBtn={false}
+      dissableBtn={dissableBTN}
       setForm={setLoged}
       handleSubmit={handleSubmitResetPass}
     >
@@ -201,6 +226,7 @@ function HomeDashboard({ children }) {
         title={'Mật khẩu cũ'}
         name={'old_password'}
         type={'text'}
+        value={password}
         placeholder={''}
         errorMessage={errorObj?.pass}
         onChange={handleChangePass}
@@ -210,6 +236,7 @@ function HomeDashboard({ children }) {
         title={'Mật khẩu mới'}
         name={'new_password'}
         type={'text'}
+        value={newPassword}
         placeholder={''}
         errorMessage={errorObj?.newPass}
         onChange={handleChangeNewPass}
@@ -219,6 +246,7 @@ function HomeDashboard({ children }) {
         title={'Nhập lại mật khẩu'}
         name={'re_password'}
         type={'text'}
+        value={confirmPassword}
         classArray={[]}
         placeholder={''}
         errorMessage={errorObj?.confirmPass}

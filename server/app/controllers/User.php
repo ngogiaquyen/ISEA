@@ -76,10 +76,9 @@ class User extends Controller
     public function recruitment()
     {
         validRecruitment();
-        $data = [
-            'role' => $_POST['role'],
-        ];
-        if ($this->user_model->updateRole($_POST['id'], $data)) {
+
+        $role = $_POST['role'];
+        if ($this->user_model->updateRole($_POST['id'], $role)) {
             handleSuccess('Tuyển dụng nhân sự thành công');
         }
         handleError('Tuyển dụng nhân sự thất bại');
@@ -91,11 +90,32 @@ class User extends Controller
         $old_pass = $_POST['old_pass'];
         $new_pass = $_POST['new_pass'];
         $this->user_model->reset($id, $old_pass, $new_pass);
-        // if (
-        // ) {
-        //     handleSuccess(message: 'Đặt lại mật khẩu thành công');
-        // } else {
-        //     handleError('Đặt lại mật khẩu thất bại, vui lòng thử lại sau');
-        // }
+    }
+
+    public function reademployee()
+    {
+        validMethodGET();
+        echo json_encode($this->user_model->reademployee());
+    }
+    public function reademployeeDetail()
+    {
+        validMethodPOST();
+        $id = $_POST['id'];
+        echo json_encode($this->user_model->reademployee($id));
+    }
+
+    public function updateemployee()
+    {
+        validEmployeeCreate();
+        $data = [
+            'full_name' => $_POST['full_name'],
+            'birthday' => $_POST['birthday'],
+            'phone_number' => $_POST['phone_number'],
+            'gender' => $_POST['gender']
+        ];
+        if ($this->user_model->updateemployee($_POST['id'], $data)) {
+            handleSuccess('Cập nhật thông tin thành công');
+        }
+        handleError('Cập nhật thông tin thất bại');
     }
 }

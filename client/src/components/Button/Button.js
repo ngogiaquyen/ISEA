@@ -4,11 +4,11 @@ import { NavLink } from "react-router-dom";
 
 const cx = classNames.bind(styles)
 
-function Button({ icon, title, to, onClick }) {
+function Button({ icon, title, to, type, onClick }) {
     let BTN = "button";
     if(to) BTN = NavLink; 
     return (
-        <BTN className={cx("btn")} onClick={onClick} to={to}>
+        <BTN className={cx("btn")} type={type} onClick={onClick} to={to}>
             {icon}
             {title}
         </BTN>

@@ -204,6 +204,8 @@ function validCourseCreate()
     }
     if (empty($_POST['address'])) {
         handleError('Địa chỉ không được để trống');
+    } elseif (!preg_match('/^[\p{L}0-9\s,.()-]+$/u', $_POST['address'])) {
+        handleError('Địa chỉ không được chứa ký tự đặc biệt');
     }
     if (empty($_POST['date_start'])) {
         handleError('Ngày bắt đầu không được để trống');
@@ -211,7 +213,37 @@ function validCourseCreate()
     if (empty($_POST['date_end'])) {
         handleError('Ngày kết thúc không được để trống');
     }
+    if (!empty($_POST['date_start']) && !empty($_POST['date_end'])) {
+        $date_start = strtotime($_POST['date_start']);
+        $date_end = strtotime($_POST['date_end']);
+        if ($date_start >= $date_end) {
+            handleError('Ngày bắt đầu phải nhỏ hơn ngày kết thúc');
+        }
+    }
     if (empty($_POST['descriptions'])) {
         handleError('Mô tả không được để trống');
+    } elseif (!preg_match('/^[\p{L}0-9\s,.()-]+$/u', $_POST['descriptions'])) {
+        handleError('Mô tả không được chứa ký tự đặc biệt');
+    }
+}
+
+function validEmployeeCreate()
+{
+    validMethodPOST();
+    
+    if (empty($_POST['full_name'])) {
+        handleError('Họ và tên không được để trống');
+    }
+    if (empty($_POST['birthday'])) {
+        handleError('Ngày sinh không được để trống');
+    }
+    if (empty($_POST['phone_number'])) {
+        handleError('Số điện thoại không được để trống');
+    } 
+    elseif (!preg_match('/^[0-9]{10}$/', $_POST['phone_number'])) {
+        handleError('Số điện thoại không hợp lệ. Vui lòng nhập 10 chữ số.');
+    }
+    if (empty($_POST['gender'])) {
+        handleError('Giới tính không được để trống');
     }
 }

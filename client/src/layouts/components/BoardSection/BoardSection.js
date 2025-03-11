@@ -27,7 +27,7 @@ const subCategories = {
   ],
   4: [
     { title: 'Thông tin cá nhân', to: config.routes.admin.employeeManagement },
-    { title: 'Cập nhật nhân sự', to: config.routes.admin.updateEmployeeInfo },
+    // { title: 'Cập nhật nhân sự', to: config.routes.admin.updateEmployeeInfo },
   ],
   5: [{ title: 'Cài đặt độ sáng', to: config.routes.admin.settings }],
 };
