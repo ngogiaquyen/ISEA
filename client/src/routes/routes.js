@@ -269,7 +269,7 @@ const publicRouters = [
     layout: AdminLayout,
   },
   {
-    path: config.routes.admin.updateEmployeeInfo,
+    path: config.routes.admin.updateEmployeeInfo + "/:id",
     component: UpdateEmployeeInfo,
     layout: AdminLayout,
   },

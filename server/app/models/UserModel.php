@@ -84,6 +84,18 @@ class UserModel extends Model
 
         return removeFields($user, ['password']);
     }
+
+    public function updateRole($id, $role)
+    {
+        $sql = "UPDATE users SET role = :role WHERE id = :id";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':role', $role, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+        return $stmt->execute(); // Trả về true nếu thành công, false nếu thất bại
+    }
+
     public function reset($id, $old_pass, $new_pass)
     {
         $sql_check_pass = "SELECT password FROM users WHERE id = :id";
@@ -100,7 +112,7 @@ class UserModel extends Model
             if (password_verify($old_pass, $hashed_password)) {
                 // Hash the new password
                 $new_hashed_pass = password_hash($new_pass, PASSWORD_BCRYPT);
-                
+
                 // Update the new password in the database
                 $stmt = $this->conn->prepare($sql_update_pass);
                 $stmt->bindValue(':new_password', $new_hashed_pass);
@@ -116,5 +128,26 @@ class UserModel extends Model
         }
     }
 
+    public function readEmployee($id = null)
+    {
+        $sql = "SELECT * FROM users WHERE role = 2";
 
+        if ($id) {
+            $sql .= " AND id = :id";
+        }
+
+        $stmt = $this->conn->prepare($sql);
+
+        if ($id) {
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        }
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function updateemployee($id, $data)
+    {
+        return $this->update("users", $data, "id=$id");
+    }
 }

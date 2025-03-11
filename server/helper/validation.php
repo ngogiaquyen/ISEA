@@ -215,3 +215,23 @@ function validCourseCreate()
         handleError('Mô tả không được để trống');
     }
 }
+function validEmployeeCreate()
+{
+    validMethodPOST();
+    
+    if (empty($_POST['full_name'])) {
+        handleError('Họ và tên không được để trống');
+    }
+    if (empty($_POST['birthday'])) {
+        handleError('Ngày sinh không được để trống');
+    }
+    if (empty($_POST['phone_number'])) {
+        handleError('Số điện thoại không được để trống');
+    } 
+    elseif (!preg_match('/^[0-9]{10}$/', $_POST['phone_number'])) {
+        handleError('Số điện thoại không hợp lệ. Vui lòng nhập 10 chữ số.');
+    }
+    if (empty($_POST['gender'])) {
+        handleError('Giới tính không được để trống');
+    }
+}
