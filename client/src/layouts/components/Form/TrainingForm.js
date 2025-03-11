@@ -16,10 +16,10 @@ function TrainingForm({ ref, data }) {
         placeholder="Tên khóa học"
         handleValidate={[
           { funct: isNotEmpty, message: 'Vui lòng nhập tên khóa học!' },
-          { funct: isValidInstructorName, message: 'Tên khóa học không được chứa số hoặc ký tự đặc biệt!'  }
+          { funct: isValidInstructorName, message: 'Tên khóa học không được chứa số hoặc ký tự đặc biệt!' },
         ]}
       />
-      
+
       <FormGroup
         name="teacher"
         label="Giảng viên"
@@ -28,39 +28,33 @@ function TrainingForm({ ref, data }) {
         placeholder="Giảng viên"
         handleValidate={[
           { funct: isNotEmpty, message: 'Vui lòng nhập tên giảng iảng viên!' },
-        { funct: isValidInstructorName, message: 'Tên giảng viên không được chứa số hoặc ký tự đặc biệt!'  }
+          { funct: isValidInstructorName, message: 'Tên giảng viên không được chứa số hoặc ký tự đặc biệt!' },
         ]}
       />
 
-<FormGroup
+      <FormGroup
         name="address"
         label="Địa điểm"
         layout="haft"
         inputType="text"
         placeholder="Thông tin liên hệ"
-        handleValidate={[
-          { funct: isNotEmpty, message: 'Vui lòng nhập thông tin liên hệ!' },
-        ]}
-      /> */}
+        handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập thông tin liên hệ!' }]}
+      />
       <FormGroup
         name="date_start"
         label="Ngày bắt đầu"
         layout="haft"
         inputType="date"
         placeholder="Thời gian bắt đầu"
-        handleValidate={[
-          { funct: isNotEmpty, message: 'Vui lòng nhập ngày bắt đầu!' },
-        ]}
-      /> 
+        handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập ngày bắt đầu!' }]}
+      />
       <FormGroup
         name="date_end"
         label="Ngày kết thúc"
         layout="haft"
         inputType="date"
         placeholder="Thời gian kết thúc"
-        handleValidate={[
-          { funct: isNotEmpty, message: 'Vui lòng nhập ngày kết thúc!' },
-        ]}
+        handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập ngày kết thúc!' }]}
       />
       <FormGroup name="descriptions" label="Mô tả khóa học" textarea placeholder="Mô tả khóa học" />
     </form>
