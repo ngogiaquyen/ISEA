@@ -84,8 +84,37 @@ class UserModel extends Model
 
         return removeFields($user, ['password']);
     }
-    public function updateRole($id, $data)
+    public function reset($id, $old_pass, $new_pass)
     {
-        return $this->update('users', $data, "id=$id");
+        $sql_check_pass = "SELECT password FROM users WHERE id = :id";
+        $sql_update_pass = "UPDATE users SET password = :new_password WHERE id = :id";
+
+        try {
+            // Check if the old password is correct
+            $stmt = $this->conn->prepare($sql_check_pass);
+            $stmt->bindValue(':id', $id);
+            $stmt->execute();
+            $hashed_password = $stmt->fetchColumn();
+
+            // Verify the old password
+            if (password_verify($old_pass, $hashed_password)) {
+                // Hash the new password
+                $new_hashed_pass = password_hash($new_pass, PASSWORD_BCRYPT);
+                
+                // Update the new password in the database
+                $stmt = $this->conn->prepare($sql_update_pass);
+                $stmt->bindValue(':new_password', $new_hashed_pass);
+                $stmt->bindValue(':id', $id);
+                $stmt->execute();
+                return handleSuccess("Mật khẩu đã được đặt lại thành công.");
+            } else {
+                return handleError("Mật khẩu cũ không đúng.");
+            }
+        } catch (PDOException $e) {
+            // Handle error
+            handleError($e);
+        }
     }
+
+
 }

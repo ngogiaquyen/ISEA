@@ -9,6 +9,7 @@ const cx = classNames.bind({ ...styles, ...globalStyles });
 function Information() {
   const [loading, setLoading] = useState(true);
   const { publicUser } = useContext(HomeContext);
+  const {  setShowForgotPassForm } = useContext(HomeContext);
 
   const birthday = (str) => {
     if (!str) return str;
@@ -23,6 +24,10 @@ function Information() {
       setLoading(false);
     }, 400);
   }, [publicUser]);
+
+  const handleShowResetPass = ()=>{
+    setShowForgotPassForm(true);
+  }
 
   return (
     <div className={cx('user')}>
@@ -80,6 +85,13 @@ function Information() {
             Giới tính
           </span>
           <span>{publicUser?.gender}</span>
+        </label>
+        <label className={cx('user-info-field')}>
+          <span>
+            <i className="fa-solid fa-venus-mars"></i>
+            {/* Giới tính */}
+          </span>
+          <span className={cx("reset-pass")} onClick={handleShowResetPass}>Đặt lại mật khẩu</span>
         </label>
       </div>
     </div>

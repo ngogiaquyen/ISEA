@@ -170,3 +170,14 @@
   aspect-ratio: 10/7;
   object-fit: cover;
 }
+
+
+.label-input{
+
+  .error{
+      font-size: 1.2rem;
+      color: var(--error-color);
+      margin-top: 4px;
+      margin-left: 2px;
+  }
+}

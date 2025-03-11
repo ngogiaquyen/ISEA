@@ -1,3 +1,13 @@
 .btn{
     color: var(--text-color);
+    padding: 8px 12px;
+    border: 1px solid #333;
+    box-shadow: 0 4px 6px #605f5f21;
+    border-radius: 8px;
+}
+.btn:hover{
+    opacity: 0.8;
+    cursor: pointer;
+    background-color: #ee191946;
+    transform: scale(1.03);
 }

@@ -6,6 +6,7 @@ const HomeContext = createContext();
 function HomeProvider({ children }) {
   const [publicUser, setPublicUser] = useState({});
   const [toast, setToast] = useState(null);
+  const [showForgotPassForm, setShowForgotPassForm] = useState(false);
 
   const showToast = (obj) => {
     setToast(null);
@@ -64,7 +65,18 @@ function HomeProvider({ children }) {
   }, []);
 
   return (
-    <HomeContext.Provider value={{ publicUser, setPublicUser, showToast, fetchGet, fetchPost, checkLogin }}>
+    <HomeContext.Provider
+      value={{
+        publicUser,
+        setPublicUser,
+        showToast,
+        fetchGet,
+        fetchPost,
+        checkLogin,
+        showForgotPassForm,
+        setShowForgotPassForm,
+      }}
+    >
       {toast}
       {children}
     </HomeContext.Provider>

@@ -84,4 +84,18 @@ class User extends Controller
         }
         handleError('Tuyển dụng nhân sự thất bại');
     }
+
+    public function reset()
+    {
+        $id = $_SESSION['user_id'];
+        $old_pass = $_POST['old_pass'];
+        $new_pass = $_POST['new_pass'];
+        $this->user_model->reset($id, $old_pass, $new_pass);
+        // if (
+        // ) {
+        //     handleSuccess(message: 'Đặt lại mật khẩu thành công');
+        // } else {
+        //     handleError('Đặt lại mật khẩu thất bại, vui lòng thử lại sau');
+        // }
+    }
 }

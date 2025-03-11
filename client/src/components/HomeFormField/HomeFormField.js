@@ -4,7 +4,18 @@ import PropTypes from 'prop-types';
 
 const cx = classNames.bind(styles);
 
-function HomeFormField({ title, name, type, selectObj, classArray, value, placeholder, onChange }) {
+function HomeFormField({
+  title,
+  name,
+  type,
+  selectObj,
+  classArray,
+  value,
+  placeholder,
+  errorMessage = '',
+  onChange,
+  onBlur = () => {},
+}) {
   const opts = Object.entries(selectObj || {});
 
   const genOptions = (obj) => (
@@ -19,21 +30,29 @@ function HomeFormField({ title, name, type, selectObj, classArray, value, placeh
 
   const genFile = () => (
     <>
-      <span id="file-name" className={cx('file')}>
+      <label for="input-file" id="file-name" className={cx('file')}>
         Chưa chọn tệp tin nào
-      </span>
-      <input type={type} name={name} accept="image/*, application/pdf" onChange={onChange} />
+      </label>
+      <input id="input-file" type={type} name={name} accept="image/*, application/pdf" onChange={onChange} />
     </>
   );
 
   const genInput = () => (
-    <input name={name} type={type} value={value} onChange={onChange} placeholder={placeholder || null} />
+    <input
+      name={name}
+      type={type}
+      value={value}
+      onChange={onChange}
+      onBlur={onBlur}
+      placeholder={placeholder || null}
+    />
   );
 
   return (
     <label className={cx('label-input', ...(classArray || []))}>
       <span>{title}</span>
       {opts.length > 0 ? genOptions(opts) : type === 'file' ? genFile() : genInput()}
+      {errorMessage && <span className={cx('error')}>{errorMessage}</span>}
     </label>
   );
 }

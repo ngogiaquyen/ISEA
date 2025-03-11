@@ -159,7 +159,7 @@ const publicRouters = [
     layout: AdminLayout,
     props: {
       title: 'Tạo khóa học',
-      typeUrl: 'training',
+      typeUrl: 'course',
       formComponent: TrainingForm,
     },
   },

@@ -10,11 +10,13 @@ import { useNavigate } from 'react-router-dom';
 import DashboardNavItem from '~/layouts/components/Dashboard/DashboardNavItem';
 import globalStyles from '~/components/GlobalStyles';
 import Dashboard from '~/layouts/components/Dashboard';
+import { isValidLength } from '~/hooks/validate';
 
 const cx = classNames.bind({ ...styles, ...globalStyles });
 
 function HomeDashboard({ children }) {
-  const { publicUser, setPublicUser, fetchPost, showToast } = useContext(HomeContext);
+  const { publicUser, setPublicUser, fetchPost, showToast, showForgotPassForm, setShowForgotPassForm } =
+    useContext(HomeContext);
   const [isLoading, setIsLoading] = useState(true);
   const [loged, setLoged] = useState(true);
   const [formLogout, setFormLogout] = useState(false);
@@ -56,6 +58,31 @@ function HomeDashboard({ children }) {
     if (data.user) {
       setPublicUser({ ...data.user, avatar: avatar });
       setLoged(true);
+    }
+  };
+  const handleSubmitResetPass = async (e) => {
+    e.preventDefault();
+    handleBlurPass();
+    handleBlurConfirmPass();
+    handleBlurNewPass();
+    if (errorObj.pass === '' && errorObj.newPass === '' && errorObj.confirmPass === '') {
+      // const form = document.getElementById('form-data');
+      const formData = new FormData();
+      formData.append('old_pass', password);
+      formData.append('new_pass', newPassword);
+
+      const data = await fetchPost('user/reset', formData);
+
+      showToast(data);
+      if (data.status === 'success') {
+        setLoged(true);
+        setShowForgotPassForm(false);
+        setPassword("");
+        setNewPassword("");
+        setConfirmPassword("");
+      }
+    }else{
+      console.log("hello")
     }
   };
 
@@ -107,6 +134,99 @@ function HomeDashboard({ children }) {
       handleSubmit={handleLogout}
     >
       <span>Bạn có muốn đăng xuất?</span>
+    </HomeForm>
+  );
+
+  const [password, setPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [errorObj, setErrorObj] = useState({});
+  const handleChangePass = (e) => {
+    const newValue = e.target.value;
+    setPassword(newValue);
+    setErrorObj((prev) => ({ ...prev, pass: '' }));
+  };
+  const handleChangeNewPass = (e) => {
+    const newValue = e.target.value;
+    setNewPassword(newValue);
+    setErrorObj((prev) => ({ ...prev, newPass: '' }));
+  };
+  const handleChangeConfirmPass = (e) => {
+    const newValue = e.target.value;
+    setConfirmPassword(newValue);
+    setErrorObj((prev) => ({ ...prev, confirmPass: '' }));
+  };
+
+  const handleBlurPass = () => {
+    console.log(password)
+    if (password === '') {
+      setErrorObj((prev) => ({ ...prev, pass: 'Vui lòng nhập mật khẩu!' }));
+    } else {
+      setErrorObj((prev) => ({ ...prev, pass: '' }));
+    }
+  };
+  const handleBlurNewPass = () => {
+    if (newPassword === '') {
+      setErrorObj((prev) => ({ ...prev, newPass: 'Vui lòng nhập mật khẩu mới!' }));
+    }
+    if (!isValidLength(newPassword)) {
+      setErrorObj((prev) => ({ ...prev, newPass: 'Mật khẩu có độ dài từ 6 -> 10 ký tự!' }));
+    } else {
+      setErrorObj((prev) => ({ ...prev, newPass: '' }));
+    }
+  };
+  const handleBlurConfirmPass = () => {
+    if (confirmPassword === '') {
+      setErrorObj((prev) => ({ ...prev, confirmPass: 'Vui lòng nhập lại mật khẩu!' }));
+    }
+    if (confirmPassword !== newPassword) {
+      setErrorObj((prev) => ({ ...prev, confirmPass: 'Mật khẩu không khớp!' }));
+    } else {
+      setErrorObj((prev) => ({ ...prev, confirmPass: '' }));
+    }
+  };
+
+  const ResetpassForm = (
+    <HomeForm
+      title={'Đặt lại mật khẩu'}
+      btnContent={'Đặt lại mật khẩu'}
+      isDisable={false}
+      showBtn={false}
+      setForm={setLoged}
+      handleSubmit={handleSubmitResetPass}
+    >
+      <HomeFormField
+        title={'Mật khẩu cũ'}
+        name={'old_password'}
+        type={'text'}
+        placeholder={''}
+        errorMessage={errorObj?.pass}
+        onChange={handleChangePass}
+        onBlur={handleBlurPass}
+      />
+      <HomeFormField
+        title={'Mật khẩu mới'}
+        name={'new_password'}
+        type={'text'}
+        placeholder={''}
+        errorMessage={errorObj?.newPass}
+        onChange={handleChangeNewPass}
+        onBlur={handleBlurNewPass}
+      />
+      <HomeFormField
+        title={'Nhập lại mật khẩu'}
+        name={'re_password'}
+        type={'text'}
+        classArray={[]}
+        placeholder={''}
+        errorMessage={errorObj?.confirmPass}
+        onBlur={handleBlurConfirmPass}
+        onChange={handleChangeConfirmPass}
+      />
+      <label className={cx('label-input')}>
+        <input type="checkbox" onChange={handleShowPassword} checked={type === 'text' ? true : false} />
+        <span>Hiển thị mật khẩu</span>
+      </label>
     </HomeForm>
   );
 
@@ -164,9 +284,13 @@ function HomeDashboard({ children }) {
   return (
     <React.Fragment>
       {loged ? (
-        <Dashboard isLoading={isLoading} navElem={navElem} form={formLogout ? logoutForm : null}>
-          {React.cloneElement(children, { key: reloadKey })}
-        </Dashboard>
+        showForgotPassForm ? (
+          ResetpassForm
+        ) : (
+          <Dashboard isLoading={isLoading} navElem={navElem} form={formLogout ? logoutForm : null}>
+            {React.cloneElement(children, { key: reloadKey })}
+          </Dashboard>
+        )
       ) : (
         loginForm
       )}

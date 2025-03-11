@@ -4,6 +4,8 @@ import PageTitle from '~/components/PageTitle';
 import Controller from '~/components/Controller';
 import config from '~/config';
 import TrainingItems from './TrainingItems';
+import { useEffect, useState } from 'react';
+import { getData } from '~/hooks/apiService';
 
 const cx = classNames.bind(styles);
 
@@ -45,13 +47,25 @@ const courses = [
 ];
 
 function TrainingList() {
+  const [courses, setCourses] = useState([]);
+
+  const loadCourses = async () => {
+    const res = await getData('/course/read');
+    console.log(res);
+    setCourses(res);
+  };
+
+  useEffect(() => {
+    loadCourses();
+  }, []);
+
   return (
     <div className={cx('wrapper')}>
       <PageTitle title="Khóa đào tạo" />
       <Controller addUrl={config.routes.admin.trainingCreate} />
       <div className={cx('list')}>
         {courses.map((course, index) => (
-          <TrainingItems key={index} course={course}/>
+          <TrainingItems key={index} course={course} />
         ))}
       </div>
     </div>
@@ -59,3 +73,13 @@ function TrainingList() {
 }
 
 export default TrainingList;
+// {
+//   "id": 4,
+//   "title": "Kỹ Sư Thiết Kế Điện (Đi Làm Ngay) - Nam- Thu Nhập 20M++ /Tháng",
+//   "teacher": "ádf",
+//   "address": "aádf",
+//   "date_start": "2025-03-18",
+//   "date_end": "2025-03-21",
+//   "descriptions": "ádfasdf",
+//   "edit_at": "2025-03-11 19:21:48"
+// }

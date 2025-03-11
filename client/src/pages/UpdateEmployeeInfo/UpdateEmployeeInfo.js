@@ -39,7 +39,7 @@ function UpdateEmployeeInfo() {
       <h1 className={cx('title')}>Cập nhật thông tin nhân sự</h1>
       <div className={cx('list-group')}>
         <FormGroup
-          label="Tên khóa đào tạo"
+          label="Tên nhân sự"
           layout="haft"
           inputType="text"
           // placeholder="Mã ứng viên"
@@ -47,15 +47,15 @@ function UpdateEmployeeInfo() {
           onChange={(e) => handleInputChange('id', e.target.value)}
         />
         <FormGroup
-          label="Tên giảng viên"
+          label="Ngày sinh"
           layout="haft"
-          inputType="text"
+          inputType="date"
           // placeholder="Họ và tên"
           error={errors.fullName}
           onChange={(e) => handleInputChange('fullName', e.target.value)}
         />
         <FormGroup
-          label="Thời gian đào tạo"
+          label="Số điện thoại"
           layout="haft"
           inputType="text"
           // placeholder="Ngày sinh"
@@ -63,12 +63,14 @@ function UpdateEmployeeInfo() {
           onChange={(e) => handleInputChange('dateOfBirth', e.target.value)}
         />
         <FormGroup
-          label="Nội dung đào tạo"
+          label="Giới tính"
           layout="haft"
           inputType="text"
+          selectData={['Nam', 'Nữ']}
+
           // selectData={levelOption}
           error={errors.educationLevel}
-          onChange={(e) => {handleInputChange('educationLevel', e.target.value);}}
+          onChange={(e) => { handleInputChange('educationLevel', e.target.value); }}
         />
       </div>
       <Button title="Cập nhật" onclick={handleClick} />

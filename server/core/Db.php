@@ -108,6 +108,18 @@ class Db
             FOREIGN KEY (interview_id) REFERENCES interviews(id) ON DELETE CASCADE,
             FOREIGN KEY (applicant_id) REFERENCES applicants(id) ON DELETE CASCADE
         );
+
+        CREATE TABLE IF NOT EXISTS courses (
+            id int AUTO_INCREMENT PRIMARY KEY,
+            title TEXT,
+            teacher VARCHAR(100),
+            address VARCHAR(255),
+            date_start DATE,
+            date_end DATE,
+            descriptions TEXT,
+            edit_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+
         INSERT INTO `roles` (`role_name`) VALUES
             ('Ứng viên'),
             ('Nhân viên'),
