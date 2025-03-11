@@ -77,8 +77,8 @@ const publicRouters = [
   },
   {
     path: config.routes.admin.root,
-    component: LoginContainer,
-    layout: EmptyLayout,
+    component: PleaseSelectFeature,
+    layout: AdminLayout,
   },
   {
     path: config.routes.admin.employeeInfo,
