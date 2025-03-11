@@ -9,13 +9,13 @@ function TrainingForm({ ref, data }) {
   return (
     <form className={cx('form')} ref={ref}>
       <FormGroup
-        name=""
+        name="title"
         label="Tên khóa học"
         placeholder="Tên khóa học"
         handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập tên khóa học!' }]}
       />
       <FormGroup
-        name="instructor"
+        name="teacher"
         label="Giảng viên"
         layout="haft"
         inputType="text"
@@ -24,7 +24,7 @@ function TrainingForm({ ref, data }) {
       />
 
 <FormGroup
-        name=""
+        name="address"
         label="Địa điểm"
         layout="haft"
         inputType="text"
@@ -32,7 +32,7 @@ function TrainingForm({ ref, data }) {
         handleValidate={[{ funct: isNotEmpty, message: 'Vui lòng nhập địa điểm!' }]}
       />
       <FormGroup
-        name=""
+        name="date_start"
         label="Ngày bắt đầu"
         layout="haft"
         inputType="date"
@@ -42,7 +42,7 @@ function TrainingForm({ ref, data }) {
         ]}
       />
       <FormGroup
-        name=""
+        name="date_end"
         label="Ngày kết thúc"
         layout="haft"
         inputType="date"
@@ -51,7 +51,7 @@ function TrainingForm({ ref, data }) {
           { funct: isNotEmpty, message: 'Vui lòng nhập ngày kết thúc!' },
         ]}
       />
-      <FormGroup name="note" label="Mô tả khóa học" textarea placeholder="Mô tả khóa học" />
+      <FormGroup name="descriptions" label="Mô tả khóa học" textarea placeholder="Mô tả khóa học" />
     </form>
   );
 }

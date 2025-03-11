@@ -191,3 +191,27 @@ function validRecruitment()
         handleError('Chức vụ không được để trống');
     }
 }
+
+function validCourseCreate()
+{
+    validMethodPOST();
+    
+    if (empty($_POST['title'])) {
+        handleError('Tiêu đề khóa học không được để trống');
+    }
+    if (empty($_POST['teacher'])) {
+        handleError('Giảng viên không được để trống');
+    }
+    if (empty($_POST['address'])) {
+        handleError('Địa chỉ không được để trống');
+    }
+    if (empty($_POST['date_start'])) {
+        handleError('Ngày bắt đầu không được để trống');
+    }
+    if (empty($_POST['date_end'])) {
+        handleError('Ngày kết thúc không được để trống');
+    }
+    if (empty($_POST['descriptions'])) {
+        handleError('Mô tả không được để trống');
+    }
+}

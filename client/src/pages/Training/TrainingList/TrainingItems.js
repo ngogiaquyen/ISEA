@@ -6,29 +6,23 @@ import { NavLink } from "react-router-dom";
 const cx = classNames.bind(styles);
 
 function EducationsList({course}) {
-    return ( <NavLink  className={cx('item')} to={config.routes.admin.trainingDetail}>
+    return ( <div  className={cx('item')} to={config.routes.admin.trainingDetail}>
     <div className={cx('item-top')}>
-      <h2 className={cx('item-title')}>{course.course_name}</h2>
+      <h2 className={cx('item-title')}>{course.title}</h2>
       <p className={cx('item-date')}>
-        {course.start_date} - {course.end_date}
+        {course.date_start} - {course.date_end}
       </p>
     </div>
     <p>
-      <strong>Thời lượng:</strong> {course.duration}
+      <strong>Giảng viên:</strong> {course.teacher}
     </p>
     <p>
-      <strong>Giảng viên:</strong> {course.instructor}
+      <strong>Địa điểm:</strong> {course.address}
     </p>
     <p>
-      <strong>Địa điểm:</strong> {course.location}
+      <strong>Mô tả:</strong> {course.descriptions}
     </p>
-    <p>
-      <strong>Mục tiêu:</strong> {course.objectives}
-    </p>
-    <p>
-      <strong>Thông tin liên hệ:</strong> {course.contact_information}
-    </p>
-  </NavLink> );
+  </div> );
 }
 
 export default EducationsList;

@@ -46,6 +46,8 @@ function CreateForm({ title = '', typeUrl, formComponent }) {
           navigate(config.routes.admin.recruitmentList);
         }else if (typeUrl === "interview"){
           navigate(config.routes.admin.interviewList);
+        }else if (typeUrl === "course"){
+          navigate(config.routes.admin.trainingList);
         }
       }
     } catch (error) {
