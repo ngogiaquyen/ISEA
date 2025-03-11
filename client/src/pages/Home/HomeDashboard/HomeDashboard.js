@@ -52,6 +52,7 @@ function HomeDashboard({ children }) {
     const data = await fetchPost('user/login', formData);
 
     showToast(data);
+    console.log(data);
     if (data.user) {
       setPublicUser({ ...data.user, avatar: avatar });
       setLoged(true);
