@@ -80,6 +80,8 @@ function HomeDashboard({ children }) {
         setPassword("");
         setNewPassword("");
         setConfirmPassword("");
+      }else{
+
       }
     }else{
       console.log("hello")

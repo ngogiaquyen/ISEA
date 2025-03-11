@@ -72,5 +72,5 @@ export function isNumber(value) {
 
 export function isValidLength(str) {
   const length = str.length;
-  return (length >= 6 && length <= 10 && (length === 6 || length === 10));
+  return (length >= 6 && length <= 10);
 }
