@@ -11,10 +11,18 @@ import config from '~/config';
 import UDActions from '~/components/UDActions';
 import EditForm from '~/layouts/components/EditForm';
 import InterviewForm from '~/layouts/components/Form/InterviewForm';
+import { CreateCandidateInforContext } from '~/components/Context/CreateCandidateInforProvider';
 
 const cx = classNames.bind(styles);
 
 const formatInterview = [{id: 1, value: "Online"}, {id: 2, value: "Trực tiếp"}]
+
+export const formatDatee = (value ="")=>{
+  const [date, hour] = value.split("T");
+  const [year, month, day] = date.split("-");
+
+  return `${hour}, ngày ${day} tháng ${month} năm ${year}`;
+}
 
 function InterViewDetail() {
   const { id } = useParams();
@@ -23,7 +31,8 @@ function InterViewDetail() {
   const { addToast } = useContext(ToastContext);
   const [interviewInfo, setInterviewInfo] = useState({hsr:[], required_documents: ""});
   const [candidate, setCandidate] = useState([]); 
-  
+  const { keyLoad } = useContext(CreateCandidateInforContext);
+
   async function fetchData() {
     try {
       const interviewData = await getData(`/interview/detail/${id}`);
@@ -36,7 +45,7 @@ function InterViewDetail() {
     }
     useEffect(() => {
       fetchData();
-    }, []);
+    }, [keyLoad]);
     
     const handleConfirmRemove = async () => {
       const formData = new FormData();
@@ -71,7 +80,7 @@ function InterViewDetail() {
       <div className={cx('info')}>
         <UDActions handleEdit={handleEdit} handleRemove={handleRemove} />
         <div className={cx('section')}>
-          <h3 className={cx('interviewDate')}>📅 {interviewInfo.interview_datetime}</h3>
+          <h3 className={cx('interviewDate')}>📅 {formatDatee(interviewInfo.interview_datetime)}</h3>
           <p className={cx('location')}>
             <strong>📍 Địa điểm:</strong> {interviewInfo?.interview_location}
           </p>

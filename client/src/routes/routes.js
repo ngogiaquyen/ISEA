@@ -1,6 +1,5 @@
 import config from '~/config';
 import Home from '~/pages/Home';
-import HomeAuth from '~/pages/Home/HomeAuth/HomeAuth';
 import Explore from '~/pages/Explore/Explore';
 import AdminLayout from '~/layouts/AdminLayout/AdminLayout';
 import EmptyLayout from '~/layouts/EmptyLayout/EmptyLayout';
@@ -26,6 +25,13 @@ import TrainingDetail from '~/pages/Training/TrainingDetail';
 import PayrollManagement from '~/pages/Salary/PayrollManagement ';
 import PerformanceReview from '~/pages/Performance/PerformanceReview';
 import EmployeeManagement from '~/pages/EmployeeManagement/EmployeeManagement';
+import HomeDashboard from '~/pages/Home/HomeDashboard/HomeDashboard';
+import Notification from '~/pages/Home/Notification';
+import Status from '~/pages/Home/Status';
+import HomeStaff from '~/pages/HomeStaff/HomeStaff';
+import Payroll from '~/pages/HomeStaff/Payroll';
+import Information from '~/pages/Home/Information';
+import TrainingSchedule from '~/pages/Training/TrainingSchedule';
 // don't need to login
 
 const publicRouters = [
@@ -34,12 +40,35 @@ const publicRouters = [
     component: Home,
   },
   {
+    path: config.routes.staff.information,
+    component: Information,
+    frame: HomeStaff,
+    layout: EmptyLayout,
+  },
+  {
+    path: config.routes.staff.payroll,
+    component: Payroll,
+    frame: HomeStaff,
+    layout: EmptyLayout
+  },
+  {
     path: config.routes.home.explore,
     component: Explore,
   },
   {
-    path: config.routes.home.auth,
-    component: HomeAuth,
+    path: config.routes.home.dashboard,
+    component: Information,
+    frame: HomeDashboard,
+  },
+  {
+    path: config.routes.home.notification,
+    component: Notification,
+    frame: HomeDashboard,
+  },
+  {
+    path: config.routes.home.status,
+    component: Status,
+    frame: HomeDashboard,
   },
   {
     path: config.routes.dashboard.apply,
@@ -156,7 +185,7 @@ const publicRouters = [
   },
   {
     path: config.routes.admin.trainingPlan,
-    component: Announcements,
+    component: TrainingSchedule,
     layout: AdminLayout,
   },
   // Hiệu suất

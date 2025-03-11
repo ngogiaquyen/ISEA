@@ -6,46 +6,52 @@ class User extends Controller
     {
         $this->user_model = $this->createModel("UserModel");
     }
-    public function index()
-    {
-    }
-    public function read($id = 0)
+    public function read($id)
     {
         validMethodGET();
-        $result = $this->user_model->readUsers($id);
-        $data = [];
-        foreach ($result as $user) {
-            $data[] = [
-                'full_name' => $user['full_name'],
-                'phone_number' => $user['phone_number'],
-                'email' => $user['email'],
-                'gender' => $user['gender'],
-                'birthday' => $user['birthday'],
-                'role' => $user['role'],
-            ];
-        }
-        echo json_encode($data);
+        echo json_encode($this->user_model->readUsers($id[0]));
     }
-    public function login()
+    public function role()
     {
+        validMethodGET();
+        echo json_encode($this->user_model->readRoles());
+    }
+    public function auth()
+    {
+        validMethodPOST();
         $id = $_SESSION['user_id'] ?? null;
         $phone = $_SESSION['phone_number'] ?? null;
         if (!empty($id) && !empty($phone)) {
             echo json_encode($this->user_model->loginSession($id, $phone));
             exit;
         }
+        handleSuccess('Không có thông tin');
+    }
+    public function login()
+    {
         validUserLogin();
         $data = [
             'phone_number' => $_POST['phone_number'],
             'password' => $_POST['password'],
         ];
-        $result = $this->user_model->login($data);
-        if (is_array($result) && count($result) > 0) {
-            $_SESSION['user_id'] = $result['id'];
-            $_SESSION['phone_number'] = $result['phone_number'];
-            handleSuccess('Đăng nhập thành công');
+        $user = $this->user_model->login($data);
+        if ($user && is_array($user)) {
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['phone_number'] = $user['phone_number'];
+            $result = ['status' => 'success', 'title' => 'Thông báo', 'content' => 'Đăng nhập thành công', 'user' => $user];
+            handleMessage($result);
         } else {
             handleError('Đăng nhập thất bại, vui lòng thử lại sau');
+        }
+    }
+    public function logout()
+    {
+        validMethodPOST();
+        if (empty($_SESSION['user_id']) && empty($_SESSION['phone_number'])) {
+            handleError('Thao tác không đúng, vui lòng liên hệ Quản trị viên');
+        } else {
+            session_destroy();
+            handleSuccess('Đăng xuất thành công');
         }
     }
     public function register()
@@ -66,5 +72,30 @@ class User extends Controller
         } else {
             handleError('Đăng ký thất bại, vui lòng thử lại sau');
         }
+    }
+    public function recruitment()
+    {
+        validRecruitment();
+        $data = [
+            'role' => $_POST['role'],
+        ];
+        if ($this->user_model->updateRole($_POST['id'], $data)) {
+            handleSuccess('Tuyển dụng nhân sự thành công');
+        }
+        handleError('Tuyển dụng nhân sự thất bại');
+    }
+
+    public function reset()
+    {
+        $id = $_SESSION['user_id'];
+        $old_pass = $_POST['old_pass'];
+        $new_pass = $_POST['new_pass'];
+        $this->user_model->reset($id, $old_pass, $new_pass);
+        // if (
+        // ) {
+        //     handleSuccess(message: 'Đặt lại mật khẩu thành công');
+        // } else {
+        //     handleError('Đặt lại mật khẩu thất bại, vui lòng thử lại sau');
+        // }
     }
 }

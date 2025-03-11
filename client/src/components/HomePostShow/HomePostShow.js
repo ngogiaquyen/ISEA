@@ -1,8 +1,9 @@
 import classNames from 'classnames/bind';
 import styles from './HomePostShow.module.scss';
+import defaultStyles from '../GlobalStyles/GlobalStyles.module.scss';
 import { cleanString } from '~/components/HomePostItem/HomePostItem';
 
-const cx = classNames.bind(styles);
+const cx = classNames.bind({ ...styles, ...defaultStyles });
 
 function generateDescription(desc) {
   if (!desc) return;
@@ -61,7 +62,7 @@ window.addEventListener('scroll', processHeight);
 
 function HomePostShow({ post, onApply }) {
   return (
-    <div id="post-show" className={cx('post-show', { init: post.isInit })}>
+    <div className={cx('post-show', { init: post.isInit })}>
       <div className={cx('post-info-head')}>
         <div className={cx('post-title')}>
           <p>{post.title}</p>

@@ -55,7 +55,18 @@ class App
             if (method_exists($this->controller, $this->action)) {
                 unset($url_array[0]);
                 $this->params = array_values($url_array);
-                call_user_func_array([$this->controller, $this->action], $this->params);
+
+                if (!empty($_GET)) {
+                    $this->params = array_merge($this->params, $_GET);
+                }
+
+                if (empty($this->params)) {
+                    $this->params = [0];
+                }
+
+                // var_dump($this->params);
+                // exit;
+                call_user_func_array([$this->controller, $this->action], [$this->params]);
             }
         }
     }

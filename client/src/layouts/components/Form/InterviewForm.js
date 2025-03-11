@@ -24,7 +24,7 @@ function InterviewForm({ ref, data }) {
   };
   const fetchDropItem = async () => {
     try {
-      const response = await getData('/role/read');
+      const response = await getData('/user/role');
       setDropDownItems(response);
 
       if (Object.keys(data).length > 0) {

@@ -6,12 +6,14 @@
   position: relative;
   display: flex;
   font-family: Inter;
+  width: 100vw;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   flex: 1;
+  width: calc(100vw - var(--sidebar-width));
 }
 
 .inner {
@@ -24,31 +26,33 @@
   }
 }
 
-
 @keyframes fadeIn {
-    from {
-      left: calc(0px - var(--sidebar-width));
-    }
-    to {
-      left: 0;
-    }
+  from {
+    left: calc(0px - var(--sidebar-width));
   }
-
+  to {
+    left: 0;
+  }
+}
 
 @keyframes fadeOut {
-    from {
-      left: 0;
-    }
-    to {
-      left: calc(0px - var(--sidebar-width));
-    }
+  from {
+    left: 0;
   }
+  to {
+    left: calc(0px - var(--sidebar-width));
+  }
+}
 
 .child {
+  display: flex;
+  flex-direction: column;
   overflow-y: scroll;
   max-height: calc(100vh - var(--height-header));
   height: 100%;
   width: 100%;
+  // max-width: calc(100% - var(--sidebar-width));
+
   background-color: var(--content-bg-color);
   transition: width 3s ease-in-out;
 }

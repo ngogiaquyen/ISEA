@@ -8,5 +8,9 @@
 .title {
   font-size: 14px;
   margin-bottom: 12px;
-  font-weight: 300;
+  font-weight: 300;  background-color: #0081ff1a;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: var(--primary-color);
+  width: fit-content;
 }

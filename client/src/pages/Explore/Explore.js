@@ -7,9 +7,11 @@ import HomeNews from '~/components/HomeNews/HomeNews';
 import fbIcon from '~/assets/images/facebook.webp';
 import twIcon from '~/assets/images/twitter.webp';
 import lkIcon from '~/assets/images/linked.webp';
-import HeaderUser from '~/layouts/components/HeaderUser/HeaderUser';
+import { useEffect, useState } from 'react';
+import globalStyles from '~/components/GlobalStyles/GlobalStyles.module.scss';
 
-const cx = classNames.bind(styles);
+const cx = classNames.bind({ ...styles, ...globalStyles });
+
 const homeNewsItems = [
   {
     src: 'https://firebasestorage.googleapis.com/v0/b/ngontumathuat-d946a.appspot.com/o/images%2F268c39b9-4e17-4dc1-a66f-4bf57a1b68c4?alt=media&token=52ef2379-8c5b-481d-b2d2-00f35b0adfa4',
@@ -32,9 +34,17 @@ const homeNewsItems = [
 ];
 
 function Explore() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 400);
+  }, []);
+
   return (
     <div className={cx('wrapper')}>
-      <div className={cx('poster')}>
+      <div className={cx('poster', { init: loading })}>
         <img className={cx('poster-img')} src={poster} alt="poster" />
         <div className={cx('com-info')}>
           <div className={cx('com-info-wrapper')}>
@@ -57,7 +67,7 @@ function Explore() {
       </div>
       <div className={cx('main-info')}>
         <div className={cx('col1')}>
-          <div className={cx('box-info', 'col1-wrapper')}>
+          <div className={cx('box-info', 'col1-wrapper', { init: loading })}>
             <div className={cx('info-title')}>Giới thiệu công ty</div>
             <div className={cx('main-info-content')}>
               Ngày 23/05/2019, Công ty Cổ phần ISEA Việt Name chính thức được thành lập, hoạt động trong lĩnh vực giảng
@@ -86,10 +96,12 @@ function Explore() {
               tư vấn trong và ngoài công ty.
             </div>
           </div>
-          <HomeNews title={'Tin tức tuyển dụng'} newsArr={homeNewsItems} />
+          <div className={cx({ init: loading })}>
+            <HomeNews title={'Tin tức tuyển dụng'} newsArr={homeNewsItems} />
+          </div>
         </div>
         <div className={cx('col2')}>
-          <div className={cx('box-info', 'col2-contact')}>
+          <div className={cx('box-info', 'col2-contact', { init: loading })}>
             <div className={cx('info-title')}>Thông tin liên hệ</div>
             <div className={cx('com-contact-info')}>
               <div className={cx('com-contact-address')}>
@@ -118,7 +130,7 @@ function Explore() {
               </div>
             </div>
           </div>
-          <div className={cx('box-info', 'col2-sharer')}>
+          <div className={cx('box-info', 'col2-sharer', { init: loading })}>
             <div className={cx('info-title')}>Chia sẻ công ty tới bạn bè</div>
             <div className={cx('col2-sharer-body')}>
               <span className={cx('content')}>Sao chép đường dẫn</span>

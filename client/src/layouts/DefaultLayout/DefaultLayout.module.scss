@@ -1,35 +1,27 @@
-body {
-  height: 100vh;
-  // background-color: var(--background-color-state-1);
-  background-color: var(--background-color);
-  color: var(--content-color);
-}
 .wrapper {
+  background-color: var(--background-color);
   display: flex;
   flex-direction: column;
   height: 100vh;
+  color: var(--content-color);
+  font-size: 14px;
+}
+
+.wrapper a {
+  color: unset;
 }
 
 .wrapper * {
-  transition: all 0.24s, opacity 0.8s, border 0.8s;
+  transition: all 0.24s, color 0.06s, opacity 0.8s, border 0.8s, height 0s;
 }
 
 .wrapper button {
   color: #fff;
   cursor: pointer;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    //css of the handsome guy, no edit, thanks!
-    --primary-color: #0081ff;
-    --primary-color: #2693ff;
-    --secondary-color: #f3f5f6;
-
-    --primary-color-hover: #0081ff;
-
-    --content-color: #c2c3ca !important;
-    --background-color: #24262b !important;
-    --border-color: #535556 !important;
-  }
+.inner {
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+  overflow-y: scroll;
 }

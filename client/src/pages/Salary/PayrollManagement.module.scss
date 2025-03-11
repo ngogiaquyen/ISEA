@@ -1,6 +1,5 @@
 /* Container chính */
 .wrapper {
-  max-width: 100%;
   margin: 0 auto;
   background: white;
   padding: 20px;
@@ -79,74 +78,76 @@
 }
 
 .wrapper {
-    // max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 8px;
-  }
-  
-  .title {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .filter-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-  
-  .filter-label {
-    margin-right: 10px;
-    font-weight: bold;
-  }
-  
-  .filter-select {
-    padding: 5px;
-    font-size: 16px;
-  }
-  
-  .button-container {
-    text-align: right;
-    margin-bottom: 10px;
-  }
-  
-  .download-button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .download-button:hover {
-    background-color: #45a049;
-  }
-  
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .table-header {
-    background: #007bff;
-    color: white;
-  }
-  
-  .table-cell {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-  }
-  
-  .no-data {
-    text-align: center;
-    padding: 10px;
-    font-style: italic;
-  }
-  
+  // max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.filter-label {
+  color: var(--text-color);
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.filter-select {
+  padding: 5px;
+  font-size: 16px;
+}
+
+.button-container {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.download-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.download-button:hover {
+  background-color: #45a049;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-header {
+  background: #007bff;
+}
+
+.table-cell {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+td.table-cell{
+  color: var(--text-color);
+}
+.no-data {
+  text-align: center;
+  padding: 10px;
+  font-style: italic;
+}
 
 .search-input {
   padding: 5px;

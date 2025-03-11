@@ -1,4 +1,18 @@
-.wrapper{
-    display: flex;
-    height: 100%;
+.wrapper {
+  display: flex;
+  height: 100%;
+  color: var(--content-color);
+}
+.wrapper > div {
+  height: 100vh;
+}
+.wrapper a {
+  color: var(--content-color);
+}
+.wrapper button {
+  color: #fff !important;
+  cursor: pointer;
+}
+.wrapper * {
+  transition: all 0.24s, color 0.06s, opacity 0.8s, border 0.8s, height 0s;
 }

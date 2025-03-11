@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 
 import { privateRouters, publicRouters } from './routes';
 import DefaultLayout from './layouts/DefaultLayout';
 
 function App() {
   // dissable right mouse click
-  const handleContextMenu = (e)=>{
+  const handleContextMenu = (e) => {
     e.preventDefault();
-  }
+  };
   return (
     <Router>
       <div className="app" onContextMenu={handleContextMenu}>
@@ -23,13 +23,19 @@ function App() {
             } else if (route.layout === null) {
               Layout = Fragment;
             }
+            let Frame = Fragment;
+            if (route.frame) {
+              Frame = route.frame;
+            }
             return (
               <Route
                 key={index}
                 path={route.path}
                 element={
                   <Layout>
-                    <Page {...route.props} />
+                    <Frame>
+                      <Page {...route.props} />
+                    </Frame>
                   </Layout>
                 }
               />

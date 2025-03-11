@@ -61,7 +61,7 @@ function Dropdown({ name, tags: _tags = [], dropDownItems: _dropDownItems = [], 
           {_dropDownItems
             .filter(
               (item) =>
-                item.full_name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+                item.full_name?.toLowerCase().includes(searchTerm.toLowerCase()) &&
                 !tags.map((tag) => tag.name).includes(item.full_name),
             )
             .map((item) => (

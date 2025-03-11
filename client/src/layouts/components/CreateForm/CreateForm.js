@@ -42,7 +42,11 @@ function CreateForm({ title = '', typeUrl, formComponent }) {
       const response = await postData(`/${typeUrl}/create`, formData);
       addToast(response);
       if (response && response.status === 'success') {
-        navigate(config.routes.admin.interviewList);
+        if(typeUrl === "post"){
+          navigate(config.routes.admin.recruitmentList);
+        }else if (typeUrl === "interview"){
+          navigate(config.routes.admin.interviewList);
+        }
       }
     } catch (error) {
       console.error('Error posting data: ', error);

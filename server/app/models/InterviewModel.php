@@ -5,7 +5,7 @@ class InterviewModel extends Model
     {
         return $this->create('interviews', $data);
     }
-    public function readInterviews($id = '')
+    public function readInterviews($id)
     {
         $conditions = !empty($id) ? "WHERE i.id=:id" : '';
         $sql = "SELECT 
@@ -31,7 +31,7 @@ class InterviewModel extends Model
             handleError("Lỗi khi lấy thông tin " . $e->getMessage());
         }
     }
-    public function readInterviewDetail($id = 0)
+    public function readInterviewDetail($id)
     {
         $conditions = !empty($id) ? "WHERE i.id=:id" : '';
         $sql = "SELECT 
@@ -54,6 +54,7 @@ class InterviewModel extends Model
                 i.edit_at DESC";
         try {
             $stmt = $this->conn->prepare($sql);
+            
             if (!empty($id)) {
                 $stmt->bindValue(':id', $id);
             }

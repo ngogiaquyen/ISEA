@@ -17,13 +17,14 @@
 .form {
   position: fixed;
   inset: 0;
+  // top: 80px;
   background-color: var(--background-color);
   z-index: 999999990;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   overflow-y: auto;
-  padding: 32px 16px;
+  padding: 112px 16px 32px 16px;
 }
 .form {
   -ms-overflow-style: none;
@@ -36,14 +37,26 @@
   display: flex;
   justify-content: center;
   align-items: stretch;
-  background-color: var(--background-color);
+  background-color: var(--elem-color);
+  box-shadow: var(--shadow-mode-1);
   padding: 32px;
-  border: 1px solid var(--border-color);
+  // border: 1px solid var(--border-color);
   border-radius: 12px;
   width: 100%;
   max-width: 400px;
   margin: auto 0;
   position: relative;
+  & > :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+.mini form {
+  padding: 16px;
+  max-width: 280px;
+  text-align: center;
+}
+.mini form > p {
+  font-weight: normal;
 }
 .show {
   animation: form-opacity 0.4s ease;
@@ -62,32 +75,35 @@
 }
 .form * {
   color: var(--content-color);
-  font-size: 15px;
+  font-size: 14px;
 }
 .btn-hide-form {
   position: absolute;
-  right: 16px;
-  top: 16px;
+  right: 12px;
+  top: 12px;
   cursor: pointer;
-  width: 28px;
+  width: 32px;
   aspect-ratio: 1;
-  background-color: transparent !important;
+  // background-color: transparent !important;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 6px;
   padding: 0;
+  &:hover {
+    background-color: var(--elem-color-hover);
+  }
 }
 .btn-hide-form i {
   color: #a3a5a6;
 }
 .btn-hide-form:hover i {
-  color: #444;
+  color: var(--primary-color);
 }
 .form form > p {
   text-align: center;
   margin-bottom: 16px;
-  font-size: 18px;
+  font-size: 16px;
 }
 .form form > * {
   flex: 1 0 100%;
@@ -153,4 +169,15 @@
   height: 100%;
   aspect-ratio: 10/7;
   object-fit: cover;
+}
+
+
+.label-input{
+
+  .error{
+      font-size: 1.2rem;
+      color: var(--error-color);
+      margin-top: 4px;
+      margin-left: 2px;
+  }
 }

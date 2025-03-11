@@ -6,10 +6,6 @@ class Post extends Controller
     {
         $this->post_model = $this->createModel("PostModel");
     }
-    public function index()
-    {
-    }
-
     public function create()
     {
         validPostCreate();
@@ -27,14 +23,12 @@ class Post extends Controller
             handleError('Tạo bài viết thất bại, vui lòng thử lại sau');
         }
     }
-
-
-    public function read($id = 0)
+    public function read($id)
     {
         validMethodGET();
-        echo json_encode($this->post_model->readPosts($id));
+        echo json_encode($this->post_model->readPosts($id[0]));
     }
-    public function update($id = 0)
+    public function update()
     {
         validPostUpdate();
         $id = $_POST['id'];
@@ -46,13 +40,14 @@ class Post extends Controller
             'expiration_date' => $_POST['expiration_date'],
             'content' => $_POST['content']
         ];
+
         if ($this->post_model->updatePost($id, $data)) {
             handleSuccess('Sửa bài viết thành công');
         } else {
             handleError('Sửa bài viết thất bại, vui lòng thử lại sau');
         }
     }
-    public function delete($id = '')
+    public function delete()
     {
         validPostDelete();
         $id = $_POST['id'];

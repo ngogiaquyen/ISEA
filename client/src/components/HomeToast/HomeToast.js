@@ -16,10 +16,11 @@ const iSuccess = (
 );
 let timeout = null;
 
-function HomeToast({ obj, onClick }) {
+function HomeToast({ obj, setToast }) {
   const [classToast, setClassToast] = useState('show');
 
-  const handleClose = () => {
+  const handleClose = (e) => {
+    if (e && e.target) e.target.style.opacity = '0';
     clearTimeout(timeout);
     setClassToast('wait');
 
@@ -27,13 +28,13 @@ function HomeToast({ obj, onClick }) {
       setClassToast('hide');
 
       timeout = setTimeout(() => {
-        onClick(null);
+        setToast(null);
       }, 620);
     }, 100);
   };
 
   const handleCloseRef = useRef(handleClose);
-  const keepRef = useRef(obj.keep);
+  const keepRef = useRef(obj?.keep);
 
   useEffect(() => {
     if (keepRef.current) return;
@@ -51,13 +52,11 @@ function HomeToast({ obj, onClick }) {
   return (
     <div id="toast" className={cx('toast', classToast)}>
       <div className={cx('toast-wrapper')}>
-        <div className={cx('toast-head', obj.status)}>{obj.status === 'error' ? iError : iSuccess}</div>
+        <i className="fa-light fa-xmark" onClick={handleClose}></i>
+        <div className={cx('toast-head', obj?.status)}>{obj?.status === 'error' ? iError : iSuccess}</div>
         <div className={cx('toast-body')}>
-          <div className={cx('toast-title')}>{obj.title}</div>
-          <div className={cx('toast-content')} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(obj.content) }} />
-        </div>
-        <div className={cx('toast-foot')}>
-          <i className="fa-light fa-xmark" onClick={handleClose}></i>
+          <div className={cx('toast-title')}>{obj?.title}</div>
+          <div className={cx('toast-content')} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(obj?.content) }} />
         </div>
       </div>
     </div>

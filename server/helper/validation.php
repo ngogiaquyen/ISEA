@@ -148,11 +148,11 @@ function validInterview()
     if (empty($_POST['interview_location'])) {
         handleError('Địa điểm phỏng vấn không được để trống');
     }
+    if (empty($_POST['interviewers'])) {
+        handleError('Vui lòng chọn người phỏng vấn');
+    }
     if (empty($_POST['required_documents'])) {
         handleError('Văn bản yêu cầu không được để trống');
-    }
-    if (empty($_POST['interviewers'])) {
-        handleError('Người phỏng vấn không được để trống');
     }
 }
 function validInterviewUpdate()
@@ -178,5 +178,16 @@ function validCandidate()
     }
     if (empty($_POST['applicant_id'])) {
         handleError('Vui lòng chọn ứng viên');
+    }
+}
+//recruitment
+function validRecruitment()
+{
+    validMethodPOST();
+    if (empty($_POST['id'])) {
+        handleError('Chưa chọn ứng viên');
+    }
+    if (empty($_POST['role'])) {
+        handleError('Chức vụ không được để trống');
     }
 }

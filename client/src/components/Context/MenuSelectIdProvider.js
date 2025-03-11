@@ -11,13 +11,11 @@ function MenuSelectIdProvider({ children }) {
 
   useEffect(() => {
     const objId = JSON.parse(localStorage.getItem('menuSelectId'));
-    console.log('first: ', objId);
     if (objId) setMenuSelectId(objId);
   }, []);
 
   const handleChangeMenuSelectId = (props) => {
     setMenuSelectId((prev) => {
-      console.log({ ...prev, ...props });
       localStorage.setItem('menuSelectId', JSON.stringify({ ...prev, ...props }));
       return { ...prev, ...props };
     });

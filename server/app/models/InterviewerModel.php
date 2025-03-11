@@ -5,13 +5,9 @@ class InterviewerModel extends Model
     {
         return $this->create('interviewers', $data);
     }
-    public function readInterviewers($id = '')
+    public function readInterviewers($id)
     {
-        if (!empty($id)) {
-            $conditions = "id=$id";
-            return $this->read('interviewers', $conditions);
-        }
-        return $this->read('interviewers');
+        return $this->read('interviewers', empty($id) ? '' : "id=$id"); 
     }
     public function updateInterviewer($id, $data)
     {
