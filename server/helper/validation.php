@@ -222,8 +222,14 @@ function validEmployeeCreate()
     if (empty($_POST['full_name'])) {
         handleError('Họ và tên không được để trống');
     }
+    elseif(!preg_match('/^[a-zA-Z ]+$/', $_POST['full_name'])) {
+        handleError('Họ và tên không hợp lệ');
+    }
     if (empty($_POST['birthday'])) {
         handleError('Ngày sinh không được để trống');
+    }
+    elseif(!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $_POST['birthday'])) {
+        handleError('Ngày sinh không hợp lệ');
     }
     if (empty($_POST['phone_number'])) {
         handleError('Số điện thoại không được để trống');

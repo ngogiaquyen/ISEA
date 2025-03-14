@@ -93,7 +93,7 @@ function UpdateEmployeeInfo() {
           layout="haft"
           name="gender"
           inputType="text"
-          selectData={['Nam', 'Nữ']}
+          selectData={['','Nam', 'Nữ']}
           value={information.gender}
           // selectData={levelOption}
           error={errors.educationLevel}
