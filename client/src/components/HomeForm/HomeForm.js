@@ -13,6 +13,7 @@ function HomeForm({
   btnCloseId,
   setForm,
   mini,
+  dissableBtn=false,
   showSubmit = true,
   handleSubmit,
   children,
@@ -39,7 +40,7 @@ function HomeForm({
   );
 
   const btnSubmit = (
-    <button className={cx('btn-send')} type="submit" onClick={handleSubmit} disabled={isDisable}>
+    <button className={cx('btn-send', {disabled: dissableBtn})} type="submit" onClick={handleSubmit} disabled={isDisable}>
       {btnContent}
     </button>
   );

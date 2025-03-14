@@ -165,6 +165,12 @@
   cursor: default;
 }
 
+
+.btn-send.disabled {
+  background-color: #d3d5d6;
+  cursor: no-drop;
+}
+
 .icon {
   height: 100%;
   aspect-ratio: 10/7;

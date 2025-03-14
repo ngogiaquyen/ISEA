@@ -12,6 +12,8 @@ class Db
         try {
             $this->conn = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME . ";charset=utf8", USERNAME, PASSWORD);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // $this->createTables();
+
         } catch (PDOException $e) {
             if ($e->getCode() == 1049) {
                 $this->initializeDatabase();

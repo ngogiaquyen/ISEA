@@ -204,6 +204,8 @@ function validCourseCreate()
     }
     if (empty($_POST['address'])) {
         handleError('Địa chỉ không được để trống');
+    } elseif (!preg_match('/^[\p{L}0-9\s,.()-]+$/u', $_POST['address'])) {
+        handleError('Địa chỉ không được chứa ký tự đặc biệt');
     }
     if (empty($_POST['date_start'])) {
         handleError('Ngày bắt đầu không được để trống');
@@ -211,10 +213,20 @@ function validCourseCreate()
     if (empty($_POST['date_end'])) {
         handleError('Ngày kết thúc không được để trống');
     }
+    if (!empty($_POST['date_start']) && !empty($_POST['date_end'])) {
+        $date_start = strtotime($_POST['date_start']);
+        $date_end = strtotime($_POST['date_end']);
+        if ($date_start >= $date_end) {
+            handleError('Ngày bắt đầu phải nhỏ hơn ngày kết thúc');
+        }
+    }
     if (empty($_POST['descriptions'])) {
         handleError('Mô tả không được để trống');
+    } elseif (!preg_match('/^[\p{L}0-9\s,.()-]+$/u', $_POST['descriptions'])) {
+        handleError('Mô tả không được chứa ký tự đặc biệt');
     }
 }
+
 function validEmployeeCreate()
 {
     validMethodPOST();
