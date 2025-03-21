@@ -231,17 +231,36 @@ function validEmployeeCreate()
 {
     validMethodPOST();
     
-    if (empty($_POST['full_name'])) {
+    if (empty($_POST['full_name']) || trim($_POST['full_name']) == '') {
         handleError('Họ và tên không được để trống');
     }
-    elseif(!preg_match('/^[a-zA-Z ]+$/', $_POST['full_name'])) {
+    elseif(!preg_match('/^[\p{L}]+(?: [\p{L}]+)*$/u', $_POST['full_name'])) {
         handleError('Họ và tên không hợp lệ');
-    }
+    }  
+
     if (empty($_POST['birthday'])) {
         handleError('Ngày sinh không được để trống');
     }
     elseif(!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $_POST['birthday'])) {
         handleError('Ngày sinh không hợp lệ');
+    }
+    if (!isset($_POST['birthday']) || !preg_match('/^\d{4}-\d{2}-\d{2}$/', $_POST['birthday'])) {
+        handleError('Ngày sinh không hợp lệ');
+    } else {
+        $date_parts = explode('-', $_POST['birthday']);
+        $year = (int)$date_parts[0];
+        $month = (int)$date_parts[1];
+        $day = (int)$date_parts[2];
+        
+        $current_year = date('Y'); // Lấy năm hiện tại
+    
+        if ($year < 1900 || $year > $current_year) {
+            handleError("Năm sinh phải từ 1900 đến $current_year");
+        }
+    
+        if (!checkdate($month, $day, $year)) {
+            handleError('Ngày sinh không hợp lệ');
+        }
     }
     if (empty($_POST['phone_number'])) {
         handleError('Số điện thoại không được để trống');
